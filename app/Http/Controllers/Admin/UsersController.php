@@ -41,7 +41,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['name' => 'required', 'apellido' => 'required', 'email' => 'required', 'password' => 'required', ]);
+        $this->validate($request, ['name' => 'required', 'apellido' => 'required', 'direccion' => 'required', 'telefono' => 'required', 'genero' => 'required', 'email' => 'required', 'password' => 'required', ]);
 
         User::create($request->all());
 
@@ -87,7 +87,7 @@ class UsersController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['name' => 'required', 'apellido' => 'required', 'email' => 'required', 'password' => 'required', ]);
+        $this->validate($request, ['name' => 'required', 'apellido' => 'required', 'direccion' => 'required', 'telefono' => 'required', 'genero' => 'required', 'email' => 'required', 'password' => 'required', ]);
 
         $user = User::findOrFail($id);
         $user->update($request->all());
