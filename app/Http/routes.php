@@ -23,6 +23,7 @@ Route::get('/docentes','principalPanel@docentes');
 Route::get('/estudiantes','principalPanel@estudiantes');
 Route::get('/ayuda','principalPanel@ayuda');
 
-Route::resource('admin/users', 'Admin\\UsersController');
 Route::resource('admin/permisos', 'Admin\\permisosController');
 Route::resource('admin/roles', 'Admin\\rolesController');
+Route::resource('admin/users', 'Admin\\UsersController');
+Route::resource('admin/users', 'Admin\\UsersController');
