@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
 
 class UsersController extends Controller
 {
@@ -43,7 +44,18 @@ class UsersController extends Controller
     {
         $this->validate($request, ['name' => 'required', 'apellido' => 'required', 'direccion' => 'required', 'telefono' => 'required', 'genero' => 'required', 'email' => 'required', 'password' => 'required', ]);
 
-        User::create($request->all());
+         $pass = User::create($request->all());
+
+         $pass->password=(bcrypt($pass->password));
+        
+         $pass->save();
+
+        $user = DB::table('users')->where('email', $pass->email)->first();
+        $user = $user->id;
+        
+        DB::table('role_user')->insert(
+        ['user_id' => $user, 'role_id' => 3]
+        );   
 
         Session::flash('flash_message', 'User added!');
 

@@ -26,7 +26,11 @@
                 <tr>
                     <th>ID.</th><td>{{ $user->id }}</td>
                 </tr>
-                <tr><th> {{ trans('users.name') }} </th><td> {{ $user->name }} </td></tr><tr><th> {{ trans('users.apellido') }} </th><td> {{ $user->apellido }} </td></tr><tr><th> {{ trans('users.direccion') }} </th><td> {{ $user->direccion }} </td></tr>
+                <tr><th> {{ trans('users.name') }} </th><td> {{ $user->name }} </td></tr>
+                <tr><th> {{ trans('users.apellido') }} </th><td> {{ $user->apellido }} </td></tr>
+                <tr><th> {{ trans('users.direccion') }} </th><td> {{ $user->direccion }} </td></tr>
+                <tr><th> {{ trans('users.telefono') }} </th><td> {{ $user->telefono}} </td></tr>
+                <tr><th> {{ trans('users.genero') }} </th><td> {{ $user->genero }} </td></tr>
             </tbody>
             <tfoot>
                 <tr>
