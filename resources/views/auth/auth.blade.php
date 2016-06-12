@@ -43,7 +43,7 @@ desired effect
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
-
+    @include('partials.footerv')
     @include('partials.footer')
 
 </div><!-- ./wrapper -->
