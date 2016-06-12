@@ -111,7 +111,6 @@ position: relative;
 padding: 15px;
 background: #FFF;
 background-color: deepskyblue;
-
 }
 
 /* Fixed layout */
@@ -792,7 +791,6 @@ a:focus {
   border-radius: 50%;
   text-align: center;
   line-height: 35px;
-  background-color: deepskyblue;
 }
 .control-sidebar-menu .menu-info {
   margin-left: 45px;
