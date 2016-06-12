@@ -105,6 +105,15 @@ body {
   color: #444;
   border-top: 1px solid #d2d6de;
 }
+
+.main-footerv {
+position: relative;
+padding: 15px;
+background: #FFF;
+background-color: deepskyblue;
+
+}
+
 /* Fixed layout */
 .fixed .main-header,
 .fixed .main-sidebar,
@@ -783,6 +792,7 @@ a:focus {
   border-radius: 50%;
   text-align: center;
   line-height: 35px;
+  background-color: deepskyblue;
 }
 .control-sidebar-menu .menu-info {
   margin-left: 45px;
