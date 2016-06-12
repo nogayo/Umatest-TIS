@@ -105,6 +105,14 @@ body {
   color: #444;
   border-top: 1px solid #d2d6de;
 }
+
+.main-footerv {
+position: relative;
+padding: 15px;
+background: #FFF;
+background-color: deepskyblue;
+}
+
 /* Fixed layout */
 .fixed .main-header,
 .fixed .main-sidebar,
