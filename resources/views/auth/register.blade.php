@@ -38,6 +38,22 @@
                 </div>
 
                 <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="Direccion" name="direccion" value="{{ old('direccion') }}"/>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="Telefono" name="telefono" value="{{ old('telefono') }}"/>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+
+
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="Genero" name="genero" value="{{ old('genero') }}"/>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
                     <input type="email" class="form-control" placeholder="Correo electronico" name="email" value="{{ old('email') }}"/>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>

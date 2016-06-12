@@ -8,12 +8,11 @@
 @section('main-content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">Home</div>
 
                 <div class="panel-body">
-
 
 
 
@@ -27,7 +26,11 @@
                 <tr>
                     <th>ID.</th><td>{{ $user->id }}</td>
                 </tr>
-                <tr><th> {{ trans('users.name') }} </th><td> {{ $user->name }} </td></tr><tr><th> {{ trans('users.apellido') }} </th><td> {{ $user->apellido }} </td></tr><tr><th> {{ trans('users.email') }} </th><td> {{ $user->email }} </td></tr>
+                <tr><th> {{ trans('users.name') }} </th><td> {{ $user->name }} </td></tr>
+                <tr><th> {{ trans('users.apellido') }} </th><td> {{ $user->apellido }} </td></tr>
+                <tr><th> {{ trans('users.direccion') }} </th><td> {{ $user->direccion }} </td></tr>
+                <tr><th> {{ trans('users.telefono') }} </th><td> {{ $user->telefono}} </td></tr>
+                <tr><th> {{ trans('users.genero') }} </th><td> {{ $user->genero }} </td></tr>
             </tbody>
             <tfoot>
                 <tr>
@@ -51,5 +54,12 @@
         </table>
     </div>
 
+</div>
+
+
+            </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
