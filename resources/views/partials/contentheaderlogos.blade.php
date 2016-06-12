@@ -4,7 +4,7 @@
      
      <div style="width:100%; margin:auto;height:139px;">
 
-		<img src="{{asset('/img/img_panelPrincipal/umatestlogo.jpg')}}" style=" margin:auto ; height:139px; width:100%;  "/>   
+		<img src="{{asset('/img/img_panelPrincipal/umatestlogo.jpg')}}" style="  height:139px; width:100%;  "/>   
    
      </div>
   
