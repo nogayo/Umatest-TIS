@@ -1,10 +1,10 @@
 <!-- Content Header (Page header) -->
 
-	<div class="banner" style="background-color: #ff0000;">
+	<div class="banner" style="margin:auto;background-color: #ff0000;">
      
-     <div style="width:1367px; height:139px;">
+     <div style="width:100%; margin:auto;height:139px;">
 
-		<img src="{{asset('/img/img_panelPrincipal/umatestlogo.jpg')}}" style=" margin-right:0px; margin-top:0px; height:139px; width:1367px;  "/>   
+		<img src="{{asset('/img/img_panelPrincipal/umatestlogo.jpg')}}" style=" margin:auto ; height:139px; width:100%;  "/>   
    
      </div>
   
