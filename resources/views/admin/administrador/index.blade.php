@@ -1,0 +1,70 @@
+@extends('app')
+
+@section('htmlheader_title')
+    Home
+@endsection
+
+
+@section('main-content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">Home</div>
+
+                <div class="panel-body">
+
+
+
+
+
+<div class="container">
+
+    <h1>Administrador <a href="{{ url('/admin/administrador/create') }}" class="btn btn-primary btn-xs" title="Add New Administrador"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <div class="table">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                 <th>S.No</th><th> {{ trans('users.name') }} </th><th> {{ trans('users.apellido') }} </th><th> {{ trans('users.direccion') }} </th><th> {{ trans('users.telefono') }} </th><th> {{ trans('users.genero') }} </th><th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{-- */$x=0;/* --}}
+            @foreach($administrador as $item)
+                {{-- */$x++;/* --}}
+                <tr>
+                    <td>{{ $x }}</td>
+                    <td>{{ $item->name }}</td><td>{{ $item->apellido }}</td><td>{{ $item->direccion }}</td><td>{{ $item->telefono }}</td><td>{{ $item->genero }}</td>
+                    <td>
+                        <a href="{{ url('/admin/administrador/' . $item->id) }}" class="btn btn-success btn-xs" title="View Administrador"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/administrador/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Administrador"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        {!! Form::open([
+                            'method'=>'DELETE',
+                            'url' => ['/admin/administrador', $item->id],
+                            'style' => 'display:inline'
+                        ]) !!}
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Administrador" />', array(
+                                    'type' => 'submit',
+                                    'class' => 'btn btn-danger btn-xs',
+                                    'title' => 'Delete Administrador',
+                                    'onclick'=>'return confirm("Confirm delete?")'
+                            ));!!}
+                        {!! Form::close() !!}
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+        <div class="pagination"> </div>
+    </div>
+
+</div>
+
+
+
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
