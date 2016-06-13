@@ -26,4 +26,5 @@ Route::get('/ayuda','principalPanel@ayuda');
 Route::resource('admin/permisos', 'Admin\\permisosController');
 Route::resource('admin/roles', 'Admin\\rolesController');
 Route::resource('admin/users', 'Admin\\UsersController');
-Route::resource('admin/users', 'Admin\\UsersController');
+Route::resource('admin/docente', 'Admin\\docenteController');
+Route::resource('admin/administrador', 'Admin\\administradorController');

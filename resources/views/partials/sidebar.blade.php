@@ -15,8 +15,8 @@
                 <a href="#"><i class='fa fa-link'></i> <span>Gestor Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/users') }}">Estudiantes</a></li>
-                    <li><a href="#">Docentes</a></li>
-                    <li><a href="#">Administracion</a></li>
+                    <li><a href="{{ url('admin/docente') }}">Docentes</a></li>
+                    <li><a href="{{ url('admin/administrador') }}">Administrador</a></li>
                 </ul>
             </li>
             <li><a href="#"><i class='fa fa-link'></i> <span>Gestor Cursos </span></a></li>
