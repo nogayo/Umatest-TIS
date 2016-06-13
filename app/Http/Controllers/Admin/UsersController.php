@@ -20,8 +20,93 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(15);
+       
+       $a = DB::table('role_user')->where('role_id', 3)->get();
+       $index=0;
+       $vector=array();
+       foreach($a as $b)
+        {
+            $vector[$index]=$b->user_id; 
+            $index++;
+           // echo $b->user_id;
+           // echo $b->role_id;
+           // echo "<br>";
+        }
+      // echo $a->count();
+       //for ($i=0; $i < $a->count() ; $i++) { 
+         //echo $a[$i]->user_id;
+       //}
+     //  echo $a->user_id;
+       //$envia=array();
+       //for ($i=0; $i < $user->size(); $i++) { 
+         
+       //}
+       
 
+        //$users = User::paginate(15);
+        //$users = User::paginate(15);
+
+        $mm=array();
+        for ($x=0; $x < count($vector); $x++) { 
+           $users = DB::table('users')->where('id', $vector[$x])->first();
+           $mm[$x]=$users;
+        }
+        
+       
+        $users=$mm;
+
+         //for ($m=0; $m < count($users); $m++) { 
+            //$fa=$envia[$m];
+            //echo $fa['id'];
+           // echo $fa['name'];
+            //echo $fa['apellido'] . "<br>";
+         //   echo $users[$m]->name . "<br>";
+       // }
+      /*
+        $envia=array();
+        $k=0;
+          //echo count($users);
+        for ($i=0; $i < count($users); $i++) { 
+       
+          //echo $users[$i]->name;
+          //echo $users[$i]->apellido . "<br>";
+          $algo = new User();
+
+           for ($j=0; $j < count($vector); $j++) { 
+              
+                if($users[$i]->id==$vector[$j]){
+
+                 //  $algo->id=$users[$i]->id;
+                   $algo->name=$users[$i]->name;
+                   $algo->apellido=$users[$i]->apellido;
+                   $algo->direccion=$users[$i]->direccion;
+                   $algo->telefono=$users[$i]->telefono;
+                   $algo->genero=$users[$i]->genero;
+                   $algo->email=$users[$i]->email;
+                   $algo->password=$users[$i]->password;
+
+                  break;  
+                }
+           }
+           
+           
+              if($algo->name==null){
+               $envia[$k]=$algo;
+                $k++;
+              }
+        
+        }
+    
+        for ($m=0; $m < count($envia); $m++) { 
+            //$fa=$envia[$m];
+            //echo $fa['id'];
+           // echo $fa['name'];
+            //echo $fa['apellido'] . "<br>";
+            echo $envia[$m]->name;
+        }
+        
+         $users=$envia; 
+       */
         return view('admin.users.index', compact('users'));
     }
 
