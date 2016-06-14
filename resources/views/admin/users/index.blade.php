@@ -16,7 +16,6 @@
 
 
 
-
 <div class="container">
 
     <h1>Usuarios <a href="{{ url('/admin/users/create') }}" class="btn btn-primary btn-xs" title="Add New User"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>

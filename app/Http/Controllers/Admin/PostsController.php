@@ -48,7 +48,7 @@ class PostsController extends Controller
 
         Session::flash('flash_message', 'Post added!');
 
-        return redirect('admin/posts');
+        return redirect('/todosloscursos');
     }
 
     /**

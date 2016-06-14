@@ -19,7 +19,37 @@
                     <li><a href="{{ url('admin/administrador') }}">Administrador</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>Gestor Cursos </span></a></li>
+             
+              {{-- */$id_user=Auth::id();   
+             /* --}}
+             {{-- */$id_rol=DB::table('role_user')->where('user_id', $id_user)->first();
+                   $id_rol=$id_rol->role_id;    
+             /* --}}
+             {{-- */$name_rol=DB::table('roles')->where('id', $id_rol)->first();
+                    $name_rol=$name_rol->nombre_rol;
+             /* --}}
+               @if($name_rol=='docente') 
+                  <!--DOCENTE GESTOR-->
+            <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Gestor Cursos</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('admin/curso/create') }}">Crear Curso</a></li>
+                    <li><a href="{{ url('admin/curso') }}">Mostrar Curso</a></li>
+                </ul>
+            </li>
+               @else 
+                <!--ESTUDIANTE GESTOR-->
+            <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Gestor Cursos</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('admin/curso/create') }}">Mis Cursos</a></li>
+                    <li><a href="{{ url('admin/curso') }}">Inscribirse a un Curso</a></li>
+                    <li><a href="{{ url('admin/curso') }}">Desinscribirse de un Curso</a></li>
+                    <li><a href="{{ url('/todosloscursos') }}">Todos los Cursos</a></li>
+                </ul>
+            </li>
+               @endif 
+            
            
         </ul><!-- /.sidebar-menu -->
     </section>
