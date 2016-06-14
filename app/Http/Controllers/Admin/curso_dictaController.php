@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Post;
+use App\curso_dictum;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 
-
-class PostsController extends Controller
+class curso_dictaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +19,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(15);
+        $curso_dicta = curso_dictum::paginate(15);
 
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.curso_dicta.index', compact('curso_dicta'));
     }
 
     /**
@@ -32,7 +31,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        return view('admin.curso_dicta.create');
     }
 
     /**
@@ -42,13 +41,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['title' => 'required', 'body' => 'required_with:title|alpha_num', ]);
+        $this->validate($request, ['grupo' => 'required', ]);
 
-        Post::create($request->all());
+        curso_dictum::create($request->all());
 
-        Session::flash('flash_message', 'Post added!');
+        Session::flash('flash_message', 'curso_dictum added!');
 
-        return redirect('/todosloscursos');
+        return redirect('admin/curso_dicta');
     }
 
     /**
@@ -60,9 +59,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
+        $curso_dictum = curso_dictum::findOrFail($id);
 
-        return view('admin.posts.show', compact('post'));
+        return view('admin.curso_dicta.show', compact('curso_dictum'));
     }
 
     /**
@@ -74,9 +73,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
+        $curso_dictum = curso_dictum::findOrFail($id);
 
-        return view('admin.posts.edit', compact('post'));
+        return view('admin.curso_dicta.edit', compact('curso_dictum'));
     }
 
     /**
@@ -88,14 +87,14 @@ class PostsController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['title' => 'required', 'body' => 'required_with:title|alpha_num', ]);
+        $this->validate($request, ['grupo' => 'required', ]);
 
-        $post = Post::findOrFail($id);
-        $post->update($request->all());
+        $curso_dictum = curso_dictum::findOrFail($id);
+        $curso_dictum->update($request->all());
 
-        Session::flash('flash_message', 'Post updated!');
+        Session::flash('flash_message', 'curso_dictum updated!');
 
-        return redirect('admin/posts');
+        return redirect('admin/curso_dicta');
     }
 
     /**
@@ -107,11 +106,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        Post::destroy($id);
+        curso_dictum::destroy($id);
 
-        Session::flash('flash_message', 'Post deleted!');
+        Session::flash('flash_message', 'curso_dictum deleted!');
 
-        return redirect('admin/posts');
+        return redirect('admin/curso_dicta');
     }
-
 }

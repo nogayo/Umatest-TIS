@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Post;
+use App\categorium;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 
-
-class PostsController extends Controller
+class categoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +19,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(15);
+        $categoria = categorium::paginate(15);
 
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.categoria.index', compact('categoria'));
     }
 
     /**
@@ -32,7 +31,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        return view('admin.categoria.create');
     }
 
     /**
@@ -42,13 +41,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['title' => 'required', 'body' => 'required_with:title|alpha_num', ]);
+        $this->validate($request, ['nombre' => 'required', ]);
 
-        Post::create($request->all());
+        categorium::create($request->all());
 
-        Session::flash('flash_message', 'Post added!');
+        Session::flash('flash_message', 'categorium added!');
 
-        return redirect('/todosloscursos');
+        return redirect('admin/categoria');
     }
 
     /**
@@ -60,9 +59,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
+        $categorium = categorium::findOrFail($id);
 
-        return view('admin.posts.show', compact('post'));
+        return view('admin.categoria.show', compact('categorium'));
     }
 
     /**
@@ -74,9 +73,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
+        $categorium = categorium::findOrFail($id);
 
-        return view('admin.posts.edit', compact('post'));
+        return view('admin.categoria.edit', compact('categorium'));
     }
 
     /**
@@ -88,14 +87,14 @@ class PostsController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['title' => 'required', 'body' => 'required_with:title|alpha_num', ]);
+        $this->validate($request, ['nombre' => 'required', ]);
 
-        $post = Post::findOrFail($id);
-        $post->update($request->all());
+        $categorium = categorium::findOrFail($id);
+        $categorium->update($request->all());
 
-        Session::flash('flash_message', 'Post updated!');
+        Session::flash('flash_message', 'categorium updated!');
 
-        return redirect('admin/posts');
+        return redirect('admin/categoria');
     }
 
     /**
@@ -107,11 +106,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        Post::destroy($id);
+        categorium::destroy($id);
 
-        Session::flash('flash_message', 'Post deleted!');
+        Session::flash('flash_message', 'categorium deleted!');
 
-        return redirect('admin/posts');
+        return redirect('admin/categoria');
     }
-
 }

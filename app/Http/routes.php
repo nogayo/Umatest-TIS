@@ -18,7 +18,7 @@
 Route::resource('admin/posts', 'Admin\\PostsController');
 //Route::get('/','Admin\\PostsController@prueba');
 Route::get('/','principalPanel@index');
-Route::get('/administrador','principalPanel@administrador');
+//Route::get('/todosloscursos','principalPanel@todosloscursos');
 Route::get('/docentes','principalPanel@docentes');
 Route::get('/estudiantes','principalPanel@estudiantes');
 Route::get('/ayuda','principalPanel@ayuda');
@@ -28,3 +28,10 @@ Route::resource('admin/roles', 'Admin\\rolesController');
 Route::resource('admin/users', 'Admin\\UsersController');
 Route::resource('admin/docente', 'Admin\\docenteController');
 Route::resource('admin/administrador', 'Admin\\administradorController');
+Route::resource('admin/curso', 'Admin\\cursoController');
+Route::resource('admin/categoria', 'Admin\\categoriaController');
+Route::resource('admin/curso_dicta', 'Admin\\curso_dictaController');
+Route::resource('admin/curso_inscrito', 'Admin\\curso_inscritoController');
+
+
+Route::resource('/todosloscursos', 'gestorusuarioController');

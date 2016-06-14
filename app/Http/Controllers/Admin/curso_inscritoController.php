@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Post;
+use App\curso_inscrito;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 
-
-class PostsController extends Controller
+class curso_inscritoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +19,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(15);
+        $curso_inscrito = curso_inscrito::paginate(15);
 
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.curso_inscrito.index', compact('curso_inscrito'));
     }
 
     /**
@@ -32,7 +31,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        return view('admin.curso_inscrito.create');
     }
 
     /**
@@ -42,13 +41,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['title' => 'required', 'body' => 'required_with:title|alpha_num', ]);
+        $this->validate($request, ['fecha' => 'required', ]);
 
-        Post::create($request->all());
+        curso_inscrito::create($request->all());
 
-        Session::flash('flash_message', 'Post added!');
+        Session::flash('flash_message', 'curso_inscrito added!');
 
-        return redirect('/todosloscursos');
+        return redirect('admin/curso_inscrito');
     }
 
     /**
@@ -60,9 +59,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
+        $curso_inscrito = curso_inscrito::findOrFail($id);
 
-        return view('admin.posts.show', compact('post'));
+        return view('admin.curso_inscrito.show', compact('curso_inscrito'));
     }
 
     /**
@@ -74,9 +73,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
+        $curso_inscrito = curso_inscrito::findOrFail($id);
 
-        return view('admin.posts.edit', compact('post'));
+        return view('admin.curso_inscrito.edit', compact('curso_inscrito'));
     }
 
     /**
@@ -88,14 +87,14 @@ class PostsController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['title' => 'required', 'body' => 'required_with:title|alpha_num', ]);
+        $this->validate($request, ['fecha' => 'required', ]);
 
-        $post = Post::findOrFail($id);
-        $post->update($request->all());
+        $curso_inscrito = curso_inscrito::findOrFail($id);
+        $curso_inscrito->update($request->all());
 
-        Session::flash('flash_message', 'Post updated!');
+        Session::flash('flash_message', 'curso_inscrito updated!');
 
-        return redirect('admin/posts');
+        return redirect('admin/curso_inscrito');
     }
 
     /**
@@ -107,11 +106,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        Post::destroy($id);
+        curso_inscrito::destroy($id);
 
-        Session::flash('flash_message', 'Post deleted!');
+        Session::flash('flash_message', 'curso_inscrito deleted!');
 
-        return redirect('admin/posts');
+        return redirect('admin/curso_inscrito');
     }
-
 }
