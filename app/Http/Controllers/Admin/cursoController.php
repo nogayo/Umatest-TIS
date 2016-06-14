@@ -31,11 +31,13 @@ class cursoController extends Controller
      */
     public function create()
     {
-        $vector=array();
+       /* $vector=array();
         $combo_categorias = DB::table('categorias')->select('nombre')->get();
         for ($i=0; $i < count($combo_categorias) ; $i++) { 
             $vector[$i]=$combo_categorias[$i]->nombre;
         }
+         $asegurado=Asegurado::orderBy('nombre', 'asc')->lists('nombre', 'id');
+         */$vector = DB::table('categorias')->lists('nombre', 'id');
         //echo $a[0]->nombre;
         //echo $a[4]->nombre;
 
@@ -53,11 +55,7 @@ class cursoController extends Controller
 
         $espera = curso::create($request->all());
 
-        $va = DB::table('categorias')->where('nombre', 'medicina')->first();
-        $va= $va->id;
         
-        $espera->id_categoria=$va;
-        $espera->save();
 
        // roles->attachPermissions($request->input('permission_id'));
 
