@@ -28,26 +28,19 @@
                         $vector_ids[$i]=$name_categoria[$i]->id;
                      }
              /* --}}
-              
+
               <table class="table table-bordered text-center">
                 <tr>
                   <th>Categoria</th>
                   <th>Cantidad de Cursos</th>
                 </tr>
-                 
+            {{-- */$contador=0; /* --}}
                  @foreach($vector_categoria as $item)
-                   
                   <tr>
-          
-                 
                   <td>
-                    <button type="button" class="btn btn-block btn-primary btn-lg"><a href="{{ url('admin/curso') }}">{{$item}}</a></button>
+                   <a href="{{ url('admin/curso',$vector_ids[$contador])}}">{{$item}}</a>
                   </td>
-
-                   <td>
-                    <button type="button" class="btn btn-block btn-primary btn-sm"><a href="{{ url('admin/curso') }}">{{$item}}</a></button>
-                  </td>
-              
+               {{-- */$contador++; /* --}}
                 </tr>
                
                 @endforeach

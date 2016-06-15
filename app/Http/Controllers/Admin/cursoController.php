@@ -137,4 +137,20 @@ class cursoController extends Controller
 
         return redirect('admin/curso');
     }
+     
+    /**
+     * Filtra los cursos por categoria     
+     *
+     * @param  int  $id
+     *
+     * @return void
+     */
+    public function visualizar($parametro){
+       
+       $a = DB::table('cursos')->where('id_categoria', $parametro)->get();
+       $curso=$a;
+
+       // $docente = User::paginate(15);
+        return view('admin.curso.index', compact('curso'));
+    }
 }

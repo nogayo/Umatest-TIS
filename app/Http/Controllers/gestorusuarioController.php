@@ -27,7 +27,7 @@ class gestorusuarioController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -89,4 +89,10 @@ class gestorusuarioController extends Controller
     {
         //
     }
+   
+   public function ellasefue($algo){
+     
+     return "mi nombre es:".$algo;
+     
+   }
 }
