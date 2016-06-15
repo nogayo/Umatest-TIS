@@ -35,3 +35,6 @@ Route::resource('admin/curso_inscrito', 'Admin\\curso_inscritoController');
 
 
 Route::resource('/todosloscursos', 'gestorusuarioController');
+//Route::get('/todosloscursos/{algo}','gestorusuarioController@ellasefue']);
+
+Route::get('/admin/curso/{parametro}', 'Admin\\cursoController@visualizar');
