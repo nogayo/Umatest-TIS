@@ -25,7 +25,7 @@ class curso_inscrito extends Model
      *
      * @var array
      */
-    protected $fillable = ['fecha'];
+    protected $fillable = ['fecha',  'curso_id', 'user_id'];
 
        public function cursos()
     {

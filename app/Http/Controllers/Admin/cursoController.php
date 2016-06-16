@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 use DB;
+use Auth;
+use App\curso_inscrito;
 class cursoController extends Controller
 {
     /**
@@ -17,6 +19,8 @@ class cursoController extends Controller
      *
      * @return void
      */
+
+
     public function index()
     {
         $curso = curso::paginate(15);
@@ -53,9 +57,16 @@ class cursoController extends Controller
     {
         $this->validate($request, ['nombre' => 'required', 'capacidad' => 'required', 'codigo' => 'required']);
 
-        $espera = curso::create($request->all());
-
+        curso::create($request->all());
         
+        $id_curso = DB::table('cursos')->where('codigo', $request->input('codigo'))->first();
+        $id_curso=$id_curso->id;
+        
+        $id_user=Auth::id();
+
+         DB::table('curso_dictas')->insert(
+        ['grupo' => 1, 'curso_id' => $id_curso, 'user_id'=>$id_user]
+        );   
 
        // roles->attachPermissions($request->input('permission_id'));
 
@@ -147,10 +158,84 @@ class cursoController extends Controller
      */
     public function visualizar($parametro){
        
-       $a = DB::table('cursos')->where('id_categoria', $parametro)->get();
-       $curso=$a;
+       $curso = DB::table('cursos')->where('id_categoria', $parametro)->get();
 
+       $titulo_categoria= DB::table('categorias')->where('id', $parametro)->first();
+       //$numero=count($a);
+        $titulo_general=strtoupper($titulo_categoria->nombre);
        // $docente = User::paginate(15);
-        return view('admin.curso.index', compact('curso'));
+        return view('gestorcursos.indexfiltrado', compact('curso', 'titulo_general'));
+    }
+
+    public function visualizar_todo(){
+
+        $id_user=Auth::id();
+        
+        $curso_ins = DB::table('curso_inscritos')->where('user_id', $id_user)->get();
+        
+        $mis_ids=array();
+        $index=0;
+        foreach ($curso_ins as $item) {
+            
+            $mis_ids[$index]=$item->curso_id;
+            $index++;
+
+        }
+        $curso=array();
+
+       for ($i=0; $i < count($mis_ids) ; $i++) { 
+
+          $cur = DB::table('cursos')->where('id', $mis_ids[$i])->first();
+          $curso[$i]=$cur;
+
+       }
+       
+        $titulo_general="MIS CURSOS";
+        //$curso = DB::table('cursos')->get();
+
+        return view('gestorcursos.indexfiltrado', compact('curso', 'titulo_general'));
+
+    }
+     public function visualizar_desinscribirse(){
+
+        $id_user=Auth::id();
+        
+        $curso_ins = DB::table('curso_inscritos')->where('user_id', $id_user)->get();
+        
+        $mis_ids=array();
+        $index=0;
+        foreach ($curso_ins as $item) {
+            
+            $mis_ids[$index]=$item->curso_id;
+            $index++;
+
+        }
+        $curso=array();
+
+       for ($i=0; $i < count($mis_ids) ; $i++) { 
+
+          $cur = DB::table('cursos')->where('id', $mis_ids[$i])->first();
+          $curso[$i]=$cur;
+
+       }
+       
+        
+        //$curso = DB::table('cursos')->get();
+
+        return view('gestorcursos.desinscribirse', compact('curso'));
+
+    }
+    public function desinscribirse($id_materia){
+
+         $id_user=Auth::id();
+        
+       // $id_inscrito = DB::table('curso_inscritos')->where('user_id', $id_user)->where('curso_id', 
+         //   $id_materia)->get();
+        //$id_inscrito=$id_inscrito->id;
+
+            $id_inscrito = DB::table('curso_inscritos')->where('curso_id', $id_materia)->where('user_id', $id_user)->delete();
+
+        return $this->visualizar_desinscribirse();
+
     }
 }

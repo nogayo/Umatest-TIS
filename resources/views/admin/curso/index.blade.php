@@ -52,7 +52,7 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pagination"> {!! $curso->render() !!} </div>
+        <div class="pagination"> </div>
     </div>
 
 </div>

@@ -37,4 +37,10 @@ Route::resource('admin/curso_inscrito', 'Admin\\curso_inscritoController');
 Route::resource('/todosloscursos', 'gestorusuarioController');
 //Route::get('/todosloscursos/{algo}','gestorusuarioController@ellasefue']);
 
-Route::get('/admin/curso/{parametro}', 'Admin\\cursoController@visualizar');
+//Route::get('/admin/curso/{parametro}', 'Admin\\cursoController@visualizar');
+
+Route::get('admin/curso/{parametro}/cursito', 'Admin\\cursoController@visualizar');
+Route::get('admin/curso/index_todo/todo', 'Admin\\cursoController@visualizar_todo');
+
+Route::get('admin/curso/{id_materia}/borrar', 'Admin\\cursoController@desinscribirse');
+Route::get('admin/curso/desinscribirse/borrarmostrar', 'Admin\\cursoController@visualizar_desinscribirse');

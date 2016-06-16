@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">CATEGORIAS</div>
+                <div class="panel-heading">GESTOR DE CURSOS</div>
 
                 <div class="panel-body">
                  
@@ -27,8 +27,17 @@
                         $vector_categoria[$i]=$name_categoria[$i]->nombre;
                         $vector_ids[$i]=$name_categoria[$i]->id;
                      }
-             /* --}}
 
+              $cantidad_curso=array();
+
+              for($j=0; $j < count($vector_ids); $j++){
+              
+              $curso = DB::table('cursos')->where('id_categoria', $vector_ids[$j])->get();
+              $cantidad_curso[$j]=count($curso);
+
+              }
+             /* --}}
+              <h1>TODOS LOS CURSOS</h1>
               <table class="table table-bordered text-center">
                 <tr>
                   <th>Categoria</th>
@@ -38,11 +47,14 @@
                  @foreach($vector_categoria as $item)
                   <tr>
                   <td>
-                   <a href="{{ url('admin/curso',$vector_ids[$contador])}}">{{$item}}</a>
+                   <a href="{{ url('admin/curso/'.$vector_ids[$contador].'/cursito')}}">{{$item}}</a>
                   </td>
-               {{-- */$contador++; /* --}}
-                </tr>
-               
+                      <td>
+                       <p>{{$cantidad_curso[$contador]}}</p>
+                      </td>
+                       </tr>
+                  
+                  {{-- */$contador++; /* --}}
                 @endforeach
                   
                 

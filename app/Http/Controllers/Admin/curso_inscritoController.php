@@ -9,6 +9,8 @@ use App\curso_inscrito;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
+use Auth;
 
 class curso_inscritoController extends Controller
 {
@@ -43,11 +45,23 @@ class curso_inscritoController extends Controller
     {
         $this->validate($request, ['fecha' => 'required', ]);
 
-        curso_inscrito::create($request->all());
+        $cod_cur=$request->input('curso_id');
+        $fecha_cur=$request->input('fecha');
+        
+        $id_curso = DB::table('cursos')->where('codigo', $cod_cur)->first();
+        $id_curso=$id_curso->id;
+
+        $id_user=Auth::id();
+
+        DB::table('curso_inscritos')->insert(
+        ['fecha' => $fecha_cur, 'curso_id' => $id_curso, 'user_id'=>$id_user]
+        );   
+        //curso_inscrito::create($request->all());
 
         Session::flash('flash_message', 'curso_inscrito added!');
 
-        return redirect('admin/curso_inscrito');
+        //return redirect('admin/curso_inscrito');
+        return view('admin.curso_inscrito.create');
     }
 
     /**
