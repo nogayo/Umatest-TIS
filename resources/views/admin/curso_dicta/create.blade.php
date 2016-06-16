@@ -8,7 +8,8 @@
 
     {!! Form::open(['url' => '/admin/curso_dicta', 'class' => 'form-horizontal']) !!}
 
-                <div class="form-group {{ $errors->has('grupo') ? 'has-error' : ''}}">
+
+            <div class="form-group {{ $errors->has('grupo') ? 'has-error' : ''}}">
                 {!! Form::label('grupo', trans('curso_dicta.grupo'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('grupo', null, ['class' => 'form-control', 'required' => 'required']) !!}

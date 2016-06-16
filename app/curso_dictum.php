@@ -25,7 +25,7 @@ class curso_dictum extends Model
      *
      * @var array
      */
-    protected $fillable = ['grupo'];
+    protected $fillable = ['grupo', 'curso_id', 'user_id'];
 
     
        public function cursos()
