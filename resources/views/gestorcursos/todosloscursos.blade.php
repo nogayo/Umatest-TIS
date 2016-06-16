@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">CATEGORIAS</div>
+                <div class="panel-heading">GESTOR DE CURSOS</div>
 
                 <div class="panel-body">
                  
@@ -37,7 +37,7 @@
 
               }
              /* --}}
-
+              <h1>TODOS LOS CURSOS</h1>
               <table class="table table-bordered text-center">
                 <tr>
                   <th>Categoria</th>

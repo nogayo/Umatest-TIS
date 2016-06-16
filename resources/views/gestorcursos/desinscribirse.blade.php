@@ -17,7 +17,7 @@
 
 <div class="container">
 
-    <h1>Curso</h1>
+    <h1>DESINSCRIBIRSE DE UN CURSO</h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

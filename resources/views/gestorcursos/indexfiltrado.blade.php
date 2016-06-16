@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('htmlheader_title')
-   CURSOS
+   MIS CURSOS
 @endsection
 
 
@@ -17,7 +17,7 @@
 
 <div class="container">
 
-    <h1>Curso</h1>
+    <h1>{{$titulo_general}}</h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

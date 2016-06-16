@@ -60,7 +60,8 @@ class curso_inscritoController extends Controller
 
         Session::flash('flash_message', 'curso_inscrito added!');
 
-        return redirect('admin/curso_inscrito');
+        //return redirect('admin/curso_inscrito');
+        return view('admin.curso_inscrito.create');
     }
 
     /**

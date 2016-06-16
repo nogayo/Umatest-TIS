@@ -159,10 +159,12 @@ class cursoController extends Controller
     public function visualizar($parametro){
        
        $curso = DB::table('cursos')->where('id_categoria', $parametro)->get();
-       //$numero=count($a);
 
+       $titulo_categoria= DB::table('categorias')->where('id', $parametro)->first();
+       //$numero=count($a);
+        $titulo_general=strtoupper($titulo_categoria->nombre);
        // $docente = User::paginate(15);
-        return view('gestorcursos.indexfiltrado', compact('curso'));
+        return view('gestorcursos.indexfiltrado', compact('curso', 'titulo_general'));
     }
 
     public function visualizar_todo(){
@@ -188,10 +190,10 @@ class cursoController extends Controller
 
        }
        
-        
+        $titulo_general="MIS CURSOS";
         //$curso = DB::table('cursos')->get();
 
-        return view('gestorcursos.indexfiltrado', compact('curso'));
+        return view('gestorcursos.indexfiltrado', compact('curso', 'titulo_general'));
 
     }
      public function visualizar_desinscribirse(){

@@ -19,7 +19,7 @@
 
     <h1>INSCRIBIRSE A UN CURSO NUEVO</h1>
     <hr/>
-
+    
     {!! Form::open(['url' => '/admin/curso_inscrito', 'class' => 'form-horizontal']) !!}
 
 
@@ -30,11 +30,11 @@
                     {!! $errors->first('curso_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-
+                    {{-- */$fecha_actual = date("Y-m-d");/* --}}
                 <div class="form-group {{ $errors->has('fecha') ? 'has-error' : ''}}">
                 {!! Form::label('fecha', trans('curso_inscrito.fecha'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::date('fecha', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::date('fecha', $fecha_actual, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('fecha', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -42,7 +42,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Inscribirse', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}
