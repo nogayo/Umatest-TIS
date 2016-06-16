@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">Home</div>
+                <div class="panel-heading">GESTOR DE USUARIOS</div>
 
                 <div class="panel-body">
 
@@ -25,7 +25,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                 <th>S.No</th><th> {{ trans('users.name') }} </th><th> {{ trans('users.apellido') }} </th><th> {{ trans('users.direccion') }} </th><th> {{ trans('users.telefono') }} </th><th> {{ trans('users.genero') }} </th><th>Actions</th>
+                 <th>S.No</th><th> Nombre</th><th> {{ trans('users.apellido') }} </th><th> {{ trans('users.direccion') }} </th><th> {{ trans('users.telefono') }} </th><th> {{ trans('users.genero') }} </th><th>Acciones</th>
                 </tr>
             </thead>
             <tbody>

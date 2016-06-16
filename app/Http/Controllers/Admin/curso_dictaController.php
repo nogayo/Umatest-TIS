@@ -9,6 +9,9 @@ use App\curso_dictum;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use App\curso;
+use Auth;
+use DB;
 
 class curso_dictaController extends Controller
 {
@@ -19,9 +22,27 @@ class curso_dictaController extends Controller
      */
     public function index()
     {
-        $curso_dicta = curso_dictum::paginate(15);
+       // $curso = curso::paginate(15);
+        $id_user=Auth::id();
+        $lista_objetos = DB::table('curso_dictas')->where('user_id', $id_user)->get();
+        $vector_ids=array();
 
-        return view('admin.curso_dicta.index', compact('curso_dicta'));
+        $contador=0;
+        foreach ($lista_objetos as $item) {
+            
+            $vector_ids[$contador]=$item->curso_id;
+            $contador++;
+        }
+        
+        $curso=array();
+        for ($i=0; $i <count($vector_ids); $i++) { 
+
+         $objeto_curso = DB::table('cursos')->where('id', $vector_ids[$i])->first();
+         $curso[$i]=$objeto_curso;
+
+        }
+
+        return view('gestorcursos.filtrodocente', compact('curso'));
     }
 
     /**
