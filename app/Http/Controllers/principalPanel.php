@@ -17,7 +17,7 @@ class principalPanel extends BaseController
      public function index()
     {
         
-        return view('prueba');
+        return view('home');
     }
     /*public function todosloscursos()
     {
