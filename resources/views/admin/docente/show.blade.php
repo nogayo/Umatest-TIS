@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">USUARIOS</div>
+                <div class="panel-heading">GESTOR DE USUARIOS</div>
 
                 <div class="panel-body">
 
@@ -19,14 +19,14 @@
 
 <div class="container">
 
-    <h1>Docente {{ $docente->id }}</h1>
+    <h1>VER INFORMACION</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <tbody>
                 <tr>
                     <th>ID.</th><td>{{ $docente->id }}</td>
                 </tr>
-                <tr><th> {{ trans('docente.name') }} </th><td> {{ $docente->name }} </td></tr><tr><th> {{ trans('docente.apellido') }} </th><td> {{ $docente->apellido }} </td></tr><tr><th> {{ trans('docente.direccion') }} </th><td> {{ $docente->direccion }} </td></tr>
+                <tr><th> Nombre </th><td> {{ $docente->name }} </td></tr><tr><th> {{ trans('docente.apellido') }} </th><td> {{ $docente->apellido }} </td></tr><tr><th> {{ trans('docente.direccion') }} </th><td> {{ $docente->direccion }} </td></tr>
             </tbody>
             <tfoot>
                 <tr>

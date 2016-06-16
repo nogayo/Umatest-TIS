@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">Home</div>
+                <div class="panel-heading">GESTOR DE USUARIOS</div>
 
                 <div class="panel-body">
 
@@ -19,14 +19,14 @@
 
 <div class="container">
 
-    <h1>User {{ $user->id }}</h1>
+    <h1>VER INFORMACION</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <tbody>
                 <tr>
                     <th>ID.</th><td>{{ $user->id }}</td>
                 </tr>
-                <tr><th> {{ trans('users.name') }} </th><td> {{ $user->name }} </td></tr>
+                <tr><th> Nombre </th><td> {{ $user->name }} </td></tr>
                 <tr><th> {{ trans('users.apellido') }} </th><td> {{ $user->apellido }} </td></tr>
                 <tr><th> {{ trans('users.direccion') }} </th><td> {{ $user->direccion }} </td></tr>
                 <tr><th> {{ trans('users.telefono') }} </th><td> {{ $user->telefono}} </td></tr>

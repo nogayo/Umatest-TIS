@@ -17,7 +17,7 @@
 
 <div class="container">
 
-    <h1>Curso <a href="{{ url('/admin/curso/create') }}" class="btn btn-primary btn-xs" title="Add New Curso"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>MIS CURSOS</h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

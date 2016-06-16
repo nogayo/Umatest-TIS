@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">USUARIOS</div>
+                <div class="panel-heading">GESTOR CURSOS</div>
 
                 <div class="panel-body">
 
@@ -21,7 +21,7 @@
 
 <div class="container">
 
-    <h1>Create New Curso</h1>
+    <h1>CREAR NUEVO CURSO</h1>
     <hr/>
 
     {!! Form::open(['url' => '/admin/curso', 'class' => 'form-horizontal']) !!}
@@ -59,7 +59,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Crear', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}

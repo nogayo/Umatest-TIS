@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">USUARIOS</div>
+                <div class="panel-heading">GESTOR CURSOS</div>
 
                 <div class="panel-body">
 
@@ -20,7 +20,7 @@
 
 <div class="container">
 
-    <h1>Edit Curso {{ $curso->id }}</h1>
+    <h1>Editar Curso</h1>
 
     {!! Form::model($curso, [
         'method' => 'PATCH',
@@ -53,7 +53,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Actualizar', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}
