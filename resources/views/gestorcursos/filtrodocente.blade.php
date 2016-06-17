@@ -29,9 +29,10 @@
             {{-- */$x=0;/* --}}
             @foreach($curso as $item)
                 {{-- */$x++;/* --}}
+ 
                 <tr>
                     <td>{{ $x }}</td>
-                    <td>{{ $item->nombre }}</td><td>{{ $item->capacidad }}</td><td>{{ $item->codigo }}</td>
+                    <td><a href="{{ url('admin/curso_dicta/'.$item->id.'/vista_contenido_curso')}}">{{$item->nombre}}</a></td><td>{{ $item->capacidad }}</td><td>{{ $item->codigo }}</td>
                     <td>
                         <a href="{{ url('/admin/curso/' . $item->id) }}" class="btn btn-success btn-xs" title="View Curso"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/admin/curso/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Curso"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
