@@ -8,5 +8,5 @@
     <!-- Default to the left -->
     <!--<strong>Copyright &copy; 2015 <a href="http://acacha.org">Acacha.org</a>.</strong> Created by <a href="http://acacha.org/sergitur">Sergi Tur Badenas</a>. See code at <a href="https://github.com/acacha/adminlte-laravel">Github</a>
     -->
-     <strong>UmaSoft-Tis &copy; 2016 <a href="#">UmaSoft.org</a>.</strong> 
+     <strong>umasoft.bolivia@gmail.com &copy; 2016 <a href="#">UmaSoft.org</a>.</strong> 
 </footer>
