@@ -52,3 +52,6 @@ Route::get('admin/curso/index_todo/todo', 'Admin\\cursoController@visualizar_tod
 
 Route::get('admin/curso/{id_materia}/borrar', 'Admin\\cursoController@desinscribirse');
 Route::get('admin/curso/desinscribirse/borrarmostrar', 'Admin\\cursoController@visualizar_desinscribirse');
+Route::get('admin/curso_dicta/{id_curso}/vista_contenido_curso', 'Admin\\curso_dictaController@vis_contenido_curso');
+
+Route::get('admin/curso_inscrito/{id_curso}/vista_contenido_curso', 'Admin\\curso_inscritoController@vis_contenido_curso');
