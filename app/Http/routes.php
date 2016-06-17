@@ -17,11 +17,13 @@
 
 Route::resource('admin/posts', 'Admin\\PostsController');
 //Route::get('/','Admin\\PostsController@prueba');
-Route::get('/','principalPanel@index');
-//Route::get('/todosloscursos','principalPanel@todosloscursos');
-Route::get('/docentes','principalPanel@docentes');
-Route::get('/estudiantes','principalPanel@estudiantes');
-Route::get('/ayuda','principalPanel@ayuda');
+Route::get('/','menuPrincipalController@index');
+
+Route::get('/resenia_historica','menuPrincipalController@reseniaHistorica');
+Route::get('/mision','menuPrincipalController@mision');
+Route::get('/vision','menuPrincipalController@vision');
+Route::get('/contactos','menuPrincipalController@contactos');
+\Route::get('/ayuda','menuPrincipalController@ayuda');
 
 Route::resource('admin/permisos', 'Admin\\permisosController');
 Route::resource('admin/roles', 'Admin\\rolesController');
