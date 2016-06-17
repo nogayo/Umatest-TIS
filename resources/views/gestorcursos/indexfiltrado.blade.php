@@ -31,7 +31,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td>{{ $item->nombre }}</td><td>{{ $item->codigo }}</td>
+                    <td><a href="{{ url('admin/curso_inscrito/'.$item->id.'/vista_contenido_curso')}}">{{$item->nombre}}</a></td><td>{{ $item->codigo }}</td>
                   
                 </tr>
             @endforeach

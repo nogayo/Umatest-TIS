@@ -133,4 +133,10 @@ class curso_dictaController extends Controller
 
         return redirect('admin/curso_dicta');
     }
+
+    public function vis_contenido_curso($id_curso){
+    
+    return view('gestorcursos.contenidocurso');
+
+    }
 }
