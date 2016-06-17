@@ -1,5 +1,8 @@
 <?php
+
 use Illuminate\Database\Seeder;
+
+
 class RolesTableSeeder extends Seeder
 {
     /**
@@ -18,5 +21,9 @@ class RolesTableSeeder extends Seeder
      	factory(App\role::class)->create([
      		'nombre_rol' => 'estudiante'
      		]);	
+
+
+
+
     }
 }
