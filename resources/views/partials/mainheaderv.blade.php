@@ -14,7 +14,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>S</b>PG</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg">Inicio</span>
+         <span class="logo-lg"><img src="{{asset('/img/img_panelPrincipal/home.png')}}"/> </span>
     </a>
     @endif 
     <!-- Header Navbar -->
@@ -48,6 +48,9 @@
              </ul>
         </div>
 
+           
+        <!-- /.navbar-collapse -->
+         
 
 
   <div class="navbar-custom-menu">
