@@ -49,9 +49,12 @@
 
 
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Genero" name="genero" value="{{ old('genero') }}"/>
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    <select name="genero" class="form-control">
+                       <option value="M">M</option>
+                       <option value="F">F</option>
+                   </select>
                 </div>
+
 
                 <div class="form-group has-feedback">
                     <input type="email" class="form-control" placeholder="Correo electronico" name="email" value="{{ old('email') }}"/>
