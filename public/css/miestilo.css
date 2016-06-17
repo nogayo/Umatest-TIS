@@ -1,7 +1,12 @@
-.leider{
-	border-style: groove; 
-	border-width: 4px;
+.borde{
+	border-style: ridge; border-width: 4px;
 	border-color: #aed581;
+}
+.bordesup{
+	border-bottom: 5px ridge brown;
+}
+.bordesu{
+	border-bottom: 5px ridge brown;
 }
 .otro{
 	border-style: solid; 
