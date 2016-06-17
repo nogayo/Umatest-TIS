@@ -8,7 +8,7 @@
    
 
         <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
+        <ul class="sidebar-menu" >
             <li class="header">MENU DE CONTROL</li>
             <!-- Optionally, you can add icons to the links -->
               {{-- */$id_user=Auth::id();   
@@ -21,7 +21,7 @@
              /* --}}
                @if($name_rol=='docente') 
                   <!--DOCENTE GESTOR-->
-              <li class="treeview">
+              <li class="treeview ">
                 <a href="#"><i class='fa fa-link'></i> <span>Gestor Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
              </li>
 
@@ -38,7 +38,7 @@
                 <a href="#"><i class='fa fa-link'></i> <span>Gestor Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
              </li>
 
-            <li class="treeview">
+            <li class="treeview ">
                 <a href="#"><i class='fa fa-link'></i> <span>Gestor Cursos</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Cursos</a></li>
