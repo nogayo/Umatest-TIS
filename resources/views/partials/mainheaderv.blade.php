@@ -7,14 +7,14 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>U</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>UmaTest</b></span>
+         <span class="logo-lg"><img src="{{asset('/img/img_panelPrincipal/home.png')}}"/> </span>
     </a>
     @else 
     <a href="{{ url('/') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>S</b>PG</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg">INICIO</span>
+         <span class="logo-lg"><img src="{{asset('/img/img_panelPrincipal/home.png')}}"/> </span>
     </a>
     @endif 
     <!-- Header Navbar -->

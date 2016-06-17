@@ -11,7 +11,6 @@
         <ul class="sidebar-menu">
             <li class="header">MENU DE CONTROL</li>
             <!-- Optionally, you can add icons to the links -->
-             
               {{-- */$id_user=Auth::id();   
              /* --}}
              {{-- */$id_rol=DB::table('role_user')->where('user_id', $id_user)->first();
