@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">Home</div>
+                <div class="panel-heading">GESTOR DE USUARIOS</div>
 
                 <div class="panel-body">
 
@@ -21,13 +21,13 @@
 
 <div class="container">
 
-    <h1>Create New User</h1>
+    <h1>CREAR NUEVO ESTUDIANTE</h1>
     <hr/>
 
     {!! Form::open(['url' => '/admin/users', 'class' => 'form-horizontal']) !!}
 
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
-                {!! Form::label('name', trans('users.name'), ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('name', 'Nombre', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
@@ -79,7 +79,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Crear', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}

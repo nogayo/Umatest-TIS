@@ -1,5 +1,5 @@
 <!-- Left side column. contains the logo and sidebar -->
-<aside class="main-sidebar">
+<aside class="main-sidebar leider">
 
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -11,6 +11,7 @@
         <ul class="sidebar-menu">
             <li class="header">MENU DE CONTROL</li>
             <!-- Optionally, you can add icons to the links -->
+<<<<<<< HEAD
              <li class="treeview">
                 <a href="#"><i class='fa fa-group'></i> <span>Gestor Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -19,6 +20,8 @@
                     <li><a href="{{ url('admin/administrador') }}">Administrador</a></li>
                 </ul>
             </li>
+=======
+>>>>>>> a101a0d8ce733c1b0b4e532612eef6bd08da4f3b
              
               {{-- */$id_user=Auth::id();   
              /* --}}
