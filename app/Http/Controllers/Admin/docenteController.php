@@ -136,6 +136,8 @@ class docenteController extends Controller
      */
     public function destroy($id)
     {
+        DB::table('curso_dictas')->where('user_id', $id)->delete();
+
         User::destroy($id);
 
         Session::flash('flash_message', 'docente deleted!');
