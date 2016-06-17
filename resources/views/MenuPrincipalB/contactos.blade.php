@@ -1,15 +1,11 @@
-
-
-
-
-@extends('app')
+@extends('auth.auth')
 
 @section('htmlheader_title')
-   Home
+    Home
 @endsection
 
 
-@section('main-content')
+@section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
@@ -55,7 +51,7 @@
                   <input type="text" class="form-control" name="subject" placeholder="Subject">
                 </div>
                 <div>
-                  <textarea class="textarea" placeholder="Message" style="width: 10 0%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                  <textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
               </form>
             </div>

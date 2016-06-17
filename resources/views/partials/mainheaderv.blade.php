@@ -24,13 +24,13 @@
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
               <ul class="nav navbar-nav">
 
-             <li class="active"><a href="{{ url('/resenia_historica')}}">Reseña histórica<span class="sr-only">(current)</span></a></li>
-             <li class="active"><a href="{{ url('/mision') }}">Misión<span class="sr-only">(current)</span></a></li>
-             <li class="active"><a href="{{ url('/vision') }}">Visión<span class="sr-only">(current)</span></a></li>
+             <li class="active"><a href="{{ url('/resenia_historica_v')}}">Reseña histórica<span class="sr-only">(current)</span></a></li>
+             <li class="active"><a href="{{ url('/mision_v') }}">Misión<span class="sr-only">(current)</span></a></li>
+             <li class="active"><a href="{{ url('/vision_v') }}">Visión<span class="sr-only">(current)</span></a></li>
             
 
-             <li class="active"><a href="{{ url('/contactos') }}">Contactos<span class="sr-only">(current)</span></a></li>
-             <li class="active"><a href="{{ url('/ayuda') }}">Ayuda<span class="sr-only">(current)</span></a></li>
+             <li class="active"><a href="{{ url('/contactos_v') }}">Contactos<span class="sr-only">(current)</span></a></li>
+             <li class="active"><a href="{{ url('/ayuda_v') }}">Ayuda<span class="sr-only">(current)</span></a></li>
         
         
 
