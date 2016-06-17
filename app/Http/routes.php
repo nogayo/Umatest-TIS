@@ -18,12 +18,18 @@
 Route::resource('admin/posts', 'Admin\\PostsController');
 //Route::get('/','Admin\\PostsController@prueba');
 Route::get('/','menuPrincipalController@index');
-
+// es pararte cuando esta logueado
 Route::get('/resenia_historica','menuPrincipalController@reseniaHistorica');
 Route::get('/mision','menuPrincipalController@mision');
 Route::get('/vision','menuPrincipalController@vision');
 Route::get('/contactos','menuPrincipalController@contactos');
-\Route::get('/ayuda','menuPrincipalController@ayuda');
+Route::get('/ayuda','menuPrincipalController@ayuda');
+
+Route::get('/resenia_historica_v','menuPrincipalControllerB@reseniaHistorica');
+Route::get('/mision_v','menuPrincipalControllerB@mision');
+Route::get('/vision_v','menuPrincipalControllerB@vision');
+Route::get('/contactos_v','menuPrincipalControllerB@contactos');
+Route::get('/ayuda_v','menuPrincipalControllerB@ayuda');
 
 Route::resource('admin/permisos', 'Admin\\permisosController');
 Route::resource('admin/roles', 'Admin\\rolesController');

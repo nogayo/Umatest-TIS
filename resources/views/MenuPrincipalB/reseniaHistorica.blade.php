@@ -1,11 +1,11 @@
-
-@extends('app')
+@extends('auth.auth')
 
 @section('htmlheader_title')
-   Home
+    Home
 @endsection
 
-@section('main-content')
+
+@section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
