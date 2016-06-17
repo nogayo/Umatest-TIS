@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\curso_inscrito;
+use App\curso;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
@@ -43,25 +44,64 @@ class curso_inscritoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['fecha' => 'required', ]);
+        //$this->validate($request, ['fecha' => 'required', ]);
 
+        $fecha_actual = date("Y-m-d");
         $cod_cur=$request->input('curso_id');
-        $fecha_cur=$request->input('fecha');
+        //$fecha_cur=$request->input('fecha');
         
         $id_curso = DB::table('cursos')->where('codigo', $cod_cur)->first();
         $id_curso=$id_curso->id;
 
         $id_user=Auth::id();
+        
+        //verifica si ya esta inscrito en el mismo curso
+        $estoyinscrito=DB::table('curso_inscritos')->where('curso_id',$id_curso)->where('user_id', 
+            $id_user)->first();
 
-        DB::table('curso_inscritos')->insert(
-        ['fecha' => $fecha_cur, 'curso_id' => $id_curso, 'user_id'=>$id_user]
-        );   
+        if(is_null($estoyinscrito)){
+
+            DB::table('curso_inscritos')->insert(
+            ['fecha' => $fecha_actual, 'curso_id' => $id_curso, 'user_id'=>$id_user] );
+             Session::flash('flash_message', 'curso_inscrito added!');   
+        }else{
+           Session::flash('flash_message', 'YA ESTOY INSCRITO'); 
+
+        }
         //curso_inscrito::create($request->all());
 
-        Session::flash('flash_message', 'curso_inscrito added!');
-
         //return redirect('admin/curso_inscrito');
-        return view('admin.curso_inscrito.create');
+        return $this->visualizar_mis_cursos_estudiante();
+    }
+
+       public function visualizar_mis_cursos_estudiante(){
+
+        $id_user=Auth::id();
+        
+        $curso_ins = DB::table('curso_inscritos')->where('user_id', $id_user)->get();
+        
+        $mis_ids=array();
+        $index=0;
+        foreach ($curso_ins as $item) {
+            
+            $mis_ids[$index]=$item->curso_id;
+            $index++;
+
+        }
+        $curso=array();
+
+       for ($i=0; $i < count($mis_ids) ; $i++) { 
+
+          $cur = DB::table('cursos')->where('id', $mis_ids[$i])->first();
+          $curso[$i]=$cur;
+
+       }
+       
+        $titulo_general="MIS CURSOS";
+        //$curso = DB::table('cursos')->get();
+
+        return view('gestorcursos.indexfiltrado', compact('curso', 'titulo_general'));
+
     }
 
     /**

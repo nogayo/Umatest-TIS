@@ -203,6 +203,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        DB::table('curso_inscritos')->where('user_id', $id)->delete();
+
         User::destroy($id);
 
         Session::flash('flash_message', 'User deleted!');

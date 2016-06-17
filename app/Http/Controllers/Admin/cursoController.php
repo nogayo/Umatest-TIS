@@ -57,33 +57,32 @@ class cursoController extends Controller
     {
         $this->validate($request, ['nombre' => 'required', 'capacidad' => 'required', 'codigo' => 'required']);
 
-        curso::create($request->all());
-        
-        $id_curso = DB::table('cursos')->where('codigo', $request->input('codigo'))->first();
-        $id_curso=$id_curso->id;
-        
-        $id_user=Auth::id();
+          //verifica si ya existe el curso creado
 
-         DB::table('curso_dictas')->insert(
-        ['grupo' => 1, 'curso_id' => $id_curso, 'user_id'=>$id_user]
-        );   
+          $validador = DB::table('cursos')->where('codigo', $request->input('codigo'))->first();
+           
+            if(is_null($validador)){
+          
+            curso::create($request->all());
+            
+            $id_curso = DB::table('cursos')->where('codigo', $request->input('codigo'))->first();
+            $id_curso=$id_curso->id;
+            
+            $id_user=Auth::id();
 
-       // roles->attachPermissions($request->input('permission_id'));
+             DB::table('curso_dictas')->insert(
+            ['grupo' => 1, 'curso_id' => $id_curso, 'user_id'=>$id_user]
+            ); 
+            
+            Session::flash('flash_message', 'EL CURSO SE HA CREADO SATISFACTORIAMENTE'); 
 
-        //$id_categoria = DB::table('categorias')->where('nombre', 'tecnologia')->first();
-        //$id_categoria= $id_categoria->id;
-         
-      //  $curso_id= DB::table('cursos')->where('codigo', $request->input('codigo'))->first();
-      //  $curso_id = $curso_id->id;
+            }else{
 
-       // DB::table('cursos')->insert(
-       // ['id_categoria' => $id_categoria]
-       // );   
-        //echo $request->input('categoria');
+               Session::flash('flash_message', 'EL CURSO QUE QUIERE CREAR YA EXISTE'); 
+            }
 
-        Session::flash('flash_message', 'curso added!');
 
-        return redirect('admin/curso');
+        return redirect('admin/curso_dicta');
     }
 
     /**
@@ -130,7 +129,7 @@ class cursoController extends Controller
 
         Session::flash('flash_message', 'curso updated!');
 
-        return redirect('admin/curso');
+        return redirect('admin/curso_dicta');
     }
 
     /**
@@ -142,11 +141,14 @@ class cursoController extends Controller
      */
     public function destroy($id)
     {
+       
+        DB::table('curso_inscritos')->where('curso_id', $id)->delete();
+
         curso::destroy($id);
 
         Session::flash('flash_message', 'curso deleted!');
 
-        return redirect('admin/curso');
+        return redirect('admin/curso_dicta');
     }
      
     /**
