@@ -11,15 +11,6 @@
         <ul class="sidebar-menu">
             <li class="header">MENU DE CONTROL</li>
             <!-- Optionally, you can add icons to the links -->
-             <li class="treeview">
-                <a href="#"><i class='fa fa-group'></i> <span>Gestor Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ url('admin/users') }}">Estudiantes</a></li>
-                    <li><a href="{{ url('admin/docente') }}">Docentes</a></li>
-                    <li><a href="{{ url('admin/administrador') }}">Administrador</a></li>
-                </ul>
-            </li>
-             
               {{-- */$id_user=Auth::id();   
              /* --}}
              {{-- */$id_rol=DB::table('role_user')->where('user_id', $id_user)->first();
