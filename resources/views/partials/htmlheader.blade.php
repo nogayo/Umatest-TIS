@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title> AdminLTE 2 with Laravel - @yield('htmlheader_title', 'Your title here') </title>
+    <title> Umatest</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" type="text/css" />
@@ -17,6 +17,28 @@
     <link href="{{ asset('/css/skins/skin-blue.css') }}" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
     <link href="{{ asset('/plugins/iCheck/square/blue.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/css/miestilo.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/css/skins/skin-blue.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/css/skins/skin-blue-light.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/css/skins/skin-black.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/css/skins/skin-green.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/css/skins/skin-green-light.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/css/skins/skin-green-light-min.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/css/skins/skin-yellow.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/css/skins/skin-red.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/css/skins/skin-red-light.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/css/skins/skin-purple.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
