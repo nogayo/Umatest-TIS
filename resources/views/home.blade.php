@@ -26,7 +26,7 @@
                      <h1>Bienvenidos a UmaTest </h1><br><p>UmaTest le ofrece una plataforma mas segura en eduación en linea para la interaccion entre  docentes y estudiantes de la Universidad Mayor de San Simon. La información que se presenta esta destinada a las Autoridades docentes, Estudiantes, y Usuarios en General de las distintas entidades Universitarias. El sistema incluye Cursos, Planillas de Notas,foros.</p>
                     </div>
       
-           			 </div>
+           		  </div>
 
   		</div>
 

@@ -166,4 +166,9 @@ class curso_inscritoController extends Controller
 
         return redirect('admin/curso_inscrito');
     }
+    public function vis_contenido_curso($id_curso){
+    
+    return view('gestorcursos.contenidocurso');
+
+    }
 }
