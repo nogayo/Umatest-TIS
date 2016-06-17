@@ -39,12 +39,12 @@
 
                 <div class="form-group has-feedback">
                     <input type="text" class="form-control" placeholder="Direccion" name="direccion" value="{{ old('direccion') }}"/>
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    <span class="glyphicon glyphicon-globe form-control-feedback"></span>
                 </div>
 
                 <div class="form-group has-feedback">
                     <input type="text" class="form-control" placeholder="Telefono" name="telefono" value="{{ old('telefono') }}"/>
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
                 </div>
 
 

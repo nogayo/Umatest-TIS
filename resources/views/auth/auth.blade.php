@@ -1,5 +1,6 @@
 
 <!DOCTYPE html>
+<link href="{{ asset('/img/umatest.png') }}" type="image/x-icon" rel="shortcut icon"
 <!--
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
@@ -29,7 +30,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-green sidebar-collapse">
+<body class="skin-blue-light sidebar-collapse">
 <div class="wrapper">
 
      @include('partials.mainheaderv')

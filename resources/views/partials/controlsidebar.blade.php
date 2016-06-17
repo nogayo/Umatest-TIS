@@ -39,18 +39,22 @@
 
         </div><!-- /.tab-pane -->
         <!-- Stats tab content -->
-        <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
+        <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab content</div><!-- /.tab-pane -->
         <!-- Settings tab content -->
         <div class="tab-pane" id="control-sidebar-settings-tab">
             <form method="post">
-                <h3 class="control-sidebar-heading">General Settings</h3>
+                <h3 class="control-sidebar-heading">Configurar<br>Personalizar Cuenta</h3>
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
-                        Report panel usage
-                        <input type="checkbox" class="pull-right" checked />
+                        Panel de Opciones
                     </label>
                     <p>
-                        Some information about this general settings option
+                        <li class="treeview">
+                            <a href="{{ url('/temas') }}">
+                            <i class="fa fa-dashboard"></i> <span>Temas</span> 
+                            </a>
+                      
+                        </li>
                     </p>
                 </div><!-- /.form-group -->
             </form>
