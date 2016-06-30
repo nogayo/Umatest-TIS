@@ -1,4 +1,4 @@
-@extends('auth.auth')
+  @extends('auth.auth')
 
 @section('htmlheader_title')
     Home
