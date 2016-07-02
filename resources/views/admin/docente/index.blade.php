@@ -8,7 +8,7 @@
 @section('main-content')
 <div class="container">
     <div class="row">
-        <div class="col-md-14 col-md-offset-0">
+        <div class="col-md-14 col-md-offset-20">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE USUARIOS</div>
 
@@ -23,7 +23,7 @@
 <div class="container">
 
     <h1>Docente <a href="{{ url('/admin/docente/create') }}" class="btn btn-primary btn-xs" title="Add New Docente"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
-    <div class="table">
+    <div class="table" style="width: 97%">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>

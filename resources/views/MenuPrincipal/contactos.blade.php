@@ -24,12 +24,12 @@
 
         <div class="container">
            
-             <div class="content" style="margin-right: 100px">
+             <div class="content">
                       
                   <!--div style="height:200px; width:200px; float: left;">
                   <!img src="{{asset('/img/img_panelPrincipal/bienvenida.png')}}" style="height:200px; width:200px;  "/>  
                   </div-->
-                  <div style="margin-left: 50px;">
+                  <div style="margin-right: 100px">
                   
 
 
@@ -55,7 +55,7 @@
                   <input type="text" class="form-control" name="subject" placeholder="Subject">
                 </div>
                 <div>
-                  <textarea class="textarea" placeholder="Message" style="width: 10 0%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                  <textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
               </form>
             </div>
