@@ -49,7 +49,6 @@ desired effect
     </div><!-- /.content-wrapper -->
 
     @include('partials.controlsidebar')
-    @include('partials.footerv')
     @include('partials.footer')
 
 

@@ -118,6 +118,10 @@ class administradorController extends Controller
         $administrador = User::findOrFail($id);
         $administrador->update($request->all());
 
+        DB::table('users')
+            ->where('id', $administrador->id)
+            ->update(array('password' => bcrypt($request->input('password'))));
+
         Session::flash('flash_message', 'administrador updated!');
 
         return redirect('admin/administrador');

@@ -122,6 +122,11 @@ class docenteController extends Controller
         $docente = User::findOrFail($id);
         $docente->update($request->all());
 
+
+         DB::table('users')
+            ->where('id', $docente->id)
+            ->update(array('password' => bcrypt($request->input('password'))));
+
         Session::flash('flash_message', 'docente updated!');
 
         return redirect('admin/docente');
