@@ -57,13 +57,14 @@
                     {!! $errors->first('telefono', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('genero') ? 'has-error' : ''}}">
-                {!! Form::label('genero', trans('docente.genero'), ['class' => 'col-sm-3 control-label']) !!}
+          <div class="form-group {{ $errors->has('genero') ? 'has-error' : ''}}">
+                {!! Form::label('genero', 'Genero', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('genero', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::select('genero', array('M'=>'M', 'F'=>'F'), null, ['class' => 'form-control'])!!}
                     {!! $errors->first('genero', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
             <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
                 {!! Form::label('email', trans('docente.email'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">

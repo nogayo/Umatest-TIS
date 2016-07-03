@@ -187,11 +187,19 @@ class UsersController extends Controller
         $this->validate($request, ['name' => 'required', 'apellido' => 'required', 'direccion' => 'required', 'telefono' => 'required', 'genero' => 'required', 'email' => 'required', 'password' => 'required', ]);
 
         $user = User::findOrFail($id);
+       // $user->update($request->all());
+        
         $user->update($request->all());
+
+
+        DB::table('users')
+            ->where('id', $user->id)
+            ->update(array('password' => bcrypt($request->input('password'))));
+
 
         Session::flash('flash_message', 'User updated!');
 
-        return redirect('admin/users');
+        return redirect('/home');
     }
 
     /**

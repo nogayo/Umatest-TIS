@@ -47,8 +47,9 @@ Route::resource('/todosloscursos', 'gestorusuarioController');
 
 //Route::get('/admin/curso/{parametro}', 'Admin\\cursoController@visualizar');
 
-Route::get('admin/curso/{parametro}/cursito', 'Admin\\cursoController@visualizar');
-Route::get('admin/curso/index_todo/todo', 'Admin\\cursoController@visualizar_todo');
+Route::get('admin/curso/{parametro}/vista_inscribirse', 'Admin\\cursoController@visualizar_inscribirse');
+Route::get('admin/curso/{parametro2}/vista_mostrar_cursos', 'Admin\\cursoController@visualizar_inscribirse_sin_boton');
+Route::get('admin/curso/index_todo/todo', 'Admin\\cursoController@visualizar_categoria_carrera');
 
 Route::get('admin/curso/{id_materia}/borrar', 'Admin\\cursoController@desinscribirse');
 Route::get('admin/curso/desinscribirse/borrarmostrar', 'Admin\\cursoController@visualizar_desinscribirse');

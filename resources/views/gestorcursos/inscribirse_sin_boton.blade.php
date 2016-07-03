@@ -17,12 +17,12 @@
 
 <div class="container">
 
-    <h1>DESINSCRIBIRSE DE UN CURSO</h1>
+    <h1>{{$titulo_general}}</h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('curso.nombre') }} </th><th>Desinscribirse</th>
+                    <th>S.No</th><th> {{ trans('curso.nombre') }} </th>
                 </tr> 
             </thead>
             <tbody>
@@ -32,10 +32,6 @@
                 <tr>
                     <td>{{ $x }}</td>
                     <td>{{ $item->nombre }}</td>
-                     <td>
-                             <a href="{{ url('admin/curso/'.$item->id.'/borrar')}}"><span class="logo-lg"><img src="{{asset('/img/img_panelPrincipal/desinscribirse.png')}}"/> </span></a>
-                      
-                    </td>
                 </tr>
             @endforeach
             </tbody>
