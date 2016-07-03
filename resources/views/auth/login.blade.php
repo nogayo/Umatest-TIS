@@ -6,14 +6,14 @@
 
 @section('content')
 <body class="login-page">
-    <div class="login-box">
+    <div class="login-box" style="padding-bottom: 9%;">
         <div class="login-logo">
             <a href="{{ url('/dada') }}">Logueo Usuario</a>
         </div><!-- /.login-logo -->
 
     @if (count($errors) > 0)
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <strong>¡Vaya!</strong> hubo algunos problemas con su entrada.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>

@@ -1,4 +1,4 @@
-@extends('auth.auth')
+  @extends('auth.auth')
 
 @section('htmlheader_title')
     Home
@@ -6,7 +6,7 @@
 
 
 @section('content')
-<div class="container">
+<div class="container" style="padding-bottom: 4%;">
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
@@ -56,7 +56,7 @@
               </form>
             </div>
             <div class="box-footer clearfix">
-              <button type="button" class="pull-right btn btn-default" id="sendEmail">Send
+              <button type="button" class="pull-right btn btn-default" id="sendEmail">Enviar
                 <i class="fa fa-arrow-circle-right"></i></button>
             </div>
           </div>
