@@ -60,7 +60,7 @@
               </form>
             </div>
             <div class="box-footer clearfix">
-              <button type="button" class="pull-right btn btn-default" id="sendEmail">Send
+              <button type="button" class="pull-right btn btn-default" id="sendEmail">Enviar
                 <i class="fa fa-arrow-circle-right"></i></button>
             </div>
           </div>
