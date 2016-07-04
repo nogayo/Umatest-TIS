@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Create New Categorium</h1>
+    <h1>Create Nueva categoria</h1>
     <hr/>
 
     {!! Form::open(['url' => '/admin/categoria', 'class' => 'form-horizontal']) !!}

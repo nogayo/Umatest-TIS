@@ -17,7 +17,7 @@
 
 <div class="container">
 
-    <h1>Edit Curso_inscrito {{ $curso_inscrito->id }}</h1>
+    <h1>Edit Materia_inscrita {{ $curso_inscrito->id }}</h1>
 
     {!! Form::model($curso_inscrito, [
         'method' => 'PATCH',

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Create New Curso_dictum</h1>
+    <h1>Create New Materia_dictum</h1>
     <hr/>
 
     {!! Form::open(['url' => '/admin/curso_dicta', 'class' => 'form-horizontal']) !!}

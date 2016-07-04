@@ -10,14 +10,14 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-20">
             <div class="panel panel-default">
-                <div class="panel-heading">GESTOR CURSOS</div>
+                <div class="panel-heading">GESTOR DE MATERIAS</div>
 
                 <div class="panel-body">
 
 
 <div class="container">
 
-    <h1>MIS CURSOS</h1>
+    <h1>MIS MATERIAS</h1>
     <div class="table" style="width: 97%">
         <table class="table table-bordered table-striped table-hover">
             <thead>

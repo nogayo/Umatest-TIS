@@ -60,7 +60,7 @@ class docenteController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['name' => 'required', 'apellido' => 'required', 'direccion' => 'required', 'telefono' => 'required', 'genero' => 'required', 'email' => 'required', 'password' => 'required', ]);
+        $this->validate($request, ['name' => 'required|max:255|alpha', 'apellido' => 'required|max:255|alpha', 'direccion' => 'required|max:255', 'telefono' => 'required|numeric|unique:users|between:60000000,79999999', 'genero' => 'required', 'email' => 'required|max:255|unique:users', 'password' => 'required', ]);
 
          $pass = User::create($request->all());
 
@@ -117,7 +117,7 @@ class docenteController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['name' => 'required', 'apellido' => 'required', 'direccion' => 'required', 'telefono' => 'required', 'genero' => 'required', 'email' => 'required', 'password' => 'required', ]);
+        $this->validate($request, ['name' => 'required|max:255|alpha', 'apellido' => 'required|max:255|alpha', 'direccion' => 'required|max:255', 'telefono' => 'required|numeric|between:60000000,79999999', 'genero' => 'required', 'email' => 'required|max:255', 'password' => 'required', ]);
 
         $docente = User::findOrFail($id);
         $docente->update($request->all());

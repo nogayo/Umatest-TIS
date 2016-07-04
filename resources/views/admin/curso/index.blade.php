@@ -10,14 +10,14 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">GESTOR CURSOS</div>
+                <div class="panel-heading">GESTOR MATERIA</div>
 
                 <div class="panel-body">
 
 
 <div class="container">
 
-    <h1>Curso <a href="{{ url('/admin/curso/create') }}" class="btn btn-primary btn-xs" title="Add New Curso"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Materia <a href="{{ url('/admin/curso/create') }}" class="btn btn-primary btn-xs" title="Add New Curso"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

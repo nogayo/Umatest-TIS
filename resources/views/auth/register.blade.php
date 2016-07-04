@@ -13,7 +13,7 @@
         </div>
 
         @if (count($errors) > 0)
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" style="margin-left: 0%; margin-right: 0%;">
                 <strong>Oops!</strong> Existe algunos problemas con su entrada.<br><br>
                 <ul>
                     @foreach ($errors->all() as $error)
