@@ -15,9 +15,10 @@ class gestorusuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($boton)
     {
-       return view('gestorcursos.todosloscursos');
+       //return view('gestorcursos.todosloscursos');
+       return view('gestorcursos.todosloscursos', compact('boton'));
     }
 
     /**

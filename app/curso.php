@@ -40,4 +40,14 @@ class curso extends Model
     {
        return $this->hasMany('App\curso_dictum');
     }
+
+     public function examenes()
+    {
+       return $this->hasMany('App\examan');
+    }
+
+    public function tareas()
+    {
+       return $this->hasMany('App\tarea');
+    }
 }

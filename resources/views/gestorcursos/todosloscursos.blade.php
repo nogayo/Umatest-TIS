@@ -43,11 +43,12 @@
                   <th>Categoria</th>
                   <th>Cantidad de Materias</th>
                 </tr>
+           
             {{-- */$contador=0; /* --}}
                  @foreach($vector_categoria as $item)
                   <tr>
                   <td>
-                   <a href="{{ url('admin/curso/'.$vector_ids[$contador].'/vista_inscribirse')}}">{{$item}}</a>
+                   <a href="{{ url('admin/curso/'.$vector_ids[$contador].'/vista_inscribirse/'.$boton.'/materias')}}">{{$item}}</a>
                   </td>
                       <td>
                        <p>{{$cantidad_curso[$contador]}}</p>
