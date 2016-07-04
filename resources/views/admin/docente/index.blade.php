@@ -13,7 +13,7 @@
                 <div class="panel-heading">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Docente</a></li>
-                    <li><a href="#"></i>Docentes</a></li>
+                    <li><a href="#"></i>Docente</a></li>
                     </ol>
                 </div>
             </div>

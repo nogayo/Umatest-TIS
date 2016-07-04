@@ -14,7 +14,7 @@
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Docente</a></li>
                     <li><a href="{{ url('admin/docente') }}"></i>Docentes</a></li>
-                    <li><a href="#"></i>Crear Docentes</a></li>
+                    <li><a href="#"></i>Crear Cuenta de Docente</a></li>
                     </ol>
                 </div>
             </div>
