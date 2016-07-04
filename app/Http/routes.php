@@ -56,15 +56,13 @@ Route::get('admin/curso_dicta/{id_curso}/vista_contenido_curso', 'Admin\\curso_d
 
 Route::get('admin/curso_inscrito/{id_curso}/vista_contenido_curso', 'Admin\\curso_inscritoController@vis_contenido_curso');
 
-Route::resource('gestor_cursos/examen', 'gestor_cursos\\examenController');
-Route::resource('gestor_cursos/nota', 'gestor_cursos\\notaController');
-Route::resource('gestor_cursos/tarea', 'gestor_cursos\\tareaController');
-Route::resource('gestor_cursos/entregado', 'gestor_cursos\\entregadoController');
-Route::resource('gestor_cursos/pregunta', 'gestor_cursos\\preguntaController');
-Route::resource('gestor_cursos/tipo_pregunta', 'gestor_cursos\\tipo_preguntaController');
-Route::resource('gestor_cursos/multiples', 'gestor_cursos\\multiplesController');
-Route::resource('gestor_cursos/desarrollo', 'gestor_cursos\\desarrolloController');
-Route::resource('gestor_cursos/simple', 'gestor_cursos\\simpleController');
-Route::resource('gestor_cursos/falsoverdadero', 'gestor_cursos\\falsoverdaderoController');
-
-
+Route::resource('gestor_examenes/examen', 'gestor_examenes\\examenController');
+Route::resource('gestor_examenes/nota', 'gestor_examenes\\notaController');
+Route::resource('gestor_examenes/tarea', 'gestor_examenes\\tareaController');
+Route::resource('gestor_examenes/entregado', 'gestor_examenes\\entregadoController');
+Route::resource('gestor_examenes/pregunta', 'gestor_examenes\\preguntaController');
+Route::resource('gestor_examenes/tipo_pregunta', 'gestor_examenes\\tipo_preguntaController');
+Route::resource('gestor_examenes/multiples', 'gestor_examenes\\multiplesController');
+Route::resource('gestor_examenes/desarrollo', 'gestor_examenes\\desarrolloController');
+Route::resource('gestor_examenes/simple', 'gestor_examenes\\simpleController');
+Route::resource('gestor_examenes/falsoverdadero', 'gestor_examenes\\falsoverdaderoController');
