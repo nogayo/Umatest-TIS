@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0" style="margin-right: -125px;">
             <div class="panel panel-default">
-                <div class="panel-heading">GESTOR DE CURSOS</div>
+                <div class="panel-heading">GESTOR DE MATERIAS</div>
 
                 <div class="panel-body">
 

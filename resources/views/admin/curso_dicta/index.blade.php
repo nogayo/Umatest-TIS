@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Curso_dicta <a href="{{ url('/admin/curso_dicta/create') }}" class="btn btn-primary btn-xs" title="Add New Curso_dictum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Materia_dicta <a href="{{ url('/admin/curso_dicta/create') }}" class="btn btn-primary btn-xs" title="Add New Curso_dictum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">GESTOR DE CURSOS</div>
+                <div class="panel-heading">GESTOR DE MATERIAS</div>
 
                 <div class="panel-body">
 
@@ -23,7 +23,7 @@
           -->
           <div class="box box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title">Cursos</h3>
+              <h3 class="box-title">Materias</h3>
 
              <div class="box-tools">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -34,9 +34,10 @@
             <div class="box-body no-padding">
               <ul class="nav nav-pills nav-stacked">
                 
-                <li><a href="#"><i class="fa fa-file-text-o"></i> Descripcion del Curso </a></li>
+                <li><a href="#"><i class="fa fa-file-text-o"></i> Descripcion de la Materia </a></li>
                 <li><a href="#"><i class="fa fa-file-text-o"></i> Documentos y Enlaces </a></li>
                 <li><a href="#"><i class="fa fa-file-text-o"></i> Examenes </a></li>
+                <li><a href="{{ url('admin/crear_examen') }}"><i class="fa fa-file-text-o"></i>crear un nuevo Examen </a></li>
                 <li><a href="#"><i class="fa fa-filter"></i> Tareas </a></li>
                 <li><a href="#"><i class="fa fa-envelope-o"></i> Foros </a></li>
 

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Edit Curso_dictum {{ $curso_dictum->id }}</h1>
+    <h1>Edit Materia_dictum {{ $curso_dictum->id }}</h1>
 
     {!! Form::model($curso_dictum, [
         'method' => 'PATCH',
