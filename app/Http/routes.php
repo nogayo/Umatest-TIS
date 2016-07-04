@@ -66,5 +66,5 @@ Route::resource('gestor_cursos/multiples', 'gestor_cursos\\multiplesController')
 Route::resource('gestor_cursos/desarrollo', 'gestor_cursos\\desarrolloController');
 Route::resource('gestor_cursos/simple', 'gestor_cursos\\simpleController');
 Route::resource('gestor_cursos/falsoverdadero', 'gestor_cursos\\falsoverdaderoController');
-Route::resource('admin/crear_examen', 'Admin\\examenController');
+
 
