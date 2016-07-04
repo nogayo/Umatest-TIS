@@ -37,15 +37,21 @@
                 <a href="#"><i class='fa fa-link'></i> <span>Gestor Materias</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Cursos</a></li>
                      <li><a href="{{ url('/todosloscursos/conBoton/carrera') }}">Inscribirse a un Curso</a></li>
                     <li><a href="{{ url('admin/curso/desinscribirse/borrarmostrar')}}">Desinscribirse de un Curso</a></li>
                     <li><a href="{{ url('/todosloscursos/sinBoton/carrera') }}">Todos los Cursos</a></li>
 =======
+=======
+>>>>>>> 0e814893eb6794033c2bd475b645651dbf74bc19
                     <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Materias</a></li>
                     <li><a href="{{ url('admin/curso_inscrito/create') }}">Inscribirse a una Materia</a></li>
                     <li><a href="{{ url('admin/curso/desinscribirse/borrarmostrar')}}">Desinscribirse de una Materia</a></li>
                     <li><a href="{{ url('/todosloscursos') }}">Todos las Materia</a></li>
+<<<<<<< HEAD
+>>>>>>> 0e814893eb6794033c2bd475b645651dbf74bc19
+=======
 >>>>>>> 0e814893eb6794033c2bd475b645651dbf74bc19
                     
                 </ul>
@@ -72,15 +78,21 @@
                 <a href="#"><i class='fa fa-link'></i> <span>Gestor Materias Estudiante</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Cursos</a></li>
                     <li><a href="{{ url('/todosloscursos/conBoton/carrera') }}">Inscribirse a un Curso</a></li>
                     <li><a href="{{ url('admin/curso/desinscribirse/borrarmostrar')}}">Desinscribirse de un Curso</a></li>
                     <li><a href="{{ url('/todosloscursos/sinBoton/carrera') }}">Todos los Cursos</a></li>
 =======
+=======
+>>>>>>> 0e814893eb6794033c2bd475b645651dbf74bc19
                     <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Materias</a></li>
                     <li><a href="{{ url('/todosloscursos') }}">Inscribirse a una Materia</a></li>
                     <li><a href="{{ url('admin/curso/desinscribirse/borrarmostrar')}}">Desinscribirse de una Materia</a></li>
                     <li><a href="{{ url('/todosloscursos') }}">Todas las Materias</a></li>
+<<<<<<< HEAD
+>>>>>>> 0e814893eb6794033c2bd475b645651dbf74bc19
+=======
 >>>>>>> 0e814893eb6794033c2bd475b645651dbf74bc19
                     
                 </ul>
