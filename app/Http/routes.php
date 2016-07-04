@@ -56,8 +56,6 @@ Route::get('admin/curso_dicta/{id_curso}/vista_contenido_curso', 'Admin\\curso_d
 
 Route::get('admin/curso_inscrito/{id_curso}/vista_contenido_curso', 'Admin\\curso_inscritoController@vis_contenido_curso');
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 Route::resource('gestor_cursos/examen', 'gestor_cursos\\examenController');
 Route::resource('gestor_cursos/nota', 'gestor_cursos\\notaController');
 Route::resource('gestor_cursos/tarea', 'gestor_cursos\\tareaController');
@@ -68,14 +66,5 @@ Route::resource('gestor_cursos/multiples', 'gestor_cursos\\multiplesController')
 Route::resource('gestor_cursos/desarrollo', 'gestor_cursos\\desarrolloController');
 Route::resource('gestor_cursos/simple', 'gestor_cursos\\simpleController');
 Route::resource('gestor_cursos/falsoverdadero', 'gestor_cursos\\falsoverdaderoController');
-=======
-=======
->>>>>>> 0e814893eb6794033c2bd475b645651dbf74bc19
-//ruta de gestor examen
-//('admin/curso/crear_examen')
 Route::resource('admin/crear_examen', 'Admin\\examenController');
-//Route::get('admin/curso/crear_examen','Admin\\examenController');
-<<<<<<< HEAD
->>>>>>> 0e814893eb6794033c2bd475b645651dbf74bc19
-=======
->>>>>>> 0e814893eb6794033c2bd475b645651dbf74bc19
+
