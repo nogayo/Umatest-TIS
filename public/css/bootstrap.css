@@ -1868,7 +1868,7 @@ pre code {
     margin-left: 8.33333333%;
   }
   .col-md-offset-0 {
-    margin-left: 7%;
+    margin-left: 0%;
   }
 }
 @media (min-width: 1200px) {
@@ -4628,6 +4628,9 @@ a.thumbnail.active {
 .alert {
   padding: 15px;
   margin-bottom: 20px;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding-left: 12%;
   border: 1px solid transparent;
   border-radius: 4px;
 }

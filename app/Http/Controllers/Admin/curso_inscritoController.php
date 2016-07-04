@@ -44,7 +44,7 @@ class curso_inscritoController extends Controller
      */
     public function store(Request $request)
     {
-        //$this->validate($request, ['fecha' => 'required', ]);
+        $this->validate($request, ['curso_id' => 'required|exists:cursos,codigo', ]);
 
         $fecha_actual = date("Y-m-d");
         $cod_cur=$request->input('curso_id');
