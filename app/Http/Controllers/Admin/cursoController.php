@@ -158,7 +158,7 @@ class cursoController extends Controller
      *
      * @return void
      */
-    public function visualizar_inscribirse($parametro){
+    public function visualizar_inscribirse($parametro, $boton_todosloscursos){
        
        $curso = DB::table('cursos')->where('id_categoria', $parametro)->get();
 
@@ -166,18 +166,8 @@ class cursoController extends Controller
        //$numero=count($a);
         $titulo_general=strtoupper($titulo_categoria->nombre);
        // $docente = User::paginate(15);
-        return view('gestorcursos.inscribirse', compact('curso', 'titulo_general'));
-    }
-
-     public function visualizar_inscribirse_sin_boton($parametro2){
-       
-       $curso = DB::table('cursos')->where('id_categoria', $parametro2)->get();
-
-       $titulo_categoria= DB::table('categorias')->where('id', $parametro2)->first();
-       //$numero=count($a);
-        $titulo_general=strtoupper($titulo_categoria->nombre);
-       // $docente = User::paginate(15);
-        return view('gestorcursos.inscribirse_sin_boton', compact('curso', 'titulo_general'));
+            return view('gestorcursos.inscribirse', compact('curso', 'titulo_general', 'boton_todosloscursos'));
+        
     }
 
     public function visualizar_categoria_carrera(){

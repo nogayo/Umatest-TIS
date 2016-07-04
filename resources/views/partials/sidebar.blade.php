@@ -37,9 +37,9 @@
                 <a href="#"><i class='fa fa-link'></i> <span>Gestor Cursos</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Cursos</a></li>
-                    <li><a href="{{ url('admin/curso_inscrito/create') }}">Inscribirse a un Curso</a></li>
+                     <li><a href="{{ url('/todosloscursos/conBoton/carrera') }}">Inscribirse a un Curso</a></li>
                     <li><a href="{{ url('admin/curso/desinscribirse/borrarmostrar')}}">Desinscribirse de un Curso</a></li>
-                    <li><a href="{{ url('/todosloscursos') }}">Todos los Cursos</a></li>
+                    <li><a href="{{ url('/todosloscursos/sinBoton/carrera') }}">Todos los Cursos</a></li>
                     
                 </ul>
             </li>
@@ -65,9 +65,9 @@
                 <a href="#"><i class='fa fa-link'></i> <span>Gestor Cursos Estudiante</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Cursos</a></li>
-                    <li><a href="{{ url('/todosloscursos') }}">Inscribirse a un Curso</a></li>
+                    <li><a href="{{ url('/todosloscursos/conBoton/carrera') }}">Inscribirse a un Curso</a></li>
                     <li><a href="{{ url('admin/curso/desinscribirse/borrarmostrar')}}">Desinscribirse de un Curso</a></li>
-                    <li><a href="{{ url('/todosloscursos') }}">Todos los Cursos</a></li>
+                    <li><a href="{{ url('/todosloscursos/sinBoton/carrera') }}">Todos los Cursos</a></li>
                     
                 </ul>
                  </li>
