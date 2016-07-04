@@ -8,6 +8,17 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Docente</a></li>
+                    <li><a href="{{ url('admin/docente') }}"></i>Docentes</a></li>
+                    <li><a href="#"></i>Crear Docentes</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE USUARIOS</div>
