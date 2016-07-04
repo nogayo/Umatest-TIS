@@ -1,6 +1,17 @@
-@extends('layouts.app')
+  @extends('app')
 
-@section('content')
+@section('htmlheader_title')
+   CURSOS
+@endsection
+
+
+@section('main-content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">GESTOR DE EXAMENES</div>
+                <div class="panel-body">
 <div class="container">
 
     <h1>Create New Examan</h1>
@@ -42,6 +53,18 @@
                 </div>
             </div>
 
+               <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                {!! Form::label('id_curso', 'Materia', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::select('id_curso', $vector, null, ['class' => 'form-control'])!!}
+                    {!! $errors->first('id_curso', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+
+
+
+
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
@@ -58,5 +81,10 @@
         </ul>
     @endif
 
+</div>
+ </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

@@ -37,7 +37,7 @@
                 <li><a href="#"><i class="fa fa-file-text-o"></i> Descripcion de la Materia </a></li>
                 <li><a href="#"><i class="fa fa-file-text-o"></i> Documentos y Enlaces </a></li>
                 <li><a href="#"><i class="fa fa-file-text-o"></i> Examenes </a></li>
-                <li><a href="{{ url('admin/crear_examen') }}"><i class="fa fa-file-text-o"></i>crear un nuevo Examen </a></li>
+                <li><a href="{{ url('gestor_cursos/examen') }}"><i class="fa fa-file-text-o"></i>crear un nuevo Examen </a></li>
                 <li><a href="#"><i class="fa fa-filter"></i> Tareas </a></li>
                 <li><a href="#"><i class="fa fa-envelope-o"></i> Foros </a></li>
 

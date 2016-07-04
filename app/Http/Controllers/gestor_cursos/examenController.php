@@ -6,9 +6,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\examan;
+use App\curso;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
 
 class examenController extends Controller
 {
@@ -31,7 +33,14 @@ class examenController extends Controller
      */
     public function create()
     {
-        return view('gestor_cursos.examen.create');
+
+
+        $vector = DB::table('cursos')->lists('nombre', 'id');
+        //echo $a[0]->nombre;
+        //echo $a[4]->nombre;
+
+    
+        return view('gestor_cursos.examen.create', compact('vector'));
     }
 
     /**
