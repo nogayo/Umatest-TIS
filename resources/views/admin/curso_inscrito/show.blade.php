@@ -18,7 +18,7 @@
 
 <div class="container">
 
-    <h1>Curso_inscrito {{ $curso_inscrito->id }}</h1>
+    <h1>Materia_inscrito {{ $curso_inscrito->id }}</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <tbody>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Curso_dictum {{ $curso_dictum->id }}</h1>
+    <h1>Materia_dictum {{ $curso_dictum->id }}</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <tbody>

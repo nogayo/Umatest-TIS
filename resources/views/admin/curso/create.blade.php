@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">GESTOR CURSOS</div>
+                <div class="panel-heading">GESTOR MATERIA</div>
 
                 <div class="panel-body">
 
@@ -21,7 +21,7 @@
 
 <div class="container">
 
-    <h1>CREAR NUEVO CURSO</h1>
+    <h1>CREAR NUEVO MATERIA</h1>
     <hr/>
 
     {!! Form::open(['url' => '/admin/curso', 'class' => 'form-horizontal']) !!}

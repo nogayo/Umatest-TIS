@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">GESTOR CURSOS</div>
+                <div class="panel-heading">GESTOR MATERIA</div>
 
                 <div class="panel-body">
 
@@ -20,7 +20,7 @@
 
 <div class="container">
 
-    <h1>Editar Curso</h1>
+    <h1>Editar Materia</h1>
 
     {!! Form::model($curso, [
         'method' => 'PATCH',

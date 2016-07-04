@@ -56,3 +56,8 @@ Route::get('admin/curso/desinscribirse/borrarmostrar', 'Admin\\cursoController@v
 Route::get('admin/curso_dicta/{id_curso}/vista_contenido_curso', 'Admin\\curso_dictaController@vis_contenido_curso');
 
 Route::get('admin/curso_inscrito/{id_curso}/vista_contenido_curso', 'Admin\\curso_inscritoController@vis_contenido_curso');
+
+//ruta de gestor examen
+//('admin/curso/crear_examen')
+Route::resource('admin/crear_examen', 'Admin\\examenController');
+//Route::get('admin/curso/crear_examen','Admin\\examenController');
