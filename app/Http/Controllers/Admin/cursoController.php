@@ -55,7 +55,7 @@ class cursoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['nombre' => 'required', 'capacidad' => 'required', 'codigo' => 'required']);
+        $this->validate($request, ['nombre' => 'required|max:255|unique:cursos', 'capacidad' => 'required|numeric|between:10,999', 'codigo' => 'required|max:255|unique:cursos']);
 
           //verifica si ya existe el curso creado
 
@@ -74,11 +74,11 @@ class cursoController extends Controller
             ['grupo' => 1, 'curso_id' => $id_curso, 'user_id'=>$id_user]
             ); 
             
-            Session::flash('flash_message', 'EL CURSO SE HA CREADO SATISFACTORIAMENTE'); 
+            Session::flash('flash_message', 'LA MATERIA SE HA CREADO SATISFACTORIAMENTE'); 
 
             }else{
 
-               Session::flash('flash_message', 'EL CURSO QUE QUIERE CREAR YA EXISTE'); 
+               Session::flash('flash_message', 'LA MATERIA QUE QUIERE CREAR YA EXISTE'); 
             }
 
 
@@ -122,7 +122,7 @@ class cursoController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['nombre' => 'required', 'capacidad' => 'required', 'codigo' => 'required', ]);
+        $this->validate($request, ['nombre' => "max:255|unique:cursos,nombre,$id", 'capacidad' => 'required|numeric|between:10,999', 'codigo' => "required|unique:cursos,codigo,$id", ]);
 
         $curso = curso::findOrFail($id);
         $curso->update($request->all());
@@ -193,7 +193,7 @@ class cursoController extends Controller
 
        }
        
-        $titulo_general="MIS CURSOS";
+        $titulo_general="MIS MATERIAS";
         //$curso = DB::table('cursos')->get();
 
         return view('gestorcursos.indexfiltrado', compact('curso', 'titulo_general'));

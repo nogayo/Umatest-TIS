@@ -23,10 +23,10 @@
                   <!--DOCENTE GESTOR-->
 
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Gestor Cursos</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>Gestor Materia</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('admin/curso/create') }}">Crear Curso</a></li>
-                    <li><a href="{{ url('admin/curso_dicta') }}">Mis Cursos</a></li>
+                    <li><a href="{{ url('admin/curso/create') }}">Crear Materia</a></li>
+                    <li><a href="{{ url('admin/curso_dicta') }}">Mis Materias</a></li>
                 </ul>
             </li>
                @elseif($name_rol=='estudiante')  
@@ -34,12 +34,19 @@
          
 
             <li class="treeview ">
-                <a href="#"><i class='fa fa-link'></i> <span>Gestor Cursos</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>Gestor Materias</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
+<<<<<<< HEAD
                     <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Cursos</a></li>
                      <li><a href="{{ url('/todosloscursos/conBoton/carrera') }}">Inscribirse a un Curso</a></li>
                     <li><a href="{{ url('admin/curso/desinscribirse/borrarmostrar')}}">Desinscribirse de un Curso</a></li>
                     <li><a href="{{ url('/todosloscursos/sinBoton/carrera') }}">Todos los Cursos</a></li>
+=======
+                    <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Materias</a></li>
+                    <li><a href="{{ url('admin/curso_inscrito/create') }}">Inscribirse a una Materia</a></li>
+                    <li><a href="{{ url('admin/curso/desinscribirse/borrarmostrar')}}">Desinscribirse de una Materia</a></li>
+                    <li><a href="{{ url('/todosloscursos') }}">Todos las Materia</a></li>
+>>>>>>> 0e814893eb6794033c2bd475b645651dbf74bc19
                     
                 </ul>
             </li>
@@ -54,20 +61,27 @@
                    </li>
 
                     <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Gestor Cursos Docente</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>Gestor Materias Docente</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('admin/curso/create') }}">Crear Curso</a></li>
-                    <li><a href="{{ url('admin/curso_dicta') }}">Mis Cursos</a></li>
+                    <li><a href="{{ url('admin/curso/create') }}">Crear Materia</a></li>
+                    <li><a href="{{ url('admin/curso_dicta') }}">Mis Materias</a></li>
                 </ul>
                     </li>
 
                   <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Gestor Cursos Estudiante</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-link'></i> <span>Gestor Materias Estudiante</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
+<<<<<<< HEAD
                     <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Cursos</a></li>
                     <li><a href="{{ url('/todosloscursos/conBoton/carrera') }}">Inscribirse a un Curso</a></li>
                     <li><a href="{{ url('admin/curso/desinscribirse/borrarmostrar')}}">Desinscribirse de un Curso</a></li>
                     <li><a href="{{ url('/todosloscursos/sinBoton/carrera') }}">Todos los Cursos</a></li>
+=======
+                    <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Materias</a></li>
+                    <li><a href="{{ url('/todosloscursos') }}">Inscribirse a una Materia</a></li>
+                    <li><a href="{{ url('admin/curso/desinscribirse/borrarmostrar')}}">Desinscribirse de una Materia</a></li>
+                    <li><a href="{{ url('/todosloscursos') }}">Todas las Materias</a></li>
+>>>>>>> 0e814893eb6794033c2bd475b645651dbf74bc19
                     
                 </ul>
                  </li>
