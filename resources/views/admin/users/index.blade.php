@@ -12,7 +12,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <ol class="breadcrumb">
-                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Estudiante</a></li>
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Usuarios</a></li>
                     <li><a href="#"></i>Estudiantes</a></li>
                     </ol>
                 </div>

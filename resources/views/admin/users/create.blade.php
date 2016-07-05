@@ -12,7 +12,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <ol class="breadcrumb">
-                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Estudiante</a></li>
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Usuarios</a></li>
                     <li><a href="{{ url('admin/users') }}"></i>Estudiantes</a></li>
                     <li><a href="#"></i>Crear Cuenta Estudiante</a></li>
                     </ol>
