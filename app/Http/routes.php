@@ -137,3 +137,13 @@ Route::get('gestor_examenes/{id_curso}/examen/{tipo}/tarea', 'gestor_examenes\\t
 //Route::get('gestor_examenes/tarea/{id_curso}/create', 'gestor_examenes\\tareaController@create');	
 //url('/gestor_examenes/'.$id_curso.'/tarea/'.$tipo.'/create')
 Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\tareaController@create');	
+
+
+/*
+* Esta ruta viene de listar tareas con 2 parametros
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+*url('/gestor_examenes/'.$id_Curso.'/materia/'.$tipo.'/tarea/' . $item->id . '/edit')
+
+*/
+Route::get('gestor_examenes/{id_curso}/materia/{tipo}/tarea/{id}/edit', 'gestor_examenes\\tareaController@edit');

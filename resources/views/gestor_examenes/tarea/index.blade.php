@@ -37,7 +37,7 @@
                     <td>{{ $item->nombre_tarea }}</td><td>{{ $item->descripcion }}</td><td>{{ $item->archivo }}</td>
                     <td>
                         <a href="{{ url('/gestor_examenes/tarea/' . $item->id) }}" class="btn btn-success btn-xs" title="View Tarea"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/gestor_examenes/tarea/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Tarea"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/'.$id_curso.'/materia/'.$tipo.'/tarea/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Tarea"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/gestor_examenes/tarea', $item->id],

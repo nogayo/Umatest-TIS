@@ -15,7 +15,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Edit Tarea {{ $tarea->id }}</h1>
+    <h1>Editar Tarea {{ $tarea->id }}</h1>
 
     {!! Form::model($tarea, [
         'method' => 'PATCH',
@@ -70,6 +70,27 @@
                     {!! $errors->first('puntaje_total', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
+
+            <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('id_curso',$id_curso, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('id_curso', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+
+
+             <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('tipo',$tipo, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('tipo', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+
+
+
 
 
     <div class="form-group">

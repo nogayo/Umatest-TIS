@@ -98,11 +98,11 @@ class tareaController extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id_curso,$tipo,$id)
     {
         $tarea = tarea::findOrFail($id);
 
-        return view('gestor_examenes.tarea.edit', compact('tarea'));
+        return view('gestor_examenes.tarea.edit', compact('tarea','id_curso','tipo'));
     }
 
     /**
@@ -119,9 +119,16 @@ class tareaController extends Controller
         $tarea = tarea::findOrFail($id);
         $tarea->update($request->all());
 
+
+        
+       $id_curso=$request->input('id_curso');
+       $tipo=$request->input('tipo');
+
+
         Session::flash('flash_message', 'tarea updated!');
 
-        return redirect('gestor_examenes/tarea');
+        //return redirect('gestor_examenes/tarea');
+        return redirect('gestor_examenes/'.$id_curso.'/examen/'.$tipo.'/tarea');
     }
 
     /**
