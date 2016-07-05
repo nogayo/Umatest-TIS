@@ -40,7 +40,8 @@
                 
                 <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen') }}"><i class="fa fa-file-text-o"></i>crear un nuevo Examen </a></li>
             
-                <li><a href="#"><i class="fa fa-filter"></i> Tareas </a></li>
+                <li><a href=""><i class="fa fa-filter"></i> Tareas </a></li>
+                <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen') }}"><i class="fa fa-filter"></i> Crear Tarea </a></li>
                 <li><a href="#"><i class="fa fa-envelope-o"></i> Foros </a></li>
 
               </ul>
