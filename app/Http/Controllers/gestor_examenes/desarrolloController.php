@@ -9,6 +9,7 @@ use App\desarrollo;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
 
 class desarrolloController extends Controller
 {
@@ -29,9 +30,9 @@ class desarrolloController extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create($id_pregunta)
     {
-        return view('gestor_examenes.desarrollo.create');
+        return view('gestor_examenes.desarrollo.create',compact('id_pregunta'));
     }
 
     /**
@@ -41,13 +42,17 @@ class desarrolloController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['respuesta' => 'required', ]);
+       // $this->validate($request, ['respuesta' => 'required', ]);
 
-        desarrollo::create($request->all());
+       // desarrollo::create($request->all());
+
+        DB::table('desarrollos')->insert(
+            ['respuesta' => $request->input('respuesta'), 'pregunta_id' => $request->input('pregunta_id')]
+            ); 
 
         Session::flash('flash_message', 'desarrollo added!');
 
-        return redirect('gestor_examenes/desarrollo');
+        return redirect('gestor_examenes/pregunta');
     }
 
     /**
@@ -94,7 +99,7 @@ class desarrolloController extends Controller
 
         Session::flash('flash_message', 'desarrollo updated!');
 
-        return redirect('gestor_examenes/desarrollo');
+        return redirect('gestor_examenes/pregunta');
     }
 
     /**
@@ -110,6 +115,6 @@ class desarrolloController extends Controller
 
         Session::flash('flash_message', 'desarrollo deleted!');
 
-        return redirect('gestor_examenes/desarrollo');
+        return redirect('gestor_examenes/pregunta');
     }
 }

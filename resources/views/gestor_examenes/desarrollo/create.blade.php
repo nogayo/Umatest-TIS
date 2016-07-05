@@ -1,6 +1,18 @@
-@extends('layouts.app')
+@extends('app')
 
-@section('content')
+@section('htmlheader_title')
+   Home
+@endsection
+
+
+@section('main-content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">GESTOR MATERIA</div>
+
+                <div class="panel-body">
 <div class="container">
 
     <h1>Create New Desarrollo</h1>
@@ -15,6 +27,15 @@
                     {!! $errors->first('respuesta', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
+            <div class="form-group {{ $errors->has('pregunta_id') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('pregunta_id',$id_pregunta, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('pregunta_id', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+            
 
 
     <div class="form-group">
@@ -32,5 +53,10 @@
         </ul>
     @endif
 
+</div>
+ </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
