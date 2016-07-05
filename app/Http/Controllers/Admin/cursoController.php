@@ -41,7 +41,7 @@ class cursoController extends Controller
             $vector[$i]=$combo_categorias[$i]->nombre;
         }
          $asegurado=Asegurado::orderBy('nombre', 'asc')->lists('nombre', 'id');
-         */$vector = DB::table('categorias')->lists('nombre', 'id');
+         */$vector = DB::table('categorias')->lists('nombre','id');
         //echo $a[0]->nombre;
         //echo $a[4]->nombre;
 

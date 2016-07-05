@@ -6,9 +6,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\examan;
+use App\curso;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
 
 class examenController extends Controller
 {
@@ -21,9 +23,16 @@ class examenController extends Controller
     {
         $examen = examan::paginate(15);
 
-        return view('gestor_examenes.examen.index', compact('examen'));
+        return view('gestor_examenes.examen.index',compact('examen','id_curso'));
     }
 
+   public function listar($id_curso)
+    {
+  
+         $examen = DB::table('examens')->where('id_cursos', $id_curso)->get();
+
+        return view('gestor_examenes.examen.index',compact('examen','id_curso'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +40,16 @@ class examenController extends Controller
      */
     public function create()
     {
-        return view('gestor_examenes.examen.create');
+
+
+
+        $vector = DB::table('cursos')->lists('nombre', 'id');
+        //echo $a[0]->nombre;
+        //echo $a[4]->nombre;
+
+
+        return view('gestor_examenes.examen.create', compact('vector'));
+
     }
 
     /**
@@ -41,13 +59,21 @@ class examenController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required', 'fecha_examen' => 'required', 'puntaje_total' => 'required', ]);
+        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required', 'fecha_examen' => 'required',]);
 
-        examan::create($request->all());
+         $id_curso=$request->input('id_curso');
+         
+         DB::table('examens')->insert(['nombre_examen' => $request->input('nombre_examen'), 'estado_examen' => $request->input('estado_examen'),
+          'fecha_examen' => $request->input('fecha_examen'),'id_cursos'=> $request->input('id_curso')]
+         );
+
+       
+
+        //examan::create($request->all());
 
         Session::flash('flash_message', 'examan added!');
 
-        return redirect('gestor_examenes/examen');
+        return redirect('gestor_examenes/'. $id_curso.'/examen');
     }
 
     /**
@@ -57,11 +83,11 @@ class examenController extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id,$id_curso)
     {
         $examan = examan::findOrFail($id);
 
-        return view('gestor_examenes.examen.show', compact('examan'));
+        return view('gestor_examenes.examen.show', compact('examan','id_curso'));
     }
 
     /**
@@ -71,11 +97,11 @@ class examenController extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id,$id_curso)
     {
         $examan = examan::findOrFail($id);
 
-        return view('gestor_examenes.examen.edit', compact('examan'));
+        return view('gestor_examenes.examen.edit', compact('examan','id_curso'));
     }
 
     /**
@@ -87,14 +113,15 @@ class examenController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required', 'fecha_examen' => 'required', 'puntaje_total' => 'required', ]);
+        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required', 'fecha_examen' => 'required',]);
+        $id_curso=$request->input('id_curso');
 
         $examan = examan::findOrFail($id);
         $examan->update($request->all());
 
         Session::flash('flash_message', 'examan updated!');
 
-        return redirect('gestor_examenes/examen');
+         return redirect('gestor_examenes/'. $id_curso.'/examen');
     }
 
     /**
@@ -104,12 +131,27 @@ class examenController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id_curso,$id)
     {
         examan::destroy($id);
 
         Session::flash('flash_message', 'examan deleted!');
 
-        return redirect('gestor_examenes/examen');
+
+       // return redirect('gestor_examenes/examen');
+        return redirect('gestor_examenes/'. $id_curso.'/examen');
+    }
+
+     /**
+     * es para crear un nuevo examen.
+     *
+     * @return void
+     */
+    public function crear_examen($id_curso)
+    {
+
+
+      return view('gestor_examenes.examen.create', compact('id_curso'));
+
     }
 }
