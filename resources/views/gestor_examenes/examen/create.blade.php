@@ -14,7 +14,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Create New Examan</h1>
+    <h1>Crear Nuevo Examen</h1>
     <hr/>
 
     {!! Form::open(['url' => '/gestor_examenes/examen', 'class' => 'form-horizontal']) !!}
@@ -47,7 +47,7 @@
             </div>
             
 
-            
+
    
            <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
                 

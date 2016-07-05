@@ -64,8 +64,7 @@ class examenController extends Controller
          $id_curso=$request->input('id_curso');
          
          DB::table('examens')->insert(['nombre_examen' => $request->input('nombre_examen'), 'estado_examen' => $request->input('estado_examen'),
-          'fecha_examen' => $request->input('fecha_examen'), 'puntaje_totalm' => $request->input('puntaje_total')
-          , 'id_cursos'=> $request->input('id_curso')]
+          'fecha_examen' => $request->input('fecha_examen'),'id_cursos'=> $request->input('id_curso')]
          );
 
        
@@ -114,7 +113,7 @@ class examenController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required', 'fecha_examen' => 'required', 'puntaje_total' => 'required', ]);
+        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required', 'fecha_examen' => 'required',]);
         $id_curso=$request->input('id_curso');
 
         $examan = examan::findOrFail($id);

@@ -14,7 +14,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Edit Examan {{ $examan->id }}</h1>
+    <h1>Editar Examen </h1>
 
     {!! Form::model($examan, [
         'method' => 'PATCH',
@@ -48,13 +48,7 @@
                     {!! $errors->first('fecha_examen', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('puntaje_total') ? 'has-error' : ''}}">
-                {!! Form::label('puntaje_total', trans('examen.puntaje_total'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::number('puntaje_total', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('puntaje_total', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
+           
 
 
              <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">

@@ -14,7 +14,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Examan {{ $examan->id }}</h1>
+    <h1>Examen </h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <tbody>
