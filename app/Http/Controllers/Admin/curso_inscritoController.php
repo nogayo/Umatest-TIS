@@ -168,7 +168,7 @@ class curso_inscritoController extends Controller
     }
     public function vis_contenido_curso($id_curso){
     
-    return view('gestorcursos.contenidocurso');
+    return view('gestorcursos.contenidocurso',compact('id_curso'));
 
     }
 }
