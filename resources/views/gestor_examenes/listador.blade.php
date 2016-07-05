@@ -20,37 +20,23 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th> {{ trans('examen.estado_examen') }} </th><th> {{ trans('examen.fecha_examen') }} <th>Llenar Preguntas</th></th><th>Actions</th>
-                </tr>
+                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th> {{ trans('examen.estado_examen') }} </th><th> {{ trans('examen.fecha_examen') }} </th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-
-             
-          
-
-
-
-
             {{-- */$x=0;/* --}}
             @foreach($examen as $item)
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
                     <td>{{ $item->nombre_examen }}</td><td>{{ $item->estado_examen }}</td><td>{{ $item->fecha_examen }}</td>
-
-
-                    <td> 
-
-                    <li><a href="#"><i class="fa fa-file-text-o"></i> Llenar </a></li>
-                    </td>
                     <td>
-                        <a href="{{ url('/gestor_examenes/examen/'. $item->id .'/ver/'.$id_curso.'/materia') }}" class="btn btn-success btn-xs" title="View Examan"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/gestor_examenes/examen/' . $item->id . '/update/'.$id_curso.'/edit') }}" class="btn btn-primary btn-xs" title="Edit Examan"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/examen/' . $item->id) }}" class="btn btn-success btn-xs" title="View Examan"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/examen/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Examan"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
-                        'method'=>'DELETE',
-                        'url' => ['/gestor_examenes/examen/'. $id_curso .'/delete',$item->id],
-                        'style' => 'display:inline'
+                            'method'=>'DELETE',
+                            'url' => ['/gestor_examenes/examen', $item->id],
+                            'style' => 'display:inline'
                         ]) !!}
                             {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Examan" />', array(
                                     'type' => 'submit',
@@ -59,17 +45,12 @@
                                     'onclick'=>'return confirm("Confirm delete?")'
                             ));!!}
                         {!! Form::close() !!}
-
-
-                 
-
-
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-        <div class="pagination"> </div>
+        <div class="pagination"> {!! $examen->render() !!} </div>
     </div>
 
 </div>

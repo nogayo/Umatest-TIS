@@ -85,8 +85,12 @@ Route::resource('gestor_examenes/desarrollo', 'gestor_examenes\\desarrolloContro
 Route::get('gestor_examenes/desarrollo/{id_pregunta}/create', 'gestor_examenes\\desarrolloController@create');
 
 Route::resource('gestor_examenes/simple', 'gestor_examenes\\simpleController');
+<<<<<<< HEAD
 Route::get('gestor_examenes/simple/{id_pregunta}/create', 'gestor_examenes\\simpleController@create');
 
+Route::resource('gestor_examenes/falsoverdadero', 'gestor_examenes\\falsoverdaderoController');
+Route::get('gestor_examenes/falsoverdadero/{id_pregunta}/create', 'gestor_examenes\\falsoverdaderoController@create');
+=======
 Route::resource('gestor_examenes/falsoverdadero', 'gestor_examenes\\falsoverdaderoController');
 
 
@@ -121,3 +125,4 @@ Esta ruta lega despues de Preisnar el voton Eliminar examen y nos envia dos para
 */
 //Route::get('gestor_examenes/{id}/examen/{id_curso}/delete', 'gestor_examenes\\examenController@destroy');
 Route::get('gestor_examenes/examen/{id_curso}/delete/{id}', 'gestor_examenes\\examenController@destroy');
+>>>>>>> 8af771920b729618f904f43d867a415c12f848a3

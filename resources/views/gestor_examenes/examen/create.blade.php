@@ -1,9 +1,20 @@
-@extends('layouts.app')
+  @extends('app')
 
-@section('content')
+@section('htmlheader_title')
+   CURSOS
+@endsection
+
+
+@section('main-content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">GESTOR DE EXAMENES</div>
+                <div class="panel-body">
 <div class="container">
 
-    <h1>Create New Examan</h1>
+    <h1>Crear Nuevo Examen</h1>
     <hr/>
 
     {!! Form::open(['url' => '/gestor_examenes/examen', 'class' => 'form-horizontal']) !!}
@@ -34,13 +45,22 @@
                     {!! $errors->first('fecha_examen', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('puntaje_total') ? 'has-error' : ''}}">
-                {!! Form::label('puntaje_total', trans('examen.puntaje_total'), ['class' => 'col-sm-3 control-label']) !!}
+            
+
+
+   
+           <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                
                 <div class="col-sm-6">
-                    {!! Form::number('puntaje_total', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('puntaje_total', '<p class="help-block">:message</p>') !!}
+                    {!! Form::hidden('id_curso',$id_curso, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('id_curso', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
+                </div>
+
+
+
+
+
 
 
     <div class="form-group">
@@ -58,5 +78,10 @@
         </ul>
     @endif
 
+</div>
+ </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
