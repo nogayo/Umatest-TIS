@@ -50,7 +50,7 @@
 
                     @if( $item->tipo_pregunta_id == 2) 
                         <td>{{ $x }}</td>
-                        <td>{{ $item->nombre_pregunta }}</td> <td><a href="{{ url('/gestor_examenes/desarrollo/create') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
+                        <td>{{ $item->nombre_pregunta }}</td> <td><a href="{{ url('/gestor_examenes/desarrollo/'.$item->id.'/create') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
                   {{-- */
                 $id_simple = DB::table('desarrollos')->where('pregunta_id', $item->id)->first();
                 /* --}}
@@ -66,7 +66,7 @@
 
                     @if( $item->tipo_pregunta_id == 3) 
                         <td>{{ $x }}</td>
-                        <td>{{ $item->nombre_pregunta }}</td> <td><a href="{{ url('/gestor_examenes/multiples/create') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
+                        <td>{{ $item->nombre_pregunta }}</td> <td><a href="{{ url('/gestor_examenes/multiples/'.$item->id.'/create') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
                            {{-- */
                 $id_simple = DB::table('multiples')->where('pregunta_id', $item->id)->first();
                 /* --}}
@@ -80,7 +80,7 @@
 
                     @if( $item->tipo_pregunta_id == 4)
                          <td>{{ $x }}</td>
-                        <td>{{ $item->nombre_pregunta }}</td> <td><a href="{{ url('/gestor_examenes/falsoverdadero/create') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
+                        <td>{{ $item->nombre_pregunta }}</td> <td><a href="{{ url('/gestor_examenes/falsoverdadero/'.$item->id.'/create') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
                 {{-- */
                 $id_simple = DB::table('falsoverdaderos')->where('pregunta_id', $item->id)->first();
         

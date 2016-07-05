@@ -88,6 +88,7 @@ Route::resource('gestor_examenes/simple', 'gestor_examenes\\simpleController');
 Route::get('gestor_examenes/simple/{id_pregunta}/create', 'gestor_examenes\\simpleController@create');
 
 Route::resource('gestor_examenes/falsoverdadero', 'gestor_examenes\\falsoverdaderoController');
+Route::get('gestor_examenes/falsoverdadero/{id_pregunta}/create', 'gestor_examenes\\falsoverdaderoController@create');
 
 
 

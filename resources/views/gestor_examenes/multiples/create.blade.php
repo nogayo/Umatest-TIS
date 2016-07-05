@@ -39,6 +39,13 @@
                     {!! $errors->first('correcta', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            <div class="form-group {{ $errors->has('pregunta_id') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('pregunta_id',$id_pregunta, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('pregunta_id', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
 
 
     <div class="form-group">
