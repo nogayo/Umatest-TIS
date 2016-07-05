@@ -9,6 +9,7 @@ use App\tarea;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
 
 class tareaController extends Controller
 {
@@ -23,15 +24,30 @@ class tareaController extends Controller
 
         return view('gestor_examenes.tarea.index', compact('tarea'));
     }
+  /**
+     * si el parametro es listar entonces lista todad=s las tareas.
+     * si el parametro es crear entonces lista todad=s las tareas mas la opcion de crear tareas.
+     * @param  int  $id_curso ,esl el id del curso
+     * @param  varchar $tipo, es la opcion de crear y listar o solo listar
+     * @return void
+     */
+    public function listar($id_curso,$tipo)
+    {
+         $tarea = DB::table('tareas')->where('id_cursos', $id_curso)->get();
+
+        //return view('gestor_examenes.examen.index',compact('examen','id_curso'));
+
+        return view('gestor_examenes.tarea.index', compact('tarea','id_curso','tipo'));
+    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return void
      */
-    public function create()
+    public function create($id_curso,$tipo)
     {
-        return view('gestor_examenes.tarea.create');
+        return view('gestor_examenes.tarea.create', compact('id_curso','tipo'));
     }
 
     /**
@@ -41,13 +57,24 @@ class tareaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['nombre_tarea' => 'required', 'descripcion' => 'required', 'archivo' => 'required', 'estado_tarea' => 'required', 'fecha_limite' => 'required', 'puntaje_total' => 'required', ]);
+        $this->validate($request, ['nombre_tarea' => 'required', 'descripcion' => 'required', 'archivo' => 'required', 'estado_tarea' => 'required','puntaje_total' => 'required', ]);
 
-        tarea::create($request->all());
+
+       $id_curso=$request->input('id_curso');
+       $tipo=$request->input('tipo');
+         
+         DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),
+          'archivo' => $request->input('archivo'),'estado_tarea' => $request->input('estado_tarea'),
+          'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
+         );
+
+        //tarea::create($request->all());
+        //$id_curso=$request->input('id_curso');
 
         Session::flash('flash_message', 'tarea added!');
+        //gestor_examenes/{id_curso}/examen/{tipo}/tarea
 
-        return redirect('gestor_examenes/tarea');
+        return redirect('gestor_examenes/'.$id_curso.'/examen/'.$tipo.'/tarea');
     }
 
     /**
@@ -87,7 +114,7 @@ class tareaController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['nombre_tarea' => 'required', 'descripcion' => 'required', 'archivo' => 'required', 'estado_tarea' => 'required', 'fecha_limite' => 'required', 'puntaje_total' => 'required', ]);
+        $this->validate($request, ['nombre_tarea' => 'required', 'descripcion' => 'required', 'archivo' => 'required', 'estado_tarea' => 'required','puntaje_total' => 'required', ]);
 
         $tarea = tarea::findOrFail($id);
         $tarea->update($request->all());

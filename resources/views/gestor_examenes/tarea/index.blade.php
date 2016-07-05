@@ -14,8 +14,13 @@
 
                 <div class="panel-body">
 <div class="container">
+      @if($tipo=='crear')
+    <h1>Tarea <a href="{{ url('/gestor_examenes/'.$id_curso.'/tarea/'.$tipo.'/create') }}" class="btn btn-primary btn-xs" title="Add New Tarea"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    @else
 
-    <h1>Tarea <a href="{{ url('/gestor_examenes/tarea/create') }}" class="btn btn-primary btn-xs" title="Add New Tarea"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+     <h1>Tarea <a href="#"></a></h1>
+   @endif
+
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -50,7 +55,7 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pagination"> {!! $tarea->render() !!} </div>
+        <div class="pagination">  </div>
     </div>
 
 </div>

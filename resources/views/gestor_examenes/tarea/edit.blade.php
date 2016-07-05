@@ -56,13 +56,13 @@
                     {!! $errors->first('estado_tarea', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('fecha_limite') ? 'has-error' : ''}}">
+            <!--div class="form-group {{ $errors->has('fecha_limite') ? 'has-error' : ''}}">
                 {!! Form::label('fecha_limite', trans('tarea.fecha_limite'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::date('fecha_limite', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('fecha_limite', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
+            </div-->
             <div class="form-group {{ $errors->has('puntaje_total') ? 'has-error' : ''}}">
                 {!! Form::label('puntaje_total', trans('tarea.puntaje_total'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">

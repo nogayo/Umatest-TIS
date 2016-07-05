@@ -161,7 +161,6 @@ class cursoController extends Controller
     public function visualizar_inscribirse($parametro, $boton_todosloscursos){
        
        $curso = DB::table('cursos')->where('id_categoria', $parametro)->get();
-
        $titulo_categoria= DB::table('categorias')->where('id', $parametro)->first();
        //$numero=count($a);
         $titulo_general=strtoupper($titulo_categoria->nombre);

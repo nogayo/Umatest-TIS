@@ -114,3 +114,26 @@ Esta ruta lega despues de Preisnar el voton Eliminar examen y nos envia dos para
 */
 //Route::get('gestor_examenes/{id}/examen/{id_curso}/delete', 'gestor_examenes\\examenController@destroy');
 Route::get('gestor_examenes/examen/{id_curso}/delete/{id}', 'gestor_examenes\\examenController@destroy');
+
+
+
+/*
+NOTA.- Apartir de esta instruccion solo se debe aniadir rutas para tareas
+*/
+
+/*
+* Esta ruta viene de listar tareas con 2 parametros
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+*url('gestor_examenes/'.$id_curso.'/examen/crear/tarea') 
+*url('gestor_examenes/'.$id_curso.'/examen/listar/tarea') 
+*/
+Route::get('gestor_examenes/{id_curso}/examen/{tipo}/tarea', 'gestor_examenes\\tareaController@listar');
+
+/*
+* esta ruta llega despues de presionar crear tarea con el id de la materia
+*url('/gestor_examenes/tarea/'.$id_curso./create')
+*/
+//Route::get('gestor_examenes/tarea/{id_curso}/create', 'gestor_examenes\\tareaController@create');	
+//url('/gestor_examenes/'.$id_curso.'/tarea/'.$tipo.'/create')
+Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\tareaController@create');	
