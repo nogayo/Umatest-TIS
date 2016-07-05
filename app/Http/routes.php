@@ -47,15 +47,30 @@ Route::resource('/todosloscursos/{boton}/carrera', 'gestorusuarioController');
 
 //Route::get('/admin/curso/{parametro}', 'Admin\\cursoController@visualizar');
 
+/*
+ es para inscribirdea un curso(Foca pone la descripcion de  la ruta)
+*/
+
 Route::get('admin/curso/{parametro}/vista_inscribirse/{boton_todosloscursos}/materias', 'Admin\\cursoController@visualizar_inscribirse');
 Route::get('admin/curso/index_todo/todo', 'Admin\\cursoController@visualizar_categoria_carrera');
 
 Route::get('admin/curso/{id_materia}/borrar', 'Admin\\cursoController@desinscribirse');
 Route::get('admin/curso/desinscribirse/borrarmostrar', 'Admin\\cursoController@visualizar_desinscribirse');
+
+/*
+ esta ruta llega de todos los cursos de los docentes, y nos llega un id de la materia
+ luego se llama al controlador para mostrar todos los cotenidos de un curso . 
+*/
 Route::get('admin/curso_dicta/{id_curso}/vista_contenido_curso', 'Admin\\curso_dictaController@vis_contenido_curso');
 
 Route::get('admin/curso_inscrito/{id_curso}/vista_contenido_curso', 'Admin\\curso_inscritoController@vis_contenido_curso');
 
+
+
+
+  /*
+ son rutas para el gestor examenes y getor cursos
+*/
 Route::resource('gestor_examenes/examen', 'gestor_examenes\\examenController');
 Route::resource('gestor_examenes/nota', 'gestor_examenes\\notaController');
 Route::resource('gestor_examenes/tarea', 'gestor_examenes\\tareaController');
@@ -66,3 +81,36 @@ Route::resource('gestor_examenes/multiples', 'gestor_examenes\\multiplesControll
 Route::resource('gestor_examenes/desarrollo', 'gestor_examenes\\desarrolloController');
 Route::resource('gestor_examenes/simple', 'gestor_examenes\\simpleController');
 Route::resource('gestor_examenes/falsoverdadero', 'gestor_examenes\\falsoverdaderoController');
+
+
+
+/*
+ esta ruta llega cuando presinas crar examne en el index(+) y nos manda
+ el id del curso , para luego crear un examen
+*/
+Route::get('gestor_examenes/examen/{id_curso}/create', 'gestor_examenes\\examenController@crear_examen');
+/*
+esta ruta nos llega del contenido del curso para crear nuevo examen(ojo primero lista)
+gestor_examenes/'.$id_curso.'/examen
+*/
+Route::get('gestor_examenes/{id_curso}/examen', 'gestor_examenes\\examenController@listar');
+/*
+esta ruta es para modificar los datos y nos llega de editar con dos paramotres
+url('/gestor_examenes/examen/' . $item->id . '/update/'.$id_curso.'/edit')
+*/
+Route::get('gestor_examenes/examen/{id}/update/{id_curso}/edit', 'gestor_examenes\\examenController@edit');
+
+/*
+Esta ruta lega despues de Preisnar el voton ver examen  y nos envia dos parametros]
+url('/gestor_examenes/examen/'. $item->id.'/ver/'.$id_curso.'/materia')
+*/
+Route::get('gestor_examenes/examen/{id}/ver/{id_curso}/materia', 'gestor_examenes\\examenController@show');
+
+
+/*
+Esta ruta lega despues de Preisnar el voton Eliminar examen y nos envia dos parametros]
+['/gestor_examenes/'.$item->id.'/examen/'.$id_curso.'/delete' ]
+['/gestor_examenes/'. $item->id .'/examen/'. $id_curso .'/delete'
+*/
+//Route::get('gestor_examenes/{id}/examen/{id_curso}/delete', 'gestor_examenes\\examenController@destroy');
+Route::get('gestor_examenes/examen/{id_curso}/delete/{id}', 'gestor_examenes\\examenController@destroy');
