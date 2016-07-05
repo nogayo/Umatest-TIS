@@ -1,9 +1,21 @@
-@extends('layouts.app')
+  @extends('app')
 
-@section('content')
+@section('htmlheader_title')
+   CURSOS
+@endsection
+
+
+@section('main-content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">GESTOR DE TAREAS</div>
+
+                <div class="panel-body">
 <div class="container">
 
-    <h1>Create New Tarea</h1>
+    <h1>Crear Nueva Tarea</h1>
     <hr/>
 
     {!! Form::open(['url' => '/gestor_examenes/tarea', 'class' => 'form-horizontal']) !!}
@@ -41,13 +53,13 @@
                     {!! $errors->first('estado_tarea', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('fecha_limite') ? 'has-error' : ''}}">
+            <!--div class="form-group {{ $errors->has('fecha_limite') ? 'has-error' : ''}}">
                 {!! Form::label('fecha_limite', trans('tarea.fecha_limite'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::date('fecha_limite', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('fecha_limite', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
+            </div-->
             <div class="form-group {{ $errors->has('puntaje_total') ? 'has-error' : ''}}">
                 {!! Form::label('puntaje_total', trans('tarea.puntaje_total'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -55,6 +67,25 @@
                     {!! $errors->first('puntaje_total', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
+
+             <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('id_curso',$id_curso, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('id_curso', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+
+
+             <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('tipo',$tipo, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('tipo', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+
 
 
     <div class="form-group">
@@ -72,5 +103,10 @@
         </ul>
     @endif
 
+</div>
+    </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
