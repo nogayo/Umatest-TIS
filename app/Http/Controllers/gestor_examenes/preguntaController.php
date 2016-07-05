@@ -9,6 +9,7 @@ use App\preguntum;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
 
 class preguntaController extends Controller
 {
@@ -31,7 +32,10 @@ class preguntaController extends Controller
      */
     public function create()
     {
-        return view('gestor_examenes.pregunta.create');
+       
+         $vector = DB::table('tipo_preguntas')->lists('tipo', 'id');
+
+        return view('gestor_examenes.pregunta.create', compact('vector'));
     }
 
     /**
@@ -41,9 +45,13 @@ class preguntaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['nombre_pregunta' => 'required', 'puntaje_pregunta' => 'required', ]);
+        //$this->validate($request, ['nombre_pregunta' => 'required', 'puntaje_pregunta' => 'required', ]);
+        //preguntum::create($request->all());
 
-        preguntum::create($request->all());
+             DB::table('preguntas')->insert(
+            ['nombre_pregunta' => $request->input('nombre_pregunta'), 'puntaje_pregunta' => $request->input('puntaje_pregunta'), 'tipo_pregunta_id'=>$request->input('tipo_pregunta_id'), 
+               'examen_id'=>1]
+            ); 
 
         Session::flash('flash_message', 'preguntum added!');
 

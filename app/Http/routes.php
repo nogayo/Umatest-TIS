@@ -62,7 +62,15 @@ Route::resource('gestor_examenes/tarea', 'gestor_examenes\\tareaController');
 Route::resource('gestor_examenes/entregado', 'gestor_examenes\\entregadoController');
 Route::resource('gestor_examenes/pregunta', 'gestor_examenes\\preguntaController');
 Route::resource('gestor_examenes/tipo_pregunta', 'gestor_examenes\\tipo_preguntaController');
+
 Route::resource('gestor_examenes/multiples', 'gestor_examenes\\multiplesController');
+Route::get('gestor_examenes/multiples/{id_pregunta}/create', 'gestor_examenes\\multiplesController@create');
+
 Route::resource('gestor_examenes/desarrollo', 'gestor_examenes\\desarrolloController');
+Route::get('gestor_examenes/desarrollo/{id_pregunta}/create', 'gestor_examenes\\desarrolloController@create');
+
 Route::resource('gestor_examenes/simple', 'gestor_examenes\\simpleController');
+Route::get('gestor_examenes/simple/{id_pregunta}/create', 'gestor_examenes\\simpleController@create');
+
 Route::resource('gestor_examenes/falsoverdadero', 'gestor_examenes\\falsoverdaderoController');
+Route::get('gestor_examenes/falsoverdadero/{id_pregunta}/create', 'gestor_examenes\\falsoverdaderoController@create');

@@ -9,6 +9,7 @@ use App\falsoverdadero;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
 
 class falsoverdaderoController extends Controller
 {
@@ -29,9 +30,9 @@ class falsoverdaderoController extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create($id_pregunta)
     {
-        return view('gestor_examenes.falsoverdadero.create');
+        return view('gestor_examenes.falsoverdadero.create', compact('id_pregunta'));
     }
 
     /**
@@ -41,9 +42,9 @@ class falsoverdaderoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['respuesta' => 'required', ]);
+        //$this->validate($request, ['respuesta' => 'required', ]);
 
-        falsoverdadero::create($request->all());
+        //falsoverdadero::create($request->all());
 
         Session::flash('flash_message', 'falsoverdadero added!');
 

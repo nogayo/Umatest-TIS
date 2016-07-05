@@ -9,7 +9,7 @@ use App\multiple;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
-
+use DB;
 class multiplesController extends Controller
 {
     /**
@@ -29,9 +29,9 @@ class multiplesController extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create($id_pregunta)
     {
-        return view('gestor_examenes.multiples.create');
+        return view('gestor_examenes.multiples.create',compact('id_pregunta'));
     }
 
     /**
@@ -41,9 +41,9 @@ class multiplesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['respuesta' => 'required', 'correcta' => 'required', ]);
+        //$this->validate($request, ['respuesta' => 'required', 'correcta' => 'required', ]);
 
-        multiple::create($request->all());
+        //multiple::create($request->all());
 
         Session::flash('flash_message', 'multiple added!');
 

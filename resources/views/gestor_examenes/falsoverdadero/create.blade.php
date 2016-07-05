@@ -1,6 +1,18 @@
-@extends('layouts.app')
+@extends('app')
 
-@section('content')
+@section('htmlheader_title')
+   Home
+@endsection
+
+
+@section('main-content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">GESTOR MATERIA</div>
+
+                <div class="panel-body">
 <div class="container">
 
     <h1>Create New Falsoverdadero</h1>
@@ -37,5 +49,10 @@
         </ul>
     @endif
 
+</div>
+ </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
