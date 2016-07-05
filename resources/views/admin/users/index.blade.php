@@ -8,6 +8,8 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    <!--Comienza path de las Listas de todos los estudiantes
+    -->
     <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -18,6 +20,8 @@
                 </div>
             </div>
         </div>
+    <!--Termina path de las Listas de todos los estudiantes
+    -->
         <div class="col-md-14 col-md-offset-20">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE USUARIOS</div>

@@ -9,6 +9,19 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    <!--Comienza path de Visión
+    -->
+    <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i>Visión</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    <!--Termina path de Visión
+    -->
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading"><h4>Visión de la carrera de Sistemas </h4></div>

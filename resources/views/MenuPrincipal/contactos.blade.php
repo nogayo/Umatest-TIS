@@ -12,6 +12,19 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    <!--Comienza path de Contacto
+    -->
+    <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i>Contacto</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    <!--Termina path de Contacto
+    -->
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading"><h4> Contacto </h4></div>

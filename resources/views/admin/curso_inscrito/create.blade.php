@@ -8,6 +8,22 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    <!--Comienza path Inscripcion a una materia
+    -->
+    <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
+                    <li><a href="{{ url('/todosloscursos/conBoton/carrera') }}"><i class="fa fa-dashboard"></i>Categorías</a></li>
+                    <li><a href="{{ url('/admin/curso/1/vista_inscribirse/conBoton/materias') }}"><i class="fa fa-dashboard"></i>Materias</a></li>
+                    <li><a href="#"></i>Inscripción</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    <!--Termina path  Inscripcion a una materia
+    -->
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR MATERIA</div>

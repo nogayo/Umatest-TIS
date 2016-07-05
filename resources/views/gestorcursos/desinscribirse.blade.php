@@ -8,6 +8,20 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    <!--Comienza path de desinscribirse de una materia.
+    -->
+    <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
+                    <li><a href="#"></i>Desinscribirse de una Materia</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    <!--Termina path  de desinscribirse de una materia.
+    -->
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE MATERIAS</div>
