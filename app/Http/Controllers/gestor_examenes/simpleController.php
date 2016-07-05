@@ -9,6 +9,7 @@ use App\simple;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
 
 class simpleController extends Controller
 {
@@ -29,9 +30,9 @@ class simpleController extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create($id_pregunta)
     {
-        return view('gestor_examenes.simple.create');
+        return view('gestor_examenes.simple.create', compact('id_pregunta'));
     }
 
     /**
@@ -41,13 +42,17 @@ class simpleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['respuesta' => 'required', ]);
+        //$this->validate($request, ['respuesta' => 'required', ]);
 
-        simple::create($request->all());
+        //simple::create($request->all());
+
+        DB::table('simples')->insert(
+            ['respuesta' => $request->input('respuesta'), 'pregunta_id' => $request->input('pregunta_id')]
+            ); 
 
         Session::flash('flash_message', 'simple added!');
 
-        return redirect('gestor_examenes/simple');
+        return redirect('gestor_examenes/pregunta');
     }
 
     /**
@@ -94,7 +99,7 @@ class simpleController extends Controller
 
         Session::flash('flash_message', 'simple updated!');
 
-        return redirect('gestor_examenes/simple');
+        return redirect('gestor_examenes/pregunta');
     }
 
     /**
@@ -110,6 +115,7 @@ class simpleController extends Controller
 
         Session::flash('flash_message', 'simple deleted!');
 
-        return redirect('gestor_examenes/simple');
+        return redirect('gestor_examenes/pregunta');
     }
+
 }

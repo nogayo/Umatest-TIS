@@ -1,6 +1,19 @@
-@extends('layouts.app')
+@extends('app')
 
-@section('content')
+@section('htmlheader_title')
+   Home
+@endsection
+
+
+@section('main-content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-14 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">GESTOR MATERIA</div>
+
+                <div class="panel-body">
+
 <div class="container">
 
     <h1>Create New Preguntum</h1>
@@ -23,6 +36,14 @@
                 </div>
             </div>
 
+             <div class="form-group {{ $errors->has('id_categoria') ? 'has-error' : ''}}">
+                {!! Form::label('tipo_pregunta_id', 'Tipo Pregunta', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::select('tipo_pregunta_id', $vector, null, ['class' => 'form-control'])!!}
+                    {!! $errors->first('tipo_pregunta_id', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
@@ -39,5 +60,11 @@
         </ul>
     @endif
 
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
