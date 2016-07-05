@@ -46,9 +46,13 @@ class falsoverdaderoController extends Controller
 
         //falsoverdadero::create($request->all());
 
+        DB::table('falsoverdaderos')->insert(
+            ['respuesta' => $request->input('respuesta'), 'pregunta_id' => $request->input('pregunta_id')]
+            ); 
+
         Session::flash('flash_message', 'falsoverdadero added!');
 
-        return redirect('gestor_examenes/falsoverdadero');
+        return redirect('gestor_examenes/pregunta');
     }
 
     /**
@@ -95,7 +99,7 @@ class falsoverdaderoController extends Controller
 
         Session::flash('flash_message', 'falsoverdadero updated!');
 
-        return redirect('gestor_examenes/falsoverdadero');
+        return redirect('gestor_examenes/pregunta');
     }
 
     /**
@@ -111,6 +115,6 @@ class falsoverdaderoController extends Controller
 
         Session::flash('flash_message', 'falsoverdadero deleted!');
 
-        return redirect('gestor_examenes/falsoverdadero');
+        return redirect('gestor_examenes/pregunta');
     }
 }

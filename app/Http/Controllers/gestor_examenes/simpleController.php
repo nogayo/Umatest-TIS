@@ -52,7 +52,7 @@ class simpleController extends Controller
 
         Session::flash('flash_message', 'simple added!');
 
-        return redirect('gestor_examenes/simple');
+        return redirect('gestor_examenes/pregunta');
     }
 
     /**
@@ -99,7 +99,7 @@ class simpleController extends Controller
 
         Session::flash('flash_message', 'simple updated!');
 
-        return redirect('gestor_examenes/simple');
+        return redirect('gestor_examenes/pregunta');
     }
 
     /**
@@ -115,7 +115,7 @@ class simpleController extends Controller
 
         Session::flash('flash_message', 'simple deleted!');
 
-        return redirect('gestor_examenes/simple');
+        return redirect('gestor_examenes/pregunta');
     }
 
 }

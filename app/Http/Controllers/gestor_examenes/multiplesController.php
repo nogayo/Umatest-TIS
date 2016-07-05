@@ -17,11 +17,14 @@ class multiplesController extends Controller
      *
      * @return void
      */
-    public function index()
+    public function index($id_pregunta)
     {
-        $multiples = multiple::paginate(15);
+         
+        $multiples = DB::table('multiples')->where('pregunta_id', $id_pregunta)->get();
 
-        return view('gestor_examenes.multiples.index', compact('multiples'));
+        //$multiples = multiple::paginate(15);
+
+        return view('gestor_examenes.multiples.index', compact('multiples', 'id_pregunta'));
     }
 
     /**
@@ -29,9 +32,11 @@ class multiplesController extends Controller
      *
      * @return void
      */
+
     public function create($id_pregunta)
     {
-        return view('gestor_examenes.multiples.create',compact('id_pregunta'));
+        
+        return view('gestor_examenes.multiples.create', compact('id_pregunta'));
     }
 
     /**
@@ -45,9 +50,14 @@ class multiplesController extends Controller
 
         //multiple::create($request->all());
 
+         DB::table('multiples')->insert(
+            ['respuesta' => $request->input('respuesta'), 'correcta' => $request->input('correcta'), 
+            'pregunta_id' => $request->input('pregunta_id')]
+            ); 
+
         Session::flash('flash_message', 'multiple added!');
 
-        return redirect('gestor_examenes/multiples');
+        return redirect('gestor_examenes/multiples/'.$request->input('pregunta_id').'/index');
     }
 
     /**
@@ -71,11 +81,11 @@ class multiplesController extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id, $id_pregunta)
     {
         $multiple = multiple::findOrFail($id);
 
-        return view('gestor_examenes.multiples.edit', compact('multiple'));
+        return view('gestor_examenes.multiples.edit', compact('multiple', 'id_pregunta'));
     }
 
     /**
@@ -94,7 +104,7 @@ class multiplesController extends Controller
 
         Session::flash('flash_message', 'multiple updated!');
 
-        return redirect('gestor_examenes/multiples');
+        return redirect('gestor_examenes/multiples/'.$request->input('pregunta_id').'/index');
     }
 
     /**
@@ -104,12 +114,13 @@ class multiplesController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id, $id_pregunta)
     {
+
         multiple::destroy($id);
 
         Session::flash('flash_message', 'multiple deleted!');
 
-        return redirect('gestor_examenes/multiples');
+        return redirect('gestor_examenes/multiples/'.$request->input('pregunta_id').'/index');
     }
 }

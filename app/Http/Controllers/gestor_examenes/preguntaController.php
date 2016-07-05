@@ -114,6 +114,35 @@ class preguntaController extends Controller
      */
     public function destroy($id)
     {
+        $pregunta= DB::table('preguntas')->where('id',$id)->first();
+        $pregunta=$pregunta->tipo_pregunta_id;
+
+        $tipo= DB::table('tipo_preguntas')->where('id',$pregunta)->first();
+        $tipo=$tipo->tipo;
+
+        if($tipo=='multiple'){
+
+          DB::table('multiples')->where('pregunta_id', $id)->delete();
+
+        }
+        if($tipo=='simple'){
+
+          DB::table('simples')->where('pregunta_id', $id)->delete();
+
+        }
+        if($tipo=='desarrollo'){
+
+          DB::table('desarrollos')->where('pregunta_id', $id)->delete();
+
+        }
+        if($tipo=='F/V'){
+
+          DB::table('falsoverdaderos')->where('pregunta_id', $id)->delete();
+
+        }
+
+        
+
         preguntum::destroy($id);
 
         Session::flash('flash_message', 'preguntum deleted!');

@@ -15,7 +15,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Multiples <a href="{{ url('/gestor_examenes/multiples/create') }}" class="btn btn-primary btn-xs" title="Add New Multiple"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Multiples <a href="{{ url('/gestor_examenes/multiples/'.$id_pregunta.'/create') }}" class="btn btn-primary btn-xs" title="Add New Multiple"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -32,7 +32,7 @@
                     <td>{{ $item->respuesta }}</td><td>{{ $item->correcta }}</td>
                     <td>
                         <a href="{{ url('/gestor_examenes/multiples/' . $item->id) }}" class="btn btn-success btn-xs" title="View Multiple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/gestor_examenes/multiples/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Multiple"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/multiples/' . $item->id . '/'.$id_pregunta.'/edit') }}" class="btn btn-primary btn-xs" title="Edit Multiple"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/gestor_examenes/multiples', $item->id],
@@ -50,7 +50,7 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pagination"> {!! $multiples->render() !!} </div>
+        <div class="pagination"> </div>
     </div>
 
 </div>

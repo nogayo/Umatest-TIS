@@ -46,9 +46,13 @@ class desarrolloController extends Controller
 
        // desarrollo::create($request->all());
 
+        DB::table('desarrollos')->insert(
+            ['respuesta' => $request->input('respuesta'), 'pregunta_id' => $request->input('pregunta_id')]
+            ); 
+
         Session::flash('flash_message', 'desarrollo added!');
 
-        return redirect('gestor_examenes/desarrollo');
+        return redirect('gestor_examenes/pregunta');
     }
 
     /**
@@ -95,7 +99,7 @@ class desarrolloController extends Controller
 
         Session::flash('flash_message', 'desarrollo updated!');
 
-        return redirect('gestor_examenes/desarrollo');
+        return redirect('gestor_examenes/pregunta');
     }
 
     /**
@@ -111,6 +115,6 @@ class desarrolloController extends Controller
 
         Session::flash('flash_message', 'desarrollo deleted!');
 
-        return redirect('gestor_examenes/desarrollo');
+        return redirect('gestor_examenes/pregunta');
     }
 }

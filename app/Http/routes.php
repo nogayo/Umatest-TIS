@@ -79,7 +79,9 @@ Route::resource('gestor_examenes/pregunta', 'gestor_examenes\\preguntaController
 Route::resource('gestor_examenes/tipo_pregunta', 'gestor_examenes\\tipo_preguntaController');
 
 Route::resource('gestor_examenes/multiples', 'gestor_examenes\\multiplesController');
+Route::get('gestor_examenes/multiples/{id_pregunta}/index', 'gestor_examenes\\multiplesController@index');
 Route::get('gestor_examenes/multiples/{id_pregunta}/create', 'gestor_examenes\\multiplesController@create');
+Route::get('gestor_examenes/multiples/{id}/{id_pregunta}/edit', 'gestor_examenes\\multiplesController@edit');
 
 Route::resource('gestor_examenes/desarrollo', 'gestor_examenes\\desarrolloController');
 Route::get('gestor_examenes/desarrollo/{id_pregunta}/create', 'gestor_examenes\\desarrolloController@create');
