@@ -9,6 +9,16 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    <!--Comienza path de Misión
+    -->
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 12%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>home</a></li>
+                    <li><a href="#"></i>Misión</a></li>
+                    </ol>
+        </div>
+    <!--Termina path de Misión
+    -->
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading"><h4>Misión de la carrera de sistemas </h4></div>

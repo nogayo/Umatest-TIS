@@ -5,7 +5,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <link href="{{ asset('/img/umatest.png') }}" type="image/x-icon" rel="shortcut icon" />
 <html>
-<html>
 @include('partials.contentheaderlogos')
 @include('partials.htmlheader')
 
