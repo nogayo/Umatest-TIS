@@ -70,6 +70,21 @@ class UserTableSeeder extends Seeder
         ['id' => 4, 'nombre' => 'Ingenieria Civil']
         ); 
 
+        // DATOS PARA LA TABLA "TIPO DE PREGUNTAS"
+        DB::table('tipo_preguntas')->insert(
+                ['id'=> 1, 'tipo'=> 'simple']
+        );
+        DB::table('tipo_preguntas')->insert(
+                ['id'=> 2, 'tipo'=> 'desarrollo']
+        );
+        DB::table('tipo_preguntas')->insert(
+                ['id'=> 3, 'tipo'=> 'multiple']
+        );
+
+        DB::table('tipo_preguntas')->insert(
+                ['id'=> 4, 'tipo'=> 'F/V']
+        );
+
 
 
     }
