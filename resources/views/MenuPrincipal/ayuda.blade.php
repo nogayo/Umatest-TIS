@@ -11,14 +11,11 @@
     <div class="row">
     <!--Comienza path de Ayuda
     -->
-    <div class="col-md-14 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 12%;margin-left: 0%;">
                     <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i>Ayuda</a></li>
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>home</a></li>
+                    <li><a href="#"></i>Ayuda</a></li>
                     </ol>
-                </div>
-            </div>
         </div>
     <!--Termina path de Ayuda
     -->

@@ -10,14 +10,12 @@
     <div class="row">
     <!--Comienza path de Home
     -->
-  <div class="col-md-14 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+  <div class="col-md-14 col-md-offset-0 borderpath" style=" width: 8%;">
+           
                     <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
                     </ol>
-                </div>
-            </div>
+              
         </div>
     <!--Termina path de Home
     -->

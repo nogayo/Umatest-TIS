@@ -9,15 +9,12 @@
 <div class="container" style="padding-bottom: 4%;">
     <div class="row">
     <!--Comienza path de Reseña Histórica
-    -->
-    <div class="col-md-14 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+    --> 
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 17%;margin-left: 0%;">
                     <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i>Reseña histórica</a></li>
+                    <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i>home</a></li>
+                    <li><a href="#"></i>Reseña histórica</a></li>
                     </ol>
-                </div>
-            </div>
         </div>
     <!--Termina path de Reseña Histórica
     -->

@@ -8,17 +8,17 @@
 @section('main-content')
 <div class="container">
     <div class="row">
-    <div class="col-md-14 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+    <!--Comienza path de Mostar cuenta de estudiante.
+    -->
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 32%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Usuarios</a></li>
                     <li><a href="{{ url('admin/users') }}"></i>Estudiantes</a></li>
                     <li><a href="#"></i>Cuenta de Estudiante</a></li>
                     </ol>
-                </div>
-            </div>
         </div>
+    <!--Comienza path de Mostrar cuenta de estudiante.
+    -->
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE USUARIOS</div>

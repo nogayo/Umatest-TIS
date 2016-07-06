@@ -8,17 +8,18 @@
 @section('main-content')
 <div class="container">
     <div class="row">
-    <div class="col-md-14 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+    <!--Comienza path de Crear cuenta para docentes.
+    -->
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 33%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Usuarios</a></li>
                     <li><a href="{{ url('admin/docente') }}"></i>Docentes</a></li>
                     <li><a href="#"></i>Crear Cuenta de Docente</a></li>
                     </ol>
-                </div>
-            </div>
         </div>
+     <!--Termina path de Crear cuenta para docentes.
+    -->
+
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE USUARIOS</div>

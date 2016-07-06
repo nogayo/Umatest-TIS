@@ -8,20 +8,16 @@
 @section('main-content')
 <div class="container">
     <div class="row">
-    <!--Comienza path de Editar materia de docentes
+    <!--Comienza path de ver materias de docente.
     -->
-    <div class="col-md-14 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+    <div class="col-md-14 col-md-offset-0 borderpath borderpath" style="width: 27%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
                     <li><a href="{{ url('/admin/curso_dicta') }}"><i class="fa fa-dashboard"></i>Materias</a></li>
                     <li><a href="#"></i>Ver Materia</a></li>
                     </ol>
-                </div>
-            </div>
         </div>
-    <!--Termina path de Editar materia de docentess
+    <!--Termina path de ver materia de docentes.
     -->
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">

@@ -8,11 +8,10 @@
 @section('main-content')
 <div class="container">
     <div class="row">
-    <!--Comienza path de Listas de todas las materias por carrera
-    -->
-    <div class="col-md-14 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+        @if($boton_todosloscursos=='conBoton')
+        <!--Comienza path de Listas de todas las materias por carrera para luego poder inscribirse.
+        -->
+        <div class="col-md-14 col-md-offset-0 borderpath" style="width: 26%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
 
@@ -20,11 +19,25 @@
                     
                     <li><a href="#"></i>Materias</a></li>
                     </ol>
-                </div>
-            </div>
         </div>
-    <!--Termina path de Listas de todas las materias por carrera
-    -->
+        <!--Termina path de Listas de todas las materias por carrera para luego poder inscribirse.
+        -->
+        @else
+        <!--Comienza path de Listas de todas las materias por carrera.
+        -->
+        <div class="col-md-14 col-md-offset-0 borderpath" style="width: 26%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
+
+                    <li><a href="{{ url('/todosloscursos/sinBoton/carrera') }}"><i class="fa fa-dashboard"></i>Categorías</a></li>
+                    
+                    <li><a href="#"></i>Materias</a></li>
+                    </ol>
+        </div>
+        <!--Termina path de Listas de todas las materias por carrera.
+        -->
+
+        @endif
         <div class="col-md-14 col-md-offset-0" style="margin-right: -125px;">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE MATERIAS</div>

@@ -8,16 +8,16 @@
 @section('main-content')
 <div class="container">
     <div class="row">
-    <div class="col-md-14 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+    <!--Comienza path de crear Materias.
+    -->
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 24%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
                     <li><a href="#"></i>Crear Nueva Materia</a></li>
                     </ol>
-                </div>
-            </div>
         </div>
+    <!--Termina path de crear Materias.
+    -->
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR MATERIA</div>

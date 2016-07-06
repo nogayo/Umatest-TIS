@@ -10,17 +10,13 @@
     <div class="row">
     <!--Comienza path Inscripcion a una materia
     -->
-    <div class="col-md-14 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 35%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
                     <li><a href="{{ url('/todosloscursos/conBoton/carrera') }}"><i class="fa fa-dashboard"></i>Categorías</a></li>
                     <li><a href="{{ url('/admin/curso/1/vista_inscribirse/conBoton/materias') }}"><i class="fa fa-dashboard"></i>Materias</a></li>
                     <li><a href="#"></i>Inscripción</a></li>
                     </ol>
-                </div>
-            </div>
         </div>
     <!--Termina path  Inscripcion a una materia
     -->

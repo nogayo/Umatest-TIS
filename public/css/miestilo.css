@@ -19,8 +19,11 @@
 	  border-collapse: separate;
   border-spacing:  0px;
 }
-.antishock{
-	color:black;
+.borderpath{
+	margin-left: 1%;
+    box-sizing: content-box;
+    right: 0;
+    border: none;
 }
 .searchcolor{
 	color:red;

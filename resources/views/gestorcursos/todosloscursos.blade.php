@@ -10,15 +10,11 @@
     <div class="row">
     <!--Comienza path de las Listas de categorías de  las carreras
     -->
-    <div class="col-md-14 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 19%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
                     <li><a href="#"></i>Categorías</a></li>
                     </ol>
-                </div>
-            </div>
         </div>
     <!--Termina path de las Listas de categorías de  las carreras
     -->
