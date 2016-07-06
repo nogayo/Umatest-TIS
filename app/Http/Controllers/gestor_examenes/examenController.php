@@ -41,14 +41,7 @@ class examenController extends Controller
     public function create()
     {
 
-
-
-        $vector = DB::table('cursos')->lists('nombre', 'id');
-        //echo $a[0]->nombre;
-        //echo $a[4]->nombre;
-
-
-        return view('gestor_examenes.examen.create', compact('vector'));
+        return view('gestor_examenes.examen.create');
 
     }
 
@@ -66,10 +59,6 @@ class examenController extends Controller
          DB::table('examens')->insert(['nombre_examen' => $request->input('nombre_examen'), 'estado_examen' => $request->input('estado_examen'),
           'fecha_examen' => $request->input('fecha_examen'),'id_cursos'=> $request->input('id_curso')]
          );
-
-       
-
-        //examan::create($request->all());
 
         Session::flash('flash_message', 'examan added!');
 
@@ -131,14 +120,12 @@ class examenController extends Controller
      *
      * @return void
      */
-    public function destroy($id_curso,$id)
+    public function destroy($id,$id_curso)
     {
         examan::destroy($id);
 
         Session::flash('flash_message', 'examan deleted!');
 
-
-       // return redirect('gestor_examenes/examen');
         return redirect('gestor_examenes/'. $id_curso.'/examen');
     }
 
@@ -149,7 +136,6 @@ class examenController extends Controller
      */
     public function crear_examen($id_curso)
     {
-
 
       return view('gestor_examenes.examen.create', compact('id_curso'));
 

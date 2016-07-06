@@ -26,11 +26,6 @@
             </thead>
             <tbody>
 
-             
-          
-
-
-
 
             {{-- */$x=0;/* --}}
             @foreach($examen as $item)
@@ -42,27 +37,14 @@
 
                     <td> 
 
-                    <li><a href="#"><i class="fa fa-file-text-o"></i> Llenar </a></li>
+                    <li><a href="{{url('/gestor_examenes/pregunta/'.$item->id.'/index')}}"><i class="fa fa-file-text-o"></i> Llenar </a></li>
                     </td>
                     <td>
                         <a href="{{ url('/gestor_examenes/examen/'. $item->id .'/ver/'.$id_curso.'/materia') }}" class="btn btn-success btn-xs" title="View Examan"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+
                         <a href="{{ url('/gestor_examenes/examen/' . $item->id . '/update/'.$id_curso.'/edit') }}" class="btn btn-primary btn-xs" title="Edit Examan"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                        {!! Form::open([
-                        'method'=>'DELETE',
-                        'url' => ['/gestor_examenes/examen/'. $id_curso .'/delete',$item->id],
-                        'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Examan" />', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Examan',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            ));!!}
-                        {!! Form::close() !!}
 
-
-                 
-
+                         <a href="{{ url('/gestor_examenes/examen/' . $item->id . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
 
                     </td>
                 </tr>
