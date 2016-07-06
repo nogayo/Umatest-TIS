@@ -60,9 +60,6 @@ public function store(CreateInvestigationRequest $request)
         $input = $request->all();
         $file = $request->file('file');
         dd($file);
-...
-
-
      *
      * @return void
      */
