@@ -69,28 +69,90 @@ Route::get('admin/curso_inscrito/{id_curso}/vista_contenido_curso', 'Admin\\curs
 
 
   /*
- son rutas para el gestor examenes y getor cursos
+ son rutas para el gestor examenes y getor de tareas
 */
 Route::resource('gestor_examenes/examen', 'gestor_examenes\\examenController');
 Route::resource('gestor_examenes/nota', 'gestor_examenes\\notaController');
 Route::resource('gestor_examenes/tarea', 'gestor_examenes\\tareaController');
 Route::resource('gestor_examenes/entregado', 'gestor_examenes\\entregadoController');
+
+//INICIO RUTAS DE PREGUNTAS
+
 Route::resource('gestor_examenes/pregunta', 'gestor_examenes\\preguntaController');
+
+Route::get('gestor_examenes/pregunta/{id_examen}/index', 'gestor_examenes\\preguntaController@index');
+
+Route::get('gestor_examenes/pregunta/{id_examen}/create', 'gestor_examenes\\preguntaController@create');
+
+Route::get('gestor_examenes/pregunta/{id}/{id_examen}/edit', 'gestor_examenes\\preguntaController@edit');
+
+Route::get('gestor_examenes/pregunta/{id}/{id_examen}/show', 'gestor_examenes\\preguntaController@show');
+
+Route::get('gestor_examenes/pregunta/{id}/{id_examen}/delete', 'gestor_examenes\\preguntaController@destroy');
+
+//FIN RUTAS DE PREGUNTAS
+
 Route::resource('gestor_examenes/tipo_pregunta', 'gestor_examenes\\tipo_preguntaController');
 
+//INICIO RUTAS RESPUESTAS DE OPCION MULTIPLE
 Route::resource('gestor_examenes/multiples', 'gestor_examenes\\multiplesController');
+
 Route::get('gestor_examenes/multiples/{id_pregunta}/index', 'gestor_examenes\\multiplesController@index');
+
 Route::get('gestor_examenes/multiples/{id_pregunta}/create', 'gestor_examenes\\multiplesController@create');
+
 Route::get('gestor_examenes/multiples/{id}/{id_pregunta}/edit', 'gestor_examenes\\multiplesController@edit');
 
+Route::get('gestor_examenes/multiples/{id}/{id_pregunta}/show', 'gestor_examenes\\multiplesController@show');
+
+Route::get('gestor_examenes/multiples/{id}/{id_pregunta}/delete', 'gestor_examenes\\multiplesController@destroy');
+//FIN RUTAS RESPUESTAS DE OPCION MULTIPLE
+
+//INICIO RUTAS RESPUESTAS DE OPCION DE DESARROLLO
+
+
+
 Route::resource('gestor_examenes/desarrollo', 'gestor_examenes\\desarrolloController');
-Route::get('gestor_examenes/desarrollo/{id_pregunta}/create', 'gestor_examenes\\desarrolloController@create');
+//{id_pregunta} id de la pregunta
+Route::get('gestor_examenes/desarrollo/{id_pregunta}/{id_examen}/create', ['as' => 'examenes.desarrollo.create','uses' => 'gestor_examenes\\desarrolloController@create']);
+//{id} id de la respuesta
+Route::get('gestor_examenes/desarrollo/{id}/{id_examen}/edit', ['as' => 'examenes.desarrollo.edit','uses' => 'gestor_examenes\\desarrolloController@edit']);
+//{id} id de la respuesta
+Route::get('gestor_examenes/desarrollo/{id}/{id_examen}/show', ['as' => 'examenes.desarrollo.show','uses' => 'gestor_examenes\\desarrolloController@show']);
+//{id} id de la respuesta
+Route::get('gestor_examenes/desarrollo/{id}/{id_examen}/delete', ['as' => 'examenes.desarrollo.delete','uses' => 'gestor_examenes\\desarrolloController@destroy']);
+
+
+//FIN RUTAS RESPUESTAS DE OPCION DE DESARROLLO
+
+//INICIO RUTAS RESPUESTAS DE OPCION SIMPLE
 
 Route::resource('gestor_examenes/simple', 'gestor_examenes\\simpleController');
-Route::get('gestor_examenes/simple/{id_pregunta}/create', 'gestor_examenes\\simpleController@create');
 
+//{id_pregunta} id de la pregunta
+Route::get('gestor_examenes/simple/{id_pregunta}/{id_examen}/create', ['as' => 'examenes.simple.create','uses' => 'gestor_examenes\\simpleController@create']);
+//{id} id de la respuesta
+Route::get('gestor_examenes/simple/{id}/{id_examen}/edit', ['as' => 'examenes.simple.edit','uses' => 'gestor_examenes\\simpleController@edit']);
+//{id} id de la respuesta
+Route::get('gestor_examenes/simple/{id}/{id_examen}/show', ['as' => 'examenes.simple.show','uses' => 'gestor_examenes\\simpleController@show']);
+//{id} id de la respuesta
+Route::get('gestor_examenes/simple/{id}/{id_examen}/delete', ['as' => 'examenes.simple.delete','uses' => 'gestor_examenes\\simpleController@destroy']);
+
+//FIN RUTAS RESPUESTAS DE OPCION SIMPLE
+
+//INICIO RUTAS RESPUESTAS FALSO O VERDADERO
 Route::resource('gestor_examenes/falsoverdadero', 'gestor_examenes\\falsoverdaderoController');
-Route::get('gestor_examenes/falsoverdadero/{id_pregunta}/create', 'gestor_examenes\\falsoverdaderoController@create');
+
+//{id_pregunta} id de la pregunta
+Route::get('gestor_examenes/falsoverdadero/{id_pregunta}/{id_examen}/create', ['as' => 'examenes.falsoverdadero.create','uses' => 'gestor_examenes\\falsoverdaderoController@create']);
+//{id} id de la respuesta
+Route::get('gestor_examenes/falsoverdadero/{id}/{id_examen}/edit', ['as' => 'examenes.falsoverdadero.edit','uses' => 'gestor_examenes\\falsoverdaderoController@edit']);
+//{id} id de la respuesta
+Route::get('gestor_examenes/falsoverdadero/{id}/{id_examen}/show', ['as' => 'examenes.falsoverdadero.show','uses' => 'gestor_examenes\\falsoverdaderoController@show']);
+//{id} id de la respuesta
+Route::get('gestor_examenes/falsoverdadero/{id}/{id_examen}/delete', ['as' => 'examenes.falsoverdadero.delete','uses' => 'gestor_examenes\\falsoverdaderoController@destroy']);
+
+//FIN RUTAS RESPUESTAS FALSO O VERDADERO
 
 
 
@@ -123,7 +185,7 @@ Esta ruta lega despues de Preisnar el voton Eliminar examen y nos envia dos para
 ['/gestor_examenes/'. $item->id .'/examen/'. $id_curso .'/delete'
 */
 //Route::get('gestor_examenes/{id}/examen/{id_curso}/delete', 'gestor_examenes\\examenController@destroy');
-Route::get('gestor_examenes/examen/{id_curso}/delete/{id}', 'gestor_examenes\\examenController@destroy');
+Route::get('gestor_examenes/examen/{id}/delete/{id_curso}/destroy', 'gestor_examenes\\examenController@destroy');
 
 
 

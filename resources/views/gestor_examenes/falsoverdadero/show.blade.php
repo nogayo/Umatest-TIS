@@ -27,19 +27,11 @@
             <tfoot>
                 <tr>
                     <td colspan="2">
-                        <a href="{{ url('gestor_examenes/falsoverdadero/' . $falsoverdadero->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Falsoverdadero"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['gestor_examenes/falsoverdadero', $falsoverdadero->id],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true"/>', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Falsoverdadero',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            ));!!}
-                        {!! Form::close() !!}
+
+                         <a href="{{ url('/gestor_examenes/falsoverdadero/' . $falsoverdadero->id . '/'.$id_examen.'/edit') }}" class="btn btn-primary btn-xs" title="Editar respuesta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+
+                         <a href="{{ url('/gestor_examenes/falsoverdadero/' . $falsoverdadero->id . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+
                     </td>
                 </tr>
             </tfoot>
