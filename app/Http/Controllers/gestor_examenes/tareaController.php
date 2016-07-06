@@ -52,6 +52,17 @@ class tareaController extends Controller
 
     /**
      * Store a newly created resource in storage.
+
+
+//controlador
+public function store(CreateInvestigationRequest $request)
+    {
+        $input = $request->all();
+        $file = $request->file('file');
+        dd($file);
+...
+
+
      *
      * @return void
      */
@@ -59,7 +70,7 @@ class tareaController extends Controller
     {
         $this->validate($request, ['nombre_tarea' => 'required', 'descripcion' => 'required', 'archivo' => 'required', 'estado_tarea' => 'required','puntaje_total' => 'required', ]);
 
-
+     
        $id_curso=$request->input('id_curso');
        $tipo=$request->input('tipo');
          
@@ -67,9 +78,13 @@ class tareaController extends Controller
           'archivo' => $request->input('archivo'),'estado_tarea' => $request->input('estado_tarea'),
           'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
          );
-
-        //tarea::create($request->all());
+       
+         /*
+        tarea::create($request->all());
         //$id_curso=$request->input('id_curso');
+        $id_curso=$request->input('id_curso');
+       $tipo=$request->input('tipo');
+       */
 
         Session::flash('flash_message', 'tarea added!');
         //gestor_examenes/{id_curso}/examen/{tipo}/tarea

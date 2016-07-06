@@ -34,13 +34,27 @@
                     {!! $errors->first('descripcion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('archivo') ? 'has-error' : ''}}">
+
+
+            <!--div class="form-group {{ $errors->has('archivo') ? 'has-error' : ''}}">
                 {!! Form::label('archivo', trans('tarea.archivo'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::textarea('archivo', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('archivo', '<p class="help-block">:message</p>') !!}
                 </div>
+            </div-->
+            <div class="form-group {{ $errors->has('archivo') ? 'has-error' : ''}}">
+                {!! Form::open(['route' => 'investigations.store']) !!}
+
+                  <div class="form-group col-sm-6">
+                    {!! Form::label('file=>true', 'Archivo:') !!}
+                    {!! Form::file('file') !!}
+                   </div>
+
+                 {!! Form::close() !!}
             </div>
+
+
             <div class="form-group {{ $errors->has('estado_tarea') ? 'has-error' : ''}}">
                 {!! Form::label('estado_tarea', trans('tarea.estado_tarea'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
