@@ -9,6 +9,17 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    <div class="col-md-14 col-md-offset-0">
+    <!--Comienza path de Mostar cuenta de Docentes.
+    -->
+                    <ol class="breadcrumb borderpath" style="width: 27%;margin-left: 0%;">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Usuarios</a></li>
+                    <li><a href="{{ url('admin/docente') }}"></i>Docentes</a></li>
+                    <li><a href="#"></i>Cuenta de Docente</a></li>
+                    </ol>
+    <!--Termina path de Mostrar cuenta de docentes.
+    -->
+        </div>
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE USUARIOS</div>
