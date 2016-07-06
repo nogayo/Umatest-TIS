@@ -16,7 +16,6 @@
 <div class="container">
 
     <h1>Create New Simple</h1>
-    <h2>{{$id_pregunta}}</h2>
     <hr/>
 
     {!! Form::open(['url' => '/gestor_examenes/simple', 'class' => 'form-horizontal']) !!}
