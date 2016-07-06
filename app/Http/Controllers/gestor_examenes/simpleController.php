@@ -30,9 +30,9 @@ class simpleController extends Controller
      *
      * @return void
      */
-    public function create($id_pregunta)
+    public function create($id_pregunta, $id_examen)
     {
-        return view('gestor_examenes.simple.create', compact('id_pregunta'));
+        return view('gestor_examenes.simple.create', compact('id_pregunta','id_examen'));
     }
 
     /**
@@ -52,7 +52,7 @@ class simpleController extends Controller
 
         Session::flash('flash_message', 'simple added!');
 
-        return redirect('gestor_examenes/pregunta');
+        return redirect('gestor_examenes/pregunta/'.$request->input('examen_id').'/index');
     }
 
     /**
@@ -62,11 +62,11 @@ class simpleController extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id, $id_examen)
     {
         $simple = simple::findOrFail($id);
 
-        return view('gestor_examenes.simple.show', compact('simple'));
+        return view('gestor_examenes.simple.show', compact('simple','id_examen'));
     }
 
     /**
@@ -76,11 +76,11 @@ class simpleController extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id, $id_examen)
     {
         $simple = simple::findOrFail($id);
 
-        return view('gestor_examenes.simple.edit', compact('simple'));
+        return view('gestor_examenes.simple.edit', compact('simple', 'id_examen'));
     }
 
     /**
@@ -99,7 +99,7 @@ class simpleController extends Controller
 
         Session::flash('flash_message', 'simple updated!');
 
-        return redirect('gestor_examenes/pregunta');
+        return redirect('gestor_examenes/pregunta/'.$request->input('examen_id').'/index');
     }
 
     /**
@@ -109,13 +109,13 @@ class simpleController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id, $id_examen)
     {
         simple::destroy($id);
 
         Session::flash('flash_message', 'simple deleted!');
 
-        return redirect('gestor_examenes/pregunta');
+        return redirect('gestor_examenes/pregunta/'.$id_examen.'/index');
     }
 
 }

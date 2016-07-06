@@ -30,9 +30,9 @@ class desarrolloController extends Controller
      *
      * @return void
      */
-    public function create($id_pregunta)
+    public function create($id_pregunta, $id_examen)
     {
-        return view('gestor_examenes.desarrollo.create',compact('id_pregunta'));
+        return view('gestor_examenes.desarrollo.create',compact('id_pregunta', 'id_examen'));
     }
 
     /**
@@ -52,7 +52,8 @@ class desarrolloController extends Controller
 
         Session::flash('flash_message', 'desarrollo added!');
 
-        return redirect('gestor_examenes/pregunta');
+        return redirect('gestor_examenes/pregunta/'.$request->input('examen_id').'/index');
+
     }
 
     /**
@@ -62,11 +63,11 @@ class desarrolloController extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id, $id_examen)
     {
         $desarrollo = desarrollo::findOrFail($id);
 
-        return view('gestor_examenes.desarrollo.show', compact('desarrollo'));
+        return view('gestor_examenes.desarrollo.show', compact('desarrollo', 'id_examen'));
     }
 
     /**
@@ -76,11 +77,11 @@ class desarrolloController extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id, $id_examen)
     {
         $desarrollo = desarrollo::findOrFail($id);
 
-        return view('gestor_examenes.desarrollo.edit', compact('desarrollo'));
+        return view('gestor_examenes.desarrollo.edit', compact('desarrollo', 'id_examen'));
     }
 
     /**
@@ -99,7 +100,7 @@ class desarrolloController extends Controller
 
         Session::flash('flash_message', 'desarrollo updated!');
 
-        return redirect('gestor_examenes/pregunta');
+        return redirect('gestor_examenes/pregunta/'.$request->input('examen_id').'/index');
     }
 
     /**
@@ -109,12 +110,12 @@ class desarrolloController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id, $id_examen)
     {
         desarrollo::destroy($id);
 
         Session::flash('flash_message', 'desarrollo deleted!');
 
-        return redirect('gestor_examenes/pregunta');
+        return redirect('gestor_examenes/pregunta/'.$id_examen.'/index');
     }
 }

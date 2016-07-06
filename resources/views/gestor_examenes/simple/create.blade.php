@@ -16,7 +16,6 @@
 <div class="container">
 
     <h1>Create New Simple</h1>
-    <h2>{{$id_pregunta}}</h2>
     <hr/>
 
     {!! Form::open(['url' => '/gestor_examenes/simple', 'class' => 'form-horizontal']) !!}
@@ -36,6 +35,14 @@
                     {!! $errors->first('pregunta_id', '<p class="help-block">:message</p>') !!}
                 </div>
                 </div>
+                 <div class="form-group {{ $errors->has('examen_id') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('examen_id',$id_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('examen_id', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+
 
 
 

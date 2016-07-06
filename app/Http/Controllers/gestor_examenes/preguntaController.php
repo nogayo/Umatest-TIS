@@ -18,11 +18,12 @@ class preguntaController extends Controller
      *
      * @return void
      */
-    public function index()
+    public function index($id_examen)
     {
-        $pregunta = preguntum::paginate(15);
+        $pregunta = DB::table('preguntas')->where('examen_id', $id_examen)->get();
+        //$pregunta = preguntum::paginate(15);
 
-        return view('gestor_examenes.pregunta.index', compact('pregunta'));
+        return view('gestor_examenes.pregunta.index', compact('pregunta', 'id_examen'));
     }
 
     /**
@@ -30,12 +31,12 @@ class preguntaController extends Controller
      *
      * @return void
      */
-    public function create()
+    public function create($id_examen)
     {
        
          $vector = DB::table('tipo_preguntas')->lists('tipo', 'id');
 
-        return view('gestor_examenes.pregunta.create', compact('vector'));
+        return view('gestor_examenes.pregunta.create', compact('vector', 'id_examen'));
     }
 
     /**
@@ -50,12 +51,14 @@ class preguntaController extends Controller
 
              DB::table('preguntas')->insert(
             ['nombre_pregunta' => $request->input('nombre_pregunta'), 'puntaje_pregunta' => $request->input('puntaje_pregunta'), 'tipo_pregunta_id'=>$request->input('tipo_pregunta_id'), 
-               'examen_id'=>1]
+               'examen_id'=>$request->input('examen_id')]
             ); 
 
         Session::flash('flash_message', 'preguntum added!');
 
-        return redirect('gestor_examenes/pregunta');
+        
+
+        return redirect('gestor_examenes/pregunta/'.$request->input('examen_id').'/index');
     }
 
     /**
@@ -65,11 +68,11 @@ class preguntaController extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id, $id_examen)
     {
         $preguntum = preguntum::findOrFail($id);
 
-        return view('gestor_examenes.pregunta.show', compact('preguntum'));
+        return view('gestor_examenes.pregunta.show', compact('preguntum', 'id_examen'));
     }
 
     /**
@@ -79,11 +82,11 @@ class preguntaController extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id, $id_examen)
     {
         $preguntum = preguntum::findOrFail($id);
 
-        return view('gestor_examenes.pregunta.edit', compact('preguntum'));
+        return view('gestor_examenes.pregunta.edit', compact('preguntum', 'id_examen'));
     }
 
     /**
@@ -102,7 +105,7 @@ class preguntaController extends Controller
 
         Session::flash('flash_message', 'preguntum updated!');
 
-        return redirect('gestor_examenes/pregunta');
+        return redirect('gestor_examenes/pregunta/'.$request->input('examen_id').'/index');
     }
 
     /**
@@ -112,7 +115,7 @@ class preguntaController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id, $id_examen)
     {
         $pregunta= DB::table('preguntas')->where('id',$id)->first();
         $pregunta=$pregunta->tipo_pregunta_id;
@@ -147,6 +150,6 @@ class preguntaController extends Controller
 
         Session::flash('flash_message', 'preguntum deleted!');
 
-        return redirect('gestor_examenes/pregunta');
+        return redirect('gestor_examenes/pregunta/'.$id_examen.'/index');
     }
 }

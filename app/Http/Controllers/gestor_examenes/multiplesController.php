@@ -67,11 +67,11 @@ class multiplesController extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id, $id_pregunta)
     {
         $multiple = multiple::findOrFail($id);
 
-        return view('gestor_examenes.multiples.show', compact('multiple'));
+        return view('gestor_examenes.multiples.show', compact('multiple', 'id_pregunta'));
     }
 
     /**
@@ -121,6 +121,6 @@ class multiplesController extends Controller
 
         Session::flash('flash_message', 'multiple deleted!');
 
-        return redirect('gestor_examenes/multiples/'.$request->input('pregunta_id').'/index');
+        return redirect('gestor_examenes/multiples/'.$id_pregunta.'/index');
     }
 }
