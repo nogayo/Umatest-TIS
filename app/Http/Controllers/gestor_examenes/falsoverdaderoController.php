@@ -30,9 +30,9 @@ class falsoverdaderoController extends Controller
      *
      * @return void
      */
-    public function create($id_pregunta)
+    public function create($id_pregunta, $id_examen)
     {
-        return view('gestor_examenes.falsoverdadero.create', compact('id_pregunta'));
+        return view('gestor_examenes.falsoverdadero.create', compact('id_pregunta', 'id_examen'));
     }
 
     /**
@@ -52,7 +52,7 @@ class falsoverdaderoController extends Controller
 
         Session::flash('flash_message', 'falsoverdadero added!');
 
-        return redirect('gestor_examenes/pregunta');
+        return redirect('gestor_examenes/pregunta/'.$request->input('examen_id').'/index');
     }
 
     /**
@@ -62,11 +62,11 @@ class falsoverdaderoController extends Controller
      *
      * @return void
      */
-    public function show($id)
+    public function show($id, $id_examen)
     {
         $falsoverdadero = falsoverdadero::findOrFail($id);
 
-        return view('gestor_examenes.falsoverdadero.show', compact('falsoverdadero'));
+        return view('gestor_examenes.falsoverdadero.show', compact('falsoverdadero','id_examen'));
     }
 
     /**
@@ -76,11 +76,11 @@ class falsoverdaderoController extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id, $id_examen)
     {
         $falsoverdadero = falsoverdadero::findOrFail($id);
 
-        return view('gestor_examenes.falsoverdadero.edit', compact('falsoverdadero'));
+        return view('gestor_examenes.falsoverdadero.edit', compact('falsoverdadero', 'id_examen'));
     }
 
     /**
@@ -99,7 +99,7 @@ class falsoverdaderoController extends Controller
 
         Session::flash('flash_message', 'falsoverdadero updated!');
 
-        return redirect('gestor_examenes/pregunta');
+        return redirect('gestor_examenes/pregunta/'.$request->input('examen_id').'/index');
     }
 
     /**
@@ -109,12 +109,12 @@ class falsoverdaderoController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id, $id_examen)
     {
         falsoverdadero::destroy($id);
 
         Session::flash('flash_message', 'falsoverdadero deleted!');
 
-        return redirect('gestor_examenes/pregunta');
+        return redirect('gestor_examenes/pregunta/'.$id_examen.'/index');
     }
 }

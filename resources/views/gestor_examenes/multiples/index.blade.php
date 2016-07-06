@@ -31,20 +31,9 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->respuesta }}</td><td>{{ $item->correcta }}</td>
                     <td>
-                        <a href="{{ url('/gestor_examenes/multiples/' . $item->id) }}" class="btn btn-success btn-xs" title="View Multiple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/multiples/' . $item->id . '/'.$id_pregunta.'/show') }}" class="btn btn-success btn-xs" title="View Multiple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/gestor_examenes/multiples/' . $item->id . '/'.$id_pregunta.'/edit') }}" class="btn btn-primary btn-xs" title="Edit Multiple"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['/gestor_examenes/multiples', $item->id],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" />', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Multiple',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            ));!!}
-                        {!! Form::close() !!}
+                        <a href="{{ url('/gestor_examenes/multiples/' . $item->id . '/'.$id_pregunta.'/delete') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
                     </td>
                 </tr>
             @endforeach

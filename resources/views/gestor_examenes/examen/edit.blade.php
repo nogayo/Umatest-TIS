@@ -48,9 +48,7 @@
                     {!! $errors->first('fecha_examen', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-           
-
-
+       
              <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
                 
                 <div class="col-sm-6">
@@ -58,12 +56,6 @@
                     {!! $errors->first('id_curso', '<p class="help-block">:message</p>') !!}
                 </div>
                 </div>
-
-
-
-
-
-
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">

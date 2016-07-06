@@ -38,6 +38,16 @@
                     {!! $errors->first('puntaje_pregunta', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            
+              <div class="form-group {{ $errors->has('examen_id') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('examen_id',$id_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('examen_id', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+
+
 
 
     <div class="form-group">
