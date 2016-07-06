@@ -165,6 +165,8 @@ Route::get('gestor_examenes/examen/{id_curso}/create', 'gestor_examenes\\examenC
 esta ruta nos llega del contenido del curso para crear nuevo examen(ojo primero lista)
 gestor_examenes/'.$id_curso.'/examen
 */
+Route::get('gestor_examenes/{id_curso}/examen_envio', 'gestor_examenes\\examenController@index');
+
 Route::get('gestor_examenes/{id_curso}/examen', 'gestor_examenes\\examenController@listar');
 /*
 esta ruta es para modificar los datos y nos llega de editar con dos paramotres

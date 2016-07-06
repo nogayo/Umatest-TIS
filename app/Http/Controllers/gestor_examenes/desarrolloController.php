@@ -81,7 +81,7 @@ class desarrolloController extends Controller
     {
         $desarrollo = desarrollo::findOrFail($id);
 
-        return view('gestor_examenes.desarrollo.edit', compact('desarrollo'. 'id_examen'));
+        return view('gestor_examenes.desarrollo.edit', compact('desarrollo', 'id_examen'));
     }
 
     /**
