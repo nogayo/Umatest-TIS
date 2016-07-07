@@ -44,7 +44,7 @@
 
                         <a href="{{ url('/gestor_examenes/examen/' . $item->id . '/update/'.$id_curso.'/edit') }}" class="btn btn-primary btn-xs" title="Edit Examan"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
 
-                         <a href="{{ url('/gestor_examenes/examen/' . $item->id . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+                         <a href="{{ url('/gestor_examenes/examen/' . $item->id . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
 
                     </td>
                 </tr>

@@ -50,7 +50,7 @@
 
                         <a href="{{ url('/gestor_examenes/simple/'.$id_simple.'/'.$id_examen.'/show') }}" class="btn btn-success btn-xs" title="View Simple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 
-                        <a href="{{ url('/gestor_examenes/simple/' . $id_simple . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+                        <a href="{{ url('/gestor_examenes/simple/' . $id_simple . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
                     </td>
                         @else
 
@@ -153,7 +153,7 @@
 
                         <a href="{{ url('/gestor_examenes/pregunta/'.$item->id.'/'.$id_examen.'/edit') }}" class="btn btn-primary btn-xs" title="Edit Preguntum"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                      
-                        <a href="{{ url('/gestor_examenes/pregunta/' . $item->id . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+                        <a href="{{ url('/gestor_examenes/pregunta/' . $item->id . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
                     </td>
                 </tr>
             @endforeach
