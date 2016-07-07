@@ -11,7 +11,7 @@
 
           <!-- Header Navbar -->
           <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
+          <!-- Sidebar toggle <button--></button-->
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
            </a>
@@ -39,11 +39,48 @@
 
          
 
-        <!-- Navbar Right Menu -->
+              <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <!-- Messages: style can be found in dropdown.less-->
-              
+                <!-- Notifications: style can be found in dropdown.less -->
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">
+
+                             {{--*/ $id_user=Auth::id();
+
+
+
+                                $num_users=DB::table('curso_inscritos')->where('user_id', $id_user)->get();
+
+                                $num_users=count($num_users);
+
+                             /* --}}
+
+
+                            {{
+                                $num_users
+
+                             }}
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 10 notifications</li>
+                        <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="ion ion-ios-people info"></i> Notification title
+                                    </a>
+                                </li>
+                                ...
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">View all</a></li>
+                    </ul>
+                </li>
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
@@ -62,11 +99,11 @@
                                 <small>Logueado</small>
                             </p>
                         </li>
-                        
+
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                           {{-- */$id_user=Auth::id(); /* --}}
+                                {{-- */$id_user=Auth::id(); /* --}}
                                 <a href="{{ url('/admin/users/' . $id_user . '/edit') }}" class="btn btn-default btn-flat">Perfil</a>
                             </div>
 
