@@ -19,11 +19,13 @@ class examenController extends Controller
      *
      * @return void
      */
-    public function index()
+    public function index($id_curso)
     {
-        $examen = examan::paginate(15);
+        //$examen = examan::paginate(15);
 
-        return view('gestor_examenes.examen.index',compact('examen','id_curso'));
+        $examen = DB::table('examens')->where('id_cursos', $id_curso)->get();
+
+        return view('gestor_examenes.examen.index_envio',compact('examen','id_curso'));
     }
 
    public function listar($id_curso)
