@@ -15,7 +15,7 @@
     <div class="col-md-14 col-md-offset-0 borderpath" style="width: 31%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
-                    <li><a href="{{ url('/gestorcuros') }}"><i class="fa fa-dashboard"></i>Materias</a></li>
+                    <li><a href="{{ url('/admin/curso_dicta') }}"><i class="fa fa-dashboard"></i>Materias</a></li>
                     <li><a href="#"></i>Contenido del Curso</a></li>
                     </ol>
         </div>
