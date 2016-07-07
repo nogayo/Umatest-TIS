@@ -19,7 +19,7 @@ class examenController extends Controller
      *
      * @return void
      */
-    public function index()
+    public function index($id_curso)
     {
         $examen = examan::paginate(15);
 
