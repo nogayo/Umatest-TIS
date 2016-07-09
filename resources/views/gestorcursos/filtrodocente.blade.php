@@ -20,7 +20,7 @@
     -->
         <div class="col-md-14 col-md-offset-20">
             <div class="panel panel-default">
-                <div class="panel-heading">GESTOR DE MATERIAS</div>
+                <div class="panel-heading">GETOR DE MATERIAS</div>
 
                 <div class="panel-body">
 
