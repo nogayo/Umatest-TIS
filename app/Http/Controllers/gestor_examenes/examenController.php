@@ -167,7 +167,7 @@ class examenController extends Controller
 
        }
        
-       return view('gestorcursos.mis_estudiantes', compact('datos_estudiante'));
+       return view('gestorcursos.mis_estudiantes', compact('datos_estudiante', 'id_curso'));
 
     }
 }

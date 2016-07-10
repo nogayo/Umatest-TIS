@@ -25,10 +25,9 @@
 
                 <div class="panel-body">
 <div class="container">
-{{-- */$id_test=DB::table('examens')->where('id', $id_pregunta)->first();
+{{-- */$id_test=DB::table('examens')->where('id', $id_examen)->first();
                    $id_test=$id_test->id_cursos;    
              /* --}}
-
         {{-- */$id_materia=DB::table('preguntas')->where('id', $id_pregunta)->first();
                    $id_materia=$id_materia->examen_id;    
              /* --}}

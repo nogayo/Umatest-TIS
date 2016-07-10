@@ -25,12 +25,11 @@
 
                 <div class="panel-body">
 <div class="container">
-{{-- */$id_test=DB::table('examens')->where('id', $id_pregunta)->first();
-                   $id_test=$id_test->id_cursos;    
-             /* --}}
-
-        {{-- */$id_materia=DB::table('preguntas')->where('id', $id_pregunta)->first();
+{{-- */$id_materia=DB::table('preguntas')->where('id', $id_pregunta)->first();
                    $id_materia=$id_materia->examen_id;    
+             /* --}}
+             {{-- */$id_test=DB::table('examens')->where('id', $id_materia)->first();
+                   $id_test=$id_test->id_cursos;    
              /* --}}
 <!--Comienza path para Ver Respuestas a preguntas de seleccion multiples.
     -->
@@ -45,7 +44,7 @@
         </div>
     <!--Termina path Ver EDITAR Respuestas a preguntas de seleccion multiples.  
     -->
-    <h1>Multiple {{ $multiple->id }}</h1>
+    <h1>Multiple</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <tbody>

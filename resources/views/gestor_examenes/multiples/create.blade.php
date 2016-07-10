@@ -25,12 +25,11 @@
 
                 <div class="panel-body">
 <div class="container">
-{{-- */$id_test=DB::table('examens')->where('id', $id_pregunta)->first();
-                   $id_test=$id_test->id_cursos;    
-             /* --}}
-
-        {{-- */$id_materia=DB::table('preguntas')->where('id', $id_pregunta)->first();
+{{-- */$id_materia=DB::table('preguntas')->where('id', $id_pregunta)->first();
                    $id_materia=$id_materia->examen_id;    
+             /* --}}
+             {{-- */$id_test=DB::table('examens')->where('id', $id_materia)->first();
+                   $id_test=$id_test->id_cursos;    
              /* --}}
 <!--Comienza path para Crear Respuesta a preguntas de seleccion multiples.
     -->
@@ -44,7 +43,7 @@
         </div>
     <!--Termina path para Crear Respuesta a preguntas de seleccion multiples.  
     -->
-    <h1>Create New Multiple</h1>
+    <h1>Añadir Respuestas Multiples</h1>
     <hr/>
 
     {!! Form::open(['url' => '/gestor_examenes/multiples', 'class' => 'form-horizontal']) !!}
