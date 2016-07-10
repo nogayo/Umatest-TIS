@@ -23,7 +23,12 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                <th>S.No</th><th> {{ trans('tareas.nombre_tarea') }} </th><th> {{ trans('tareas.descripcion') }} </th><th> {{ trans('tareas.archivo') }} </th><th> {{ trans('tareas.fecha_limite') }} </th>
+                <th>S.No</th><th> {{ trans('tareas.nombre_tarea') }} </th>
+                <th> {{ trans('tareas.descripcion') }} </th>
+                <th> {{ trans('tareas.archivo') }} </th>
+                <th> {{ trans('tareas.fecha_limite') }} </th>
+                <th>Descargar</th>
+                <th>Subir tarea</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,10 +41,16 @@
                     <td>{{ $item->descripcion }}</td>
                     <td>{{ $item->archivo }}</td>
                     <td>{{ $item->fecha_limite }}</td>
-                    <td>
-                       
-                     
+                    <td> 
+                    <li><a href="#"><i class="fa fa-envelope-o"></i> Descargar archivo </a></li>
                     </td>
+                     <td> 
+                    <li><a href="#"><i class="fa fa-envelope-o"></i> Subir tarea </a></li>
+                    </td>
+                    
+
+
+                   
                 </tr>
             @endforeach
             </tbody>
