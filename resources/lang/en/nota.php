@@ -1,6 +1,9 @@
 <?php
 
 return [
-    'calificacion' => 'Calificacion',
-'fecha' => 'Fecha',
+    'numero_preguntas' => 'Numero Preguntas',
+'duracion' => 'Duracion',
+'calificacion' => 'Calificacion',
+'fecha_inicio' => 'Fecha Inicio',
+'fecha_fin' => 'Fecha Fin',
 ];
