@@ -59,16 +59,36 @@
                 <li><a href="#"><i class="fa fa-file-text-o"></i> Documentos y Enlaces </a></li>
                
                <li class="dropdown">
-                  <a href="#" class="fa fa-file-text-o dropdown-toggle " data-toggle="dropdown"> Examenes<span class="caret"></span></a>
+                 
                   @if($name_rol=='docente') 
+                   <a href="#" class="fa fa-file-text-o dropdown-toggle " data-toggle="dropdown"> Examenes<span class="caret"></span></a>
 
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen') }}" >Mis Examenes</li>
                     <li><a href="{{ url('gestor_examenes/examen/'.$id_curso.'/create') }}" >Crear Examen</a></li>
-                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen') }} ">Enviar Examen</a></li>
+                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen_envio') }} ">Enviar Examen</a></li>
+                  </ul>
+
+                  @elseif($name_rol=='estudiante')
+
+                   <a href="#" class="fa fa-file-text-o dropdown-toggle " data-toggle="dropdown"> Examenes<span class="caret"></span></a>
+
+                   <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen_envio') }}" >Mis Examenes</li>
                   </ul>
 
                   @else
+              
+                     <a href="#" class="fa fa-file-text-o dropdown-toggle " data-toggle="dropdown"> Examenes Docente<span class="caret"></span></a>
+
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen') }}" >Mis Examenes</li>
+                    <li><a href="{{ url('gestor_examenes/examen/'.$id_curso.'/create') }}" >Crear Examen</a></li>
+                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen_envio') }} ">Enviar Examen</a></li>
+                  </ul>
+
+                  
+                     <a href="#" class="fa fa-file-text-o dropdown-toggle " data-toggle="dropdown"> Examenes Estudiante<span class="caret"></span></a>
 
                    <ul class="dropdown-menu" role="menu">
                     <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen_envio') }}" >Mis Examenes</li>
