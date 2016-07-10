@@ -196,7 +196,7 @@ NOTA.- Apartir de esta instruccion solo se debe aniadir rutas para tareas
 */
 
 /*
-* Esta ruta viene de listar tareas con 2 parametros
+* Esta ruta viene de listar tareas con 2 parametros(del archi contenido curso)
 * parametro1@ id del curso
 * parametro1@ tipo de evento(crear tarea/ Mis tareas)
 *url('gestor_examenes/'.$id_curso.'/examen/crear/tarea') 
@@ -206,11 +206,12 @@ Route::get('gestor_examenes/{id_curso}/examen/{tipo}/tarea', 'gestor_examenes\\t
 
 /*
 * esta ruta llega despues de presionar crear tarea con el id de la materia
+* luego va al controlador,, al metodo createtask
 *url('/gestor_examenes/tarea/'.$id_curso./create')
 */
 //Route::get('gestor_examenes/tarea/{id_curso}/create', 'gestor_examenes\\tareaController@create');	
 //url('/gestor_examenes/'.$id_curso.'/tarea/'.$tipo.'/create')
-Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\tareaController@create');	
+Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\tareaController@createTask');	
 
 
 /*
@@ -221,3 +222,25 @@ Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\
 
 */
 Route::get('gestor_examenes/{id_curso}/materia/{tipo}/tarea/{id}/edit', 'gestor_examenes\\tareaController@edit');
+
+//Route::post('/upload','gestor_examenes\\tareaController@postUpload');
+
+/*
+* Esta ruta viene de listar tareas con 2 parametros
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+*url='/gestor_examenes/{id_curso}/tarea/{tipo}/upload'
+ funciona con anterioe
+*/
+//Route::post('/gestor_examenes/{id_curso}/tarea/{tipo}/upload', 'gestor_examenes\\tareaController@postUpload');
+
+
+/*
+* esta ruta llega despues de presionar crear tarea con el id de la materia
+* luego va al controlador,, al metodo createtask
+*url('/gestor_examenes/tarea/'.$id_curso./create')
+*/
+//Route::get('gestor_examenes/tarea/{id_curso}/create', 'gestor_examenes\\tareaController@create');	
+//url('/gestor_examenes/'.$id_curso.'/tarea/'.$tipo.'/create')
+//Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\tareaController@createTask');	
+Route::post('/gestor_examenes/{id_curso}/tarea/{tipo}/upload', 'gestor_examenes\\tareaController@store');

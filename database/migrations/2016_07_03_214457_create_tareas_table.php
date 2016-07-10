@@ -16,12 +16,11 @@ class CreateTareasTable extends Migration
             $table->increments('id');
             $table->string('nombre_tarea');
             $table->string('descripcion')->nullable();
-            $table->binary('archivo')->nullable();
-            $table->boolean('estado_tarea');
-            $table->date('fecha_limite');
-            $table->integer('puntaje_total');
+            $table->string('archivo')->nullable();
+            $table->string('path_archivo')->nullable();
+            $table->date('fecha_limite')->nullable();
+            $table->integer('puntaje_total')->nullable();
             $table->timestamps();
-
             $table->integer('id_cursos')->unsigned();
             $table->foreign('id_cursos')->references('id')->on('cursos')
                 ->onUpdate('cascade')->onDelete('cascade');
