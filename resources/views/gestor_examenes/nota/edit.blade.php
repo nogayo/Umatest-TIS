@@ -23,18 +23,39 @@
         'class' => 'form-horizontal'
     ]) !!}
 
-                <div class="form-group {{ $errors->has('calificacion') ? 'has-error' : ''}}">
+                <div class="form-group {{ $errors->has('numero_preguntas') ? 'has-error' : ''}}">
+                {!! Form::label('numero_preguntas', trans('nota.numero_preguntas'), ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::number('numero_preguntas', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! $errors->first('numero_preguntas', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('duracion') ? 'has-error' : ''}}">
+                {!! Form::label('duracion', trans('nota.duracion'), ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::number('duracion', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! $errors->first('duracion', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('calificacion') ? 'has-error' : ''}}">
                 {!! Form::label('calificacion', trans('nota.calificacion'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::number('calificacion', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('calificacion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('fecha') ? 'has-error' : ''}}">
-                {!! Form::label('fecha', trans('nota.fecha'), ['class' => 'col-sm-3 control-label']) !!}
+            <div class="form-group {{ $errors->has('fecha_inicio') ? 'has-error' : ''}}">
+                {!! Form::label('fecha_inicio', trans('nota.fecha_inicio'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::date('fecha', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('fecha', '<p class="help-block">:message</p>') !!}
+                    {!! Form::input('datetime-local', 'fecha_inicio', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! $errors->first('fecha_inicio', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('fecha_fin') ? 'has-error' : ''}}">
+                {!! Form::label('fecha_fin', trans('nota.fecha_fin'), ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::input('datetime-local', 'fecha_fin', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! $errors->first('fecha_fin', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 
@@ -55,8 +76,7 @@
     @endif
 
 </div>
-
-</div>
+      </div>
             </div>
         </div>
     </div>

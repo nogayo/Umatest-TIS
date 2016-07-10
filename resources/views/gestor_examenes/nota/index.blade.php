@@ -12,14 +12,15 @@
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR MATERIA</div>
 
-                <div class="panel-body"><div class="container">
+                <div class="panel-body">
+<div class="container">
 
     <h1>Nota <a href="{{ url('/gestor_examenes/nota/create') }}" class="btn btn-primary btn-xs" title="Add New Notum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('nota.calificacion') }} </th><th> {{ trans('nota.fecha') }} </th><th>Actions</th>
+                    <th>S.No</th><th> {{ trans('nota.numero_preguntas') }} </th><th> {{ trans('nota.duracion') }} </th><th> {{ trans('nota.calificacion') }} </th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +29,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td>{{ $item->calificacion }}</td><td>{{ $item->fecha }}</td>
+                    <td>{{ $item->numero_preguntas }}</td><td>{{ $item->duracion }}</td><td>{{ $item->calificacion }}</td>
                     <td>
                         <a href="{{ url('/gestor_examenes/nota/' . $item->id) }}" class="btn btn-success btn-xs" title="View Notum"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/gestor_examenes/nota/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Notum"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
@@ -49,12 +50,11 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pagination"> {!! $nota->render() !!} </div>
+        <div class="pagination">  </div>
     </div>
 
 </div>
-
-</div>
+      </div>
             </div>
         </div>
     </div>

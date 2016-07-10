@@ -24,7 +24,7 @@ class cursoController extends Controller
     public function index()
     {
         $curso = curso::paginate(15);
-
+        
         return view('admin.curso.index', compact('curso'));
     }
 

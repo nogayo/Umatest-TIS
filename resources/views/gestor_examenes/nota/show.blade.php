@@ -22,7 +22,7 @@
                 <tr>
                     <th>ID.</th><td>{{ $notum->id }}</td>
                 </tr>
-                <tr><th> {{ trans('nota.calificacion') }} </th><td> {{ $notum->calificacion }} </td></tr><tr><th> {{ trans('nota.fecha') }} </th><td> {{ $notum->fecha }} </td></tr>
+                <tr><th> {{ trans('nota.numero_preguntas') }} </th><td> {{ $notum->numero_preguntas }} </td></tr><tr><th> {{ trans('nota.duracion') }} </th><td> {{ $notum->duracion }} </td></tr><tr><th> {{ trans('nota.calificacion') }} </th><td> {{ $notum->calificacion }} </td></tr>
             </tbody>
             <tfoot>
                 <tr>
@@ -47,9 +47,7 @@
     </div>
 
 </div>
-
-
-</div>
+      </div>
             </div>
         </div>
     </div>
