@@ -54,23 +54,15 @@ class enviadoController extends Controller
         $id_curso=$request->input('id_curso');
         $id_tarea=$request->input('id');
 
-
-               $id_curso=$request->input('id_curso');
-         
+         $id_curso=$request->input('id_curso');
          DB::table('enviados')->insert(['fecha_limite' => $request->input('fecha_limite'),'id_tarea'=> $request->input('id')]
          );
-
-
-
 
         //enviado::create($request->all());
 
         Session::flash('flash_message', 'enviado added!');
-
-      
+   
         return redirect('gestor_examenes/'.$id_curso.'/envio');
-
-        //return redirect('admin/enviado');
     }
 
     /**
@@ -134,5 +126,23 @@ class enviadoController extends Controller
         Session::flash('flash_message', 'enviado deleted!');
 
         return redirect('admin/enviado');
+    }
+       
+     /**
+     * Es para mostrar las tareas recibidos
+     *
+     * @param  int  $id_curso es el id del curso
+     *
+     * @return void
+     */
+    public function tareas_recibidos($id_curso)
+    {
+      $tareas= DB::table('tareas')
+            ->where('id_cursos', $id_curso)
+            ->join('enviados', 'tareas.id', '=', 'enviados.id_tarea')
+            ->select('tareas.id','tareas.nombre_tarea','tareas.descripcion','tareas.archivo', 'enviados.fecha_limite')
+            ->get();
+     return view('gestor_examenes.tareasrecibidos.recibido', compact('tareas','id_curso'));
+    //return redirect('admin/enviado');
     }
 }
