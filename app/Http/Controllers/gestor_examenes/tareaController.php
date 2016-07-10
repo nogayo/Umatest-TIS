@@ -88,8 +88,15 @@ public function store(CreateInvestigationRequest $request)
           'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
          );
  
+         }else{
+
+             DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),'fecha_limite' => $request->input('fecha_limite'),
+          'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
+         );
+
          }
         }
+
         $tarea = DB::table('tareas')->where('id_cursos', $id_curso)->get();
          /*
         tarea::create($request->all());
