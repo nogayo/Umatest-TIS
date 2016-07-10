@@ -108,7 +108,7 @@
                 @if($name_rol!='estudiante') 
                 <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen/crear/tarea') }}"><i class="fa fa-filter"></i> Crear Tarea </a></li>
 
-                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen_envio') }} "><i class="fa fa-filter"></i>Enviar Tarea</a></li>
+                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/envio') }} "><i class="fa fa-filter"></i>Enviar Tarea</a></li>
                   </ul>
 
                 @endif

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\gestor_examenes;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -9,6 +9,8 @@ use App\enviado;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
+
 
 class enviadoController extends Controller
 {
@@ -22,6 +24,12 @@ class enviadoController extends Controller
         $enviado = enviado::paginate(15);
 
         return view('gestor_examenes.enviado.index', compact('enviado'));
+    }
+     public function listar($id_curso)
+    {
+          $enviar_tarea = DB::table('tareas')->where('id_cursos', $id_curso)->get();
+
+        return view('gestor_examenes.enviado.enviar', compact('enviar_tarea','id_curso'));
     }
 
     /**
