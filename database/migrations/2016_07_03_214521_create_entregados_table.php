@@ -12,6 +12,16 @@ class CreateEntregadosTable extends Migration
      */
     public function up()
     {
+
+          Schema::create('enviados', function(Blueprint $table) {
+            $table->increments('id');
+            $table->date('fecha_limite');
+             $table->integer('id_tarea')->unsigned();
+            $table->foreign('id_tarea')->references('id')->on('tareas')
+            ->onUpdate('cascade')->onDelete('cascade');
+            //$table->timestamps();
+        });
+
         Schema::create('entregados', function(Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion_tarea')->nullable();
@@ -21,13 +31,13 @@ class CreateEntregadosTable extends Migration
             $table->timestamps();
 
 
-           $table->integer('user_id')->unsigned();
-           $table->integer('tarea_id')->unsigned();
+           $table->integer('id_user')->unsigned();
+           $table->integer('id_enviado')->unsigned();
 
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->foreign('tarea_id')->references('id')->on('tareas')
+            $table->foreign('id_user')->references('id')->on('users')
+             ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_enviado')->references('id')->on('enviados')
                 ->onUpdate('cascade')->onDelete('cascade');
 
         });
@@ -40,6 +50,7 @@ class CreateEntregadosTable extends Migration
      */
     public function down()
     {
+        Schema::drop('enviados');
         Schema::drop('entregados');
     }
 }

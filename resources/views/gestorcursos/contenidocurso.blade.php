@@ -99,14 +99,28 @@
                   @endif
               </li>
    
-                <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen/listar/tarea') }}"><i class="fa fa-filter"></i> Mis Tareas </a></li>
+           
+
+              <li class="dropdown">
+              <a href="#" class="fa fa-file-text-o dropdown-toggle " data-toggle="dropdown"> Tareas<span class="caret"></span></a>
+
+                  <ul class="dropdown-menu" role="menu">
+                      <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen/listar/tarea') }}"><i class="fa fa-filter"></i> Mis Tareas </a></li>
              
                 @if($name_rol!='estudiante') 
                 <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen/crear/tarea') }}"><i class="fa fa-filter"></i> Crear Tarea </a></li>
+
+                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/envio') }} "><i class="fa fa-filter"></i>Enviar Tarea</a></li>
+                  </ul>
+
                 @endif
+                <li>
+                   <li class="dropdown">
+                <ul>
                 <li><a href="#"><i class="fa fa-envelope-o"></i> Foros </a></li>
 
               </ul>
+              <li>
             </div>
             <!-- /.box-body -->
           </div>
