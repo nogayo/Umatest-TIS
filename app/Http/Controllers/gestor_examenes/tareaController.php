@@ -84,7 +84,7 @@ public function store(CreateInvestigationRequest $request)
          $fichero_subido = $dir_subida . basename($_FILES['archivo']['name']);
          if (move_uploaded_file($_FILES['archivo']['tmp_name'],$fichero_subido)) {
            DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),
-          'archivo' => $nombreArchivo,'estado_tarea' => $request->input('estado_tarea'),
+          'archivo' => $nombreArchivo,'path_archivo' => $fileName,'fecha_limite' => $request->input('fecha_limite'),
           'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
          );
  
