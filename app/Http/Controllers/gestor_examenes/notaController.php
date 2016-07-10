@@ -56,7 +56,7 @@ class notaController extends Controller
     
     for ($k=0; $k < count($contenedor_estudiantes) ; $k++) { 
 
-       DB::table('notas')->insert(['numero_preguntas' => $request->input('numero_preguntas'), 'duracion' => $request->input('duracion'), 'fecha_inicio' => $request->input('fecha_inicio'),'fecha_fin'=> $request->input('fecha_fin'), 'user_id'=> $contenedor_estudiantes[$k], 
+       DB::table('notas')->insert(['numero_preguntas' => $request->input('numero_preguntas'), 'duracion' => $request->input('duracion'), 'fecha_inicio' => $request->input('fecha_inicio'),'estado'=>true,'fecha_fin'=> $request->input('fecha_fin'), 'user_id'=> $contenedor_estudiantes[$k], 
         'examen_id'=> $request->input('examen_id')]
          );
     }

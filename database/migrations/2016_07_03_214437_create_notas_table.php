@@ -17,6 +17,7 @@ class CreateNotasTable extends Migration
            $table->integer('numero_preguntas');
             $table->integer('duracion');
             $table->integer('calificacion');
+            $table->boolean('estado');
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
             $table->timestamps();
