@@ -8,17 +8,39 @@
 @section('main-content')
 <div class="container">
     <div class="row">
-    <!--Comienza path de Editar cuenta de estudiantes.
-    -->
-    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 38%;margin-left: 0%;">
+       {{-- */$id_user=Auth::id();   
+             /* --}}
+             {{-- */$id_rol=DB::table('role_user')->where('user_id', $id_user)->first();
+                   $id_rol=$id_rol->role_id;    
+             /* --}}
+             {{-- */$name_rol=DB::table('roles')->where('id', $id_rol)->first();
+                    $name_rol=$name_rol->nombre_rol;
+             /* --}}
+            @if($name_rol!='administrador') 
+             <!--Comienza path de Editar cuenta de Usuario (estudiante y docente) desde sus cuentas.
+                -->
+                <div class="col-md-14 col-md-offset-0 borderpath" style="width: 19%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>home</a></li>
+                    <li><a href="#"></i>Editar Informacion</a></li>
+                    </ol>
+                 </div>
+             <!--Comienza path de Editar cuenta de Usuario (estudiante y docente) desde sus cuentas..
+             -->
+
+            @else                      
+                 <!--Comienza path de Editar cuenta de Estudiantes desde una cuenta de Administrador.
+                 -->
+                 <div class="col-md-14 col-md-offset-0 borderpath" style="width: 40%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Usuarios</a></li>
-                    <li><a href="{{ url('admin/users') }}"></i>Estudiantes</a></li>
+                    <li><a href="{{ url('admin/users') }}"><i class="fa fa-dashboard"></i>Estudiantes</a></li>
                     <li><a href="#"></i>Editar Informacion de Estudiante</a></li>
                     </ol>
-        </div>
-    <!--Comienza path de Editar cuenta de estudiantes.
-    -->
+                  </div>
+                <!--Comienza path de Editar cuenta de estudiantes desde una cuenta de Administrador.
+                    -->
+            @endif
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE USUARIOS</div>

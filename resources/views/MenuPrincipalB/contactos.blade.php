@@ -10,7 +10,7 @@
     <div class="row">
     <!--Comienza path de Contacto
     -->
-    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 14%;margin-left: 0%;">
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 16%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i>home</a></li>
                     <li><a href="#"></i>Contactos</a></li>

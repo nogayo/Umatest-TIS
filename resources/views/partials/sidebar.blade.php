@@ -23,7 +23,7 @@
                   <!--DOCENTE GESTOR-->
 
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Gestor Materia</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-user'></i> <span>Gestor Materia</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/curso/create') }}">Crear Materia</a></li>
                     <li><a href="{{ url('admin/curso_dicta') }}">Mis Materias</a></li>
@@ -34,7 +34,7 @@
          
 
             <li class="treeview ">
-                <a href="#"><i class='fa fa-link'></i> <span>Gestor Materias</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-user'></i> <span>Gestor Materias</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
 
                    <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Materias</a></li>
@@ -47,7 +47,7 @@
             </li>
                @else
                    <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Gestor Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-user'></i> <span>Gestor Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/users') }}">Estudiantes</a></li>
                     <li><a href="{{ url('admin/docente') }}">Docentes</a></li>
@@ -56,7 +56,7 @@
                    </li>
 
                     <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Gestor Materias Docente</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-user'></i> <span>Gestor Materias Docente</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/curso/create') }}">Crear Materia</a></li>
                     <li><a href="{{ url('admin/curso_dicta') }}">Mis Materias</a></li>
@@ -64,7 +64,7 @@
                     </li>
 
                   <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Gestor Materias Estudiante</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-user'></i> <span>Gestor Materias Estudiante</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
 
                     <li><a href="{{ url('admin/curso/index_todo/todo')}}">Mis Materias</a></li>

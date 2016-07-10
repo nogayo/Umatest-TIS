@@ -10,7 +10,7 @@
     <div class="row">
     <!--Comienza path de crear Materias.
     -->
-    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 24%;margin-left: 0%;">
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 28%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
                     <li><a href="#"></i>Crear Nueva Materia</a></li>
@@ -50,6 +50,7 @@
                     {!! $errors->first('capacidad', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            <li style="text-align: center; color: red;"></i>Este sera el codigo que los Estudiantes necesitan para inscribirse a esta materia</a></li>
             <div class="form-group {{ $errors->has('codigo') ? 'has-error' : ''}}">
                 {!! Form::label('codigo', trans('curso.codigo'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">

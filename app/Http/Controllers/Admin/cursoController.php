@@ -55,7 +55,7 @@ class cursoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['nombre' => 'required|max:255|unique:cursos', 'capacidad' => 'required|numeric|between:10,999', 'codigo' => 'required|max:255|unique:cursos']);
+        $this->validate($request, ['nombre' => 'required|max:255', 'capacidad' => 'required|numeric|between:10,999', 'codigo' => 'required|max:255|unique:cursos']);
 
           //verifica si ya existe el curso creado
 
@@ -122,7 +122,7 @@ class cursoController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['nombre' => "max:255|unique:cursos,nombre,$id", 'capacidad' => 'required|numeric|between:10,999', 'codigo' => "required|unique:cursos,codigo,$id", ]);
+        $this->validate($request, ['nombre' => "max:255", 'capacidad' => 'required|numeric|between:10,999', 'codigo' => "required|unique:cursos,codigo,$id", ]);
 
         $curso = curso::findOrFail($id);
         $curso->update($request->all());

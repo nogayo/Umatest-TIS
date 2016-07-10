@@ -10,7 +10,7 @@
     <div class="row">
     <!--Comienza path de las Listas de todos los docentes.
                  -->
-    <div class="col-md-14 col-md-offset-0 borderpaht" style="width: 19%;margin-left: 0%;">
+    <div class="col-md-14 col-md-offset-0 borderpaht" style="width: 21%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Usuarios</a></li>
                     <li><a href="#"></i>Docentes</a></li>
