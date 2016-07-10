@@ -69,6 +69,8 @@
                     <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen_envio') }} ">Enviar Examen</a></li>
                   </ul>
 
+                  <li><a href="{{url('gestor_examenes/examen/'.$id_curso.'/listar_estudiantes')}}"><i class="fa fa-file-text-o"></i> Mis Estudiantes </a></li>
+
                   @elseif($name_rol=='estudiante')
 
                    <a href="#" class="fa fa-file-text-o dropdown-toggle " data-toggle="dropdown"> Examenes<span class="caret"></span></a>

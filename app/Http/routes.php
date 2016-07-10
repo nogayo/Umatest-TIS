@@ -68,6 +68,7 @@ Route::get('admin/curso_inscrito/{id_curso}/vista_contenido_curso', 'Admin\\curs
 
 
 
+
   /*
  son rutas para el gestor examenes y getor de tareas
 */
@@ -174,6 +175,7 @@ Route::get('darexamen/formulario_falsoverdadero', 'gestorexamenesController@form
 
 //
 
+Route::get('gestor_examenes/examen/{id_curso}/listar_estudiantes', 'gestor_examenes\\examenController@listar_estudiantes');
 /*
  esta ruta llega cuando presinas crar examne en el index(+) y nos manda
  el id del curso , para luego crear un examen
