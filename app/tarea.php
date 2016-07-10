@@ -25,7 +25,7 @@ class tarea extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre_tarea', 'descripcion', 'archivo', 'estado_tarea', 'fecha_limite', 'puntaje_total'];
+    protected $fillable = ['nombre_tarea', 'descripcion', 'archivo','path_archivo', 'fecha_limite', 'puntaje_total'];
 
     public function entregado2()
     {

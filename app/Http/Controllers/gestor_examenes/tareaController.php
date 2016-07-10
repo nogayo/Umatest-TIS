@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 use DB;
+use Illuminate\Support\Facades\Input;
+use Hash;
 
 class tareaController extends Controller
 {
@@ -65,29 +67,43 @@ public function store(CreateInvestigationRequest $request)
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['nombre_tarea' => 'required', 'descripcion' => 'required', 'archivo' => 'required', 'estado_tarea' => 'required','puntaje_total' => 'required', ]);
+        $this->validate($request, ['nombre_tarea' => 'required', 'descripcion','fecha_limite','puntaje_total',]);
+        $id_curso=$request->input('id_curso');
+        $tipo=$request->input('tipo');
 
-     
-       $id_curso=$request->input('id_curso');
-       $tipo=$request->input('tipo');
-         
-         DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),
-          'archivo' => $request->input('archivo'),'estado_tarea' => $request->input('estado_tarea'),
+      if (!empty($_FILES)) {
+        $temporalFile=$_FILES['archivo']['tmp_name'];
+        //$path="/xampp/htdocs/git2/public/uploads/";
+        $path=public_path().'/uploads/';
+        $fileName=$path.'-'.Hash::make($_FILES['archivo']['name']);
+        $fileType=$_FILES['archivo']['type'];
+        $fileSize=($_FILES['archivo']['size']/1024);
+        $nombreArchivo=$_FILES['archivo']['name'];
+  
+         $dir_subida = $path;
+         $fichero_subido = $dir_subida . basename($_FILES['archivo']['name']);
+         if (move_uploaded_file($_FILES['archivo']['tmp_name'],$fichero_subido)) {
+           DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),
+          'archivo' => $nombreArchivo,'estado_tarea' => $request->input('estado_tarea'),
           'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
          );
-       
+ 
+         }
+        }
+        $tarea = DB::table('tareas')->where('id_cursos', $id_curso)->get();
          /*
         tarea::create($request->all());
         //$id_curso=$request->input('id_curso');
         $id_curso=$request->input('id_curso');
        $tipo=$request->input('tipo');
        */
-
         Session::flash('flash_message', 'tarea added!');
-        //gestor_examenes/{id_curso}/examen/{tipo}/tarea
-
         return redirect('gestor_examenes/'.$id_curso.'/examen/'.$tipo.'/tarea');
     }
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -138,7 +154,6 @@ public function store(CreateInvestigationRequest $request)
 
 
         Session::flash('flash_message', 'tarea updated!');
-
         //return redirect('gestor_examenes/tarea');
         return redirect('gestor_examenes/'.$id_curso.'/examen/'.$tipo.'/tarea');
     }
@@ -156,6 +171,59 @@ public function store(CreateInvestigationRequest $request)
 
         Session::flash('flash_message', 'tarea deleted!');
 
-        return redirect('gestor_examenes/tarea');
+        return redirect('gestor_examenes/tarea/');
     }
+    //mostrar_form
+
+    public function createTask($id_curso,$tipo)
+    {
+
+        return view('gestor_examenes/tarea/formtarea',compact('id_curso','tipo'));
+    }
+     public function postUpload($id_curso,$tipo)
+    {
+      // if(Input::hasFile('file')) {
+        //  Input::file('file')
+            //   ->move('carpetarArchivos','NuevoNombre');
+        //}
+         //   $path = public_path();
+           // $files = $request->file('file');
+           // foreach($files as $file){
+            //    $fileName = $file->getClientOriginalName();
+            //    $file->move($path, $fileName);
+           // }
+       
+       if (!empty($_FILES)) {
+           # code...
+
+        $temporalFile=$_FILES['archivo']['tmp_name'];
+        //$path="/xampp/htdocs/git2/public/uploads/";
+        $path=public_path().'/uploads/';
+        //$path=base_path().'/public/uploads/';
+        $fileName=$path.'-'.Hash::make($_FILES['archivo']['name']);
+        $fileType=$_FILES['archivo']['type'];
+        $fileSize=($_FILES['archivo']['size']/1024);
+        $nombreArchivo=$_FILES['archivo']['name'];
+        $file = new tarea();
+        $file->nombre_tarea = $nombreArchivo;
+        $file->descripcion = 'nose';
+        $file->archivo = $fileName;
+        $file->id_cursos = $id_curso;
+
+        // if (move_uploaded_file($temporalFile,$path)) {
+        //  $file->save();            
+       // }
+         $dir_subida = $path;
+         $fichero_subido = $dir_subida . basename($_FILES['archivo']['name']);
+         if (move_uploaded_file($_FILES['archivo']['tmp_name'],$fichero_subido)) {
+            # code...
+         $file->save();            
+        }
+      }
+        $tarea = DB::table('tareas')->where('id_cursos', $id_curso)->get();
+
+        return view('gestor_examenes.tarea.index', compact('tarea','id_curso','tipo'));
+    }
+
+
 }
