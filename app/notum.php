@@ -25,10 +25,10 @@ class notum extends Model
      *
      * @var array
      */
-    protected $fillable = ['calificacion', 'fecha'];
+    protected $fillable = ['numero_preguntas', 'duracion', 'calificacion', 'fecha_inicio', 'fecha_fin'];
 
-
-       public function users()
+    
+    public function users()
     {
         return $this->belongsTo('App\User');
     }

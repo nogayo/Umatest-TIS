@@ -154,7 +154,25 @@ Route::get('gestor_examenes/falsoverdadero/{id}/{id_examen}/delete', ['as' => 'e
 
 //FIN RUTAS RESPUESTAS FALSO O VERDADERO
 
+//INICIO DE RUTAS PARA NOTAS
 
+Route::resource('gestor_examenes/nota', 'gestor_examenes\\notaController');
+
+Route::get('gestor_examenes/nota/{id_curso}/{id_examen}/create', ['as' => 'examenes.nota.create','uses' => 'gestor_examenes\\notaController@create']);
+
+//FIN DE RUTAS PARA NOTAS
+
+
+//INICIO DE RUTAS PARA DAR EL EXAMEN
+
+Route::get('darexamen/formulario_simple', 'gestorexamenesController@formulario_simple');
+Route::get('darexamen/formulario_desarrollo', 'gestorexamenesController@formulario_desarrollo');
+Route::get('darexamen/formulario_multiple', 'gestorexamenesController@formulario_multiple');
+Route::get('darexamen/formulario_falsoverdadero', 'gestorexamenesController@formulario_falsoverdadero');
+
+//FIN DE RUTAS PARA DAT EL EXAMEN
+
+//
 
 /*
  esta ruta llega cuando presinas crar examne en el index(+) y nos manda
@@ -206,11 +224,12 @@ Route::get('gestor_examenes/{id_curso}/examen/{tipo}/tarea', 'gestor_examenes\\t
 
 /*
 * esta ruta llega despues de presionar crear tarea con el id de la materia
+* luego va al controlador,, al metodo createtask
 *url('/gestor_examenes/tarea/'.$id_curso./create')
 */
 //Route::get('gestor_examenes/tarea/{id_curso}/create', 'gestor_examenes\\tareaController@create');	
 //url('/gestor_examenes/'.$id_curso.'/tarea/'.$tipo.'/create')
-Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\tareaController@create');	
+Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\tareaController@createTask');	
 
 
 /*
@@ -221,3 +240,11 @@ Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\
 
 */
 Route::get('gestor_examenes/{id_curso}/materia/{tipo}/tarea/{id}/edit', 'gestor_examenes\\tareaController@edit');
+
+Route::post('/gestor_examenes/{id_curso}/tarea/{tipo}/upload', 'gestor_examenes\\tareaController@store');
+
+//Route::post('/upload','gestor_examenes\\tareaController@postUpload');
+
+Route::get('/probando_test', 'gestorusuarioController@ellasefue');
+
+Route::post('/probando2_test/lola', 'gestorusuarioController@envio');

@@ -91,9 +91,18 @@ class gestorusuarioController extends Controller
         //
     }
    
-   public function ellasefue($algo){
+   public function ellasefue(){
+
+     $nombre='helber'; 
+     return view('gestor_examenes.vistas_examenes.test', compact('nombre'));
      
-     return "mi nombre es:".$algo;
+   }
+
+   public function envio(Request $request){
+     
+     $nombre = $request->input('nombre');
+
+     return view('gestor_examenes.vistas_examenes.test', compact('nombre'));
      
    }
 }
