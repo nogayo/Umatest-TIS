@@ -18,12 +18,12 @@ class CreateTareasTable extends Migration
             $table->string('descripcion')->nullable();
             $table->string('archivo')->nullable();
             $table->string('path_archivo')->nullable();
-            $table->date('fecha_limite')->nullable();
+            $table->date('fecha_creacion')->nullable();
             $table->integer('puntaje_total')->nullable();
             $table->timestamps();
             $table->integer('id_cursos')->unsigned();
             $table->foreign('id_cursos')->references('id')->on('cursos')
-                ->onUpdate('cascade')->onDelete('cascade');
+            ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

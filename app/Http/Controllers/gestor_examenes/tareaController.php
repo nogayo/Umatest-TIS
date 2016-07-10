@@ -67,7 +67,7 @@ public function store(CreateInvestigationRequest $request)
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['nombre_tarea' => 'required', 'descripcion','fecha_limite','puntaje_total',]);
+        $this->validate($request, ['nombre_tarea' => 'required', 'descripcion','fecha_creacion','puntaje_total',]);
         $id_curso=$request->input('id_curso');
         $tipo=$request->input('tipo');
 
@@ -84,12 +84,19 @@ public function store(CreateInvestigationRequest $request)
          $fichero_subido = $dir_subida . basename($_FILES['archivo']['name']);
          if (move_uploaded_file($_FILES['archivo']['tmp_name'],$fichero_subido)) {
            DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),
-          'archivo' => $nombreArchivo,'path_archivo' => $fileName,'fecha_limite' => $request->input('fecha_limite'),
+          'archivo' => $nombreArchivo,'path_archivo' => $fileName,'fecha_creacion' => $request->input('fecha_creacion'),
           'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
          );
  
+         }else{
+
+             DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),'fecha_creacion' => $request->input('fecha_creacion'),
+          'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
+         );
+
          }
         }
+
         $tarea = DB::table('tareas')->where('id_cursos', $id_curso)->get();
          /*
         tarea::create($request->all());
