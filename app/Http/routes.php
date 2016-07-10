@@ -248,3 +248,5 @@ Route::post('/gestor_examenes/{id_curso}/tarea/{tipo}/upload', 'gestor_examenes\
 Route::get('/probando_test', 'gestorusuarioController@ellasefue');
 
 Route::post('/probando2_test/lola', 'gestorusuarioController@envio');
+
+Route::resource('admin/enviado', 'Admin\\enviadoController');

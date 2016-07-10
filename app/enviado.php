@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class tarea extends Model
+class enviado extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'tareas';
+    protected $table = 'enviados';
 
     /**
     * The database primary key value.
@@ -25,15 +25,14 @@ class tarea extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre_tarea', 'descripcion', 'archivo','path_archivo', 'fecha_creacion', 'puntaje_total'];
-        public function cursos()
-    {
-        return $this->belongsTo('App\curso');
-    }
-    public function enviado()
-    {
-       return $this->hasMany('App\enviado');
-    }
+    protected $fillable = ['fecha_limite'];
 
-
+     public function tareas()
+    {
+        return $this->belongsTo('App\tarea');
+    }
+        public function entregado()
+    {
+       return $this->hasMany('App\entregado');
+    }
 }

@@ -32,8 +32,8 @@ class entregado extends Model
     {
         return $this->belongsTo('App\User');
     }
-     public function tareas()
+     public function enviado()
     {
-        return $this->belongsTo('App\tarea');
+        return $this->belongsTo('App\enviado');
     }
 }
