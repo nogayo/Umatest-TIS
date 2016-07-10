@@ -126,6 +126,7 @@ class examenController extends Controller
     {
         examan::destroy($id);
 
+
         Session::flash('flash_message', 'examan deleted!');
 
         return redirect('gestor_examenes/'. $id_curso.'/examen');
@@ -140,6 +141,32 @@ class examenController extends Controller
     {
 
       return view('gestor_examenes.examen.create', compact('id_curso'));
+
+    }
+
+    public function listar_estudiantes($id_curso){
+
+       $estudiantes_insritos = DB::table('curso_inscritos')->where('curso_id', $id_curso)->get();
+       $ids_estudiantes=array();
+       
+       $index=0;
+       foreach ($estudiantes_insritos as $item) {
+           
+           $ids_estudiantes[$index]= $item->user_id;
+
+        $index++;
+       }
+
+       $datos_estudiante=array();
+
+       for ($i=0; $i < count($ids_estudiantes) ; $i++) { 
+
+         $estudiante = DB::table('users')->where('id', $ids_estudiantes[$i])->first();
+         $datos_estudiante[$i]=$estudiante;
+
+       }
+       
+       return view('gestorcursos.mis_estudiantes', compact('datos_estudiante'));
 
     }
 }
