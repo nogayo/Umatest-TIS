@@ -72,6 +72,7 @@ Route::get('admin/curso_inscrito/{id_curso}/vista_contenido_curso', 'Admin\\curs
  son rutas para el gestor examenes y getor de tareas
 */
 Route::resource('gestor_examenes/examen', 'gestor_examenes\\examenController');
+Route::resource('gestor_examenes/nota', 'gestor_examenes\\notaController');
 Route::resource('gestor_examenes/tarea', 'gestor_examenes\\tareaController');
 Route::resource('gestor_examenes/entregado', 'gestor_examenes\\entregadoController');
 
@@ -223,11 +224,12 @@ Route::get('gestor_examenes/{id_curso}/examen/{tipo}/tarea', 'gestor_examenes\\t
 
 /*
 * esta ruta llega despues de presionar crear tarea con el id de la materia
+* luego va al controlador,, al metodo createtask
 *url('/gestor_examenes/tarea/'.$id_curso./create')
 */
 //Route::get('gestor_examenes/tarea/{id_curso}/create', 'gestor_examenes\\tareaController@create');	
 //url('/gestor_examenes/'.$id_curso.'/tarea/'.$tipo.'/create')
-Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\tareaController@create');	
+Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\tareaController@createTask');	
 
 
 /*
@@ -239,6 +241,9 @@ Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\
 */
 Route::get('gestor_examenes/{id_curso}/materia/{tipo}/tarea/{id}/edit', 'gestor_examenes\\tareaController@edit');
 
+Route::post('/gestor_examenes/{id_curso}/tarea/{tipo}/upload', 'gestor_examenes\\tareaController@store');
+
+//Route::post('/upload','gestor_examenes\\tareaController@postUpload');
 
 Route::get('/probando_test', 'gestorusuarioController@ellasefue');
 
