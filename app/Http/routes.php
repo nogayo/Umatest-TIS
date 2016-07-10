@@ -174,6 +174,7 @@ Route::get('darexamen/formulario_falsoverdadero', 'gestorexamenesController@form
 //FIN DE RUTAS PARA DAT EL EXAMEN
 
 //
+Route::get('gestor_examenes/examen/{id_curso}/listar_estudiantes', 'gestor_examenes\\examenController@listar_estudiantes');
 
 Route::get('gestor_examenes/examen/{id_curso}/listar_estudiantes', 'gestor_examenes\\examenController@listar_estudiantes');
 /*
