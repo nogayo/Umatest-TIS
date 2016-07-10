@@ -271,12 +271,20 @@ Route::resource('admin/enviado', 'gestor_examenes\\enviadoController');
 Route::get('gestor_examenes/{id_curso}/envio', 'gestor_examenes\\enviadoController@listar');
 
 
-//url('/gestor_examenes/'.$id_curso.'/enviar/' . $item->id . '/edit')
+/*
+* Esta ruta viene despues presinar enviar tarea
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+* url('/gestor_examenes/'.$id_curso.'/enviar/' . $item->id . '/edit')
+*/
+Route::get('/gestor_examenes/{id_curso}/enviar/{id}/edit', 'gestor_examenes\\tareaController@editEnviar');
+
+
 
 /*
 * Esta ruta viene despues presinar enviar tarea
 * parametro1@ id del curso
 * parametro1@ tipo de evento(crear tarea/ Mis tareas)
-*url('gestor_examenes/'.$id_curso.'/envio')
+* url('/gestor_examenes/enviar/'.$id_curso.'/'.$item->id.'/create')
 */
-///Route::get('gestor_examenes/{id_curso}/envio', 'gestor_examenes\\enviadoController@listar');
+Route::get('/gestor_examenes/{id_curso}/enviar/{id}/edit', 'gestor_examenes\\tareaController@editEnviar');

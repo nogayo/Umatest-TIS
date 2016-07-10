@@ -79,7 +79,7 @@ class enviadoController extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id_curso,$id)
     {
         $enviado = enviado::findOrFail($id);
 
