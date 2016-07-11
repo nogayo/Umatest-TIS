@@ -25,6 +25,7 @@
 
                 <div class="panel-body">
 <div class="container">
+<<<<<<< HEAD
 <!--Comienza path de enviar tarea.
     -->
     <div class="col-md-14 col-md-offset-0 borderpath" style="width: 17%;margin-left: 0%;">
@@ -35,6 +36,9 @@
         </div>
     <!--Termina path que muestra todas las tareas de un docente y permite crear una nueva tarea.
     -->
+=======
+<h2> Envio <a href="#"></a></h2>
+>>>>>>> 06e8ff528b4592f2e81a71c3d78f358ad1aa9a96
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

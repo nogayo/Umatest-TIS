@@ -55,12 +55,13 @@ class examenController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required', 'fecha_examen' => 'required',]);
+        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required',]);
 
          $id_curso=$request->input('id_curso');
+         $fecha_actual = date("Y-m-d");
          
          DB::table('examens')->insert(['nombre_examen' => $request->input('nombre_examen'), 'estado_examen' => $request->input('estado_examen'),
-          'fecha_examen' => $request->input('fecha_examen'),'id_cursos'=> $request->input('id_curso')]
+          'fecha_examen' => $fecha_actual,'id_cursos'=> $request->input('id_curso')]
          );
 
         Session::flash('flash_message', 'examan added!');
@@ -105,7 +106,7 @@ class examenController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required', 'fecha_examen' => 'required',]);
+        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required',]);
         $id_curso=$request->input('id_curso');
 
         $examan = examan::findOrFail($id);
@@ -167,7 +168,7 @@ class examenController extends Controller
 
        }
        
-       return view('gestorcursos.mis_estudiantes', compact('datos_estudiante'));
+       return view('gestorcursos.mis_estudiantes', compact('datos_estudiante', 'id_curso'));
 
     }
 
@@ -204,6 +205,6 @@ class examenController extends Controller
        }
        
       
-       return view('gestor_examenes.nota.mis_examenes',compact('notas'));
+       return view('gestor_examenes.nota.mis_examenes',compact('notas', 'id_curso'));
     }
 }

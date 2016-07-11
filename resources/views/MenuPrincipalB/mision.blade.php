@@ -10,7 +10,7 @@
     <div class="row">
     <!--Comienza path de Misión
     -->
-    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 12%;margin-left: 0%;">
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 13%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i>home</a></li>
                     <li><a href="#"></i>Misión</a></li>

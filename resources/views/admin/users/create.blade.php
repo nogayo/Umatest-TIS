@@ -10,10 +10,10 @@
     <div class="row">
     <!--Comienza path de Crear cuenta de estudiantes.
     -->
-            <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
+            <div class="col-md-14 col-md-offset-0 borderpath" style="width: 38%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Usuarios</a></li>
-                    <li><a href="{{ url('admin/users') }}"></i>Estudiantes</a></li>
+                    <li><a href="{{ url('admin/users') }}"><i class="fa fa-dashboard"></i>Estudiantes</a></li>
                     <li><a href="#"></i>Crear Cuenta Estudiante</a></li>
                     </ol>
         </div>

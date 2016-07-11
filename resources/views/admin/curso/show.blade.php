@@ -10,7 +10,7 @@
     <div class="row">
     <!--Comienza path de ver materias de docente.
     -->
-    <div class="col-md-14 col-md-offset-0 borderpath borderpath" style="width: 27%;margin-left: 0%;">
+    <div class="col-md-14 col-md-offset-0 borderpath borderpath" style="width: 29%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
                     <li><a href="{{ url('/admin/curso_dicta') }}"><i class="fa fa-dashboard"></i>Materias</a></li>

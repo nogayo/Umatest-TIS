@@ -10,7 +10,7 @@
     <div class="row">
     <!--Comienza path de las Listas de todos los docentes.
     -->
-    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 18%;margin-left: 0%;">
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 20%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
                     <li><a href="#"></i>Materias</a></li>
@@ -20,7 +20,7 @@
     -->
         <div class="col-md-14 col-md-offset-20">
             <div class="panel panel-default">
-                <div class="panel-heading">GETOR DE MATERIAS</div>
+                <div class="panel-heading">GESTOR DE MATERIAS</div>
 
                 <div class="panel-body">
 

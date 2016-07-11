@@ -10,7 +10,7 @@
     <div class="row">
     <!--Comienza path de las Listas de todos los Administradores.
     -->
-    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 22%;margin-left: 0%;">
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 24%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Usuarios</a></li>
                     <li><a href="#"></i>Administradores</a></li>

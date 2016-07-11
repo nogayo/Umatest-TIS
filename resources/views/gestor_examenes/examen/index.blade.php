@@ -8,14 +8,35 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    <div class="row">
+    <!--Comienza path de contenido del curso.
+    -->
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
+                    <li><a href="{{ url('/admin/curso_dicta') }}"><i class="fa fa-dashboard"></i>Materias</a></li>
+                    <li><a href="#"></i>Contenido del Curso</a></li>
+                    </ol>
+        </div>
+    <!--Termina path de las Listas de contenido del curso.
+    -->
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE EXAMENES</div>
 
                 <div class="panel-body">
 <div class="container">
-
-    <h1>Examen <a href="{{ url('/gestor_examenes/examen/'.$id_curso.'/create') }}" class="btn btn-primary btn-xs" title="Add New Examan"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+<!--Comienza path de listas de exámenes.
+    -->
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 18%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('admin/curso_dicta/'.$id_curso.'/vista_contenido_curso') }}"><i class="fa fa-dashboard"></i>Principal</a></li>
+                    <li><a href="#"></i>Mis Exámenes</a></li>
+                    </ol>
+        </div>
+    <!--Termina path de de listas de exámenes.
+    -->
+    <h1>Mis Exámenes<a href="{{ url('/gestor_examenes/examen/'.$id_curso.'/create') }}" class="btn btn-primary btn-xs" title="Add New Examan"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

@@ -10,7 +10,7 @@
     <div class="row">
     <!--Comienza path de Editar materia de docentes
     -->
-    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 28%;margin-left: 0%;">
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 30%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
                     <li><a href="{{ url('/admin/curso_dicta') }}"><i class="fa fa-dashboard"></i>Materias</a></li>
