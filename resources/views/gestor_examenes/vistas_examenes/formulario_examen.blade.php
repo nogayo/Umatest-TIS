@@ -19,6 +19,15 @@
 
     {!! Form::open(['url' => 'darexamen/formulario_desarrollo', 'class' => 'form-horizontal']) !!}
 
+      @for ($i = 0; $i < count($content_nom_preguntas); $i++)
+      
+         @if()
+
+         @endif
+            
+      @endfor
+
+
                 <div class="form-group {{ $errors->has('numero_pregunta') ? 'has-error' : ''}}">
                 {!! Form::label('numero_pregunta','¿ NOMBRE DE LA PREGUNTA ?', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
