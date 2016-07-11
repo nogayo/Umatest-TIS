@@ -8,7 +8,6 @@
 @section('main-content')
 <div class="container">
     <div class="row">
-    <div class="row">
     <!--Comienza path de contenido del curso.
     -->
     <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
