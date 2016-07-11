@@ -15,7 +15,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Create New Enviado</h1>
+    <h1>Enviando una tarea</h1>
     <hr/>
 
     {!! Form::open(['url' => '/admin/enviado', 'class' => 'form-horizontal']) !!}
@@ -27,6 +27,31 @@
                     {!! $errors->first('fecha_limite', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
+
+
+
+             <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('id_curso',$id_curso, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('id_curso', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+
+
+             <div class="form-group {{ $errors->has('id') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('id',$id, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('id', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+
+
+
+
+
 
 
     <div class="form-group">
