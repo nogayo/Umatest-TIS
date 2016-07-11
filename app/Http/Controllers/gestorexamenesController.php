@@ -75,7 +75,7 @@ class gestorexamenesController extends Controller
         }
         
         $content_respuestas=array();//ESTE SE ENVIA(7)
-        for ($i=0; $i < count($ids_preguntas) ; $i++) { 
+        for ($i=0; $i < count($preguntas) ; $i++) { 
 
            $respuesta_simple = DB::table('simples')->where('pregunta_id', $ids_preguntas[$i])->first();
            

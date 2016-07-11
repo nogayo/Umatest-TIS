@@ -17,8 +17,9 @@
     <h2 style="text-align: center;">{{$fecha_examen}}</h2>
     <h2 style="text-align: center;">{{$nombre_categoria}}</h2>
 
-    {!! Form::open(['url' => 'darexamen/formulario_desarrollo', 'class' => 'form-horizontal formexa', 'style' => 'margin-left: 15%;margin-top: 8%;']) !!}
-     {{-- */   
+    {!! Form::open(['url' => 'darexamen/formulario_examen/calcular_nota', 'class' => 'form-horizontal formexa', 'style' => 'margin-left: 15%;margin-top: 8%;']) !!}
+     {{-- */
+
       $formulario_nombres=array();
      /* --}}
 
@@ -28,6 +29,7 @@
          
             <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
             <div><p><label for="'numero_pregunta' . $i">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}</label>
+            
                   <div class="col-sm-2">
                     <input class="form-control" required="required" name="'numero_pregunta' . $i" type="text">
                 </div></p>
@@ -84,6 +86,7 @@
          <br/> <br/>
            <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
            <div><label for="'numero_pregunta' . $i" style="width:auto;">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}</label></div>
+            
                 <div class="col-sm-6" style="margin-left:10%">
                    <div class="checkbox">
                    <br/> <br/>
@@ -106,41 +109,38 @@
          
            $cre=implode(",",$formulario_nombres);
 
-          
+           //METODO PARA CONCATENAR ARRAYS
 
            function convert_multi_array($vector) {
               
               $concatenado="";
 
-              for($i=0; $i < count($vector); $i++){
+              
+             for($i=0; $i < count($vector); $i++){
                 
                  if(is_bool($vector[$i])){
 
-                  $converted_res = ($vector[$i]) ? 'true' : 'false';
+                  $converted_res = ($vector[$i]) ? '1' : '0';
                   $concatenado= $concatenado . $converted_res;
 
                  }else{
-                 $tamano=count($vector[$i]);
-                 }
-                 
-
-                 if($tamano > 1){
-            
-                    $otro_vector=$vector[$i];
+                     if(is_array($vector[$i])){
+                        $otro_vector=$vector[$i];
 
                          $multiple_array=implode(",",$otro_vector);
                       
-                      //$concatenado=$concatenado.'/';
-                      $concatenado.=$multiple_array;
-                      //$concatenado=$concatenado."/";
-                 
-                  
-                   
-                 }else{
-                   $concatenado=$concatenado."".$vector[$i];
-                   //$concatenado=$concatenado.",";
-                   
-                 }
+                        //$concatenado=$concatenado.'/';
+                        $concatenado=$concatenado.$multiple_array;
+                        //$concatenado=$concatenado."/";
+                     }else{
+
+                      $concatenado=$concatenado.$vector[$i];
+                     //$concatenado=$concatenado.",";
+                     }
+
+
+                }
+                
               }
               return $concatenado;
            }
