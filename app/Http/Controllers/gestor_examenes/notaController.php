@@ -76,7 +76,7 @@ class notaController extends Controller
         Session::flash('flash_message', 'notum added!');
 
        // return redirect('gestor_examenes/nota');
-        return $this->llenar_historial( $request->input('examen_id'), $ids_notas, $request->input('numero_preguntas'));
+        return $this->llenar_historial($request->input('curso_id'), $request->input('examen_id'), $ids_notas, $request->input('numero_preguntas'));
     }
 
     /**
@@ -142,7 +142,7 @@ class notaController extends Controller
         return redirect('gestor_examenes/nota');
     }
 
-    public function llenar_historial($id_examen, $ids_notas, $numero_preguntas){
+    public function llenar_historial($id_curso, $id_examen, $ids_notas, $numero_preguntas){
 
         
         $preguntas= DB::table('preguntas')->where('examen_id', $id_examen)->get();
@@ -196,7 +196,8 @@ class notaController extends Controller
         }
          
 
-      return redirect('gestor_examenes/nota');
+
+      return redirect('gestor_examenes/'.$id_curso.'/examen_envio');
     }
 
 

@@ -76,7 +76,7 @@
                    <a href="#" class="fa fa-file-text-o dropdown-toggle " data-toggle="dropdown"> Examenes<span class="caret"></span></a>
 
                    <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen_envio') }}" >Mis Examenes</li>
+                    <li><a href="{{ url('gestor_examenes/examen/'.$id_curso.'/ver_examenes_estudiante') }}" >Mis Examenes</li>
                   </ul>
 
                   @else
