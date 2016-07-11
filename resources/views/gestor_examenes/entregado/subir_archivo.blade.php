@@ -34,13 +34,7 @@
                     {!! $errors->first('fecha', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('puntaje') ? 'has-error' : ''}}">
-                {!! Form::label('puntaje', trans('puntaje'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::number('puntaje', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('puntaje', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
+  
 
             <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
                 
