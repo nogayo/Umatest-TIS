@@ -27,7 +27,9 @@
            
            		  <div class="content">
                       
-
+                <h1>{{$cadena_puntaje}}</h1>
+                <h1>{{$cadena_res_estudiante}}</h1>
+                <h1>{{$cadena_res_real}}</h1>
                     <div style="height:200px; width:200px; float: left;">
                     <img src="{{asset('/img/img_panelPrincipal/bienvenida.png')}}" style="height:200px; width:200px;  "/>  
                     </div>
