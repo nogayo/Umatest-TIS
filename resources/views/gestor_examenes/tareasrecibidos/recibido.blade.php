@@ -90,11 +90,10 @@
                     <li><a href="#"><i class="fa fa-cloud-download" style="font-size:24px;color:orange"></i></a></li>
                     </td>
                      <td> 
-                    <li><a href="#"><i class="fa fa-cloud-upload" style="font-size:24px;color:green"></i></a></li>
+                    <li><a href="{{url('/gestor_examenes/'.$id_curso.'/'.$item->id.'/entregar_tarea')}}">
+                    <i class="fa fa-cloud-upload" style="font-size:24px;color:green"></i></a></li>
                     </td>
-                    
-
-
+                
                    
                 </tr>
             @endforeach
@@ -104,7 +103,7 @@
     </div>
 
 </div>
-</div>
+               </div>
             </div>
         </div>
     </div>
