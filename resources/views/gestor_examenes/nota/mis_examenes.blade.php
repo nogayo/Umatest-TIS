@@ -8,13 +8,58 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    {{-- */$id_user=Auth::id();   
+             /* --}}
+             {{-- */$id_rol=DB::table('role_user')->where('user_id', $id_user)->first();
+                   $id_rol=$id_rol->role_id;    
+             /* --}}
+             {{-- */$name_rol=DB::table('roles')->where('id', $id_rol)->first();
+                    $name_rol=$name_rol->nombre_rol;
+             /* --}}
+             @if ($name_rol=="estudiante")
+              <div class="row">
+               <!--Comienza path de contenido del curso desde estudiante.
+                -->
+                <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
+                    <li><a href="{{ url('admin/curso/index_todo/todo')}}"><i class="fa fa-dashboard"></i>Materias</a></li>
+                    <li><a href="#"></i>Contenido del Curso</a></li>
+                    </ol>
+               </div>
+            <!--Termina path de contenido del curso desde estudiante.
+            -->
+
+          @else      
+            <div class="row">
+          <!--Comienza path de contenido del curso desde docente.
+            -->
+              <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
+                    <li><a href="{{ url('/admin/curso_dicta') }}"><i class="fa fa-dashboard"></i>Materias</a></li>
+                    <li><a href="#"></i>Contenido del Curso</a></li>
+                    </ol>
+              </div>
+              <!--Termina path de las Listas de contenido del curso desde docente.
+           -->
+        @endif
         <div class="col-md-14 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR MATERIA</div>
 
                 <div class="panel-body">
 <div class="container">
-
+<!--Comienza path de lista de examen de estudiantes.
+    -->
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 21%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('admin/curso_dicta/'.$id_curso.'/vista_contenido_curso') }}"><i class="fa fa-dashboard"></i>Principal</a></li>
+                    <li><a href="#"></i>Lista de Exámenes</a></li>
+                    </ol>
+        </div>
+    <!--Termina path de lista de examen de estudiantes.
+    -->
     <h1>MIS EXAMENES</h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">

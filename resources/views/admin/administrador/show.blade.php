@@ -10,10 +10,10 @@
     <div class="row">
     <!--Comienza path de Mostar cuenta de Administrador.
     -->
-    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 36%;margin-left: 0%;">
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 40%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Usuarios</a></li>
-                    <li><a href="{{ url('admin/administrador') }}"></i>Administradores</a></li>
+                    <li><a href="{{ url('admin/administrador') }}"><i class="fa fa-dashboard"></i>Administradores</a></li>
                     <li><a href="#"></i>Cuenta de Administrador</a></li>
                     </ol>
         </div>

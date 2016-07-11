@@ -25,7 +25,7 @@
         @else
         <!--Comienza path de Listas de todas las materias por carrera.
         -->
-        <div class="col-md-14 col-md-offset-0 borderpath" style="width: 26%;margin-left: 0%;">
+        <div class="col-md-14 col-md-offset-0 borderpath" style="width: 28%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
 

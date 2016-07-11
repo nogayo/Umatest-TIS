@@ -8,6 +8,17 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    <!--Comienza path de contenido del curso.
+    -->
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
+                    <li><a href="{{ url('/admin/curso_dicta') }}"><i class="fa fa-dashboard"></i>Materias</a></li>
+                    <li><a href="#"></i>Contenido del Curso</a></li>
+                    </ol>
+        </div>
+    <!--Termina path de las Listas de contenido del curso.
+    -->
         <div class="col-md-14 col-md-offset-20">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE MATERIAS</div>
@@ -17,7 +28,16 @@
 
 
 <div class="container">
-
+<!--Comienza path de Estudiantes Inscritos.
+    -->
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 22%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('admin/curso_dicta/'.$id_curso.'/vista_contenido_curso') }}"><i class="fa fa-dashboard"></i>Principal</a></li>
+                    <li><a href="#"></i>Estudiantes Inscritos</a></li>
+                    </ol>
+        </div>
+    <!--Termina path de Estudiantes Inscritos.
+    -->
     <h2>MIS ESTUDIANTES</h2>
     <div class="table" style="width: 97%;">
         <table class="table table-bordered table-striped table-hover">

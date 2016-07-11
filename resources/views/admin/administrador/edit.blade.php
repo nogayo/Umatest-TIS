@@ -10,10 +10,10 @@
     <div class="row">
     <!--Comienza path de Editar cuenta de Adminmitrador..
     -->
-    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 42%;margin-left: 0%;">
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 46%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Usuarios</a></li>
-                    <li><a href="{{ url('admin/administrador') }}"></i>Administradores</a></li>
+                    <li><a href="{{ url('admin/administrador') }}"><i class="fa fa-dashboard"></i>Administradores</a></li>
                     <li><a href="#"></i>Editar Informacion de Administrador</a></li>
                     </ol>
         </div>
