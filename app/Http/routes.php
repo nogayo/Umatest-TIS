@@ -75,7 +75,7 @@ Route::get('admin/curso_inscrito/{id_curso}/vista_contenido_curso', 'Admin\\curs
 Route::resource('gestor_examenes/examen', 'gestor_examenes\\examenController');
 Route::resource('gestor_examenes/nota', 'gestor_examenes\\notaController');
 Route::resource('gestor_examenes/tarea', 'gestor_examenes\\tareaController');
-Route::resource('gestor_examenes/entregado', 'gestor_examenes\\entregadoController');
+
 
 //INICIO RUTAS DE PREGUNTAS
 
@@ -301,11 +301,37 @@ NOTA.- Apartir de esta instruccion solo se debe aniadir tareas enviadas al estud
 */
 
 /*
-* Esta ruta viene despues presinar enviar tarea
+* Esta ruta viene despues presinar mis tareas
 * parametro1@ id del curso
-* parametro1@ tipo de evento(crear tarea/ Mis tareas)
 * url('gestor_examenes/'.$id_curso.'/tareas/recibidos')
 */
 Route::get('/gestor_examenes/{id_curso}/tareas/recibidos', 'gestor_examenes\\enviadoController@tareas_recibidos');
+
+
+
+
+/*
+NOTA.- Apartir de esta instruccion solo se debe solo para enviar las tareas por parte del estudiante
+*/
+
+/*
+* Esta ruta viene despues presinar enviar tarea
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+* url('/gestor_examenes/'.$id_curso.'/'.$item->id.'/entregar_tarea')
+*/
+Route::get('/gestor_examenes/{id_curso}/{id}/entregar_tarea','gestor_examenes\\entregadoController@mostrar_formulario');
 //gestor_examenes.tareasrecibidos.recibidos
 //Route::get('/gestor_examenes/{id_curso}/tareas/recibidos', 'gestor_examenes\\enviadoController@tareas_recibidos');
+Route::resource('gestor_examenes/entregado', 'gestor_examenes\\entregadoController');
+
+
+
+/*
+* Esta ruta viene despues presinar enviar tarea
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+* '/gestor_examenes/{id_curso}/archivo/{id}/upload'
+/gestor_examenes/{id_curso}/archivo/{id}/upload'
+*/
+Route::post('/gestor_examenes/{id_curso}/archivo/{id}/upload','gestor_examenes\\entregadoController@store');
