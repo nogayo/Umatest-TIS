@@ -33,13 +33,14 @@ class enviadoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
+     * este es para crear un formi=ulario de examen
+     *@param  int  $id_curso es el id del curso
+     *@param  int  $id es el id de la tarea a enviar
      * @return void
      */
-    public function create()
+    public function create($id_curso,$id)
     {
-        return view('gestor_examenes.enviado.create');
+        return view('gestor_examenes.enviado.create',compact('id_curso','id'));
     }
 
     /**
@@ -50,12 +51,18 @@ class enviadoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, ['fecha_limite' => 'required', ]);
+        $id_curso=$request->input('id_curso');
+        $id_tarea=$request->input('id');
 
-        enviado::create($request->all());
+         $id_curso=$request->input('id_curso');
+         DB::table('enviados')->insert(['fecha_limite' => $request->input('fecha_limite'),'id_tarea'=> $request->input('id')]
+         );
+
+        //enviado::create($request->all());
 
         Session::flash('flash_message', 'enviado added!');
-
-        return redirect('admin/enviado');
+   
+        return redirect('gestor_examenes/'.$id_curso.'/envio');
     }
 
     /**
@@ -79,7 +86,7 @@ class enviadoController extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($id_curso,$id)
     {
         $enviado = enviado::findOrFail($id);
 
@@ -119,5 +126,23 @@ class enviadoController extends Controller
         Session::flash('flash_message', 'enviado deleted!');
 
         return redirect('admin/enviado');
+    }
+       
+     /**
+     * Es para mostrar las tareas recibidos
+     *
+     * @param  int  $id_curso es el id del curso
+     *
+     * @return void
+     */
+    public function tareas_recibidos($id_curso)
+    {
+      $tareas= DB::table('tareas')
+            ->where('id_cursos', $id_curso)
+            ->join('enviados', 'tareas.id', '=', 'enviados.id_tarea')
+            ->select('tareas.id','tareas.nombre_tarea','tareas.descripcion','tareas.archivo', 'enviados.fecha_limite')
+            ->get();
+     return view('gestor_examenes.tareasrecibidos.recibido', compact('tareas','id_curso'));
+    //return redirect('admin/enviado');
     }
 }

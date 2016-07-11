@@ -139,6 +139,13 @@ public function store(CreateInvestigationRequest $request)
 
         return view('gestor_examenes.tarea.edit', compact('tarea','id_curso','tipo'));
     }
+       public function editEnviar($id_curso,$id)
+    {
+        $tarea = tarea::findOrFail($id);
+
+        return view('gestor_examenes.tarea.editEnviar', compact('tarea','id_curso'));
+    }
+
 
     /**
      * Update the specified resource in storage.

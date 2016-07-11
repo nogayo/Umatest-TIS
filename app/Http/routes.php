@@ -246,6 +246,14 @@ Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\
 */
 Route::get('gestor_examenes/{id_curso}/materia/{tipo}/tarea/{id}/edit', 'gestor_examenes\\tareaController@edit');
 
+
+
+/*
+* Esta ruta viene despues presinar terminar tarea(al crear tarea)
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+*url('/gestor_examenes/{id_curso}/tarea/{tipo}/upload')
+*/
 Route::post('/gestor_examenes/{id_curso}/tarea/{tipo}/upload', 'gestor_examenes\\tareaController@store');
 
 //Route::post('/upload','gestor_examenes\\tareaController@postUpload');
@@ -253,3 +261,51 @@ Route::post('/gestor_examenes/{id_curso}/tarea/{tipo}/upload', 'gestor_examenes\
 Route::get('/probando_test', 'gestorusuarioController@ellasefue');
 
 Route::post('/probando2_test/lola', 'gestorusuarioController@envio');
+
+Route::resource('admin/enviado', 'gestor_examenes\\enviadoController');
+
+
+
+
+
+/*
+* Esta ruta viene despues presinar enviar tarea
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+* url('/gestor_examenes/'.$id_curso.'/enviar/' . $item->id . '/edit')
+*/
+Route::get('/gestor_examenes/{id_curso}/enviar/{id}/edit', 'gestor_examenes\\tareaController@editEnviar');
+
+/*
+NOTA.- Apartir de esta instruccion solo se debe aniadir rutas para tareas
+*/
+
+/*
+* Esta ruta viene despues presinar enviar tarea
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+* url('/gestor_examenes/enviar/'.$id_curso.'/'.$item->id.'/create')
+*/
+Route::get('/gestor_examenes/enviar/{id_curso}/{id}/create', 'gestor_examenes\\enviadoController@create');
+/*
+* Esta ruta viene despues presinar enviar tarea
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+*url('gestor_examenes/'.$id_curso.'/envio')
+*/
+Route::get('gestor_examenes/{id_curso}/envio', 'gestor_examenes\\enviadoController@listar');
+
+
+/*
+NOTA.- Apartir de esta instruccion solo se debe aniadir tareas enviadas al estudiante
+*/
+
+/*
+* Esta ruta viene despues presinar enviar tarea
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+* url('gestor_examenes/'.$id_curso.'/tareas/recibidos')
+*/
+Route::get('/gestor_examenes/{id_curso}/tareas/recibidos', 'gestor_examenes\\enviadoController@tareas_recibidos');
+//gestor_examenes.tareasrecibidos.recibidos
+//Route::get('/gestor_examenes/{id_curso}/tareas/recibidos', 'gestor_examenes\\enviadoController@tareas_recibidos');
