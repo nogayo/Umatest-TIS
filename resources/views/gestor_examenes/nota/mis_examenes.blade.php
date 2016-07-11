@@ -35,12 +35,12 @@
                     $objeto_examen= DB::table('examens')->where('id', $item->examen_id)->first();
 
                     $nombre_examen=$objeto_examen->nombre_examen;
+
+                    $id_examen=$objeto_examen->id;
                      
                     $f_inicio= $item->fecha_inicio;
 
-                    $fecha_actual = date("Y-m-d H:i:s"); 
-
-                    //aqui un update para actualizar estado???     
+                    $fecha_actual = date("Y-m-d H:i:s");      
 
                 /* --}}
                 <tr>
@@ -49,7 +49,7 @@
                    
                    @if($fecha_actual >= $f_inicio)
                     <td>
-                    <li><a href="{{url('/home')}}"><i class="fa fa-book Try it"></i> Empezar </a></li>
+                    <li><a href="{{url('darexamen/'.$item->id.'/'.$id_examen.'/formulario_examen')}}"><i class="fa fa-book Try it"></i> Empezar </a></li>
                     </td>
                    @else
                     <td>
