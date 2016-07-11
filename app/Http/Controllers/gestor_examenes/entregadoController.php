@@ -9,6 +9,11 @@ use App\entregado;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use App\tarea;
+use DB;
+use Illuminate\Support\Facades\Input;
+use Hash;
+use Auth;
 
 class entregadoController extends Controller
 {
@@ -34,6 +39,21 @@ class entregadoController extends Controller
         return view('gestor_examenes.entregado.create');
     }
 
+
+ /**
+     * Show the form for creating a new resource.
+     *
+    * @param  int  $id_curso  es el id del curso
+     * @param  int  $id  es el id de tareas enviados
+  
+     * @return void
+     */
+  public function mostrar_formulario($id_curso,$id)
+    {
+
+        return view('gestor_examenes.entregado.subir_archivo',compact('id_curso','id'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -41,16 +61,56 @@ class entregadoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['descripcion_tarea' => 'required', 'archivo' => 'required', 'fecha' => 'required', 'puntaje' => 'required', ]);
+       // $this->validate($request, ['descripcion_tarea' => 'required', 'archivo' => 'required', 'fecha' => 'required', 'puntaje' => 'required', ]);
 
-        entregado::create($request->all());
+        //entregado::create($request->all());
 
+       // Session::flash('flash_message', 'entregado added!');
+
+       // return redirect('gestor_examenes/entregado');
+
+          $this->validate($request, ['descripcion_tarea', 'archivo', 'fecha' => 'required', 'puntaje', ]);
+        $id_curso=$request->input('id_curso');
+        $id_enviado=$request->input('id');
+        $id_user=Auth::Id();
+
+      if (!empty($_FILES)) {
+        $temporalFile=$_FILES['archivo']['tmp_name'];
+        //$path="/xampp/htdocs/git2/public/uploads/";
+        $path=public_path().'/uploads/';
+        $fileName=$path.'-'.Hash::make($_FILES['archivo']['name']);
+        $fileType=$_FILES['archivo']['type'];
+        $fileSize=($_FILES['archivo']['size']/1024);
+        $nombreArchivo=$_FILES['archivo']['name'];
+  
+         $dir_subida = $path;
+         $fichero_subido = $dir_subida . basename($_FILES['archivo']['name']);
+         if (move_uploaded_file($_FILES['archivo']['tmp_name'],$fichero_subido)) {
+
+           DB::table('entregados')->insert(['descripcion_tarea' => $request->input('descripcion_tarea'), 
+          'archivo' => $nombreArchivo,'fecha' => $request->input('fecha'),
+          'puntaje' => $request->input('puntaje'),'id_user'=>$id_user,
+          'id_enviado'=> $request->input('id')]
+         );
+ 
+         }else{
+
+        
+
+           DB::table('entregados')->insert(['descripcion_tarea' => $request->input('descripcion_tarea'), 
+          'fecha' => $request->input('fecha'),'puntaje' => $request->input('puntaje'),'id_user'=>$id_user,
+          'id_enviado'=> $request->input('id')]
+         );
+ 
+
+         }
+        }
+            
+       ///gestor_examenes/{id_curso}/tareas/recibidos'
         Session::flash('flash_message', 'entregado added!');
-
-        return redirect('gestor_examenes/entregado');
+        return redirect('gestor_examenes/'.$id_curso.'/tareas/recibidos');
     }
-
-    /**
+     /**
      * Display the specified resource.
      *
      * @param  int  $id
