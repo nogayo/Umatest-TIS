@@ -18,7 +18,7 @@
                     $name_rol=$name_rol->nombre_rol;
              /* --}}
              @if ($name_rol=="estudiante")
-              <div class="row">
+            
                <!--Comienza path de contenido del curso desde estudiante.
                 -->
                 <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
@@ -32,7 +32,7 @@
             -->
 
           @else      
-            <div class="row">
+           
           <!--Comienza path de contenido del curso desde docente.
             -->
               <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
