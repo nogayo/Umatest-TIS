@@ -52,15 +52,6 @@
                 </div>
             </div>
 
-
-   
-            <div class="form-group {{ $errors->has('fecha_creacion') ? 'has-error' : ''}}">
-                {!! Form::label('fecha_creacion', trans('fecha_creacion'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::date('fecha_creacion', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('fecha_creacion', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
             <div class="form-group {{ $errors->has('puntaje_total') ? 'has-error' : ''}}">
                 {!! Form::label('puntaje_total', trans('tarea.puntaje_total'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -68,6 +59,9 @@
                     {!! $errors->first('puntaje_total', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
+
+          
 
             <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
                 
@@ -87,7 +81,9 @@
                 </div>
 
  <div class="form-group {{ $errors->has('subir_archivo') ? 'has-error' : ''}}">
-                {!! Form::label('Subir Archivo','Subir archivo', ['class' => 'col-sm-3 control-label']) !!}
+
+ 
+                {!! Form::label('Subir Archivo','(*) Subir archivo', ['class' => 'col-sm-3 control-label']) !!}
           <div class="col-sm-6">
           {!! Form::file('archivo') !!}
 
@@ -104,10 +100,14 @@
                 </div>
                 </div>
 
+
+
   
 
 </div>
+
     </div>
+    <li style="text-align: center; color: orange;"></i>(*) Todos los campos que tiene asterisco es opcional</a></li>
             </div>
         </div>
     </div>

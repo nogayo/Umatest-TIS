@@ -62,15 +62,22 @@ class enviadoController extends Controller
 
          // aparir de aca es para notificaciones
 
-          $tarea= DB::table('tareas')
-            ->where('id_cursos', $id_curso)
-            ->select('tareas.nombre_tarea')
+         $tarea= DB::table('tareas')
+           ->where('id_cursos', $id_curso)
+           ->where('id', $id_tarea)
+           ->select('tareas.nombre_tarea')
             ->get();
-         $estudiantes= DB::table('curso_inscritos')->where('curso_id', $id_curso)->get();
+            //first();
+
+
+
+
+         
+          $estudiantes= DB::table('curso_inscritos')->where('curso_id', $id_curso)->get();
 
          foreach ($estudiantes as $item) {
             
-                    DB::table('notificacions')->insert(['id_user' => $item->user_id,'id_curso' => $id_curso, 'descrip' => $tarea,'visto' => 'false']
+                    DB::table('notificacions')->insert(['id_user' => $item->user_id,'id_curso' => $id_curso, 'descripcion' => $tarea[0]->nombre_tarea,'visto' => 'false']
          );
 
         }
