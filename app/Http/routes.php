@@ -171,9 +171,12 @@ Route::get('darexamen/formulario_desarrollo', 'gestorexamenesController@formular
 Route::get('darexamen/formulario_multiple', 'gestorexamenesController@formulario_multiple');
 Route::get('darexamen/formulario_falsoverdadero', 'gestorexamenesController@formulario_falsoverdadero');
 
+
 //FIN DE RUTAS PARA DAT EL EXAMEN
 
 //
+
+Route::get('gestor_examenes/examen/{id_curso}/ver_examenes_estudiante', 'gestor_examenes\\examenController@ver_examenes_estudiante');
 
 Route::get('gestor_examenes/examen/{id_curso}/listar_estudiantes', 'gestor_examenes\\examenController@listar_estudiantes');
 /*

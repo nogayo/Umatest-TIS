@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
 use DB;
+use Auth;
 
 class examenController extends Controller
 {
@@ -169,5 +170,41 @@ class examenController extends Controller
        
        return view('gestorcursos.mis_estudiantes', compact('datos_estudiante', 'id_curso'));
 
+    }
+
+    public function ver_examenes_estudiante($id_curso){
+       
+       //$fecha_actual = date("Y-m-d");
+      $fecha_actual = date("Y-m-d H:i:s");
+
+       $examenes = DB::table('examens')->where('id_cursos', $id_curso)->get();
+       $ids_examenes=array();
+       
+       $index=0;
+       foreach ($examenes as $item) {
+           
+           $ids_examenes[$index]=$item->id;
+          $index++;
+       }
+       
+       $id_user=Auth::id(); 
+       $notas=array();
+       $puntero_nota=0;
+       for ($i=0; $i < count($ids_examenes); $i++) {
+
+          $objeto_nota= DB::table('notas')->where('user_id', $id_user)->where('examen_id', $ids_examenes[$i])->where('estado',true)->where('fecha_fin', '>=', $fecha_actual)->first();
+
+          if(!is_null($objeto_nota)){
+
+             $notas[$puntero_nota]=$objeto_nota;
+            
+             $puntero_nota++; 
+
+          } 
+
+       }
+       
+      
+       return view('gestor_examenes.nota.mis_examenes',compact('notas'));
     }
 }
