@@ -20,6 +20,8 @@
 
     {!! Form::open(['url' => 'darexamen/formulario_multiple', 'class' => 'form-horizontal']) !!}
 
+        @if()
+
                 <div class="form-group {{ $errors->has('respuesta') ? 'has-error' : ''}}">
                 {!! Form::label('respuesta', trans('simple.respuesta'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
