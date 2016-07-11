@@ -25,15 +25,6 @@
                 </div>
             </div>
 
-
-   
-            <div class="form-group {{ $errors->has('fecha') ? 'has-error' : ''}}">
-                {!! Form::label('fecha', trans('fecha'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::date('fecha', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('fecha', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
   
 
             <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">

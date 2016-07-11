@@ -73,6 +73,7 @@ class entregadoController extends Controller
         $id_curso=$request->input('id_curso');
         $id_enviado=$request->input('id');
         $id_user=Auth::Id();
+        $fecha_actual = date("Y-m-d H:i:s");
 
       if (!empty($_FILES)) {
         $temporalFile=$_FILES['archivo']['tmp_name'];
@@ -88,7 +89,7 @@ class entregadoController extends Controller
          if (move_uploaded_file($_FILES['archivo']['tmp_name'],$fichero_subido)) {
 
            DB::table('entregados')->insert(['descripcion_tarea' => $request->input('descripcion_tarea'), 
-          'archivo' => $nombreArchivo,'fecha' => $request->input('fecha'),
+          'archivo' => $nombreArchivo,'fecha' => $fecha_actual,
           'puntaje' => $request->input('puntaje'),'id_user'=>$id_user,
           'id_enviado'=> $request->input('id')]
          );
@@ -98,7 +99,7 @@ class entregadoController extends Controller
         
 
            DB::table('entregados')->insert(['descripcion_tarea' => $request->input('descripcion_tarea'), 
-          'fecha' => $request->input('fecha'),'puntaje' => $request->input('puntaje'),'id_user'=>$id_user,
+          'fecha' => $fecha_actual,'puntaje' => $request->input('puntaje'),'id_user'=>$id_user,
           'id_enviado'=> $request->input('id')]
          );
  
