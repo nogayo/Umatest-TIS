@@ -170,7 +170,10 @@ Route::get('darexamen/formulario_simple', 'gestorexamenesController@formulario_s
 Route::get('darexamen/formulario_desarrollo', 'gestorexamenesController@formulario_desarrollo');
 Route::get('darexamen/formulario_multiple', 'gestorexamenesController@formulario_multiple');
 Route::get('darexamen/formulario_falsoverdadero', 'gestorexamenesController@formulario_falsoverdadero');
+
 Route::get('darexamen/{id_nota}/{id_examen}/formulario_examen', 'gestorexamenesController@formulario_examen');
+
+Route::post('darexamen/formulario_examen/calcular_nota', 'gestorexamenesController@calcular_nota');
 
 
 

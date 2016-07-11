@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Session;
 use DB;
+use Auth;
 class gestorexamenesController extends Controller
 {
     public function formulario_simple(){
@@ -27,6 +28,8 @@ class gestorexamenesController extends Controller
      return view('gestor_examenes.vistas_examenes.falsoverdadero');
     }
 
+
+
     public function formulario_examen($id_nota, $id_examen){
 
       //AQUI ES DONDE VAMOS A CAMBIAR EL ESTADO DEL EXAMEN UNA VEZ QUE DE SU EXAMEN
@@ -42,7 +45,19 @@ class gestorexamenesController extends Controller
         $categoria= DB::table('categorias')->where('id', $id_categoria)->first();
         $nombre_categoria=$categoria->nombre; //ESTE SE ENVIA(3)       
 
-        $preguntas= DB::table('preguntas')->where('examen_id', $id_examen)->get();
+        //$objetos_nota= DB::table('notas')->where('examen_id', $id_examen)->get();
+
+        $historial= DB::table('notas')
+            ->join('historial_preguntas', 'notas.id', '=', 'historial_preguntas.nota_id')
+            ->select('historial_preguntas.pregunta')->where('examen_id', $id_examen)->where('user_id', Auth::id())->get();
+        
+        $preguntas=array();
+        $index=0;
+        foreach ($historial as $item) {
+            $consulta= DB::table('preguntas')->where('id', $item->pregunta)->first();
+           $preguntas[$index]=$consulta;
+           $index++;     
+        }
         
         $ids_preguntas=array();
         $content_nom_preguntas=array();//ESTE SE ENVIA(4)
@@ -60,7 +75,7 @@ class gestorexamenesController extends Controller
         }
         
         $content_respuestas=array();//ESTE SE ENVIA(7)
-        for ($i=0; $i < count($ids_preguntas) ; $i++) { 
+        for ($i=0; $i < count($preguntas) ; $i++) { 
 
            $respuesta_simple = DB::table('simples')->where('pregunta_id', $ids_preguntas[$i])->first();
            
@@ -97,9 +112,18 @@ class gestorexamenesController extends Controller
             
         }
         
-
+     
       return view('gestor_examenes.vistas_examenes.formulario_examen', compact('nombre_examen', 'fecha_examen', 'nombre_categoria', 'content_nom_preguntas', 'content_puntaje_preguntas', 
         'ids_tipo_pregunta','content_respuestas'));
     }
+    
 
+      public function calcular_nota(Request $request){
+         
+         $cadena_puntaje=$request->input('con_puntaje');
+         $cadena_res_estudiante=$request->input('con_res_correctas');
+         $cadena_res_real=$request->input('con_res_reales');
+
+         return view('/home', compact('cadena_puntaje', 'cadena_res_estudiante', 'cadena_res_real'));
+      }
 }

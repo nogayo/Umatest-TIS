@@ -17,8 +17,9 @@
     <h2 style="text-align: center;">{{$fecha_examen}}</h2>
     <h2 style="text-align: center;">{{$nombre_categoria}}</h2>
 
-    {!! Form::open(['url' => 'darexamen/formulario_desarrollo', 'class' => 'form-horizontal formexa', 'style' => 'margin-left: 15%;margin-top: 8%;']) !!}
-     {{-- */   
+    {!! Form::open(['url' => 'darexamen/formulario_examen/calcular_nota', 'class' => 'form-horizontal formexa', 'style' => 'margin-left: 15%;margin-top: 8%;']) !!}
+     {{-- */
+
       $formulario_nombres=array();
      /* --}}
 
@@ -28,6 +29,7 @@
          
             <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
             <div><p><label for="'numero_pregunta' . $i">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}</label>
+            
                   <div class="col-sm-2">
                     <input class="form-control" required="required" name="'numero_pregunta' . $i" type="text">
                 </div></p>
@@ -40,6 +42,7 @@
 
 
          @if($ids_tipo_pregunta[$i]==2 )
+           
           <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
           <div><label for="'numero_pregunta' . $i" style="width:auto;">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}</label></div>
           
@@ -83,6 +86,7 @@
          <br/> <br/>
            <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
            <div><label for="'numero_pregunta' . $i" style="width:auto;">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}</label></div>
+            
                 <div class="col-sm-6" style="margin-left:10%">
                    <div class="checkbox">
                    <br/> <br/>
@@ -100,6 +104,73 @@
          @endif
             
       @endfor
+          {{-- */ 
+           $p=implode(",",$content_puntaje_preguntas);
+         
+           $cre=implode(",",$formulario_nombres);
+
+           //METODO PARA CONCATENAR ARRAYS
+
+           function convert_multi_array($vector) {
+              
+              $concatenado="";
+
+              
+             for($i=0; $i < count($vector); $i++){
+                
+                 if(is_bool($vector[$i])){
+
+                  $converted_res = ($vector[$i]) ? '1' : '0';
+                  $concatenado= $concatenado . $converted_res;
+
+                 }else{
+                     if(is_array($vector[$i])){
+                        $otro_vector=$vector[$i];
+
+                         $multiple_array=implode(",",$otro_vector);
+                      
+                        //$concatenado=$concatenado.'/';
+                        $concatenado=$concatenado.$multiple_array;
+                        //$concatenado=$concatenado."/";
+                     }else{
+
+                      $concatenado=$concatenado.$vector[$i];
+                     //$concatenado=$concatenado.",";
+                     }
+
+
+                }
+                
+              }
+              return $concatenado;
+           }
+
+             $cr=convert_multi_array($content_respuestas);
+          /* --}}
+
+           <div class="form-group {{ $errors->has('con_puntaje') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('con_puntaje',$p, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('con_puntaje', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
+
+           <div class="form-group {{ $errors->has('con_res_correctas') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('con_res_correctas',$cr, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('con_res_correctas', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
+
+            <div class="form-group {{ $errors->has('con_res_reales') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('con_res_reales',$cre, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('con_res_reales', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
 
 
     <div class="form-group">

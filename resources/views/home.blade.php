@@ -17,6 +17,7 @@
         </div>
     <!--Termina path de Home
     -->
+
 		<div class="col-md-14 col-md-offset-0">
 			<div class="panel panel-default">
 				<div class="panel-heading">Home</div>
@@ -27,7 +28,6 @@
            
            		  <div class="content">
                       
-
                     <div style="height:200px; width:200px; float: left;">
                     <img src="{{asset('/img/img_panelPrincipal/bienvenida.png')}}" style="height:200px; width:200px;  "/>  
                     </div>
