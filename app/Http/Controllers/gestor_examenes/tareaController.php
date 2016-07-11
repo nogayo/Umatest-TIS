@@ -70,6 +70,7 @@ public function store(CreateInvestigationRequest $request)
         $this->validate($request, ['nombre_tarea' => 'required', 'descripcion','fecha_creacion','puntaje_total',]);
         $id_curso=$request->input('id_curso');
         $tipo=$request->input('tipo');
+        $fecha_actual = date("Y-m-d H:i:s");
 
       if (!empty($_FILES)) {
         $temporalFile=$_FILES['archivo']['tmp_name'];
@@ -84,13 +85,13 @@ public function store(CreateInvestigationRequest $request)
          $fichero_subido = $dir_subida . basename($_FILES['archivo']['name']);
          if (move_uploaded_file($_FILES['archivo']['tmp_name'],$fichero_subido)) {
            DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),
-          'archivo' => $nombreArchivo,'path_archivo' => $fileName,'fecha_creacion' => $request->input('fecha_creacion'),
+          'archivo' => $nombreArchivo,'path_archivo' => $fileName,'fecha_creacion' =>$fecha_actual,
           'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
          );
  
          }else{
 
-             DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),'fecha_creacion' => $request->input('fecha_creacion'),
+             DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),'fecha_creacion' => $fecha_actual,
           'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
          );
 

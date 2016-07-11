@@ -337,3 +337,5 @@ Route::resource('gestor_examenes/entregado', 'gestor_examenes\\entregadoControll
 /gestor_examenes/{id_curso}/archivo/{id}/upload'
 */
 Route::post('/gestor_examenes/{id_curso}/archivo/{id}/upload','gestor_examenes\\entregadoController@store');
+
+Route::resource('admin/notificacion', 'Admin\\notificacionController');

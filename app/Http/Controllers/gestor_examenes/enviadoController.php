@@ -58,6 +58,31 @@ class enviadoController extends Controller
          DB::table('enviados')->insert(['fecha_limite' => $request->input('fecha_limite'),'id_tarea'=> $request->input('id')]
          );
 
+
+
+         // aparir de aca es para notificaciones
+
+         $tarea= DB::table('tareas')
+           ->where('id_cursos', $id_curso)
+           ->where('id', $id_tarea)
+           ->select('tareas.nombre_tarea')
+            ->get();
+            //first();
+
+
+
+
+         
+          $estudiantes= DB::table('curso_inscritos')->where('curso_id', $id_curso)->get();
+
+         foreach ($estudiantes as $item) {
+            
+                    DB::table('notificacions')->insert(['id_user' => $item->user_id,'id_curso' => $id_curso, 'descripcion' => $tarea[0]->nombre_tarea,'visto' => 'false']
+         );
+
+        }
+
+
         //enviado::create($request->all());
 
         Session::flash('flash_message', 'enviado added!');
