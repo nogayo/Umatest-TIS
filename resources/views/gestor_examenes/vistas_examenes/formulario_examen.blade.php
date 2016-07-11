@@ -18,55 +18,81 @@
     <h2 style="text-align: center;">{{$nombre_categoria}}</h2>
 
     {!! Form::open(['url' => 'darexamen/formulario_desarrollo', 'class' => 'form-horizontal']) !!}
+     {{-- */   
+      $formulario_nombres=array();
+     /* --}}
 
       @for ($i = 0; $i < count($content_nom_preguntas); $i++)
-      
-         @if()
 
+         @if($ids_tipo_pregunta[$i]==1)
+
+            <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
+                {!! Form::label('numero_pregunta' . $i,$content_nom_preguntas[$i], ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('numero_pregunta' . $i, null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! $errors->first('numero_pregunta' . $i, '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+     {{-- */  $formulario_nombres[$i]='numero_pregunta' . $i; /* --}}
+            
+        @endif
+
+
+         @if($ids_tipo_pregunta[$i]==2 )
+           
+          <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
+                {!! Form::label('numero_pregunta' . $i,$content_nom_preguntas[$i], ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('numero_pregunta' . $i, null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! $errors->first('numero_pregunta' . $i, '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        {{-- */  $formulario_nombres[$i]='numero_pregunta' . $i; /* --}}
+             
+         @endif
+
+
+         @if($ids_tipo_pregunta[$i]==3)
+
+          {{-- */  $numero_de_respuestas=count($content_respuestas[$i]); 
+                   $respuestas = $content_respuestas[$i];
+          /* --}}
+          @for ($j = 0; $j < $numero_de_respuestas; $j++)
+            <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
+                {!! Form::label('numero_pregunta' . $i,$content_nom_preguntas[$i] , ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    <div class="checkbox">
+                        <label>{!! Form::checkbox('numero_pregunta' . $i, '0', false) !!} 
+                        {{$respuestas[$j]}}</label>
+                   </div>
+                        {!! $errors->first('numero_pregunta' . $i, '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+          @endfor
+            {{-- */  $formulario_nombres[$i]='numero_pregunta' . $i; /* --}}
+         @endif
+
+
+         @if($ids_tipo_pregunta[$i]==4)
+
+           <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
+                {!! Form::label('numero_pregunta' . $i, $content_nom_preguntas[$i], ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                   <div class="checkbox">
+                     <label>{!! Form::radio('numero_pregunta' . $i, '1') !!} VERDADERO</label>
+                   </div>
+                   <div class="checkbox">
+                    <label>{!! Form::radio('numero_pregunta' . $i, '0', true) !!} FALSO</label>
+                   </div>
+                    {!! $errors->first('numero_pregunta' . $i, '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+              {{-- */  $formulario_nombres[$i]='numero_pregunta' . $i; /* --}}
          @endif
             
       @endfor
 
-
-                <div class="form-group {{ $errors->has('numero_pregunta') ? 'has-error' : ''}}">
-                {!! Form::label('numero_pregunta','¿ NOMBRE DE LA PREGUNTA ?', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('numero_pregunta', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('numero_pregunta', '<p class="help-block">:message</p>') !!}
-                </div>
-                </div>
-                <div class="form-group {{ $errors->has('respuesta') ? 'has-error' : ''}}">
-                {!! Form::label('respuesta', '¿ El mundo gira ?', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                                <div class="checkbox">
-                <label>{!! Form::radio('respuesta', '1') !!} VERDADERO</label>
-            </div>
-            <div class="checkbox">
-                <label>{!! Form::radio('respuesta', '0', true) !!} FALSO</label>
-            </div>
-                    {!! $errors->first('respuesta', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-
-            <div class="form-group {{ $errors->has('opcionA') ? 'has-error' : ''}}">
-                {!! Form::label('opcionA', '¿ El mundo gira ?', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                                <div class="checkbox">
-                   <label>{!! Form::checkbox('opcionA', '1', true) !!} Vaa</label>
-                </div>
-                    {!! $errors->first('opcionA', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-
-            <div class="form-group {{ $errors->has('opcionB') ? 'has-error' : ''}}">
-                {!! Form::label('opcionB', '¿ El mundo gira ?', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                                <div class="checkbox">
-                   <label>{!! Form::checkbox('opcionB', '2', false) !!} Vaa</label>
-                </div>
-                    {!! $errors->first('opcionB', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
