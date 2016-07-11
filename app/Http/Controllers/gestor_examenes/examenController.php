@@ -205,6 +205,6 @@ class examenController extends Controller
        }
        
       
-       return view('gestor_examenes.nota.mis_examenes',compact('notas'));
+       return view('gestor_examenes.nota.mis_examenes',compact('notas', 'id_curso'));
     }
 }
