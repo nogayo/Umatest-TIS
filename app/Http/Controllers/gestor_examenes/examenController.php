@@ -24,7 +24,25 @@ class examenController extends Controller
     {
         //$examen = examan::paginate(15);
 
-        $examen = DB::table('examens')->where('id_cursos', $id_curso)->get();
+        //controlamos docentes que envian examen nuevamente podran enviar si termina fecha fin de envio
+        $fecha_actual = date("Y-m-d H:i:s");
+        $examen_control = DB::table('examens')->where('id_cursos', $id_curso)->get();
+        $ids_exa_control=array();
+        $puntero=0;
+        foreach ($examen_control as $item) {
+         $ids_exa_control[$puntero]=$item->id;
+         $puntero++;
+        }
+        for ($i=0; $i < count($ids_exa_control) ; $i++) { 
+            $exa = DB::table('notas')->where('examen_id', $ids_exa_control[$i])->get();
+            $exa_fil = DB::table('notas')->where('examen_id', $ids_exa_control[$i])->where('fecha_fin','<',$fecha_actual)->get();
+
+            if(count($exa) == count($exa_fil)){
+             DB::table('examens')->where('id',$ids_exa_control[$i])->update(array('estado_examen'=>1));
+            }
+        }
+       
+        $examen = DB::table('examens')->where('id_cursos', $id_curso)->where('estado_examen',1)->get();
 
         return view('gestor_examenes.examen.index_envio',compact('examen','id_curso'));
     }
@@ -188,6 +206,25 @@ class examenController extends Controller
        }
        
        $id_user=Auth::id(); 
+
+       //actualiza la vista mis examenes de los estudiantes
+       for ($m=0; $m < count($ids_examenes); $m++) { 
+
+         //$nota_t= DB::table('notas')->where('user_id', $id_user)->where('examen_id', $ids_examenes[$m])->where('estado',true)->get();
+
+          $nota= DB::table('notas')->where('user_id', $id_user)->where('examen_id', $ids_examenes[$m])->where('estado',true)->where('fecha_fin', '<', $fecha_actual)->get();
+
+          if(count($nota)>0){
+            foreach ($nota as $item) {
+
+             DB::table('notas')->where('id',$item->id)->update(array('estado'=>0));
+
+            }
+          } 
+
+       }
+    
+
        $notas=array();
        $puntero_nota=0;
        for ($i=0; $i < count($ids_examenes); $i++) {

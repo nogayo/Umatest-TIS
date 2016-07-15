@@ -11,23 +11,7 @@ use DB;
 use Auth;
 class gestorexamenesController extends Controller
 {
-    public function formulario_simple(){
-      return view('gestor_examenes.vistas_examenes.simple');
-    }
-
-    public function formulario_desarrollo(){
-      return view('gestor_examenes.vistas_examenes.desarrollo');
-    }
-
-    public function formulario_multiple(){
-
-     return view('gestor_examenes.vistas_examenes.multiple');
-    }
-
-    public function formulario_falsoverdadero(){
-     return view('gestor_examenes.vistas_examenes.falsoverdadero');
-    }
-
+   
 
 
     public function formulario_examen($id_nota, $id_examen){
@@ -46,10 +30,11 @@ class gestorexamenesController extends Controller
         $nombre_categoria=$categoria->nombre; //ESTE SE ENVIA(3)       
 
         //$objetos_nota= DB::table('notas')->where('examen_id', $id_examen)->get();
-
+  
+        //sacamos todas las preguntas disponibles al usuario
         $historial= DB::table('notas')
             ->join('historial_preguntas', 'notas.id', '=', 'historial_preguntas.nota_id')
-            ->select('historial_preguntas.pregunta')->where('examen_id', $id_examen)->where('user_id', Auth::id())->get();
+            ->select('historial_preguntas.pregunta')->where('examen_id', $id_examen)->where('user_id', Auth::id())->where('estado',1)->get();
         
         $preguntas=array();
         $index=0;
@@ -63,6 +48,7 @@ class gestorexamenesController extends Controller
         $content_nom_preguntas=array();//ESTE SE ENVIA(4)
         $content_puntaje_preguntas=array();//ESTE SE ENVIA(5)
         $ids_tipo_pregunta=array();//ESTE SE ENVIA(6)
+        //$content_duracion=array();
          $index=0;
         foreach ($preguntas as $item) {
             
@@ -70,12 +56,15 @@ class gestorexamenesController extends Controller
             $content_nom_preguntas[$index]=$item->nombre_pregunta;
             $content_puntaje_preguntas[$index]=$item->puntaje_pregunta;
             $ids_tipo_pregunta[$index]=$item->tipo_pregunta_id;
+          //  $content_duracion[$index]=$item->duracion;
             $index++;
 
         }
         
         $content_respuestas=array();//ESTE SE ENVIA(7)
-        for ($i=0; $i < count($preguntas) ; $i++) { 
+        $res_mul_correcta=array();
+        $cadena_m="";
+        for ($i=0; $i < count($ids_preguntas) ; $i++) { 
 
            $respuesta_simple = DB::table('simples')->where('pregunta_id', $ids_preguntas[$i])->first();
            
@@ -84,46 +73,162 @@ class gestorexamenesController extends Controller
            
            $respuesta_multiple = DB::table('multiples')->where('pregunta_id', $ids_preguntas[$i])->get();
 
+           $respuesta_multiple_correcta = DB::table('multiples')->where('pregunta_id', $ids_preguntas[$i])->where('correcta', 1)->first();
 
            $respuesta_falsoverdadero = DB::table('falsoverdaderos')->where('pregunta_id', $ids_preguntas[$i])->first();
 
            if(!is_null($respuesta_simple)){
-               $content_respuestas[$i]= $respuesta_simple->respuesta;
-           }
+             
+               $content_respuestas[$i]=$respuesta_simple->respuesta;
+               $res_mul_correcta[$i]='///';
+               $cadena_m.= $respuesta_simple->respuesta . ',';
+           }else{
 
-           if(!is_null($respuesta_desarrollo)){
+               if(!is_null($respuesta_desarrollo)){
                $content_respuestas[$i]= $respuesta_desarrollo->respuesta;
-           }
-
-           if(!is_null($respuesta_multiple)){
+               $res_mul_correcta[$i]='///';
+                $cadena_m.= $respuesta_desarrollo->respuesta. ',';
+              }else{
+               if(!is_null($respuesta_falsoverdadero)){
+               $content_respuestas[$i]= $respuesta_falsoverdadero->respuesta;
+               $res_mul_correcta[$i]='///';
+               $conversion= ($respuesta_falsoverdadero->respuesta) ? '1' : '0';
+               $cadena_m.= $conversion.',';
+               
+              }else{
+                  
+               if(!is_null($respuesta_multiple)){
                $j=0;
                $ids_multiples=array();
+               $cad_axu="";
                foreach ($respuesta_multiple as $item) {
                 $ids_multiples[$j]=$item->respuesta;
+                $cad_axu.=$item->respuesta. ',';
                  $j++;
                }
                $content_respuestas[$i]= $ids_multiples;
-           }
-           
-           if(!is_null($respuesta_falsoverdadero)){
-               $content_respuestas[$i]= $respuesta_falsoverdadero->respuesta;
+               $res_mul_correcta[$i]=$respuesta_multiple_correcta->respuesta;
+              $cadena_m.='/,'.$cad_axu .'/,';
+               }
+               
+                }
+              }
            }
 
-            
         }
+       // $duracion_total=0;
+        //for ($i=0; $i < count($content_duracion) ; $i++) {  
+         //$duracion_total+=$content_duracion[$i];
+        //}
+
+        //una vez abierto el formulario examen el estudiante no puede volver a dar
+        DB::table('notas')->where('id',$id_nota)->update(array('estado'=>0));
         
-     
-      return view('gestor_examenes.vistas_examenes.formulario_examen', compact('nombre_examen', 'fecha_examen', 'nombre_categoria', 'content_nom_preguntas', 'content_puntaje_preguntas', 
-        'ids_tipo_pregunta','content_respuestas'));
+
+      return view('gestor_examenes.vistas_examenes.formulario_examen', compact('nombre_examen', 
+        'fecha_examen', 'nombre_categoria', 'content_nom_preguntas', 'content_puntaje_preguntas', 
+        'ids_tipo_pregunta','content_respuestas','cadena_m', 'res_mul_correcta', 'id_nota'));
     }
     
 
       public function calcular_nota(Request $request){
+        
+        
+         $cadena_puntaje=explode(",",$request->input('con_puntaje'));
+         $cadena_res_formulario=explode(",",$request->input('con_res_formularios'));
+         $separando= explode(",",$request->input('con_res_correctas'));
+         $cadena_res_correctas=$this->explode_respuestas($separando);
+         $cadena_res_multiple= explode(",",$request->input('con_res_multiple'));
          
-         $cadena_puntaje=$request->input('con_puntaje');
-         $cadena_res_estudiante=$request->input('con_res_correctas');
-         $cadena_res_real=$request->input('con_res_reales');
+         $puntaje_estudiante=0;
+         $numero_res_correctas=0;
+         $numero_res_fallidas=0;
+        for ($i=0; $i < count($cadena_res_correctas); $i++) { 
+                 $respuesta=$request->input($cadena_res_formulario[$i]);
+                 if(count($cadena_res_correctas[$i])>1){
 
-         return view('/home', compact('cadena_puntaje', 'cadena_res_estudiante', 'cadena_res_real'));
+                 /*$multiple=$cadena_res_correctas[$i];
+
+                   for ($j=0; $j < count($multiple); $j++) {  
+                      
+                      if ($respuesta== $multiple[$j]){
+                          $puntaje_estudiante+=$cadena_puntaje[$i];
+                          break;
+                      }
+
+                   }
+                  */
+
+                   if($respuesta==$cadena_res_multiple[$i]){
+                     $puntaje_estudiante+=$cadena_puntaje[$i];
+                     $numero_res_correctas++;
+                   }else{
+                    $numero_res_fallidas++;
+                   }
+
+                 }else{
+                      
+                      if($respuesta==$cadena_res_correctas[$i]){
+                          $puntaje_estudiante+=$cadena_puntaje[$i];
+                           $numero_res_correctas++;
+                      }else{
+                        $numero_res_fallidas++;
+                      }
+        
+                 }
+           
+         }
+     /*    
+         $respuesta="";
+         for ($i=0; $i < count($cadena_res_formulario); $i++) { 
+            $respuesta.=$request->input($cadena_res_formulario[$i]).'/';
+         }
+       */  
+         $id_nota=$request->input('id_nota');
+
+         DB::table('notas')->where('id',$id_nota)->update(array('calificacion'=>$puntaje_estudiante));
+
+         return view('gestor_examenes.vistas_examenes.resultado_examen', compact('puntaje_estudiante','numero_res_correctas','numero_res_fallidas'));
       }
-}
+     
+      
+
+      public function explode_respuestas($exp){
+         
+         
+       $vector_oficial=array();
+        $puntero_oficial=0;
+        $ultimo=count($exp);
+        for($i=0; $i< count($exp); $i++){
+           
+        
+                if($exp[$i]=='/'){
+                 
+                   $x=($i+1);
+                   $vector_multiple=array();
+                   $puntero_multiple=0;
+                  while($exp[$x]!='/'){
+                      $vector_multiple[$puntero_multiple]=$exp[$x];
+                       $puntero_multiple++;
+                       $x++;        
+                       }
+                  //posiblemente incrementar $x;
+                  $vector_oficial[$puntero_oficial]=$vector_multiple;
+                  $puntero_oficial++;
+                  $i=$x;
+                  
+                 }else{
+                    $vector_oficial[$puntero_oficial]=$exp[$i];
+                  $puntero_oficial++;
+                 }
+                 
+                 if($ultimo==($i+2)){
+                  
+                   break;
+                  }
+          
+            }
+        
+              return $vector_oficial;
+             }
+    }
