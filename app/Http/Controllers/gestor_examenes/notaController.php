@@ -175,16 +175,26 @@ class notaController extends Controller
                 $bandera=true;
                
                }else{
-
+                
+                $existe=false;
                  if(!is_null($existe_id)){
-                  $ids_validos[$puntero]=$existe_id->id;
-                  $puntero++;
+                        for ($i=0; $i < count($ids_validos); $i++) { 
+                            if($existe_id->id==$ids_validos[$i]){
+                              $existe=true;
+                            }
+                        }
+                   if(!$existe){
+                     $ids_validos[$puntero]=$existe_id->id;
+                      $puntero++;
+                   }
+                 
                  }  
 
                }
            
         }
-        for ($i=0; $i < count($ids_notas) ; $i++) {   
+
+        for ($i=0; $i < count($ids_notas) ; $i++) {  
 
             for ($j=0; $j < count($ids_validos); $j++) {
 
@@ -192,10 +202,13 @@ class notaController extends Controller
                     $ids_notas[$i]]);
 
             }
+             shuffle($ids_validos);
 
         }
+        
+        //restringimos el envio del examen
          
-
+       DB::table('examens')->where('id',$id_examen)->update(array('estado_examen'=>0));
 
       return redirect('gestor_examenes/'.$id_curso.'/examen_envio');
     }
