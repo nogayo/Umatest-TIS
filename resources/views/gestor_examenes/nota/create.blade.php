@@ -70,12 +70,6 @@
                     {!! $errors->first('fecha_fin', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-             <div class="form-group {{ $errors->has('puntaje_total') ? 'has-error' : ''}}">
-                {!! Form::label('puntaje_total', 'Puntaje total', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                {!! Form::label('Nota', '100', ['class' => 'col-sm-3 control-label']) !!}
-                </div>
-            </div>
 
              <div class="form-group {{ $errors->has('examen_id') ? 'has-error' : ''}}">
                 

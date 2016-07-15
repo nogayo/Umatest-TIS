@@ -205,8 +205,10 @@ class notaController extends Controller
              shuffle($ids_validos);
 
         }
+        
+        //restringimos el envio del examen
          
-
+       DB::table('examens')->where('id',$id_examen)->update(array('estado_examen'=>0));
 
       return redirect('gestor_examenes/'.$id_curso.'/examen_envio');
     }
