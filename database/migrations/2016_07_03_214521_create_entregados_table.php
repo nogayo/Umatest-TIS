@@ -25,7 +25,7 @@ class CreateEntregadosTable extends Migration
         Schema::create('entregados', function(Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion_tarea')->nullable();
-            $table->binary('archivo')->nullable();
+            $table->string('archivo')->nullable();
             $table->date('fecha');
             $table->integer('puntaje')->nullable();
             $table->timestamps();
