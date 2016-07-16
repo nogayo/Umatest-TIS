@@ -32,7 +32,10 @@ class notaController extends Controller
      */
     public function create($id_curso, $id_examen)
     {
-        return view('gestor_examenes.nota.create', compact('id_curso', 'id_examen'));
+         $numero_preguntas = DB::table('preguntas')->where('examen_id', $id_examen)->get();
+         $numero_preguntas=count($numero_preguntas);
+
+        return view('gestor_examenes.nota.create', compact('id_curso', 'id_examen', 'numero_preguntas'));
     }
 
     /**
@@ -42,7 +45,7 @@ class notaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['numero_preguntas' => 'required', 'duracion' => 'required',  'fecha_inicio' => 'required', 'fecha_fin' => 'required', ]);
+        $this->validate($request, ['numero_preguntas' => 'required','puntaje_examen' => 'required','duracion' => 'required',  'fecha_inicio' => 'required', 'fecha_fin' => 'required', ]);
 
     
     $contenedor_estudiantes=array();

@@ -47,18 +47,6 @@
                     {!! $errors->first('nombre_examen', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('estado_examen') ? 'has-error' : ''}}">
-                {!! Form::label('estado_examen', trans('examen.estado_examen'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                                <div class="checkbox">
-                <label>{!! Form::radio('estado_examen', '1') !!} Yes</label>
-            </div>
-            <div class="checkbox">
-                <label>{!! Form::radio('estado_examen', '0', true) !!} No</label>
-            </div>
-                    {!! $errors->first('estado_examen', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
            <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
                 
                 <div class="col-sm-6">

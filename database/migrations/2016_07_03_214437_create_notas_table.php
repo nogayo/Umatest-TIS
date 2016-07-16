@@ -16,10 +16,13 @@ class CreateNotasTable extends Migration
             $table->increments('id');
            $table->integer('numero_preguntas');
             $table->integer('duracion');
-            $table->integer('calificacion');
+            $table->integer('calificacion')->nullable();
             $table->boolean('estado');
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
+            $table->string('archivo')->nullable();
+            $table->integer('puntaje_examen')->nullable();
+            $table->integer('numero_respuestas_correctas')->nullable();
             $table->timestamps();
    
            $table->integer('user_id')->unsigned();
