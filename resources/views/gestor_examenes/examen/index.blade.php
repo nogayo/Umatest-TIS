@@ -45,7 +45,7 @@
                 </tr>
             </thead>
             <tbody>
-
+              
 
             {{-- */$x=0;/* --}}
             @foreach($examen as $item)
@@ -54,9 +54,7 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->nombre_examen }}</td><td>{{ $item->estado_examen }}</td><td>{{ $item->fecha_examen }}</td>
 
-
                     <td> 
-
                     <li><a href="{{url('/gestor_examenes/pregunta/'.$item->id.'/index')}}"><i class="fa fa-file-text-o"></i> Llenar </a></li>
                     </td>
                     <td>

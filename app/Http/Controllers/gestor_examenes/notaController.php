@@ -33,9 +33,18 @@ class notaController extends Controller
     public function create($id_curso, $id_examen)
     {
          $numero_preguntas = DB::table('preguntas')->where('examen_id', $id_examen)->get();
+         
+
+           $puntaje=0;
+             foreach ($numero_preguntas as $item) {
+
+                 $puntaje+=$item->puntaje_pregunta;
+
+             }
+         
          $numero_preguntas=count($numero_preguntas);
 
-        return view('gestor_examenes.nota.create', compact('id_curso', 'id_examen', 'numero_preguntas'));
+        return view('gestor_examenes.nota.create', compact('id_curso', 'id_examen', 'numero_preguntas', 'puntaje'));
     }
 
     /**
@@ -45,7 +54,7 @@ class notaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['numero_preguntas' => 'required','puntaje_examen' => 'required','duracion' => 'required',  'fecha_inicio' => 'required', 'fecha_fin' => 'required', ]);
+        $this->validate($request, ['puntaje_examen' => 'required','duracion' => 'required',  'fecha_inicio' => 'required', 'fecha_fin' => 'required', ]);
 
     
     $contenedor_estudiantes=array();
@@ -57,12 +66,27 @@ class notaController extends Controller
         $index++;
     }
     
-    for ($k=0; $k < count($contenedor_estudiantes) ; $k++) { 
+    //ids de las preguntas q van hacer enviadas
+    $preguntas_seleccionadas= $this->preguntas_a_enviar($request->input('examen_id'));
 
-       DB::table('notas')->insert(['numero_preguntas' => $request->input('numero_preguntas'), 'duracion' => $request->input('duracion'), 'fecha_inicio' => $request->input('fecha_inicio'),'estado'=>true,'fecha_fin'=> $request->input('fecha_fin'), 'user_id'=> $contenedor_estudiantes[$k], 
+   /* $puntaje_exa_preguntas=0;
+
+    for ($m=0; $m < count($preguntas_seleccionadas); $m++) {  
+
+          $puntaje= DB::table('preguntas')->where('id', $preguntas_seleccionadas[$m])->first();
+          $puntaje_exa_preguntas+=$puntaje->puntaje_pregunta;  
+
+    }
+
+*/
+      
+        for ($k=0; $k < count($contenedor_estudiantes) ; $k++) { 
+
+       DB::table('notas')->insert(['numero_preguntas' => $request->input('numero_preguntas'),
+       'puntaje_examen' => $request->input('puntaje_examen'), 'duracion' => $request->input('duracion'), 'fecha_inicio' => $request->input('fecha_inicio'),'estado'=>true,'fecha_fin'=> $request->input('fecha_fin'), 'user_id'=> $contenedor_estudiantes[$k], 
         'examen_id'=> $request->input('examen_id')]
          );
-    }
+        }
 
     $notas = DB::table('notas')->orderBy('id', 'desc')->take(count($contenedor_estudiantes))->get();
 
@@ -74,13 +98,12 @@ class notaController extends Controller
 
         $j++;        
     }
-        //notum::create($request->all());
-    
-        Session::flash('flash_message', 'notum added!');
+        
+        Session::flash('flash_message', 'TODO CORRECTO');
 
-       // return redirect('gestor_examenes/nota');
-        return $this->llenar_historial($request->input('curso_id'), $request->input('examen_id'), $ids_notas, $request->input('numero_preguntas'));
-    }
+        return $this->llenar_historial($request->input('curso_id'), $request->input('examen_id'), $preguntas_seleccionadas, $ids_notas);
+   
+}
 
     /**
      * Display the specified resource.
@@ -145,9 +168,50 @@ class notaController extends Controller
         return redirect('gestor_examenes/nota');
     }
 
-    public function llenar_historial($id_curso, $id_examen, $ids_notas, $numero_preguntas){
-
+    public function llenar_historial($id_curso, $id_examen, $preguntas_seleccionadas, $ids_notas){
         
+
+        for ($i=0; $i < count($ids_notas) ; $i++) {  
+
+            for ($j=0; $j < count($preguntas_seleccionadas); $j++) {
+
+                DB::table('historial_preguntas')->insert(['pregunta' => $preguntas_seleccionadas[$j], 'nota_id' => 
+                    $ids_notas[$i]]);
+
+            }
+             shuffle($preguntas_seleccionadas);
+
+        }
+        
+        //restringimos el envio del examen
+         
+       DB::table('examens')->where('id',$id_examen)->update(array('estado_examen'=>0));
+
+      return redirect('gestor_examenes/'.$id_curso.'/examen_envio');
+    }
+
+
+     public function preguntas_a_enviar($id_examen){
+
+
+        $preguntas= DB::table('preguntas')->where('examen_id', $id_examen)->get();
+        
+        $ids_preguntas=array();
+      
+         $index=0;
+        foreach ($preguntas as $item) {
+            $ids_preguntas[$index]=$item->id;
+            $index++;
+
+        }
+
+        return $ids_preguntas;
+
+    }
+
+    /*public function preguntas_a_enviar($id_examen, $numero_preguntas){
+
+
         $preguntas= DB::table('preguntas')->where('examen_id', $id_examen)->get();
         
         $ids_preguntas=array();
@@ -197,24 +261,9 @@ class notaController extends Controller
            
         }
 
-        for ($i=0; $i < count($ids_notas) ; $i++) {  
+        return $ids_validos;
 
-            for ($j=0; $j < count($ids_validos); $j++) {
-
-                DB::table('historial_preguntas')->insert(['pregunta' => $ids_validos[$j], 'nota_id' => 
-                    $ids_notas[$i]]);
-
-            }
-             shuffle($ids_validos);
-
-        }
-        
-        //restringimos el envio del examen
-         
-       DB::table('examens')->where('id',$id_examen)->update(array('estado_examen'=>0));
-
-      return redirect('gestor_examenes/'.$id_curso.'/examen_envio');
     }
 
-
+ */
 }

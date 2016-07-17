@@ -23,7 +23,15 @@ class preguntaController extends Controller
         $pregunta = DB::table('preguntas')->where('examen_id', $id_examen)->get();
         //$pregunta = preguntum::paginate(15);
 
-        return view('gestor_examenes.pregunta.index', compact('pregunta', 'id_examen'));
+             $puntaje_total_examen=0;
+             foreach ($pregunta as $item) {
+
+                 $puntaje_total_examen+=$item->puntaje_pregunta;
+
+             }
+
+        return view('gestor_examenes.pregunta.index', compact('pregunta', 'id_examen', 
+            'puntaje_total_examen'));
     }
 
     /**
@@ -53,6 +61,8 @@ class preguntaController extends Controller
             ['nombre_pregunta' => $request->input('nombre_pregunta'), 'puntaje_pregunta' => $request->input('puntaje_pregunta'), 'tipo_pregunta_id'=>$request->input('tipo_pregunta_id'), 
                'examen_id'=>$request->input('examen_id')]
             ); 
+
+            
 
         Session::flash('flash_message', 'preguntum added!');
 

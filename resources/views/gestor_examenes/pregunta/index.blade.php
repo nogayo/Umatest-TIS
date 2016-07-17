@@ -41,7 +41,11 @@
     <!--Termina path de de listas de exámenes.
     -->
     <h1>Pregunta <a href="{{ url('/gestor_examenes/pregunta/'.$id_examen.'/create') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+
+    <li style="text-align: center; color: orange;">El Puntaje acumulado del Examen es: {{$puntaje_total_examen}}</li>
+
     <div class="table">
+
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
