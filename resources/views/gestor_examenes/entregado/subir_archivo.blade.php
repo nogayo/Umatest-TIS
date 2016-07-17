@@ -24,7 +24,7 @@
 <div class="container">
 <!--Comienza path de lista de tareas de estudiantes.
     -->
-    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 28%;margin-left: 0%;">
+                    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 28%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('admin/curso_dicta/'.$id_curso.'/vista_contenido_curso') }}"><i class="fa fa-dashboard"></i>Principal</a></li>
                     <li><a href="{{ url('gestor_examenes/'.$id_curso.'/tareas/recibidos') }}"><i class="fa fa-dashboard"></i>Mis Tareas</a></li>
