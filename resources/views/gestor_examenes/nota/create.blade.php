@@ -41,24 +41,29 @@
 
     {!! Form::open(['url' => '/gestor_examenes/nota', 'class' => 'form-horizontal']) !!}
 
-               <li style="text-align: center; color: red;">El numero total de preguntas que existe en este examen es: {{$numero_preguntas}}</li>
-               
+               <li style="text-align: center; color: red;">El numero total de preguntas que existe en el examen es: {{$numero_preguntas}}</li>
 
-                <div class="form-group {{ $errors->has('numero_preguntas') ? 'has-error' : ''}}">
-                {!! Form::label('numero_preguntas', trans('nota.numero_preguntas'), ['class' => 'col-sm-3 control-label']) !!}
+               <li style="text-align: center; color: red;">El puntaje sobre el cual estara evaluado el examen es: {{$puntaje}}</li>
+
+
+               <div class="form-group {{ $errors->has('numero_preguntas') ? 'has-error' : ''}}">
+                
                 <div class="col-sm-6">
-                    {!! Form::number('numero_preguntas', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::hidden('numero_preguntas',$numero_preguntas, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('numero_preguntas', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
 
-            <div class="form-group {{ $errors->has('puntaje_examen') ? 'has-error' : ''}}">
-                {!! Form::label('puntaje_examen', 'Puntaje Del Examen', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::number('puntaje_exmamen', null, ['class' => 'form-control', 'required' => 'required']) !!}
+               </div>
+
+                <div class="form-group {{ $errors->has('puntaje_examen') ? 'has-error' : ''}}">
+                
+                 <div class="col-sm-6">
+                    {!! Form::hidden('puntaje_examen',$puntaje, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('puntaje_examen', '<p class="help-block">:message</p>') !!}
+                 </div>
+
                 </div>
-            </div>
+               
 
             <div class="form-group {{ $errors->has('duracion') ? 'has-error' : ''}}">
                 {!! Form::label('duracion', 'Duracion del examen', ['class' => 'col-sm-3 control-label']) !!}
