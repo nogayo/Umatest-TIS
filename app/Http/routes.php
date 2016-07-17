@@ -338,3 +338,29 @@ Route::resource('gestor_examenes/entregado', 'gestor_examenes\\entregadoControll
 Route::post('/gestor_examenes/{id_curso}/archivo/{id}/upload','gestor_examenes\\entregadoController@store');
 
 Route::resource('admin/notificacion', 'Admin\\notificacionController');
+
+
+/*
+NOTA.- Apartir de esta instruccion solo se debe aniadir planillas
+*/
+
+/*
+* Esta ruta viene despues presinar ver planilla de estudiantes
+* parametro1@ id del curso
+* url('gestor_planillas/'.$id_curso.'/planilla/listar'
+*/
+Route::get('gestor_planillas/{id_curso}/planilla/listar', 'gestor_planillas\\planillaController@listar');
+
+/*
+* Esta ruta viene despues presinar ver kardex (de parte de estuciate)
+* parametro1@ id del curso
+* url('gestor_planillas/ver/kardex'
+*/
+//Route::get('gestor_planillas/ver/kardex', 'gestor_planillas\\planillaController@kardex');
+
+/*
+* Esta ruta viene despues presinar ver kardex (de parte de estudiante)
+* parametro1@ id del curso
+* url('gestor_planillas/ver/kardex'
+*/
+Route::get('gestor_planillas/{id_curso}/ver/kardex', 'gestor_planillas\\planillaController@kardex');

@@ -35,4 +35,9 @@ php artisan crud:generate curso_inscrito --fields="fecha#date#required" --route=
 
 php artisan crud:generate tarea --fields="nombre#string#required,descripcion#string,archivo#string,puntaje#number,fecha_limite#date" --route=yes --pk=id --view-path="gestor_examenes" --namespace=Admin --route-group=admin
 
-php artisan crud:generate entregado --fields="descripcion#string, archivo#string, puntaje#number, fecha_entrega#date#required" --route=yes --pk=id --view-path="gestor_examenes" --namespace=Admin --route-group=admin
+php artisan crud:generate notificacion --fields="id_user#integer#required, id_curso#integer#required, descripcion#string, visto#boolean#required" --route=yes --pk=id --view-path="gestor_examenes" --namespace=Admin --route-group=admin
+
+
+
+
+
