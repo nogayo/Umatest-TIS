@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use DB;
 use Auth;
+use Fpdf;
 class gestorexamenesController extends Controller
 {
    
@@ -231,4 +232,13 @@ class gestorexamenesController extends Controller
         
               return $vector_oficial;
              }
+
+       public function crear_pdf(){
+
+          Fpdf::AddPage();
+          Fpdf::SetFont('Arial','B',16);
+          Fpdf::Cell(40,10,'Hello World!');
+          Fpdf::Output();
+          exit;
+       }
     }

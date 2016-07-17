@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Session;
 use App\categorium;
+
+//require('App/Http/Controllers/fpdf/pdf/fpdf');
 class gestorusuarioController extends Controller
 {
     /**
@@ -18,6 +20,8 @@ class gestorusuarioController extends Controller
     public function index($boton)
     {
        //return view('gestorcursos.todosloscursos');
+
+
        return view('gestorcursos.todosloscursos', compact('boton'));
     }
 

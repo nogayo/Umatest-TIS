@@ -147,6 +147,7 @@ return [
         Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
             Collective\Html\HtmlServiceProvider::class,
         Acacha\AdminLTETemplateLaravel\app\Providers\AdminLTETemplateServiceProvider::class,
+         'Anouar\Fpdf\FpdfServiceProvider',
     ],
 
     /*
@@ -196,6 +197,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
          'Form'      => Collective\Html\FormFacade::class,
     'HTML'      => Collective\Html\HtmlFacade::class,
+    'Fpdf'    => 'Anouar\Fpdf\Facades\Fpdf',
 
     ],
 
