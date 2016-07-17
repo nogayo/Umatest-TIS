@@ -40,7 +40,7 @@
         </div>
     <!--Termina path de de listas de exámenes.
     -->
-    <h1>Pregunta <a href="{{ url('/gestor_examenes/pregunta/'.$id_examen.'/create') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Pregunta <a href="{{ url('/gestor_examenes/pregunta/'.$id_examen.'/create') }}" class="btn btn-primary btn-xs" title="Añadir Nueva Pregunta"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
 
     <li style="text-align: center; color: orange;">El Puntaje acumulado del Examen es: {{$puntaje_total_examen}}</li>
 
@@ -74,17 +74,17 @@
 
                      <!-- $id_simple ese es el id_ de la respuesta-->
 
-                        <a href="{{ url('/gestor_examenes/simple/' . $id_simple . '/'.$id_examen.'/edit') }}" class="btn btn-primary btn-xs" title="Editar respuesta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/simple/' . $id_simple . '/'.$id_examen.'/edit') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-primary btn-xs" title="Editar Respuesta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
 
-                        <a href="{{ url('/gestor_examenes/simple/'.$id_simple.'/'.$id_examen.'/show') }}" class="btn btn-success btn-xs" title="View Simple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/simple/'.$id_simple.'/'.$id_examen.'/show') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-success btn-xs" title="Ver Respuesta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 
-                        <a href="{{ url('/gestor_examenes/simple/' . $id_simple . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+                        <a href="{{ url('/gestor_examenes/simple/' . $id_simple . '/'.$id_examen.'/delete') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-danger btn-xs" title="Eliminar Respuesta" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Respuesta" /></a>
                     </td>
                         @else
 
                     <!-- $item-> id  ese es el id_ de la pregunta-->
 
-                        <a href="{{ url('/gestor_examenes/simple/'.$item->id.'/'.$id_examen.'/create') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/simple/'.$item->id.'/'.$id_examen.'/create') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-primary btn-xs" title="Añadir Respuesta"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
 
                         @endif
 
@@ -106,17 +106,17 @@
 
                        <!-- $id_simple ese es el id_ de la respuesta-->
 
-                        <a href="{{ url('/gestor_examenes/desarrollo/' . $id_simple . '/'.$id_examen.'/edit') }}" class="btn btn-primary btn-xs" title="Editar respuesta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/desarrollo/' . $id_simple . '/'.$id_examen.'/edit') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-primary btn-xs" title="Editar Respuesta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
 
-                        <a href="{{ url('/gestor_examenes/desarrollo/'.$id_simple.'/'.$id_examen.'/show') }}" class="btn btn-success btn-xs" title="View Simple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/desarrollo/'.$id_simple.'/'.$id_examen.'/show') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-success btn-xs" title="Ver Respuesta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 
-                        <a href="{{ url('/gestor_examenes/desarrollo/' . $id_simple . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+                        <a href="{{ url('/gestor_examenes/desarrollo/' . $id_simple . '/'.$id_examen.'/delete') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-danger btn-xs" title="Eliminar Respuesta" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Respuesta" /></a>
                     </td>
                         @else
 
                     <!-- $item-> id  ese es el id_ de la pregunta-->
 
-                        <a href="{{ url('/gestor_examenes/desarrollo/'.$item->id.'/'.$id_examen.'/create') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/desarrollo/'.$item->id.'/'.$id_examen.'/create') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-primary btn-xs" title="Añadir Respuesta"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
                          @endif
 
                         </td>
@@ -135,10 +135,10 @@
                        @if(!is_null($id_simple))
                        {{-- */ $id_simple = $id_simple->id; /* --}}
 
-                        <a href="{{ url('/gestor_examenes/multiples/'.$item->id.'/index') }}" class="btn btn-success btn-xs" title="View Simple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/multiples/'.$item->id.'/index') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-success btn-xs" title="Ver Respuesta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 
                         @else
-                        <a href="{{ url('/gestor_examenes/multiples/'.$item->id.'/index') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/multiples/'.$item->id.'/index') }}" class="btn btn-primary btn-xs" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" title="Añadir Respuestas"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
                         @endif
                         </td> 
                          <td>{{$tipo_pre}}</td>
@@ -159,17 +159,17 @@
                      
                      <!-- $id_simple ese es el id_ de la respuesta-->
 
-                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $id_simple . '/'.$id_examen.'/edit') }}" class="btn btn-primary btn-xs" title="Editar respuesta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $id_simple . '/'.$id_examen.'/edit') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-primary btn-xs" title="Editar Respuesta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
 
-                        <a href="{{ url('/gestor_examenes/falsoverdadero/'.$id_simple.'/'.$id_examen.'/show') }}" class="btn btn-success btn-xs" title="View Simple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/falsoverdadero/'.$id_simple.'/'.$id_examen.'/show') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-success btn-xs" title="Ver Respuesta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 
-                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $id_simple . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $id_simple . '/'.$id_examen.'/delete') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-danger btn-xs" title="Eliminar Respuesta" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Respuesta" /></a>
                     </td>
                         @else
 
                     <!-- $item-> id  ese es el id_ de la pregunta-->
 
-                        <a href="{{ url('/gestor_examenes/falsoverdadero/'.$item->id.'/'.$id_examen.'/create') }}" class="btn btn-primary btn-xs" title="Add New Preguntum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/falsoverdadero/'.$item->id.'/'.$id_examen.'/create') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-primary btn-xs" title="Definir Respuesta"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
                          @endif
                         </td> 
                          <td>{{$tipo_pre}}</td>
@@ -177,11 +177,11 @@
                        @endif
 
                     <td>
-                        <a href="{{ url('/gestor_examenes/pregunta/'.$item->id.'/'.$id_examen.'/show') }}" class="btn btn-success btn-xs" title="View Preguntum"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/pregunta/'.$item->id.'/'.$id_examen.'/show') }}" class="btn btn-success btn-xs" title="ver Pregunta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 
-                        <a href="{{ url('/gestor_examenes/pregunta/'.$item->id.'/'.$id_examen.'/edit') }}" class="btn btn-primary btn-xs" title="Edit Preguntum"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/pregunta/'.$item->id.'/'.$id_examen.'/edit') }}" class="btn btn-primary btn-xs" title="Editar Pregunta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                      
-                        <a href="{{ url('/gestor_examenes/pregunta/' . $item->id . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+                        <a href="{{ url('/gestor_examenes/pregunta/' . $item->id . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Eliminar Pregunta" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Pregunta" /></a>
                     </td>
                 </tr>
             @endforeach
