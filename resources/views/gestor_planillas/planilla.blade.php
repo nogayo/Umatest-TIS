@@ -16,9 +16,11 @@
    
     {{-- */$materia=DB::table('cursos')->where('id', $id_curso)->first();
                     $name_materia=$materia->nombre;
+                    $cantidad_estudiantes= count($estudiantes);
              /* --}}
-    <h2> Planilla <a href="#"></a></h2>
-    <h3> Materia: {{ $name_materia }} <a href="#"></a></h3>
+    <h3> Planilla <a href="#"></a></h2>
+    <h4> Materia: {{ $name_materia }} <a href="#"></a></h4>
+    <h4> Cantidad de estudiantes: {{ $cantidad_estudiantes }} <a href="#"></a></h4>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
