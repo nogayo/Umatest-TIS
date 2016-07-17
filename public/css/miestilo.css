@@ -38,4 +38,43 @@
 	margin-left: 15%;
     margin-top: 8%;
 }
+.hoja {
+	border-color: #dddddd;
+  margin-bottom: 0px;
+  background-color: #fef1c3;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+background: linear-gradient(
+                  #fef1c3 98%,
+                  #e0b8b8 98%);
+  background-size: 100% 40px;
+  background-position: 0 1em;
+line-height: 19px;
+  }
+  .hoja:before {
+       
+        left: -2em;
+      }
+
+  .containerexamen {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .containerexamen {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .containerexamen {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .containerexamen {
+   /* width: 1170px;*/
+  }
 
