@@ -73,12 +73,12 @@ class examenController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required',]);
+        $this->validate($request, ['nombre_examen' => 'required',]);
 
          $id_curso=$request->input('id_curso');
          $fecha_actual = date("Y-m-d");
          
-         DB::table('examens')->insert(['nombre_examen' => $request->input('nombre_examen'), 'estado_examen' => $request->input('estado_examen'),
+         DB::table('examens')->insert(['nombre_examen' => $request->input('nombre_examen'), 'estado_examen' => 1,
           'fecha_examen' => $fecha_actual,'id_cursos'=> $request->input('id_curso')]
          );
 
@@ -124,7 +124,7 @@ class examenController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['nombre_examen' => 'required', 'estado_examen' => 'required',]);
+        $this->validate($request, ['nombre_examen' => 'required',]);
         $id_curso=$request->input('id_curso');
 
         $examan = examan::findOrFail($id);
