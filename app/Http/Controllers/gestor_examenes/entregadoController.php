@@ -69,11 +69,12 @@ class entregadoController extends Controller
 
        // return redirect('gestor_examenes/entregado');
 
-          $this->validate($request, ['descripcion_tarea', 'archivo', 'fecha' => 'required', 'puntaje', ]);
+          $this->validate($request, ['descripcion_tarea', 'archivo', 'fecha', 'puntaje', ]);
         $id_curso=$request->input('id_curso');
         $id_enviado=$request->input('id');
         $id_user=Auth::Id();
         $fecha_actual = date("Y-m-d H:i:s");
+        $puntaje=5;
 
       if (!empty($_FILES)) {
         $temporalFile=$_FILES['archivo']['tmp_name'];
@@ -88,9 +89,9 @@ class entregadoController extends Controller
          $fichero_subido = $dir_subida . basename($_FILES['archivo']['name']);
          if (move_uploaded_file($_FILES['archivo']['tmp_name'],$fichero_subido)) {
 
-           DB::table('entregados')->insert(['descripcion_tarea' => $request->input('descripcion_tarea'), 
+           DB::table('entregados')->insert(['descripcion_tarea' => $request->input('descripcion'), 
           'archivo' => $nombreArchivo,'fecha' => $fecha_actual,
-          'puntaje' => $request->input('puntaje'),'id_user'=>$id_user,
+          'puntaje' => $puntaje,'id_user'=>$id_user,
           'id_enviado'=> $request->input('id')]
          );
  
@@ -98,8 +99,8 @@ class entregadoController extends Controller
 
         
 
-           DB::table('entregados')->insert(['descripcion_tarea' => $request->input('descripcion_tarea'), 
-          'fecha' => $fecha_actual,'puntaje' => $request->input('puntaje'),'id_user'=>$id_user,
+           DB::table('entregados')->insert(['descripcion_tarea' => $request->input('descripcion'), 
+          'fecha' => $fecha_actual,'puntaje' => $puntaje,'id_user'=>$id_user,
           'id_enviado'=> $request->input('id')]
          );
  
