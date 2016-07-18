@@ -34,7 +34,7 @@ Route::get('pdf2', function(){
 
 );
 */
-Route::get('pdf2', 'gestorexamenesController@crear_pdf');
+
 
 Route::resource('admin/posts', 'Admin\\PostsController');
 //Route::get('/','Admin\\PostsController@prueba');
@@ -192,6 +192,7 @@ Route::get('gestor_examenes/nota/{id_curso}/{id_examen}/create', ['as' => 'exame
 Route::get('darexamen/{id_nota}/{id_examen}/formulario_examen', 'gestorexamenesController@formulario_examen');
 
 Route::post('darexamen/formulario_examen/calcular_nota', 'gestorexamenesController@calcular_nota');
+//Route::get('pdf2', 'gestorexamenesController@crear_pdf');
 
 
 //FIN DE RUTAS PARA DAT EL EXAMEN

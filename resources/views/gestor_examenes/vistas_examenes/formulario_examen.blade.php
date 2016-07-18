@@ -113,6 +113,11 @@
            $respuestas_correctas=$cadena_m;
 
            $res_multiple_correcta=implode(",",$res_mul_correcta);
+
+           $nombre_preguntas_examen=implode(",",$content_nom_preguntas);
+
+           $tipo_pregunta=implode(",", $ids_tipo_pregunta);
+
           /* --}}
 
            <div class="form-group {{ $errors->has('con_puntaje') ? 'has-error' : ''}}">
@@ -153,6 +158,53 @@
                     {!! $errors->first('id_nota', '<p class="help-block">:message</p>') !!}
                 </div>
            </div>
+           
+            <div class="form-group {{ $errors->has('puntaje_total_examen') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('puntaje_total_examen',$puntaje_total_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('puntaje_total_examen', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
+
+           <div class="form-group {{ $errors->has('nombre_pregunta_examen') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('nombre_pregunta_examen',$nombre_preguntas_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('nombre_pregunta_examen', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
+           <div class="form-group {{ $errors->has('nombre_examen') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('nombre_examen',$nombre_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('nombre_examen', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
+
+           <div class="form-group {{ $errors->has('fecha_examen') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('fecha_examen',$fecha_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('fecha_examen', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
+              <div class="form-group {{ $errors->has('nombre_categoria') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('nombre_categoria',$nombre_categoria, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('nombre_categoria', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
+
+            <div class="form-group {{ $errors->has('tipo_pregunta') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('tipo_pregunta',$tipo_pregunta, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('tipo_pregunta', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
+           
 
 
     <div class="form-group">

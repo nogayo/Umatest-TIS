@@ -135,15 +135,17 @@ class gestorexamenesController extends Controller
       public function calcular_nota(Request $request){
         
         
-         $cadena_puntaje=explode(",",$request->input('con_puntaje'));
-         $cadena_res_formulario=explode(",",$request->input('con_res_formularios'));
+         $cadena_puntaje=explode(",",$request->input('con_puntaje'));//envia 1
+         $cadena_res_formulario=explode(",",$request->input('con_res_formularios'));//envia 2
          $separando= explode(",",$request->input('con_res_correctas'));
          $cadena_res_correctas=$this->explode_respuestas($separando);
          $cadena_res_multiple= explode(",",$request->input('con_res_multiple'));
-         
+       
+         $tipo_pre=explode(",",$request->input('tipo_pregunta'));
          $puntaje_estudiante=0;
          $numero_res_correctas=0;
          $numero_res_fallidas=0;
+         $numero_res_resvisar=0;
         for ($i=0; $i < count($cadena_res_correctas); $i++) { 
                  $respuesta=$request->input($cadena_res_formulario[$i]);
                  if(count($cadena_res_correctas[$i])>1){
@@ -168,14 +170,17 @@ class gestorexamenesController extends Controller
                    }
 
                  }else{
-                      
-                      if($respuesta==$cadena_res_correctas[$i]){
-                          $puntaje_estudiante+=$cadena_puntaje[$i];
-                           $numero_res_correctas++;
+                      if($tipo_pre[$i] != 2){
+                              if($respuesta==$cadena_res_correctas[$i]){
+                              $puntaje_estudiante+=$cadena_puntaje[$i];
+                               $numero_res_correctas++;
+                          }else{
+                            $numero_res_fallidas++;
+                          }
                       }else{
-                        $numero_res_fallidas++;
+                        $numero_res_resvisar++;
                       }
-        
+   
                  }
            
          }
@@ -188,8 +193,25 @@ class gestorexamenesController extends Controller
          $id_nota=$request->input('id_nota');
 
          DB::table('notas')->where('id',$id_nota)->update(array('calificacion'=>$puntaje_estudiante));
+         
+         $respuestas_estudiante=array();
+         for ($i=0; $i < count($cadena_res_formulario); $i++) {  
+           $respuestas_estudiante[$i]= $request->input($cadena_res_formulario[$i]);
+         }
 
-         return view('gestor_examenes.vistas_examenes.resultado_examen', compact('puntaje_estudiante','numero_res_correctas','numero_res_fallidas'));
+         //LO QUE SE ENVIA
+         $puntajes= $request->input('con_puntaje');//explode
+         //$respuestas_estudiante= $request->input('con_res_formularios');//explode
+         $preguntas_examen= $request->input('nombre_pregunta_examen');//explode
+         $nombre_examen= $request->input('nombre_examen');
+         $fecha_examen=$request->input('fecha_examen');
+         $nombre_categoria=$request->input('nombre_categoria');
+         $puntaje_total_examen=$request->input('puntaje_total_examen');
+         $tipos_pregunta=$request->input('tipo_pregunta');//eplode
+
+         $this->crear_pdf($puntajes, $respuestas_estudiante, $preguntas_examen, $nombre_examen, $fecha_examen, $nombre_categoria, $puntaje_total_examen, $tipos_pregunta, $id_nota);
+
+         return view('gestor_examenes.vistas_examenes.resultado_examen', compact('puntaje_estudiante','numero_res_correctas','numero_res_fallidas', 'numero_res_resvisar'));
       }
      
       
@@ -233,12 +255,45 @@ class gestorexamenesController extends Controller
               return $vector_oficial;
              }
 
-       public function crear_pdf(){
+       public function crear_pdf($puntajes, $respuestas_estudiante, $preguntas_examen, 
+        $nombre_examen, $fecha_examen, $nombre_categoria, $puntaje_total_examen, $tipos_pregunta, $id_nota){
+         
+         $fecha_actual = date("Y-m-d H-i-s");
+         $puntaje=explode(",",$puntajes);
+         //$respuestas=explode(",", $respuestas_estudiante);
+         $preguntas=explode(",", $preguntas_examen);
+         $tipo=explode(",", $tipos_pregunta);
 
-          Fpdf::AddPage();
-          Fpdf::SetFont('Arial','B',16);
-          Fpdf::Cell(40,10,'Hello World!');
-          Fpdf::Output();
-          exit;
+         Fpdf::AddPage();
+         Fpdf::SetFont('Arial','B',16);
+
+         Fpdf::Cell(185,10, $nombre_examen,0,2,'C');
+         Fpdf::Cell(185,10, $fecha_examen,0,2,'C');
+         Fpdf::Cell(185,10, $nombre_categoria,0,2,'C');
+         Fpdf::Cell(185,10, $puntaje_total_examen.' Puntos',0,2,'C');
+
+        for($i=0;$i<count($puntaje);$i++){
+          Fpdf::Cell(0,10,($i+1).'.- '.$preguntas[$i].'('.$puntaje[$i].'puntos)',0,2);
+
+          if($tipo[$i] == '4'){
+               if ($respuestas_estudiante[$i]=='1') {
+                Fpdf::Cell(0,10,'Respuesta'.'.- '.'Verdadero',0,2);
+               }else{
+                Fpdf::Cell(0,10,'Respuesta'.'.- '.'Falso',0,2);
+               }
+          }else{
+
+            Fpdf::Cell(0,10,'Respuesta'.'.- '.$respuestas_estudiante[$i],0,2);
+          }
+          
+          
+        }
+          //Fpdf::Output();
+        $archivo_examen= 'pdfs_examenes/'.$nombre_examen.'-'.$fecha_actual.'.pdf';
+        Fpdf::Output($archivo_examen,'F');
+         //Fpdf::Output('probamela3.pdf', 'F');
+         
+         DB::table('notas')->where('id',$id_nota)->update(array('archivo'=>$archivo_examen));
+         
        }
     }

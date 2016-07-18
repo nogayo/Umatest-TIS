@@ -177,7 +177,7 @@ class examenController extends Controller
         $index++;
        }
 
-       $datos_estudiante=array();
+       $datos_estudiante=array();//estudiantes inscritos
 
        for ($i=0; $i < count($ids_estudiantes) ; $i++) { 
 
@@ -185,8 +185,13 @@ class examenController extends Controller
          $datos_estudiante[$i]=$estudiante;
 
        }
+
+
+        $examenes= DB::table('examens') ->where('id_cursos', $id_curso)->get();//examenes
+      
+
        
-       return view('gestorcursos.mis_estudiantes', compact('datos_estudiante', 'id_curso'));
+       return view('gestorcursos.mis_estudiantes', compact('datos_estudiante', 'id_curso', 'examenes'));
 
     }
 
