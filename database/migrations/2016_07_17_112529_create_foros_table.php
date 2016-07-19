@@ -17,7 +17,7 @@ class CreateForosTable extends Migration
             $table->string('titulo');
             $table->string('mensaje');
             $table->string('archivo');
-            $table->date('fecha');
+            $table->dateTime('fecha');
             $table->timestamps();
 
             $table->integer('id_curso')->unsigned();

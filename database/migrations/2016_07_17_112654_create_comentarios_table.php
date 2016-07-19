@@ -15,7 +15,7 @@ class CreateComentariosTable extends Migration
         Schema::create('comentarios', function(Blueprint $table) {
             $table->increments('id');
             $table->string('mensaje');
-            $table->date('fecha');
+            $table->dateTime('fecha');
             $table->timestamps();
             $table->integer('id_foro')->unsigned();
             $table->integer('id_user')->unsigned();
