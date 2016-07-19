@@ -364,3 +364,39 @@ Route::get('gestor_planillas/{id_curso}/planilla/listar', 'gestor_planillas\\pla
 * url('gestor_planillas/ver/kardex'
 */
 Route::get('gestor_planillas/{id_curso}/ver/kardex', 'gestor_planillas\\planillaController@kardex');
+
+/*
+NOTA.- Apartir de esta instruccion solo se debe aniadir foros
+*/
+Route::resource('foro', 'gestor_foros\\foroController');
+Route::resource('admin/comentario', 'gestor_foros\\comentarioController');
+
+/*
+* Esta ruta viene despues presinar ver kardex (de parte de estudiante)
+* parametro1@ id del curso
+* url('gestor_foros/'.$id_curso.'/foro')
+*/
+Route::get('gestor_foros/{id_curso}/foro', 'gestor_foros\\foroController@listar');
+
+
+/*
+* Esta ruta viene despues presinar crear foro
+* parametro1@ id del curso
+* url('gestor_foros/'.$id_curso'.'/crear/foro')
+*/
+Route::get('gestor_foros/{id_curso}/crear/foro', 'gestor_foros\\foroController@crear_foro');	
+
+/*
+* Esta ruta viene despues presinar crear foro
+* parametro1@ id del curso
+* /gestor_foros/{id_curso}/save/foro
+*/
+Route::post('/gestor_foros/{id_curso}/save/foro', 'gestor_foros\\foroController@save_foro');
+
+
+/*
+* Esta ruta viene despues presinar en gestor foros , el boton comentar
+* parametro@ id del curso
+* url('gestor_foros/'.$id_curso.'/crear/'.$item->id_foro.'/comentario') 
+*/
+Route::get('gestor_foros/{id_curso}/crear/{id_foro}/comentario', 'gestor_foros\\comentarioController@show_comentario');

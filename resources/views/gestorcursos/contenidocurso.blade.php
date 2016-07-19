@@ -139,9 +139,10 @@
                     <li><a href="{{ url('gestor_examenes/'.$id_curso.'/tareas/recibidos') }}"><i class="fa fa-filter"></i> Mis Tareas </a></li>
                 @endif
                 </li>
-                   <li class="dropdown">
+
+                <li class="dropdown">
                 <ul>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> Foros </a></li>
+                <li><a href="{{ url('gestor_foros/'.$id_curso.'/foro') }}"><i class="fa fa-envelope-o"></i> Foros </a></li>
 
                 </ul>
 
