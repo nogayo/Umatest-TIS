@@ -37,6 +37,15 @@ php artisan crud:generate tarea --fields="nombre#string#required,descripcion#str
 
 php artisan crud:generate notificacion --fields="id_user#integer#required, id_curso#integer#required, descripcion#string, visto#boolean#required" --route=yes --pk=id --view-path="gestor_examenes" --namespace=Admin --route-group=admin
 
+///para foros
+// tabla Foro
+
+php artisan crud:generate foro --fields="titulo#string,mensaje#string,archivo#string,fecha#date#required" --route=yes --pk=id --view-path="gestor_foro" --namespace=Admin --route-group=admin
+
+//tabla comenrario
+
+php artisan crud:generate comentario --fields="mensaje#string#required,fecha#date#required" --route=yes --pk=id --view-path="gestor_foro" --namespace=Admin --route-group=admin
+
 
 
 

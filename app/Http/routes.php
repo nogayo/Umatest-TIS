@@ -238,7 +238,15 @@ Esta ruta lega despues de Preisnar el voton Eliminar examen y nos envia dos para
 //Route::get('gestor_examenes/{id}/examen/{id_curso}/delete', 'gestor_examenes\\examenController@destroy');
 Route::get('gestor_examenes/examen/{id}/delete/{id_curso}/destroy', 'gestor_examenes\\examenController@destroy');
 
+//INICIO DE RUTAS PARA COPIAS DE SEGURIDAD
 
+Route::resource('copia_seguridad/backups', 'copia_seguridad\\backupsController');
+
+Route::get('copia_seguridad/generar_backup/backups', 'copia_seguridad\\backupsController@create');
+
+Route::get('copia_seguridad/restaurar_backup/{id}/backups', 'copia_seguridad\\backupsController@restaurar');
+
+//FIN DE RUTAS PARA COPIAS DE SEGURIDAD
 
 /*
 NOTA.- Apartir de esta instruccion solo se debe aniadir rutas para tareas
@@ -389,12 +397,52 @@ Route::get('gestor_planillas/{id_curso}/planilla/listar', 'gestor_planillas\\pla
 * url('gestor_planillas/ver/kardex'
 */
 Route::get('gestor_planillas/{id_curso}/ver/kardex', 'gestor_planillas\\planillaController@kardex');
-//INICIO DE RUTAS PARA COPIAS DE SEGURIDAD
 
-Route::resource('copia_seguridad/backups', 'copia_seguridad\\backupsController');
+/*
+NOTA.- Apartir de esta instruccion solo se debe aniadir foros
+*/
+Route::resource('foro', 'gestor_foros\\foroController');
 
-Route::get('copia_seguridad/generar_backup/backups', 'copia_seguridad\\backupsController@create');
 
-Route::get('copia_seguridad/restaurar_backup/{id}/backups', 'copia_seguridad\\backupsController@restaurar');
+Route::resource('/gestor_foros/comentario', 'gestor_foros\\comentarioController');
 
-//FIN DE RUTAS PARA COPIAS DE SEGURIDAD
+/*
+* Esta ruta viene despues presinar ver kardex (de parte de estudiante)
+* parametro1@ id del curso
+* url('gestor_foros/'.$id_curso.'/foro')
+*/
+Route::get('gestor_foros/{id_curso}/foro', 'gestor_foros\\foroController@listar');
+
+
+/*
+* Esta ruta viene despues presinar crear foro
+* parametro1@ id del curso
+* url('gestor_foros/'.$id_curso'.'/crear/foro')
+*/
+Route::get('gestor_foros/{id_curso}/crear/foro', 'gestor_foros\\foroController@crear_foro');	
+
+/*
+* Esta ruta viene despues presinar crear foro
+* parametro1@ id del curso
+* /gestor_foros/{id_curso}/save/foro
+*/
+Route::post('/gestor_foros/{id_curso}/save/foro', 'gestor_foros\\foroController@save_foro');
+
+
+/*
+* Esta ruta viene despues presinar en gestor foros , el boton comentar
+* parametro@ id del curso
+  
+* url('gestor_foros/'.$id_curso.'/crear/'.$item->id_foro.'/comentario') 
+*redirect('gestor_foros/'.$id_curso.'/crear/'.$id_foro.'/comentario');
+*/
+Route::get('gestor_foros/{id_curso}/crear/{id_foro}/comentario', 'gestor_foros\\comentarioController@show_comentario');
+
+
+
+/*
+* Esta ruta viene despues presinar en gestor foros , el boton comentar
+* parametro@ id del curso
+* url('gestor_foros/'.$id_curso.'/nuevo/'.$id_foro.'/comentario') 
+*/
+Route::get('gestor_foros/{id_curso}/nuevo/{id_foro}/comentario', 'gestor_foros\\comentarioController@comentar'); 
