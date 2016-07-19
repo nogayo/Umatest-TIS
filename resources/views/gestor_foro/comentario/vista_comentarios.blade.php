@@ -15,7 +15,9 @@
 
 <div class="container">
 
-    <h1>Comentarios <a href="{{ url('gestor_foros/'.$id_curso.'/nuevo/'.$id_foro.'/comentario') }}" class="btn btn-primary btn-xs" title="Add New Foro"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h2>Comentarios </h2>
+
+   
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -73,7 +75,9 @@
                /* --}}
 
                  <tr>
-                     <td bgcolor="#cccccc" style="font-size: 14px; color: #4169e1;"> {{ $cantidad_comentarios }} comentarios</td>
+                     <td bgcolor="#cccccc" >                      
+                     <i i class="fa fa-comments" style="font-size:18px;color:#3399ff"> {{ $cantidad_comentarios }} comentarios </i>
+                      </td>
                     <td bgcolor="#cccccc"></td>
                  </tr>
                  <tr bgcolor="#333333">
@@ -138,8 +142,69 @@
                  </tr>
 
             @endforeach
-            </tbody>
-        </table>
+
+ </tbody>
+
+  
+ {!! Form::open(['url' => '/gestor_foros/comentario', 'class' => 'form-horizontal']) !!}
+
+<tr>
+<td bgcolor="#b0e0e6">
+
+                          <div class="form-group {{ $errors->has('mensaje') ? 'has-error' : ''}}">
+                {!! Form::label('mensaje', trans('comentario.mensaje'), ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('mensaje',null, ['class' => 'form-control', 'placeholder' => 'Escribe un comentario...','required' => 'required']) !!}
+                    {!! $errors->first('mensaje', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+ 
+
+              <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('id_curso',$id_curso, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('id_curso', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+
+              <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('id_foro',$id_foro, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('id_foro', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+</td>
+
+
+<td bgcolor="#b0e0e6" WIDTH=100>
+
+      
+            {!! Form::submit('comentar', ['class' => 'btn btn-warning']) !!}
+       
+    
+
+
+    {!! Form::close() !!}
+</td>
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
+ </tr>
+
+ </table>
+
+
+
+
+           
+     
         
     </div>
 </div>

@@ -84,9 +84,17 @@
                  </tr>
 
                  <tr>
-                     <td bgcolor="#cccccc" style="font-size: 14px; color: #4169e1;"> {{ $cantidad_comentarios }} comentarios</td>
+                    
+
+                     <td bgcolor="#cccccc"> 
+                     <a href="{{ url('gestor_foros/'.$id_curso.'/crear/'.$item->id_foro.'/comentario') }}">
+                     <i class="fa fa-comments" style="font-size:18px;color:#3399ff"></i>
+                      {{ $cantidad_comentarios }} comentarios</a>
+
+                      </td>
+
                      <td bgcolor="#cccccc">
-                      <li><a href="{{ url('gestor_foros/'.$id_curso.'/crear/'.$item->id_foro.'/comentario') }}"><i class="fa fa-file-text-o"></i> Comentar </a></li> 
+                      <a href="{{ url('gestor_foros/'.$id_curso.'/crear/'.$item->id_foro.'/comentario') }}"><i class="fa fa-comment-o" style="font-size:18px;color:#3399ff"></i> Comentar </a>
                       </td>
                  </tr>
                  <tr bgcolor="#333333">
