@@ -369,7 +369,9 @@ Route::get('gestor_planillas/{id_curso}/ver/kardex', 'gestor_planillas\\planilla
 NOTA.- Apartir de esta instruccion solo se debe aniadir foros
 */
 Route::resource('foro', 'gestor_foros\\foroController');
-Route::resource('admin/comentario', 'gestor_foros\\comentarioController');
+
+
+Route::resource('/gestor_foros/comentario', 'gestor_foros\\comentarioController');
 
 /*
 * Esta ruta viene despues presinar ver kardex (de parte de estudiante)
@@ -397,6 +399,17 @@ Route::post('/gestor_foros/{id_curso}/save/foro', 'gestor_foros\\foroController@
 /*
 * Esta ruta viene despues presinar en gestor foros , el boton comentar
 * parametro@ id del curso
+  
 * url('gestor_foros/'.$id_curso.'/crear/'.$item->id_foro.'/comentario') 
+*redirect('gestor_foros/'.$id_curso.'/crear/'.$id_foro.'/comentario');
 */
 Route::get('gestor_foros/{id_curso}/crear/{id_foro}/comentario', 'gestor_foros\\comentarioController@show_comentario');
+
+
+
+/*
+* Esta ruta viene despues presinar en gestor foros , el boton comentar
+* parametro@ id del curso
+* url('gestor_foros/'.$id_curso.'/nuevo/'.$id_foro.'/comentario') 
+*/
+Route::get('gestor_foros/{id_curso}/nuevo/{id_foro}/comentario', 'gestor_foros\\comentarioController@comentar'); 

@@ -30,7 +30,20 @@ class comentarioController extends Controller
     {
 
            
-  
+            $foro= DB::table('foros')
+            ->where('foros.id', $id_foro)
+            ->join('users', 'users.id', '=', 'foros.id_user')
+            ->select('foros.id AS id_foro','users.name','users.apellido','foros.titulo','foros.mensaje','foros.archivo','foros.fecha')
+            ->get();
+            //asc
+             $comentarios= DB::table('comentarios')
+            ->where('id_foro', $id_foro)
+            ->join('users', 'users.id', '=', 'comentarios.id_user')
+            ->orderBy('comentarios.fecha', 'asc')
+            ->select('comentarios.id AS id_coment','users.name','users.apellido','comentarios.mensaje','comentarios.fecha')
+            ->get();
+
+         return view('gestor_foro.comentario.vista_comentarios', compact('foro','comentarios','id_curso','id_foro'));
     }
 
 
@@ -45,6 +58,17 @@ class comentarioController extends Controller
         return view('gestor_foro.comentario.create');
     }
 
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return void
+     */
+    public function comentar($id_curso,$id_foro)
+    {
+        return view('gestor_foro.comentario.create',compact('id_curso','id_foro'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -52,13 +76,23 @@ class comentarioController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['mensaje' => 'required', 'fecha' => 'required', ]);
+        $this->validate($request, ['mensaje' => 'required','fecha',]);
 
-        comentario::create($request->all());
+        $id_user=Auth::id();
+        $fecha_actual = date("Y-m-d H:i:s");
+
+         DB::table('comentarios')->insert(['mensaje' => $request->input('mensaje'),'fecha' =>$fecha_actual,
+          'id_foro'=> $request->input('id_foro'),'id_user'=> $id_user]
+         );
 
         Session::flash('flash_message', 'comentario added!');
+        $id_curso=$request->input('id_curso');
+         $id_foro=$request->input('id_foro');
 
-        return redirect('admin/comentario');
+        //gestor_foros/{id_curso}/crear/{id_foro}/comentario';
+        //gestor_foros/{id_curso}/crear/{id_foro}/comentario'
+
+        return redirect('gestor_foros/'.$id_curso.'/crear/'.$id_foro.'/comentario');
     }
 
     /**

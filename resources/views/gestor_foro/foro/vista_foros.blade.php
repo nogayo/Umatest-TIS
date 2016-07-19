@@ -30,12 +30,10 @@
 
              {{-- */
               
-                 $mensajes=array();
                  $cantidad_comentarios=0;
                   for($i=0; $i < count($comentarios); $i++){
                       if($item->id_foro==$comentarios[$i]->id_foro){
                           
-                           $mensajes[$i]=$comentarios[j]->mensaje;
                            $cantidad_comentarios++;
                          
                       }

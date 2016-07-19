@@ -12,10 +12,11 @@
                   <div class="panel-body">
 <div class="container">
 
-    <h1>Create New Comentario</h1>
+    <h1>Crear Nuevo Comentario</h1>
     <hr/>
+    
 
-    {!! Form::open(['url' => '/admin/comentario', 'class' => 'form-horizontal']) !!}
+    {!! Form::open(['url' => '/gestor_foros/comentario', 'class' => 'form-horizontal']) !!}
 
                 <div class="form-group {{ $errors->has('mensaje') ? 'has-error' : ''}}">
                 {!! Form::label('mensaje', trans('comentario.mensaje'), ['class' => 'col-sm-3 control-label']) !!}
@@ -24,13 +25,26 @@
                     {!! $errors->first('mensaje', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('fecha') ? 'has-error' : ''}}">
-                {!! Form::label('fecha', trans('comentario.fecha'), ['class' => 'col-sm-3 control-label']) !!}
+ 
+
+              <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                
                 <div class="col-sm-6">
-                    {!! Form::date('fecha', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('fecha', '<p class="help-block">:message</p>') !!}
+                    {!! Form::hidden('id_curso',$id_curso, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('id_curso', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
+                </div>
+
+              <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('id_foro',$id_foro, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('id_foro', '<p class="help-block">:message</p>') !!}
+                </div>
+                </div>
+
+
+
 
 
     <div class="form-group">
