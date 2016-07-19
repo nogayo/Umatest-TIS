@@ -41,18 +41,20 @@
                          
               /* --}}
 
-
+          
                 <tr>
                  <td bgcolor="#b0e0e6">
-                <h4 style="font-size: 24px; color: red;">{{ $item->titulo }} </h4>
+               
 
-
+                 <FONT FACE="arial" SIZE= 5px COLOR=red>  {{ $item->titulo }}</FONT> 
                   <br> Publicado por <FONT FACE="arial" SIZE= 3px COLOR=#4169e1>  {{ $item->name }} {{$item->apellido}}</FONT>  el
                   <FONT FACE="arial" SIZE=2 COLOR=#daa520> {{ $item->fecha }} </FONT>
 
                    </td>
                    
-                         
+                          {{-- */$id_user_actual=Auth::id(); /* --}}
+
+                   @if($item->id_user==$id_user_actual)
                     <td bgcolor="#b0e0e6">
                         <a href="{{ url('/foro/' . $item->id_foro) }}" class="btn btn-success btn-xs" title="View Foro"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/foro/' . $item->id_foro . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Foro"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
@@ -69,6 +71,11 @@
                             ));!!}
                         {!! Form::close() !!}
                     </td>
+                    @else
+                    <td bgcolor="#b0e0e6">
+                    </td>
+                    @endif
+
                 </tr>
 
                  <tr>

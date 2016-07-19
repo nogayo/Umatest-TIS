@@ -44,7 +44,7 @@ class foroController extends Controller
             ->where('id_curso', $id_curso)
             ->join('users', 'users.id', '=', 'foros.id_user')
             ->orderBy('fecha', 'desc')
-            ->select('foros.id AS id_foro','users.name','users.apellido','foros.titulo','foros.mensaje','foros.archivo','foros.fecha')
+            ->select('foros.id AS id_foro','users.id AS id_user','users.name','users.apellido','foros.titulo','foros.mensaje','foros.archivo','foros.fecha')
             ->get();
 //asc
              $comentarios= DB::table('foros')

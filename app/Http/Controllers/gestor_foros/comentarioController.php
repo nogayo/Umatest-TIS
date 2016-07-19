@@ -33,14 +33,14 @@ class comentarioController extends Controller
             $foro= DB::table('foros')
             ->where('foros.id', $id_foro)
             ->join('users', 'users.id', '=', 'foros.id_user')
-            ->select('foros.id AS id_foro','users.name','users.apellido','foros.titulo','foros.mensaje','foros.archivo','foros.fecha')
+            ->select('foros.id AS id_foro','users.id AS id_user','users.name','users.apellido','foros.titulo','foros.mensaje','foros.archivo','foros.fecha')
             ->get();
             //asc
              $comentarios= DB::table('comentarios')
             ->where('id_foro', $id_foro)
             ->join('users', 'users.id', '=', 'comentarios.id_user')
             ->orderBy('comentarios.fecha', 'asc')
-            ->select('comentarios.id AS id_coment','users.name','users.apellido','comentarios.mensaje','comentarios.fecha')
+            ->select('comentarios.id AS id_coment','users.id AS id_user','users.name','users.apellido','comentarios.mensaje','comentarios.fecha')
             ->get();
 
          return view('gestor_foro.comentario.vista_comentarios', compact('foro','comentarios','id_curso','id_foro'));

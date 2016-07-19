@@ -26,8 +26,8 @@
  <tbody>
 
 
-
-@foreach($foro as $item)
+ {{-- */$id_user_actual=Auth::id(); /* --}}
+ @foreach($foro as $item)
 
                 <tr>
                  <td bgcolor="#b0e0e6">
@@ -39,7 +39,7 @@
 
                    </td>
                    
-                         
+                     @if($item->id_user==$id_user_actual)    
                     <td bgcolor="#b0e0e6">
                         <a href="" class="btn btn-success btn-xs" title="View Foro"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="" class="btn btn-primary btn-xs" title="Edit Foro"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
@@ -56,6 +56,9 @@
                             ));!!}
                         {!! Form::close() !!}
                     </td>
+                    @else <td bgcolor="#b0e0e6"> </td> 
+                    @endif
+
                 </tr>
 
                  <tr>
@@ -77,7 +80,7 @@
                     
                  </tr>
 
-           @endforeach
+            @endforeach
 
             @foreach($comentarios as $item)
 
@@ -90,6 +93,11 @@
 
                    </td>
                    
+                  
+
+                   @if($item->id_user==$id_user_actual)
+
+
 
                        <td bgcolor="#b6fcd5">
                         <a href="" class="btn btn-success btn-xs" title="View Comentario"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
@@ -107,6 +115,9 @@
                             ));!!}
                         {!! Form::close() !!}
                     </td>
+                    @else
+                     <td bgcolor="#b6fcd5"> </td>
+                    @endif
 
                 </tr>
 
