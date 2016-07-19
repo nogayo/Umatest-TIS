@@ -191,6 +191,9 @@ Route::get('gestor_examenes/nota/{id_curso}/{id_examen}/create', ['as' => 'exame
 
 Route::get('darexamen/{id_nota}/{id_examen}/formulario_examen', 'gestorexamenesController@formulario_examen');
 
+
+Route::get('verexamen/{id_examen}/{id_curso}/formulario_examen_docente', 'gestorexamenesController@formulario_examen_docente');
+
 Route::post('darexamen/formulario_examen/calcular_nota', 'gestorexamenesController@calcular_nota');
 //Route::get('pdf2', 'gestorexamenesController@crear_pdf');
 
@@ -386,3 +389,12 @@ Route::get('gestor_planillas/{id_curso}/planilla/listar', 'gestor_planillas\\pla
 * url('gestor_planillas/ver/kardex'
 */
 Route::get('gestor_planillas/{id_curso}/ver/kardex', 'gestor_planillas\\planillaController@kardex');
+//INICIO DE RUTAS PARA COPIAS DE SEGURIDAD
+
+Route::resource('copia_seguridad/backups', 'copia_seguridad\\backupsController');
+
+Route::get('copia_seguridad/generar_backup/backups', 'copia_seguridad\\backupsController@create');
+
+Route::get('copia_seguridad/restaurar_backup/{id}/backups', 'copia_seguridad\\backupsController@restaurar');
+
+//FIN DE RUTAS PARA COPIAS DE SEGURIDAD
