@@ -137,9 +137,9 @@ class UserTableSeeder extends Seeder
 
         DB::table('cursos')->insert([
             'id' => 1,
-            'nombre' => 'introduccion a la programacion',
+            'nombre' => 'Taller de Ingenieria de Software',
             'capacidad' => 10,
-            'codigo' => 'leticia',
+            'codigo' => 'TIS',
             'id_categoria' => 1
         ]);
 

@@ -50,4 +50,8 @@ class curso extends Model
     {
        return $this->hasMany('App\tarea');
     }
+   public function foros()
+    {
+       return $this->hasMany('App\foro');
+    }
 }
