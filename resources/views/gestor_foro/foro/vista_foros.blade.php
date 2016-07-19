@@ -1,5 +1,5 @@
 @extends('app')
-<meta http-equiv="refresh" content="500">
+<meta http-equiv="refresh" content="60">
 @section('htmlheader_title')
    CURSOS
 @endsection
