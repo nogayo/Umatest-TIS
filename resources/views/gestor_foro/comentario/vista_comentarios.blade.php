@@ -73,7 +73,9 @@
                /* --}}
 
                  <tr>
-                     <td bgcolor="#cccccc" style="font-size: 14px; color: #4169e1;"> {{ $cantidad_comentarios }} comentarios</td>
+                     <td bgcolor="#cccccc" >                      
+                     <i i class="fa fa-comments" style="font-size:18px;color:#3399ff"> {{ $cantidad_comentarios }} comentarios </i>
+                      </td>
                     <td bgcolor="#cccccc"></td>
                  </tr>
                  <tr bgcolor="#333333">
