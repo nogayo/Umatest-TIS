@@ -78,3 +78,10 @@ line-height: 19px;
    /* width: 1170px;*/
   }
 
+.estiloresultado {
+  padding-left:15%;
+  font-family:arial;
+  font-weight: 700; 
+  font-size: 22px
+}
+

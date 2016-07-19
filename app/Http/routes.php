@@ -15,6 +15,27 @@
  // return view('welcome');
 //});
 
+/*Route::get('pdf', function(){
+    $fpdf = new Fpdf();
+        $fpdf->AddPage();
+        $fpdf->SetFont('Arial','B',16);
+        $fpdf->Cell(40,10,'Hello World!');
+        $fpdf->Output();
+        exit;
+
+});
+Route::get('pdf2', function(){
+
+        Fpdf::AddPage();
+        Fpdf::SetFont('Arial','B',16);
+        Fpdf::Cell(40,10,'Hello World!');
+        Fpdf::Output();
+        exit;
+
+);
+*/
+
+
 Route::resource('admin/posts', 'Admin\\PostsController');
 //Route::get('/','Admin\\PostsController@prueba');
 Route::get('/','menuPrincipalController@index');
@@ -171,6 +192,7 @@ Route::get('gestor_examenes/nota/{id_curso}/{id_examen}/create', ['as' => 'exame
 Route::get('darexamen/{id_nota}/{id_examen}/formulario_examen', 'gestorexamenesController@formulario_examen');
 
 Route::post('darexamen/formulario_examen/calcular_nota', 'gestorexamenesController@calcular_nota');
+//Route::get('pdf2', 'gestorexamenesController@crear_pdf');
 
 
 //FIN DE RUTAS PARA DAT EL EXAMEN

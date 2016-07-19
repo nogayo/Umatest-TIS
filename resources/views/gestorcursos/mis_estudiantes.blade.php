@@ -43,7 +43,12 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> Nombre </th><th> Apellido </th><th> Direccion </th><th> Telefono </th><th> Genero </th>
+                    <th>S.No</th>
+                    <th> Nombre </th>
+                    <th> Apellido </th>
+                       @foreach($examenes as $item)
+                        <th>{{$item->nombre_examen}}</th>
+                       @endforeach
                 </tr>
             </thead>
             <tbody>
@@ -52,7 +57,23 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td>{{ $item->name }}</td><td>{{ $item->apellido }}</td><td>{{ $item->direccion }}</td><td>{{ $item->telefono }}</td><td>{{ $item->genero }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->apellido }}</td>
+                    @foreach($examenes as $item2)
+                    {{-- */
+                     $res = DB::table('notas')->where('examen_id', $item2->id)->where('user_id', $item->id)->first();
+                     if(!is_null($res)){
+                      /* --}}
+                      <td>
+                      <a href="{{url(''.$res->archivo.'')}}">{{$res->archivo}}</a>
+                      <iframe src="{{asset(''.$res->archivo.'')}}"></iframe>
+                      </td>
+                      
+                       
+                      {{-- */
+                     }
+                     /* --}}
+                    @endforeach
                 </tr>
             @endforeach
             </tbody>
