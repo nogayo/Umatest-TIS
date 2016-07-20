@@ -40,7 +40,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th> {{ trans('examen.estado_examen') }} </th><th> {{ trans('examen.fecha_examen') }} <th>Llenar Preguntas</th></th><th>Actions</th>
+                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th>Ver examen</th><th> {{ trans('examen.fecha_examen') }} <th>Llenar Preguntas</th></th><th>Actions</th>
                 </tr>
                 </tr>
             </thead>
@@ -52,8 +52,11 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td>{{ $item->nombre_examen }}</td><td>{{ $item->estado_examen }}</td><td>{{ $item->fecha_examen }}</td>
-
+                    <td>{{ $item->nombre_examen }}</td>
+                    <td>
+                    <li><a href="{{url('verexamen/'.$item->id.'/'.$id_curso.'/formulario_examen_docente')}}"><i class="fa fa-file-text-o"></i> Ver </a></li>
+                    </td>
+                    <td>{{ $item->fecha_examen }}</td>
                     <td> 
                     <li><a href="{{url('/gestor_examenes/pregunta/'.$item->id.'/index')}}"><i class="fa fa-file-text-o"></i> Llenar </a></li>
                     </td>

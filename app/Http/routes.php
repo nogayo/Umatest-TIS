@@ -191,6 +191,9 @@ Route::get('gestor_examenes/nota/{id_curso}/{id_examen}/create', ['as' => 'exame
 
 Route::get('darexamen/{id_nota}/{id_examen}/formulario_examen', 'gestorexamenesController@formulario_examen');
 
+
+Route::get('verexamen/{id_examen}/{id_curso}/formulario_examen_docente', 'gestorexamenesController@formulario_examen_docente');
+
 Route::post('darexamen/formulario_examen/calcular_nota', 'gestorexamenesController@calcular_nota');
 //Route::get('pdf2', 'gestorexamenesController@crear_pdf');
 
@@ -235,7 +238,15 @@ Esta ruta lega despues de Preisnar el voton Eliminar examen y nos envia dos para
 //Route::get('gestor_examenes/{id}/examen/{id_curso}/delete', 'gestor_examenes\\examenController@destroy');
 Route::get('gestor_examenes/examen/{id}/delete/{id_curso}/destroy', 'gestor_examenes\\examenController@destroy');
 
+//INICIO DE RUTAS PARA COPIAS DE SEGURIDAD
 
+Route::resource('copia_seguridad/backups', 'copia_seguridad\\backupsController');
+
+Route::get('copia_seguridad/generar_backup/backups', 'copia_seguridad\\backupsController@create');
+
+Route::get('copia_seguridad/restaurar_backup/{id}/backups', 'copia_seguridad\\backupsController@restaurar');
+
+//FIN DE RUTAS PARA COPIAS DE SEGURIDAD
 
 /*
 NOTA.- Apartir de esta instruccion solo se debe aniadir rutas para tareas
