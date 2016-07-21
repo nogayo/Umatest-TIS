@@ -56,6 +56,9 @@ class notaController extends Controller
     {
         $this->validate($request, ['puntaje_examen' => 'required','duracion' => 'required',  'fecha_inicio' => 'required', 'fecha_fin' => 'required', ]);
 
+        // variables que se utilizaran para la tabla notificaciones
+        $id_curso=$request->input('curso_id');
+        $id_examen=$request->input('examen_id');
     
     $contenedor_estudiantes=array();
 
@@ -89,6 +92,25 @@ class notaController extends Controller
         }
 
     $notas = DB::table('notas')->orderBy('id', 'desc')->take(count($contenedor_estudiantes))->get();
+
+
+     // esta seccion de codigo es para las notificaciones
+
+         $examen= DB::table('examens')
+           ->where('id_cursos', $id_curso)
+           ->where('id', $id_examen)
+           ->select('examens.nombre_examen')
+            ->get();
+
+        $estudiantes= DB::table('curso_inscritos')->where('curso_id', $id_curso)->get();
+
+
+        foreach ($estudiantes as $item) {
+            
+                    DB::table('notificacions')->insert(['id_user' => $item->user_id,'id_curso' => $id_curso, 'descripcion' => $examen[0]->nombre_examen,'visto' => 'false']
+                    );
+
+        }
 
     $ids_notas=array();
     $j=0;

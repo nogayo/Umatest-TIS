@@ -11,36 +11,36 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-    	factory(App\User::class)->create([
-     		'name' => 'admin',
-     		'apellido' => 'admin',
-     		'direccion' => 'c:/sucre #1111 ',
-     		'telefono' => '60000000',
-     		'genero' => 'm',
-     		'email' => 'admin@umss.edu',
-     		'password' => bcrypt('administrador')
-     		]);
+        factory(App\User::class)->create([
+            'name' => 'admin',
+            'apellido' => 'admin',
+            'direccion' => 'c:/sucre #1111 ',
+            'telefono' => '60000000',
+            'genero' => 'm',
+            'email' => 'admin@umss.edu',
+            'password' => bcrypt('administrador')
+            ]);
 
 
          factory(App\User::class)->create([
-     		'name' => 'patricia',
-     		'apellido' => 'rodriguez',
-     		'direccion' => 'c:/lanza #39 ',
-     		'telefono' => '70000000',
-     		'genero' => 'f',
-     		'email' => 'akirebilbao@gmail.com',
-     		'password' => bcrypt('patricia')
-     		]);
+            'name' => 'patricia',
+            'apellido' => 'rodriguez',
+            'direccion' => 'c:/lanza #39 ',
+            'telefono' => '70000000',
+            'genero' => 'f',
+            'email' => 'akirebilbao@gmail.com',
+            'password' => bcrypt('patricia')
+            ]);
 
          factory(App\User::class)->create([
-     		'name' => 'victor',
-     		'apellido' => 'rojas',
-     		'direccion' => 'c:/heroinas #46 ',
-     		'telefono' => '79705950',
-     		'genero' => 'm',
-     		'email' => 'vinchuca@gmail.com',
-     		'password' => bcrypt('vinchuca')
-     		]);
+            'name' => 'victor',
+            'apellido' => 'rojas',
+            'direccion' => 'c:/heroinas #46 ',
+            'telefono' => '79705950',
+            'genero' => 'm',
+            'email' => 'vinchuca@gmail.com',
+            'password' => bcrypt('vinchuca')
+            ]);
         factory(App\User::class)->create([
             'name' => 'helber',
             'apellido' => 'iporre',
@@ -143,6 +143,14 @@ class UserTableSeeder extends Seeder
             'id_categoria' => 1
         ]);
 
+        DB::table('cursos')->insert([
+            'id' => 2,
+            'nombre' => 'Inteligencia Artificial',
+            'capacidad' => 30,
+            'codigo' => 'artificial',
+            'id_categoria' => 1
+        ]);
+
         // DATOS PARA LA TABLA CURSO_DICTAS
 
         DB::table('curso_dictas')->insert([
@@ -151,6 +159,27 @@ class UserTableSeeder extends Seeder
             'curso_id' => 1,
             'user_id' => 2
 
+        ]);
+
+        DB::table('curso_dictas')->insert([
+            'id' => 2,
+            'grupo' => '1',
+            'curso_id' => 2,
+            'user_id' => 2
+
+        ]);
+        // para la tabla de inscrito a una materia, se inscribio al estudiante jhosmar
+        
+        DB::table('curso_inscritos')->insert([
+            'fecha' => date("Y-m-d"),
+            'curso_id' => 1,
+            'user_id' => 7
+        ]);
+
+        DB::table('curso_inscritos')->insert([
+            'fecha' => date("Y-m-d"),
+            'curso_id' => 2,
+            'user_id' => 3
         ]);
 
         // DATOS PARA LA TABLA EXAMEN
@@ -248,6 +277,7 @@ class UserTableSeeder extends Seeder
             'pregunta_id' => 4
 
         ]);
+
 
     }
 }
