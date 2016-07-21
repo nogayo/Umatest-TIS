@@ -82,6 +82,19 @@ class examenController extends Controller
           'fecha_examen' => $fecha_actual,'id_cursos'=> $request->input('id_curso')]
          );
 
+           //store procedure
+            $nombre_examen = $request->input('nombre_examen');
+            $fecha_examen = $fecha_actual;
+            $id_curso=  $request->input('id_curso');
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='create';
+            $id_bi=0;
+
+            DB::select('CALL PA_examen(?,?,?,?,?,?,?)', array($nombre_examen, $fecha_examen, $id_curso, $nombre_usuario, $fecha_a, $accion_a, $id_bi));
+
         Session::flash('flash_message', 'examan added!');
 
         return redirect('gestor_examenes/'. $id_curso.'/examen');
@@ -127,8 +140,40 @@ class examenController extends Controller
         $this->validate($request, ['nombre_examen' => 'required',]);
         $id_curso=$request->input('id_curso');
 
+        $examen=DB::table('examens')->where('id',$id)->first();
+          //store procedure
+            $nombre_examen = $examen->nombre_examen;
+            $fecha_examen = $examen->fecha_examen;
+            $id_curso=  $id_curso;
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='updatev';
+            $id_bi=0;
+
+            DB::select('CALL PA_examen(?,?,?,?,?,?,?)', array($nombre_examen, $fecha_examen, $id_curso, $nombre_usuario, $fecha_a, $accion_a, $id_bi));
+
         $examan = examan::findOrFail($id);
         $examan->update($request->all());
+
+          //store procedure
+
+        $recurso= DB::table('bitacora_examenes')->where('usuario', $nombre_usuario)->where('fecha', $fecha_a)->first();
+           $recurso=$recurso->id;
+
+            $nombre_examen = $request->input('nombre_examen');
+            $fecha_examen_plus = $fecha_examen;
+            $id_curso=  $request->input('id_curso');
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='update';
+            $id_bi=$recurso;
+
+            DB::select('CALL PA_examen(?,?,?,?,?,?,?)', array($nombre_examen, $fecha_examen_plus, $id_curso, $nombre_usuario, $fecha_a, $accion_a, $id_bi));
+
 
         Session::flash('flash_message', 'examan updated!');
 
@@ -144,8 +189,21 @@ class examenController extends Controller
      */
     public function destroy($id,$id_curso)
     {
-        examan::destroy($id);
+          $examen=DB::table('examens')->where('id',$id)->first();
+          //store procedure
+            $nombre_examen = $examen->nombre_examen;
+            $fecha_examen = $examen->fecha_examen;
+            $id_curso=  $id_curso;
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='delete';
+            $id_bi=0;
 
+            DB::select('CALL PA_examen(?,?,?,?,?,?,?)', array($nombre_examen, $fecha_examen, $id_curso, $nombre_usuario, $fecha_a, $accion_a, $id_bi));
+        
+        examan::destroy($id);
 
         Session::flash('flash_message', 'examan deleted!');
 

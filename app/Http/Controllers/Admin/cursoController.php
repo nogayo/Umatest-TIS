@@ -74,6 +74,20 @@ class cursoController extends Controller
             ['grupo' => 1, 'curso_id' => $id_curso, 'user_id'=>$id_user]
             ); 
             
+               //store procedure
+            $nombre = $request->input('nombre');
+            $capacidad = $request->input('capacidad');
+            $codigo = $request->input('codigo');
+            $id_categoria = $request->input('id_categoria');
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='create';
+            $id_bi=0;
+
+            DB::select('CALL PA_curso(?,?,?,?,?,?,?,?)', array($nombre, $capacidad, $codigo, $id_categoria, $nombre_usuario, $fecha_a, $accion_a, $id_bi));
+         
+
             Session::flash('flash_message', 'LA MATERIA SE HA CREADO SATISFACTORIAMENTE'); 
 
             }else{
@@ -81,7 +95,7 @@ class cursoController extends Controller
                Session::flash('flash_message', 'LA MATERIA QUE QUIERE CREAR YA EXISTE'); 
             }
 
-
+            
         return redirect('admin/curso_dicta');
     }
 
@@ -109,8 +123,8 @@ class cursoController extends Controller
     public function edit($id)
     {
         $curso = curso::findOrFail($id);
-
-        return view('admin.curso.edit', compact('curso'));
+        $vector = DB::table('categorias')->lists('nombre','id');
+        return view('admin.curso.edit', compact('curso', 'vector'));
     }
 
     /**
@@ -123,9 +137,42 @@ class cursoController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, ['nombre' => "max:255", 'capacidad' => 'required|numeric|between:10,999', 'codigo' => "required|unique:cursos,codigo,$id", ]);
+        $curso=DB::table('cursos')->where('id', $id)->first();
+           //store procedure
+            $nombre = $curso->nombre;
+            $capacidad = $curso->capacidad;
+            $codigo = $curso->codigo;
+            $id_categoria = $curso->id_categoria;
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='updatev';
+            $id_bi=0;
+
+            DB::select('CALL PA_curso(?,?,?,?,?,?,?,?)', array($nombre, $capacidad, $codigo, $id_categoria, $nombre_usuario, $fecha_a, $accion_a, $id_bi));
 
         $curso = curso::findOrFail($id);
         $curso->update($request->all());
+
+         
+           $recurso= DB::table('bitacora_cursos')->where('usuario', $nombre_usuario)->where('fecha', $fecha_a)->first();
+           $recurso=$recurso->id;
+  
+
+                //store procedure
+            $nombre = $request->input('nombre');
+            $capacidad = $request->input('capacidad');
+            $codigo = $request->input('codigo');
+            $id_categoria = $request->input('id_categoria');
+            
+            $accion_a='update';
+            $id_bi=$recurso;
+
+
+            DB::select('CALL PA_curso(?,?,?,?,?,?,?,?)', array($nombre, $capacidad, $codigo, $id_categoria, $nombre_usuario, $fecha_a, $accion_a, $id_bi));
+           //store procedure
+
 
         Session::flash('flash_message', 'curso updated!');
 
@@ -141,7 +188,23 @@ class cursoController extends Controller
      */
     public function destroy($id)
     {
-       
+        $curso=DB::table('cursos')->where('id', $id)->first();
+           //store procedure
+            $nombre = $curso->nombre;
+            $capacidad = $curso->capacidad;
+            $codigo = $curso->codigo;
+            $id_categoria = $curso->id_categoria;
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='delete';
+            $id_bi=0;
+
+            DB::select('CALL PA_curso(?,?,?,?,?,?,?,?)', array($nombre, $capacidad, $codigo, $id_categoria, $nombre_usuario, $fecha_a, $accion_a, $id_bi));
+
+            //fin store procedure
+
         DB::table('curso_inscritos')->where('curso_id', $id)->delete();
 
         curso::destroy($id);
