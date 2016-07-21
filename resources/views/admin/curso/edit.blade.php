@@ -60,6 +60,13 @@
                     {!! $errors->first('codigo', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            <div class="form-group {{ $errors->has('id_categoria') ? 'has-error' : ''}}">
+                {!! Form::label('id_categoria', 'categoria', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::select('id_categoria', $vector, null, ['class' => 'form-control'])!!}
+                    {!! $errors->first('id_categoria', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
 
 
     <div class="form-group">

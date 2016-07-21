@@ -12,6 +12,7 @@ use Session;
 use DB;
 use Illuminate\Support\Facades\Input;
 use Hash;
+use Auth;
 
 class tareaController extends Controller
 {
@@ -84,16 +85,46 @@ public function store(CreateInvestigationRequest $request)
          $dir_subida = $path;
          $fichero_subido = $dir_subida . basename($_FILES['archivo']['name']);
          if (move_uploaded_file($_FILES['archivo']['tmp_name'],$fichero_subido)) {
+
            DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),
           'archivo' => $nombreArchivo,'path_archivo' => $fileName,'fecha_creacion' =>$fecha_actual,
           'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
          );
- 
+
+         //store procedure
+            $nombre_tarea = $request->input('nombre_tarea');
+            $descripcion = $request->input('descripcion');
+            $fecha_creacion= $fecha_actual;
+            $puntaje_total= $request->input('puntaje_total');
+            $id_curso= $request->input('id_curso');
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='create';
+            $id_bi=0;
+
+            DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
+
          }else{
 
              DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),'fecha_creacion' => $fecha_actual,
           'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
          );
+                      //store procedure
+            $nombre_tarea = $request->input('nombre_tarea');
+            $descripcion = $request->input('descripcion');
+            $fecha_creacion= $fecha_actual;
+            $puntaje_total= $request->input('puntaje_total');
+            $id_curso= $request->input('id_curso');
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='create';
+            $id_bi=0;
+
+         DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
 
          }
         }
@@ -158,10 +189,41 @@ public function store(CreateInvestigationRequest $request)
     public function update($id, Request $request)
     {
         $this->validate($request, ['nombre_tarea' => 'required', 'descripcion' => 'required', 'archivo' => 'required', 'estado_tarea' => 'required','puntaje_total' => 'required', ]);
+         $tareas= DB::table('tareas')->where('id', $id)->first();
+           //store procedure
+            $nombre_tarea = $tareas->nombre_tarea;
+            $descripcion = $tareas->descripcion;
+            $fecha_creacion= $tareas->fecha_creacion;
+            $puntaje_total= $tareas->puntaje_total;
+            $id_curso= $tareas->id_cursos;
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='updatev';
+            $id_bi=0;
+
+         DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
 
         $tarea = tarea::findOrFail($id);
         $tarea->update($request->all());
 
+         $recurso= DB::table('bitacora_tareas')->where('usuario', $nombre_usuario)->where('fecha', $fecha_a)->first();
+           $recurso=$recurso->id;
+          
+            $nombre_tarea = $request->input('nombre_tarea');
+            $descripcion = $request->input('descripcion');
+            $fecha_creacion= date("Y-m-d H:i:s");
+            $puntaje_total= $request->input('puntaje_total');
+            $id_curso= $request->input('id_curso');
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='update';
+            $id_bi=$recurso;
+
+         DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
 
         
        $id_curso=$request->input('id_curso');
@@ -182,6 +244,21 @@ public function store(CreateInvestigationRequest $request)
      */
     public function destroy($id)
     {
+        $tarea= DB::table('tareas')->where('id', $id)->first();
+           //store procedure
+            $nombre_tarea = $tarea->nombre_tarea;
+            $descripcion = $tarea->descripcion;
+            $fecha_creacion= $tarea->fecha_creacion;
+            $puntaje_total= $tarea->puntaje_total;
+            $id_curso= $tarea->id_cursos;
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='delete';
+            $id_bi=0;
+
+         DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
         tarea::destroy($id);
 
         Session::flash('flash_message', 'tarea deleted!');
