@@ -15,7 +15,21 @@
 
 <div class="container">
 
+
+
+  {{-- */$id_user=Auth::id();   
+             /* --}}
+             {{-- */$id_rol=DB::table('role_user')->where('user_id', $id_user)->first();
+                   $id_rol=$id_rol->role_id;    
+             /* --}}
+             {{-- */$name_rol=DB::table('roles')->where('id', $id_rol)->first();
+                    $name_rol=$name_rol->nombre_rol;
+             /* --}}
+             @if ($name_rol!="estudiante")
+
     <h1>Foro <a href="{{ url('gestor_foros/'.$id_curso.'/crear/foro') }}" class="btn btn-primary btn-xs" title="Add New Foro"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+
+    @endif
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -56,20 +70,12 @@
 
                    @if($item->id_user==$id_user_actual)
                     <td bgcolor="#b0e0e6">
-                        <a href="{{ url('/foro/' . $item->id_foro) }}" class="btn btn-success btn-xs" title="View Foro"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/foro/' . $item->id_foro . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Foro"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['/foro', $item->id_foro],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Foro" />', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Foro',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            ));!!}
-                        {!! Form::close() !!}
+                        <!--a href="{{ url('/foro/' . $item->id_foro) }}" class="btn btn-success btn-xs" title="View Foro"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a-->
+                        <!--a href="{{ url('/foro/' . $item->id_foro . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Foro"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a-->
+                        <a href="" class="btn btn-primary btn-xs" title="Edit Foro"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+
+                         <a href="{{ url('/gestor_foros/' . $item->id_foro . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+
                     </td>
                     @else
                     <td bgcolor="#b0e0e6">

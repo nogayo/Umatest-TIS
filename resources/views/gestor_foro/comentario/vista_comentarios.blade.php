@@ -30,6 +30,8 @@
 
  {{-- */$id_user_actual=Auth::id(); /* --}}
  @foreach($foro as $item)
+{{-- */$id_foro_actual=$item->id_foro; /* --}}
+
 
                 <tr>
                  <td bgcolor="#b0e0e6">
@@ -43,20 +45,10 @@
                    
                      @if($item->id_user==$id_user_actual)    
                     <td bgcolor="#b0e0e6">
-                        <a href="" class="btn btn-success btn-xs" title="View Foro"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                       
                         <a href="" class="btn btn-primary btn-xs" title="Edit Foro"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['/foro', $item->id_foro],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Foro" />', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Foro',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            ));!!}
-                        {!! Form::close() !!}
+                       <a href="{{ url('/gestor_foros/' . $item->id_foro . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+
                     </td>
                     @else <td bgcolor="#b0e0e6"> </td> 
                     @endif
@@ -104,20 +96,10 @@
 
 
                        <td bgcolor="#b6fcd5">
-                        <a href="" class="btn btn-success btn-xs" title="View Comentario"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="" class="btn btn-primary btn-xs" title="Edit Comentario"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['/gestor_foros/comentario', $item->id_coment],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Comentario" />', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Comentario',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            ));!!}
-                        {!! Form::close() !!}
+             
+                         <a href="{{ url('/gestor_foros/' . $item->id_coment . '/delete/'.$id_curso.'/comentario/'.$id_foro_actual.'/destroy') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+
                     </td>
                     @else
                      <td bgcolor="#b6fcd5"> </td>
