@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="form-group {{ $errors->has('capacidad') ? 'has-error' : ''}}">
-                {!! Form::label('capacidad', trans('curso.capacidad'), ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('capacidad', 'Numero de Alumnos', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::number('capacidad', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('capacidad', '<p class="help-block">:message</p>') !!}

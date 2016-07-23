@@ -35,7 +35,7 @@
                 <tr>
                     <th>ID.</th><td>{{ $curso->id }}</td>
                 </tr>
-                <tr><th> {{ trans('curso.nombre') }} </th><td> {{ $curso->nombre }} </td></tr><tr><th> {{ trans('curso.capacidad') }} </th><td> {{ $curso->capacidad }} </td></tr><tr><th> {{ trans('curso.codigo') }} </th><td> {{ $curso->codigo }} </td></tr>
+                <tr><th> {{ trans('curso.nombre') }} </th><td> {{ $curso->nombre }} </td></tr><tr><th>Numero de Alumnos</th><td> {{ $curso->capacidad }} </td></tr><tr><th> {{ trans('curso.codigo') }} </th><td> {{ $curso->codigo }} </td></tr>
             </tbody>
             <tfoot>
                 <tr>

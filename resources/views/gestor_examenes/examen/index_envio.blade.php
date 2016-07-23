@@ -40,7 +40,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th> {{ trans('examen.estado_examen') }} </th><th> {{ trans('examen.fecha_examen') }} <th>Enviar examen</th></th>
+                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th> Fecha Creacion Examen <th>Enviar examen</th></th>
                 </tr>
                 </tr>
             </thead>
@@ -52,7 +52,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td>{{ $item->nombre_examen }}</td><td>{{ $item->estado_examen }}</td><td>{{ $item->fecha_examen }}</td>
+                    <td>{{ $item->nombre_examen }}</td><td>{{ $item->fecha_examen }}</td>
                     <td> 
 
                     <li><a href="{{url('/gestor_examenes/nota/'.$id_curso.'/'.$item->id.'/create')}}"><i class="fa fa-envelope-o"></i> Enviar </a></li>

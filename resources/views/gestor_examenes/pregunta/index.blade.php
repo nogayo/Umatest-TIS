@@ -94,35 +94,17 @@
                        @endif
 
                     @if( $item->tipo_pregunta_id == 2) 
-                        <td>{{ $x }}</td>
-                        <td>{{ $item->nombre_pregunta }}</td> <td>
-                  {{-- */
+                     {{-- */
                 $id_simple = DB::table('desarrollos')->where('pregunta_id', $item->id)->first();
                 $tipo_pre=DB::table('tipo_preguntas')->where('id', $item->tipo_pregunta_id)->first();
                 $tipo_pre = $tipo_pre->tipo;
                 /* --}}
-                        @if(!is_null($id_simple))
-                        {{-- */ $id_simple = $id_simple->id; /* --}}
-
-                       <!-- $id_simple ese es el id_ de la respuesta-->
-
-                        <a href="{{ url('/gestor_examenes/desarrollo/' . $id_simple . '/'.$id_examen.'/edit') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-primary btn-xs" title="Editar Respuesta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-
-                        <a href="{{ url('/gestor_examenes/desarrollo/'.$id_simple.'/'.$id_examen.'/show') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-success btn-xs" title="Ver Respuesta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-
-                        <a href="{{ url('/gestor_examenes/desarrollo/' . $id_simple . '/'.$id_examen.'/delete') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-danger btn-xs" title="Eliminar Respuesta" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Respuesta" /></a>
-                    </td>
-                        @else
-
-                    <!-- $item-> id  ese es el id_ de la pregunta-->
-
-                        <a href="{{ url('/gestor_examenes/desarrollo/'.$item->id.'/'.$id_examen.'/create') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-primary btn-xs" title="Añadir Respuesta"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
-                         @endif
-
-                        </td>
+                        <td>{{ $x }}</td>
+                        <td>{{ $item->nombre_pregunta }}</td>
+                        <td style="color: purple;">Manual</td>
                          <td>{{$tipo_pre}}</td> 
                         <td>{{ $item->puntaje_pregunta }}</td>
-                       @endif
+                   @endif
 
                     @if( $item->tipo_pregunta_id == 3) 
                         <td>{{ $x }}</td>

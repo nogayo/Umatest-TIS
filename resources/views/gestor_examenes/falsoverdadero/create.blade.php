@@ -52,10 +52,10 @@
                 {!! Form::label('respuesta', trans('falsoverdadero.respuesta'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                                 <div class="checkbox">
-                <label>{!! Form::radio('respuesta', '1') !!} Yes</label>
+                <label>{!! Form::radio('respuesta', '1') !!} Verdadero</label>
             </div>
             <div class="checkbox">
-                <label>{!! Form::radio('respuesta', '0', true) !!} No</label>
+                <label>{!! Form::radio('respuesta', '0', true) !!} Falso</label>
             </div>
                     {!! $errors->first('respuesta', '<p class="help-block">:message</p>') !!}
                 </div>

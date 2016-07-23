@@ -89,7 +89,7 @@ class gestorexamenesController extends Controller
                if(!is_null($respuesta_desarrollo)){
                $content_respuestas[$i]= $respuesta_desarrollo->respuesta;
                $res_mul_correcta[$i]='///';
-                $cadena_m.= $respuesta_desarrollo->respuesta. ',';
+               $cadena_m.= $respuesta_desarrollo->respuesta. ',';
               }else{
                if(!is_null($respuesta_falsoverdadero)){
                $content_respuestas[$i]= $respuesta_falsoverdadero->respuesta;
@@ -373,7 +373,7 @@ class gestorexamenesController extends Controller
                if(!is_null($respuesta_desarrollo)){
                $content_respuestas[$i]= $respuesta_desarrollo->respuesta;
                $res_mul_correcta[$i]='///';
-                $cadena_m.= $respuesta_desarrollo->respuesta. ',';
+               $cadena_m.= $respuesta_desarrollo->respuesta. ',';
               }else{
                if(!is_null($respuesta_falsoverdadero)){
                $content_respuestas[$i]= $respuesta_falsoverdadero->respuesta;

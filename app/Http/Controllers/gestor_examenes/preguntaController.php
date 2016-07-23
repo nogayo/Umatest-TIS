@@ -61,8 +61,18 @@ class preguntaController extends Controller
             ['nombre_pregunta' => $request->input('nombre_pregunta'), 'puntaje_pregunta' => $request->input('puntaje_pregunta'), 'tipo_pregunta_id'=>$request->input('tipo_pregunta_id'), 
                'examen_id'=>$request->input('examen_id')]
             ); 
-
             
+
+             if($request->input('tipo_pregunta_id') == 2){
+
+             $pregunta = DB::table('preguntas')->orderBy('id', 'desc')->take(1)->first();
+
+             DB::table('desarrollos')->insert(
+            ['respuesta' => 'desarrollos', 'pregunta_id' => $pregunta->id]
+            ); 
+
+             }
+      
 
         Session::flash('flash_message', 'preguntum added!');
 
