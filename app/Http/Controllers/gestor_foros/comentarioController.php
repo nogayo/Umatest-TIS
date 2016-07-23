@@ -39,7 +39,7 @@ class comentarioController extends Controller
              $comentarios= DB::table('comentarios')
             ->where('id_foro', $id_foro)
             ->join('users', 'users.id', '=', 'comentarios.id_user')
-            ->orderBy('comentarios.fecha', 'asc')
+            ->orderBy('comentarios.fecha', 'desc')
             ->select('comentarios.id AS id_coment','users.id AS id_user','users.name','users.apellido','comentarios.mensaje','comentarios.fecha')
             ->get();
 
@@ -149,12 +149,12 @@ class comentarioController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id_coment,$id_curso,$id_foro)
     {
-        comentario::destroy($id);
+        comentario::destroy($id_coment);
 
-        Session::flash('flash_message', 'comentario deleted!');
+        Session::flash('flash_message', 'comentario eliminado!');
 
-        return redirect('admin/comentario');
+        return redirect('gestor_foros/'.$id_curso.'/crear/'.$id_foro.'/comentario');
     }
 }

@@ -193,12 +193,12 @@ class foroController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id,$id_curso)
     {
         foro::destroy($id);
 
         Session::flash('flash_message', 'foro deleted!');
 
-        return redirect('foro');
+       return redirect('gestor_foros/'.$id_curso.'/foro');
     }
 }
