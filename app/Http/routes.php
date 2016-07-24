@@ -452,6 +452,15 @@ Route::post('/gestor_foros/{id_curso}/save/foro', 'gestor_foros\\foroController@
 
 
 /*
+* Esta ruta viene despues presinar en gestor foros , el boton elimnar foro
+* parametro@ id del curso
+*url('/gestor_foros/' . $item->id . '/delete/'.$id_curso.'/destroy')
+*/
+Route::get('gestor_foros/{id}/delete/{id_curso}/destroy', 'gestor_foros\\foroController@destroy'); 
+
+
+
+/*
 * Esta ruta viene despues presinar en gestor foros , el boton comentar
 * parametro@ id del curso
   
@@ -468,4 +477,19 @@ Route::get('gestor_foros/{id_curso}/crear/{id_foro}/comentario', 'gestor_foros\\
 * url('gestor_foros/'.$id_curso.'/nuevo/'.$id_foro.'/comentario') 
 */
 Route::get('gestor_foros/{id_curso}/nuevo/{id_foro}/comentario', 'gestor_foros\\comentarioController@comentar'); 
+
+
+
+
+/*
+* Esta ruta viene despues presinar en gestor foros , el boton eliminar comentario
+* parametro@ id comnetario
+* parametro@ id del curso
+* url('/gestor_foros/' . $item->id_coment . '/delete/'.$id_curso.'/comentario/destroy')
+*/
+Route::get('gestor_foros/{id_coment}/delete/{id_curso}/comentario/{id_foro}/destroy', 'gestor_foros\\comentarioController@destroy'); 
+
+
+
+
 
