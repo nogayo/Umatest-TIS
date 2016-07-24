@@ -70,8 +70,8 @@
                     <br/> <br/>
 
           @for ($j = 0; $j < $numero_de_respuestas; $j++)
-                        <label>{!! Form::checkbox('numero_pregunta' . $i, $respuestas[$j], false) !!} 
-                        {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp </label>
+                        {!! Form::checkbox('numero_pregunta' . $i, $respuestas[$j], false, ['onchange' => 'validacion("form", this,1)']) !!} 
+                        {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp
 
              
           @endfor
