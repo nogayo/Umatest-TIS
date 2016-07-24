@@ -42,7 +42,7 @@
                 <tr>
                     <th>ID.</th><td>{{ $examan->id }}</td>
                 </tr>
-                <tr><th> {{ trans('examen.nombre_examen') }} </th><td> {{ $examan->nombre_examen }} </td></tr><tr><th> {{ trans('examen.estado_examen') }} </th><td> {{ $examan->estado_examen }} </td></tr><tr><th> {{ trans('examen.fecha_examen') }} </th><td> {{ $examan->fecha_examen }} </td></tr>
+                <tr><th> {{ trans('examen.nombre_examen') }} </th><td> {{ $examan->nombre_examen }} </td></tr><tr><th> Fecha Creacion Examen </th><td> {{ $examan->fecha_examen }} </td></tr>
             </tbody>
             <tfoot>
                 <tr>

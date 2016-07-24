@@ -32,7 +32,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('curso.nombre') }} </th><th> {{ trans('curso.capacidad') }} </th><th> {{ trans('curso.codigo') }} </th><th>Actions</th>
+                    <th>S.No</th><th> {{ trans('curso.nombre') }} </th><th>Numero de Alumnos</th><th> {{ trans('curso.codigo') }} </th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>

@@ -72,6 +72,9 @@
           @for ($j = 0; $j < $numero_de_respuestas; $j++)
                         <label>{!! Form::checkbox('numero_pregunta' . $i, $respuestas[$j], false) !!} 
                         {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp </label>
+                        
+                         <label>{!! Form::checkbox('sucia[]', $respuestas[$j], false) !!} 
+                        {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp </label>
           @endfor
                    </div>
                         {!! $errors->first('numero_pregunta' . $i, '<p class="help-block">:message</p>') !!}
@@ -91,10 +94,10 @@
                 <div class="col-sm-6" style="margin-left:10%">
                    <div class="checkbox">
                    <br/> <br/>
-                     <label>{!! Form::radio('numero_pregunta' . $i, '1') !!} VERDADERO</label>
+                     <label>{!! Form::radio('numero_pregunta' . $i, '1',false) !!} VERDADERO</label>
                    </div>
                    <div class="checkbox">
-                    <label>{!! Form::radio('numero_pregunta' . $i, '0', true) !!} FALSO</label>
+                    <label>{!! Form::radio('numero_pregunta' . $i, '0',false) !!} FALSO</label>
                    </div>
                     {!! $errors->first('numero_pregunta' . $i, '<p class="help-block">:message</p>') !!}
                 </div>

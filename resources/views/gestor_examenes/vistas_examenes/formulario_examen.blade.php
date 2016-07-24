@@ -12,6 +12,7 @@
            
  
 <div class="hoja">
+   
    <h1 style="text-align: center; font-family:arial; color:darkred;font-weight: 700; ">{{$nombre_examen}}</h1>
     <h2 style="text-align: center; font-family:arial;color:darkred;font-weight: 700; line-height:4px;">{{$fecha_examen}}</h2>
     <h2 style="text-align: center; font-family:arial;color:darkred;font-weight: 700; ">{{$nombre_categoria}}</h2>
@@ -57,7 +58,6 @@
              <br/> <br/>
          @endif
 
-
          @if($ids_tipo_pregunta[$i]==3)
                    {{-- */  $numero_de_respuestas=count($content_respuestas[$i]); 
                    $respuestas = $content_respuestas[$i];
@@ -72,13 +72,18 @@
           @for ($j = 0; $j < $numero_de_respuestas; $j++)
                         <label>{!! Form::checkbox('numero_pregunta' . $i, $respuestas[$j], false) !!} 
                         {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp </label>
+
+             
           @endfor
+                         
+
                    </div>
                         {!! $errors->first('numero_pregunta' . $i, '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
           
-            {{-- */  $formulario_nombres[$i]='numero_pregunta' . $i; /* --}}
+            {{-- */  $formulario_nombres[$i]='numero_pregunta' . $i; 
+            /* --}}
             <br/> <br/>
          @endif
 
@@ -91,10 +96,10 @@
                 <div class="col-sm-6" style="margin-left:10%">
                    <div class="checkbox">
                    <br/> <br/>
-                     <label>{!! Form::radio('numero_pregunta' . $i, '1') !!} VERDADERO</label>
+                     <label>{!! Form::radio('numero_pregunta' . $i, '1',false) !!} VERDADERO</label>
                    </div>
                    <div class="checkbox">
-                    <label>{!! Form::radio('numero_pregunta' . $i, '0', true) !!} FALSO</label>
+                    <label>{!! Form::radio('numero_pregunta' . $i, '0', false) !!} FALSO</label>
                    </div>
                     {!! $errors->first('numero_pregunta' . $i, '<p class="help-block">:message</p>') !!}
                 </div>
@@ -102,6 +107,34 @@
 
               {{-- */  $formulario_nombres[$i]='numero_pregunta' . $i; /* --}}
               <br/> <br/> 
+         @endif
+
+            @if($ids_tipo_pregunta[$i]==5)
+                   {{-- */  $numero_de_respuestas=count($content_respuestas[$i]); 
+                   $respuestas = $content_respuestas[$i];
+          /* --}}
+          
+            <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
+            <div style="line-height:40px;"><label for="'numero_pregunta' . $i" style="width:auto;">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}({{$content_puntaje_preguntas[$i]}}puntos)</label></div>
+                <div class="col-sm-6" style="margin-left:10%">
+                    <div class="checkbox">
+                    <br/> <br/>
+
+          @for ($j = 0; $j < $numero_de_respuestas; $j++)
+                        <label>{!! Form::checkbox('numero_pregunta'.$i.'[]', $respuestas[$j], false) !!} 
+                        {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp </label>
+             
+          @endfor
+                         
+
+                   </div>
+                        {!! $errors->first('numero_pregunta' . $i, '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+          
+            {{-- */  $formulario_nombres[$i]='numero_pregunta'.$i; 
+            /* --}}
+            <br/> <br/>
          @endif
             
       @endfor
@@ -113,6 +146,7 @@
            $respuestas_correctas=$cadena_m;
 
            $res_multiple_correcta=implode(",",$res_mul_correcta);
+
 
            $nombre_preguntas_examen=implode(",",$content_nom_preguntas);
 
@@ -149,6 +183,13 @@
                 <div class="col-sm-6">
                     {!! Form::hidden('con_res_multiple',$res_multiple_correcta, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('con_res_multiple', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
+            <div class="form-group {{ $errors->has('con_res_multiple_var') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('con_res_multiple_var',$res_mul_var_correcta, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('con_res_multiple_var', '<p class="help-block">:message</p>') !!}
                 </div>
            </div>
                  <div class="form-group {{ $errors->has('id_nota') ? 'has-error' : ''}}">

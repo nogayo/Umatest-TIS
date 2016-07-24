@@ -65,8 +65,8 @@
                      if(!is_null($res)){
                       /* --}}
                       <td>
-                      <a href="{{url(''.$res->archivo.'')}}">{{$res->archivo}}</a>
-                      <iframe src="{{asset(''.$res->archivo.'')}}"></iframe>
+                      <a href="{{url(''.$res->archivo.'')}}">{{$res->archivo}}</a></br>
+                       <iframe src="{{asset(''.$res->archivo.'')}}"></iframe>
                       </td>
                       
                        

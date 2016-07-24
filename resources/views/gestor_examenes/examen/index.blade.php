@@ -40,7 +40,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th>Ver examen</th><th> {{ trans('examen.fecha_examen') }} <th>Llenar Preguntas</th></th><th>Actions</th>
+                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th>Ver examen</th><th> Fecha Creacion Examen <th>Llenar Preguntas</th></th><th>Actions</th>
                 </tr>
                 </tr>
             </thead>
