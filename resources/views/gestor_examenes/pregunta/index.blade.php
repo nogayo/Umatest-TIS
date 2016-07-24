@@ -158,6 +158,28 @@
                         <td>{{ $item->puntaje_pregunta }}</td>
                        @endif
 
+
+                       @if( $item->tipo_pregunta_id == 5) 
+                        <td>{{ $x }}</td>
+                        <td>{{ $item->nombre_pregunta }}</td> <td>
+                           {{-- */
+                $id_simple = DB::table('multiples_varios')->where('pregunta_id', $item->id)->first();
+                $tipo_pre=DB::table('tipo_preguntas')->where('id', $item->tipo_pregunta_id)->first();
+                $tipo_pre = $tipo_pre->tipo;
+                /* --}}
+                       @if(!is_null($id_simple))
+                       {{-- */ $id_simple = $id_simple->id; /* --}}
+
+                        <a href="{{ url('/gestor_examenes/multiples_varios/'.$item->id.'/index') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-success btn-xs" title="Ver Respuesta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+
+                        @else
+                        <a href="{{ url('/gestor_examenes/multiples_varios/'.$item->id.'/index') }}" class="btn btn-primary btn-xs" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" title="Añadir Respuestas"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a>
+                        @endif
+                        </td> 
+                         <td>{{$tipo_pre}}</td>
+                        <td>{{ $item->puntaje_pregunta }}</td>
+                       @endif
+
                     <td>
                         <a href="{{ url('/gestor_examenes/pregunta/'.$item->id.'/'.$id_examen.'/show') }}" class="btn btn-success btn-xs" title="ver Pregunta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 

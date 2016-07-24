@@ -47,7 +47,7 @@
         </div>
     <!--Termina path para EDITAR Respuestas a preguntas de seleccion multiples.  
     -->
-    <h1>Edit Multiple {{ $multiple->id }}</h1>
+    <h1>Editar Simple {{ $multiple->id }}</h1>
 
     {!! Form::model($multiple, [
         'method' => 'PATCH',

@@ -11,6 +11,7 @@
 		<div class="col-md-14 col-md-offset-0">
 					 <div class="hoja">
 					 <div>
+                    
 					 	<h1 style="color:darkred; line-height:40px;text-align:center;">Resultado del Examen</h1>
              			<p class="estiloresultado">Puntaje del Examen: <a style="color:#3c8dbc; font-size:30px;">{{$puntaje_estudiante}}</a></p> 
             			 <p class="estiloresultado" style="line-height:40px;">Número de Respuestas Correctas: <a style="color:green; font-size:30px;">{{$numero_res_correctas}}</a></p>

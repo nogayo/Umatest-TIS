@@ -130,6 +130,21 @@ Route::get('gestor_examenes/multiples/{id}/{id_pregunta}/show', 'gestor_examenes
 Route::get('gestor_examenes/multiples/{id}/{id_pregunta}/delete', 'gestor_examenes\\multiplesController@destroy');
 //FIN RUTAS RESPUESTAS DE OPCION MULTIPLE
 
+//INICIO RUTAS RESPUESTAS DE OPCION MULTIPLE_VARIOS
+
+Route::resource('gestor_examenes/multiples_varios', 'gestor_examenes\\multiples_variosController');
+Route::get('gestor_examenes/multiples_varios/{id_pregunta}/index', 'gestor_examenes\\multiples_variosController@index');
+
+Route::get('gestor_examenes/multiples_varios/{id_pregunta}/create', 'gestor_examenes\\multiples_variosController@create');
+
+Route::get('gestor_examenes/multiples_varios/{id}/{id_pregunta}/edit', 'gestor_examenes\\multiples_variosController@edit');
+
+Route::get('gestor_examenes/multiples_varios/{id}/{id_pregunta}/show', 'gestor_examenes\\multiples_variosController@show');
+
+Route::get('gestor_examenes/multiples_varios/{id}/{id_pregunta}/delete', 'gestor_examenes\\multiples_variosController@destroy');
+
+//FIN RUTAS RESPUESTAS DE OPCION MULTIPLE_VARIOS
+
 //INICIO RUTAS RESPUESTAS DE OPCION DE DESARROLLO
 
 
@@ -453,3 +468,4 @@ Route::get('gestor_foros/{id_curso}/crear/{id_foro}/comentario', 'gestor_foros\\
 * url('gestor_foros/'.$id_curso.'/nuevo/'.$id_foro.'/comentario') 
 */
 Route::get('gestor_foros/{id_curso}/nuevo/{id_foro}/comentario', 'gestor_foros\\comentarioController@comentar'); 
+

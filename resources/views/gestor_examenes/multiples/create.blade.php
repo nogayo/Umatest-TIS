@@ -43,7 +43,7 @@
         </div>
     <!--Termina path para Crear Respuesta a preguntas de seleccion multiples.  
     -->
-    <h1>Añadir Respuestas Multiples</h1>
+    <h1>Añadir Respuestas Simples</h1>
     <hr/>
 
     {!! Form::open(['url' => '/gestor_examenes/multiples', 'class' => 'form-horizontal']) !!}

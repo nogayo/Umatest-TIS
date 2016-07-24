@@ -44,7 +44,7 @@
         </div>
     <!--Termina path Ver EDITAR Respuestas a preguntas de seleccion multiples.  
     -->
-    <h1>Multiple</h1>
+    <h1>Simples</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <tbody>

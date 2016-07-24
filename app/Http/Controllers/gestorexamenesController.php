@@ -65,7 +65,9 @@ class gestorexamenesController extends Controller
         
         $content_respuestas=array();//ESTE SE ENVIA(7)
         $res_mul_correcta=array();
+        $res_mul_var_correcta="";
         $cadena_m="";
+
         for ($i=0; $i < count($ids_preguntas) ; $i++) { 
 
            $respuesta_simple = DB::table('simples')->where('pregunta_id', $ids_preguntas[$i])->first();
@@ -79,27 +81,38 @@ class gestorexamenesController extends Controller
 
            $respuesta_falsoverdadero = DB::table('falsoverdaderos')->where('pregunta_id', $ids_preguntas[$i])->first();
 
+           $respuesta_multiple_varios = DB::table('multiples_varios')->where('pregunta_id', $ids_preguntas[$i])->get();
+
+           $respuesta_multiple_varios_correcta = DB::table('multiples_varios')->where('pregunta_id', $ids_preguntas[$i])->where('correcta',1)->get();
+
+
            if(!is_null($respuesta_simple)){
              
                $content_respuestas[$i]=$respuesta_simple->respuesta;
                $res_mul_correcta[$i]='///';
+               $res_mul_var_correcta.='***'.',';
                $cadena_m.= $respuesta_simple->respuesta . ',';
+
            }else{
 
                if(!is_null($respuesta_desarrollo)){
                $content_respuestas[$i]= $respuesta_desarrollo->respuesta;
                $res_mul_correcta[$i]='///';
+               $res_mul_var_correcta.='***'.',';
                $cadena_m.= $respuesta_desarrollo->respuesta. ',';
+
               }else{
                if(!is_null($respuesta_falsoverdadero)){
                $content_respuestas[$i]= $respuesta_falsoverdadero->respuesta;
                $res_mul_correcta[$i]='///';
+               $res_mul_var_correcta.='***'.',';
                $conversion= ($respuesta_falsoverdadero->respuesta) ? '1' : '0';
                $cadena_m.= $conversion.',';
                
-              }else{
-                  
-               if(!is_null($respuesta_multiple)){
+              }else{   
+             //  if(!is_null($respuesta_multiple)){
+                if(count($respuesta_multiple)!=0){
+                
                $j=0;
                $ids_multiples=array();
                $cad_axu="";
@@ -110,7 +123,32 @@ class gestorexamenesController extends Controller
                }
                $content_respuestas[$i]= $ids_multiples;
                $res_mul_correcta[$i]=$respuesta_multiple_correcta->respuesta;
-              $cadena_m.='/,'.$cad_axu .'/,';
+               $res_mul_var_correcta.='***'.',';
+               $cadena_m.='/,'.$cad_axu .'/,';
+
+               }else{
+
+              if(count($respuesta_multiple_varios)!=0){
+               $j=0;
+               $ids_multiples_varios=array();
+               $cad_axu="";
+               foreach ($respuesta_multiple_varios as $item) {
+                $ids_multiples_varios[$j]=$item->respuesta;
+                $cad_axu.=$item->respuesta. ',';
+                 $j++;
+               }
+               $content_respuestas[$i]= $ids_multiples_varios;
+               
+               $nombres_respuestas="";
+            
+               foreach ($respuesta_multiple_varios_correcta  as $item) {
+                 $nombres_respuestas.=$item->respuesta. ',';
+               }
+               $res_mul_var_correcta.='/,'.$nombres_respuestas .'/,';
+               $res_mul_correcta[$i]="///";
+               $cadena_m.='/,'.$cad_axu .'/,';
+
+                 }
                }
                
                 }
@@ -128,8 +166,8 @@ class gestorexamenesController extends Controller
         
 
       return view('gestor_examenes.vistas_examenes.formulario_examen', compact('nombre_examen', 
-        'fecha_examen', 'nombre_categoria', 'content_nom_preguntas', 'content_puntaje_preguntas', 
-        'ids_tipo_pregunta','content_respuestas','cadena_m', 'res_mul_correcta', 'id_nota'));
+      'fecha_examen', 'nombre_categoria', 'content_nom_preguntas', 'content_puntaje_preguntas',
+        'ids_tipo_pregunta','content_respuestas','cadena_m', 'res_mul_correcta', 'id_nota','res_mul_var_correcta'));
     }
     
 
@@ -141,27 +179,20 @@ class gestorexamenesController extends Controller
          $separando= explode(",",$request->input('con_res_correctas'));
          $cadena_res_correctas=$this->explode_respuestas($separando);
          $cadena_res_multiple= explode(",",$request->input('con_res_multiple'));
+         $separando_dos=explode(",", $request->input('con_res_multiple_var'));//res_correctas
+         $cadena_res_var_correcta=$this->explode_respuestas($separando_dos);//res_correctas
        
          $tipo_pre=explode(",",$request->input('tipo_pregunta'));
          $puntaje_estudiante=0;
          $numero_res_correctas=0;
          $numero_res_fallidas=0;
          $numero_res_revisar=0;
-        for ($i=0; $i < count($cadena_res_correctas); $i++) { 
+            
+         for ($i=0; $i < count($cadena_res_correctas); $i++) { 
                  $respuesta=$request->input($cadena_res_formulario[$i]);
                  if(count($cadena_res_correctas[$i])>1){
 
-                 /*$multiple=$cadena_res_correctas[$i];
-
-                   for ($j=0; $j < count($multiple); $j++) {  
-                      
-                      if ($respuesta== $multiple[$j]){
-                          $puntaje_estudiante+=$cadena_puntaje[$i];
-                          break;
-                      }
-
-                   }
-                  */
+                  if ($tipo_pre[$i] == 3) { //simple
 
                    if($respuesta==$cadena_res_multiple[$i]){
                      $puntaje_estudiante+=$cadena_puntaje[$i];
@@ -169,9 +200,40 @@ class gestorexamenesController extends Controller
                    }else{
                     $numero_res_fallidas++;
                    }
+                    
+                  }else{ //multiple
+                    
+                    $respuestas_cor= $cadena_res_var_correcta[$i];
+                    $tamanio_cor=count($respuestas_cor);
+                    $tamanio_res_form= count($respuesta);
+                    if($tamanio_cor==$tamanio_res_form){
+                     $buenas=0;
+                         for ($j=0; $j < $tamanio_res_form; $j++) { 
+
+                           for ($k =0; $k  < $tamanio_cor; $k ++) { 
+
+                               if($respuesta[$j]==$respuestas_cor[$k]){
+                                 $buenas++;
+                                }
+                           }
+
+                         }
+                      if ($buenas==$tamanio_cor) {
+                           $puntaje_estudiante+=$cadena_puntaje[$i];
+                            $numero_res_correctas++;
+                      }else{
+                        $numero_res_fallidas++;
+                      }
+
+                    }else{
+
+                       $numero_res_fallidas++;
+                    }
+
+                  }
 
                  }else{
-                      if($tipo_pre[$i] != 2){
+                      if($tipo_pre[$i] != 2){ //desarrollo no se evalua
                               if($respuesta==$cadena_res_correctas[$i]){
                               $puntaje_estudiante+=$cadena_puntaje[$i];
                                $numero_res_correctas++;
@@ -211,6 +273,7 @@ class gestorexamenesController extends Controller
          $tipos_pregunta=$request->input('tipo_pregunta');//eplode
 
          $this->crear_pdf($puntajes, $respuestas_estudiante, $preguntas_examen, $nombre_examen, $fecha_examen, $nombre_categoria, $puntaje_total_examen, $tipos_pregunta, $id_nota);
+       
 
          return view('gestor_examenes.vistas_examenes.resultado_examen', compact('puntaje_estudiante','numero_res_correctas','numero_res_fallidas', 'numero_res_revisar'));
       }
@@ -284,7 +347,19 @@ class gestorexamenesController extends Controller
                }
           }else{
 
+            if($tipo[$i] == '5'){
+
+                $respuestas_varias= $respuestas_estudiante[$i];
+                $cadena_res="";
+                for($j=0;$j<count($respuestas_varias);$j++){
+                  $cadena_res.=' '.$respuestas_varias[$j].' ';
+                }
+                  Fpdf::Cell(0,10,'Respuesta'.'.- '.$cadena_res,0,2);
+            }else{
+
             Fpdf::Cell(0,10,'Respuesta'.'.- '.$respuestas_estudiante[$i],0,2);
+            }
+
           }
           
           
