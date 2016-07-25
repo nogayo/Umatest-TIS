@@ -79,7 +79,7 @@ class examenController extends Controller
          $fecha_actual = date("Y-m-d");
          
          DB::table('examens')->insert(['nombre_examen' => $request->input('nombre_examen'), 'estado_examen' => 1,
-          'fecha_examen' => $fecha_actual,'id_cursos'=> $request->input('id_curso')]
+          'fecha_examen' => $fecha_actual,'puntaje_totalm' => $request->input('puntaje_totalm'),'id_cursos'=> $request->input('id_curso')]
          );
 
            //store procedure

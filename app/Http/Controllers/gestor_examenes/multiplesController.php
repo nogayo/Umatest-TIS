@@ -50,10 +50,25 @@ class multiplesController extends Controller
 
         //multiple::create($request->all());
 
-         DB::table('multiples')->insert(
+        $query=DB::table('multiples')->where('pregunta_id', $request->input('pregunta_id'))->where('correcta',1)->get();
+        $query_size=count($query);
+
+        if($query_size==0){
+         
+            DB::table('multiples')->insert(
             ['respuesta' => $request->input('respuesta'), 'correcta' => $request->input('correcta'), 
             'pregunta_id' => $request->input('pregunta_id')]
             ); 
+
+        }else{
+
+               DB::table('multiples')->insert(
+            ['respuesta' => $request->input('respuesta'), 'correcta' => 0, 
+            'pregunta_id' => $request->input('pregunta_id')]
+            ); 
+        }
+
+        
 
         Session::flash('flash_message', 'multiple added!');
 

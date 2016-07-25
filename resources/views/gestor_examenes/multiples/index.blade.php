@@ -40,12 +40,13 @@
                     <li><a href="{{ url('admin/curso_dicta/'.$id_test.'/vista_contenido_curso') }}"><i class="fa fa-dashboard"></i>Principal</a></li>
                     <li><a href="{{ url('gestor_examenes/'.$id_test.'/examen') }}"><i class="fa fa-dashboard"></i>Mis Exámenes</a></li>
                     <li><a href="{{url('/gestor_examenes/pregunta/'.$id_materia.'/index')}}"><i class="fa fa-dashboard"></i>lista de Preguntas</a></li>
-                    <li><a href="#"></i>Respuestas Multiples</a></li>
+                    <li><a href="#"></i>Respuestas Simples</a></li>
                     </ol>
         </div>
     <!--Termina path para VER de Respuesta a preguntas de seleccion multiples.  
     -->
     <h1>Simples<a href="{{ url('/gestor_examenes/multiples/'.$id_pregunta.'/create') }}" class="btn btn-primary btn-xs" title="Add New Multiple"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+      <li style="text-align: center; color: red;">Solamente debe exisitir una respuesta correcta</li>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

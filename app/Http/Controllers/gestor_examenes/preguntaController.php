@@ -21,6 +21,8 @@ class preguntaController extends Controller
     public function index($id_examen)
     {
         $pregunta = DB::table('preguntas')->where('examen_id', $id_examen)->get();
+        $examen =DB::table('examens')->where('id',$id_examen)->first();
+        $ptj_examen=$examen->puntaje_totalm;
         //$pregunta = preguntum::paginate(15);
 
              $puntaje_total_examen=0;
@@ -31,7 +33,7 @@ class preguntaController extends Controller
              }
 
         return view('gestor_examenes.pregunta.index', compact('pregunta', 'id_examen', 
-            'puntaje_total_examen'));
+            'puntaje_total_examen', 'ptj_examen'));
     }
 
     /**

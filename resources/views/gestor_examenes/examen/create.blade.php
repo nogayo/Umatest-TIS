@@ -47,6 +47,15 @@
                     {!! $errors->first('nombre_examen', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
+            <div class="form-group {{ $errors->has('puntaje_totalm') ? 'has-error' : ''}}">
+                {!! Form::label('puntaje_totalm', 'Puntaje Examen', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::number('puntaje_totalm', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! $errors->first('puntaje_totalm', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
            <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
                 
                 <div class="col-sm-6">
