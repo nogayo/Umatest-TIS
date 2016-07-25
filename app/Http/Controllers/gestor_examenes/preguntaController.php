@@ -21,6 +21,8 @@ class preguntaController extends Controller
     public function index($id_examen)
     {
         $pregunta = DB::table('preguntas')->where('examen_id', $id_examen)->get();
+        $examen =DB::table('examens')->where('id',$id_examen)->first();
+        $ptj_examen=$examen->puntaje_totalm;
         //$pregunta = preguntum::paginate(15);
 
              $puntaje_total_examen=0;
@@ -31,7 +33,7 @@ class preguntaController extends Controller
              }
 
         return view('gestor_examenes.pregunta.index', compact('pregunta', 'id_examen', 
-            'puntaje_total_examen'));
+            'puntaje_total_examen', 'ptj_examen'));
     }
 
     /**
@@ -56,6 +58,21 @@ class preguntaController extends Controller
     {
         //$this->validate($request, ['nombre_pregunta' => 'required', 'puntaje_pregunta' => 'required', ]);
         //preguntum::create($request->all());
+        
+        $preguntaz = DB::table('preguntas')->where('examen_id', $request->input('examen_id'))->get();
+        $examen =DB::table('examens')->where('id',$request->input('examen_id'))->first();
+        $ptj_examen=$examen->puntaje_totalm;
+        
+
+             $puntaje_total_examen=0;
+             foreach ($preguntaz as $item) {
+
+                 $puntaje_total_examen+=$item->puntaje_pregunta;
+
+             }
+             $puntaje_total_examen+=$request->input('puntaje_pregunta');
+
+        if($ptj_examen >= $puntaje_total_examen){
 
              DB::table('preguntas')->insert(
             ['nombre_pregunta' => $request->input('nombre_pregunta'), 'puntaje_pregunta' => $request->input('puntaje_pregunta'), 'tipo_pregunta_id'=>$request->input('tipo_pregunta_id'), 
@@ -72,7 +89,8 @@ class preguntaController extends Controller
             ); 
 
              }
-      
+
+        }
 
         Session::flash('flash_message', 'preguntum added!');
 
@@ -143,12 +161,12 @@ class preguntaController extends Controller
         $tipo= DB::table('tipo_preguntas')->where('id',$pregunta)->first();
         $tipo=$tipo->tipo;
 
-        if($tipo=='multiple'){
+        if($tipo=='simple'){
 
           DB::table('multiples')->where('pregunta_id', $id)->delete();
 
         }
-        if($tipo=='simple'){
+        if($tipo=='complemento'){
 
           DB::table('simples')->where('pregunta_id', $id)->delete();
 
@@ -161,6 +179,11 @@ class preguntaController extends Controller
         if($tipo=='F/V'){
 
           DB::table('falsoverdaderos')->where('pregunta_id', $id)->delete();
+
+        }
+        if($tipo=='multiple'){
+
+          DB::table('multiples_varios')->where('pregunta_id', $id)->delete();
 
         }
 

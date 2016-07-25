@@ -73,8 +73,6 @@
                         <label>{!! Form::checkbox('numero_pregunta' . $i, $respuestas[$j], false) !!} 
                         {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp </label>
                         
-                         <label>{!! Form::checkbox('sucia[]', $respuestas[$j], false) !!} 
-                        {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp </label>
           @endfor
                    </div>
                         {!! $errors->first('numero_pregunta' . $i, '<p class="help-block">:message</p>') !!}
@@ -105,6 +103,34 @@
 
               {{-- */  $formulario_nombres[$i]='numero_pregunta' . $i; /* --}}
               <br/> <br/> 
+         @endif
+
+          @if($ids_tipo_pregunta[$i]==5)
+                   {{-- */  $numero_de_respuestas=count($content_respuestas[$i]); 
+                   $respuestas = $content_respuestas[$i];
+          /* --}}
+          
+            <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
+            <div style="line-height:40px;"><label for="'numero_pregunta' . $i" style="width:auto;">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}({{$content_puntaje_preguntas[$i]}}puntos)</label></div>
+                <div class="col-sm-6" style="margin-left:10%">
+                    <div class="checkbox">
+                    <br/> <br/>
+
+          @for ($j = 0; $j < $numero_de_respuestas; $j++)
+                        <label>{!! Form::checkbox('numero_pregunta'.$i.'[]', $respuestas[$j], false) !!} 
+                        {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp </label>
+             
+          @endfor
+                         
+
+                   </div>
+                        {!! $errors->first('numero_pregunta' . $i, '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+          
+            {{-- */  $formulario_nombres[$i]='numero_pregunta'.$i; 
+            /* --}}
+            <br/> <br/>
          @endif
             
       @endfor

@@ -421,9 +421,11 @@ class gestorexamenesController extends Controller
 
         }
         
-        $content_respuestas=array();//ESTE SE ENVIA(7)
+         $content_respuestas=array();//ESTE SE ENVIA(7)
         $res_mul_correcta=array();
+        $res_mul_var_correcta="";
         $cadena_m="";
+
         for ($i=0; $i < count($ids_preguntas) ; $i++) { 
 
            $respuesta_simple = DB::table('simples')->where('pregunta_id', $ids_preguntas[$i])->first();
@@ -437,27 +439,38 @@ class gestorexamenesController extends Controller
 
            $respuesta_falsoverdadero = DB::table('falsoverdaderos')->where('pregunta_id', $ids_preguntas[$i])->first();
 
+           $respuesta_multiple_varios = DB::table('multiples_varios')->where('pregunta_id', $ids_preguntas[$i])->get();
+
+           $respuesta_multiple_varios_correcta = DB::table('multiples_varios')->where('pregunta_id', $ids_preguntas[$i])->where('correcta',1)->get();
+
+
            if(!is_null($respuesta_simple)){
              
                $content_respuestas[$i]=$respuesta_simple->respuesta;
                $res_mul_correcta[$i]='///';
+               $res_mul_var_correcta.='***'.',';
                $cadena_m.= $respuesta_simple->respuesta . ',';
+
            }else{
 
                if(!is_null($respuesta_desarrollo)){
                $content_respuestas[$i]= $respuesta_desarrollo->respuesta;
                $res_mul_correcta[$i]='///';
+               $res_mul_var_correcta.='***'.',';
                $cadena_m.= $respuesta_desarrollo->respuesta. ',';
+
               }else{
                if(!is_null($respuesta_falsoverdadero)){
                $content_respuestas[$i]= $respuesta_falsoverdadero->respuesta;
                $res_mul_correcta[$i]='///';
+               $res_mul_var_correcta.='***'.',';
                $conversion= ($respuesta_falsoverdadero->respuesta) ? '1' : '0';
                $cadena_m.= $conversion.',';
                
-              }else{
-                  
-               if(!is_null($respuesta_multiple)){
+              }else{   
+             //  if(!is_null($respuesta_multiple)){
+                if(count($respuesta_multiple)!=0){
+                
                $j=0;
                $ids_multiples=array();
                $cad_axu="";
@@ -468,7 +481,32 @@ class gestorexamenesController extends Controller
                }
                $content_respuestas[$i]= $ids_multiples;
                $res_mul_correcta[$i]=$respuesta_multiple_correcta->respuesta;
-              $cadena_m.='/,'.$cad_axu .'/,';
+               $res_mul_var_correcta.='***'.',';
+               $cadena_m.='/,'.$cad_axu .'/,';
+
+               }else{
+
+              if(count($respuesta_multiple_varios)!=0){
+               $j=0;
+               $ids_multiples_varios=array();
+               $cad_axu="";
+               foreach ($respuesta_multiple_varios as $item) {
+                $ids_multiples_varios[$j]=$item->respuesta;
+                $cad_axu.=$item->respuesta. ',';
+                 $j++;
+               }
+               $content_respuestas[$i]= $ids_multiples_varios;
+               
+               $nombres_respuestas="";
+            
+               foreach ($respuesta_multiple_varios_correcta  as $item) {
+                 $nombres_respuestas.=$item->respuesta. ',';
+               }
+               $res_mul_var_correcta.='/,'.$nombres_respuestas .'/,';
+               $res_mul_correcta[$i]="///";
+               $cadena_m.='/,'.$cad_axu .'/,';
+
+                 }
                }
                
                 }
@@ -482,12 +520,12 @@ class gestorexamenesController extends Controller
         //}
 
         //una vez abierto el formulario examen el estudiante no puede volver a dar
-       // DB::table('notas')->where('id',$id_nota)->update(array('estado'=>0));
+        //DB::table('notas')->where('id',$id_nota)->update(array('estado'=>0));
         
 
       return view('gestor_examenes.vistas_examenes.formulario_examen_docente', compact('nombre_examen', 
-        'fecha_examen', 'nombre_categoria', 'content_nom_preguntas', 'content_puntaje_preguntas', 
-        'ids_tipo_pregunta','content_respuestas','cadena_m', 'res_mul_correcta','id_curso'));
+      'fecha_examen', 'nombre_categoria', 'content_nom_preguntas', 'content_puntaje_preguntas',
+        'ids_tipo_pregunta','content_respuestas','cadena_m', 'res_mul_correcta', 'id_nota','res_mul_var_correcta', 'id_curso'));
     }
 
 

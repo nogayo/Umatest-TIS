@@ -53,10 +53,15 @@
                 <tr>
                     <td>{{ $x }}</td>
                     <td>{{ $item->nombre_examen }}</td><td>{{ $item->fecha_examen }}</td>
+                    @if($item->estado_examen==1)
                     <td> 
-
                     <li><a href="{{url('/gestor_examenes/nota/'.$id_curso.'/'.$item->id.'/create')}}"><i class="fa fa-envelope-o"></i> Enviar </a></li>
                     </td>
+                    @else
+                     <td> 
+                    <li><a href="#" style="color: red;"><i class="fa fa-envelope-o"></i> Enviado </a></li>
+                    </td>
+                    @endif
                     
                 </tr>
             @endforeach

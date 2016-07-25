@@ -38,7 +38,7 @@
                     <li><a href="{{ url('admin/curso_dicta/'.$id_test.'/vista_contenido_curso') }}"><i class="fa fa-dashboard"></i>Principal</a></li>
                     <li><a href="{{ url('gestor_examenes/'.$id_test.'/examen') }}"><i class="fa fa-dashboard"></i>Mis Exámenes</a></li>
                     <li><a href="{{url('/gestor_examenes/pregunta/'.$id_materia.'/index')}}"><i class="fa fa-dashboard"></i>lista de Preguntas</a></li>
-                    <li><a href="#"></i>Respuestas Multiples</a></li>
+                    <li><a href="#"></i>Respuestas Simples</a></li>
                     </ol>
         </div>
     <!--Termina path para Crear Respuesta a preguntas de seleccion multiples.  
@@ -55,14 +55,17 @@
                     {!! $errors->first('respuesta', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+ 
             <div class="form-group {{ $errors->has('correcta') ? 'has-error' : ''}}">
                 {!! Form::label('correcta', trans('multiples.correcta'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                                <div class="checkbox">
-                <label>{!! Form::radio('correcta', '1') !!} Yes</label>
-            </div>
             <div class="checkbox">
-                <label>{!! Form::radio('correcta', '0', true) !!} No</label>
+                <label>{!! Form::radio('correcta', '1',false) !!} Yes</label>
+            </div>
+
+            <div class="checkbox">
+                <label>{!! Form::radio('correcta', '0', false) !!} No</label>
+
             </div>
                     {!! $errors->first('correcta', '<p class="help-block">:message</p>') !!}
                 </div>
@@ -74,11 +77,8 @@
                     {!! $errors->first('pregunta_id', '<p class="help-block">:message</p>') !!}
                 </div>
                 </div>
-
-
-            
-
-
+     
+  
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}

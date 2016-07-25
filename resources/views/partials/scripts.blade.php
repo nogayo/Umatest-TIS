@@ -8,8 +8,21 @@
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
 
 <script>
-function myfuncion(){
-	return confirm("Confirm delete?");
+function myfuncion1(){
+	return confirm("Esta bien");
+}
+function myfuncion2(){
+	return confirm("Esta mal");
+}
+function validacion2(valor){
+   if(valor==1){
+    var mivarJS=1;
+    //document.writeln (mivarJS);
+    return 1;
+   }else{
+     var mivarJS=0;
+    return 0;
+   }
 }
 </script>
 

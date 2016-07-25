@@ -41,7 +41,7 @@
                     <li><a href="{{ url('admin/curso_dicta/'.$id_test.'/vista_contenido_curso') }}"><i class="fa fa-dashboard"></i>Principal</a></li>
                     <li><a href="{{ url('gestor_examenes/'.$id_test.'/examen') }}"><i class="fa fa-dashboard"></i>Mis Exámenes</a></li>
                     <li><a href="{{url('/gestor_examenes/pregunta/'.$id_materia.'/index')}}"><i class="fa fa-dashboard"></i>lista de Preguntas</a></li>
-                    <li><a href="{{url('/gestor_examenes/multiples/'.$id_pregunta.'/index')}}"><i class="fa fa-dashboard"></i>Respuestas Multiples</a></li>
+                    <li><a href="{{url('/gestor_examenes/multiples/'.$id_pregunta.'/index')}}"><i class="fa fa-dashboard"></i>Respuestas Simples</a></li>
                     <li><a href="#"></i>Editar Respuesta</a></li>
                     </ol>
         </div>

@@ -23,6 +23,7 @@ class CreateCursosTable extends Migration
         Schema::create('cursos', function(Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->text('descripcion');
             $table->integer('capacidad');
             $table->string('codigo');
             $table->integer('id_categoria')->unsigned();
