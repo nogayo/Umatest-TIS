@@ -14,7 +14,7 @@ function myfuncion1(){
 function myfuncion2(){
 	return confirm("Esta mal");
 }
-function validacion(valor){
+function validacion2(valor){
    if(valor==1){
     var mivarJS=1;
     //document.writeln (mivarJS);
