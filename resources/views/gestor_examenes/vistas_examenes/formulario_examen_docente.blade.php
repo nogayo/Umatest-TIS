@@ -64,14 +64,15 @@
           /* --}}
           
             <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
+            <li style="color: red;">Seleccione una Respuesta</li>
             <div style="line-height:40px;"><label for="'numero_pregunta' . $i" style="width:auto;">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}({{$content_puntaje_preguntas[$i]}}puntos)</label></div>
                 <div class="col-sm-6" style="margin-left:10%">
-                    <div class="checkbox">
+                    <div id="form">
                     <br/> <br/>
 
           @for ($j = 0; $j < $numero_de_respuestas; $j++)
-                        <label>{!! Form::checkbox('numero_pregunta' . $i, $respuestas[$j], false) !!} 
-                        {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp </label>
+                        {!! Form::checkbox('numero_pregunta' . $i, $respuestas[$j], false, ['onchange' => 'validacion("form", this,1)']) !!} 
+                        {{$respuestas[$j]}}</br></br>
                         
           @endfor
                    </div>
@@ -111,14 +112,16 @@
           /* --}}
           
             <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
+            <li style="color: red;">Seleccione mas de una Respuesta</li>
+
             <div style="line-height:40px;"><label for="'numero_pregunta' . $i" style="width:auto;">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}({{$content_puntaje_preguntas[$i]}}puntos)</label></div>
                 <div class="col-sm-6" style="margin-left:10%">
-                    <div class="checkbox">
+                    <div id="form">
                     <br/> <br/>
 
           @for ($j = 0; $j < $numero_de_respuestas; $j++)
-                        <label>{!! Form::checkbox('numero_pregunta'.$i.'[]', $respuestas[$j], false) !!} 
-                        {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp </label>
+                        {!! Form::checkbox('numero_pregunta'.$i.'[]', $respuestas[$j], false) !!} 
+                        {{$respuestas[$j]}}</br></br>
              
           @endfor
                          
