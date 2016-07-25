@@ -61,7 +61,7 @@
                     <td>{{ $item->apellido }}</td>
                     @foreach($examenes as $item2)
                     {{-- */
-                     $res = DB::table('notas')->where('examen_id', $item2->id)->where('user_id', $item->id)->first();
+                     $res = DB::table('notas')->where('examen_id', $item2->id)->where('user_id', $item->id)->where('archivo','<>','')->orderBy('id','desc')->first();
                      if(!is_null($res)){
                       /* --}}
                       <td>
@@ -70,6 +70,11 @@
                       </td>
                       
                        
+                      {{-- */
+                     }else{
+                     /* --}}
+                      <td>
+                      </td>
                       {{-- */
                      }
                      /* --}}
