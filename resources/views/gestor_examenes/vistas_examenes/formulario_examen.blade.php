@@ -6,7 +6,7 @@
 
 
 @section('main-content')
-
+<input id="reloadValue" type="hidden" name="reloadValue" value="" />
 <div class="containerexamen">
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
@@ -286,4 +286,9 @@
         </div>
     </div>
 </div>
+
+<script> 
+if (history.forward(1)){location.replace(history.forward(1))} 
+
+</script>
 @endsection

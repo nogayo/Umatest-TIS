@@ -98,14 +98,22 @@ function validacion(formu, obj, n) {
   }
 };
   </script>
-  <!--termina Codigo javaScript del cronometro del examen -->
+
   <script type="text/javascript">
-  	function nobackbutton(){
-   window.location.hash="no-back-button";
-   window.location.hash="Again-No-back-button" //chrome
-   window.onhashchange=function(){window.location.hash="no-back-button";}
-	}
-  </script>
+    jQuery(document).ready(function(){
+        var d = new Date();
+        d = d.getTime();
+        if (jQuery('#reloadValue').val().length == 0){
+            jQuery('#reloadValue').val(d);
+            jQuery('body').show();
+        }
+        else{
+            jQuery('#reloadValue').val('');
+            location.reload();
+        }
+    });
+</script>
+  <!--termina Codigo javaScript del cronometro del examen -->
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
