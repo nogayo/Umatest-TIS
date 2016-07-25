@@ -28,6 +28,7 @@
 <div class="container">
 
     <h1>{{$titulo_general}}</h1>
+    <li style="color: red;">Haga click sobre el nombre del curso para acceder al contenido del curso</li>
        {{-- */$id_user=Auth::id();   
              /* --}}
              {{-- */$id_rol=DB::table('role_user')->where('user_id', $id_user)->first();

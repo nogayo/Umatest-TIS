@@ -25,9 +25,10 @@
                 <div class="panel-body">
 
 
-<div class="container">
+<div class="container"> 
 
     <h1>MIS MATERIAS</h1>
+    <li style="color: red;">Haga click sobre el nombre del curso para acceder al contenido del curso</li>
     <div class="table" style="width: 97%">
         <table class="table table-bordered table-striped table-hover">
             <thead>

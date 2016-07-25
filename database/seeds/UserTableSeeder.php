@@ -193,6 +193,7 @@ class UserTableSeeder extends Seeder
             'nombre_examen' => 'primera practica',
             'estado_examen' => 1,
             'fecha_examen' => date("Y-m-d"),
+            'puntaje_totalm' => 100,
             'id_cursos' => 1
 
         ]);

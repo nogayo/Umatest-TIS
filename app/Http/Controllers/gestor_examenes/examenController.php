@@ -42,7 +42,8 @@ class examenController extends Controller
             }
         }
        
-        $examen = DB::table('examens')->where('id_cursos', $id_curso)->where('estado_examen',1)->get();
+        //$examen = DB::table('examens')->where('id_cursos', $id_curso)->where('estado_examen',1)->get();
+        $examen = DB::table('examens')->where('id_cursos', $id_curso)->get();
 
         return view('gestor_examenes.examen.index_envio',compact('examen','id_curso'));
     }

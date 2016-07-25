@@ -40,7 +40,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th>Ver examen</th><th> Fecha Creacion Examen <th>Llenar Preguntas</th></th><th>Actions</th>
+                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th> Puntaje Examen</th><th>Ver examen</th><th> Fecha Creacion Examen <th>Llenar Preguntas</th></th><th>Actions</th>
                 </tr>
                 </tr>
             </thead>
@@ -53,6 +53,7 @@
                 <tr>
                     <td>{{ $x }}</td>
                     <td>{{ $item->nombre_examen }}</td>
+                    <td>{{ $item->puntaje_totalm }}</td>
                     <td>
                     <li><a href="{{url('verexamen/'.$item->id.'/'.$id_curso.'/formulario_examen_docente')}}"><i class="fa fa-file-text-o"></i> Ver </a></li>
                     </td>
