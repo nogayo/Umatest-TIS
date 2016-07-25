@@ -1,10 +1,7 @@
-  @extends('app')
-
+@extends('app')
 @section('htmlheader_title')
    CURSOS
 @endsection
-
-
 @section('main-content')
 <div class="container">
     <div class="row">

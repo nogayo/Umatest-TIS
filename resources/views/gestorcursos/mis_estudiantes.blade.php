@@ -44,7 +44,7 @@
             <thead>
                 <tr>
                     <th>S.No</th>
-                    <th> Nombre </th>
+                    <th> Nombres </th>
                     <th> Apellido </th>
                        @foreach($examenes as $item)
                         <th>{{$item->nombre_examen}}</th>

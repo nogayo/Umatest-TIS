@@ -18,7 +18,7 @@ class CreateTareasTable extends Migration
             $table->string('descripcion')->nullable();
             $table->string('archivo')->nullable();
             $table->string('path_archivo')->nullable();
-            $table->date('fecha_creacion')->nullable();
+            $table->dateTime('fecha_creacion')->nullable();
             $table->integer('puntaje_total')->nullable();
             $table->timestamps();
             $table->integer('id_cursos')->unsigned();
