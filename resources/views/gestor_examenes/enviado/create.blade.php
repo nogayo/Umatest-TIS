@@ -16,7 +16,11 @@
     <hr/>
 
     {!! Form::open(['url' => '/admin/enviado', 'class' => 'form-horizontal']) !!}
-
+                @if($mensajeError!='')
+                <ul class="alert alert-danger">
+                <li>{{ $mensajeError }}</li>
+                </ul>
+                @endif
                 <div class="form-group {{ $errors->has('fecha_limite') ? 'has-error' : ''}}">
                 {!! Form::label('fecha_limite', trans('enviado.fecha_limite'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
