@@ -66,7 +66,9 @@ function validacion(formu, obj, n) {
         }
       }
       if (date.getMinutes()==0 && date.getSeconds()==0) {
-      alert("Tiempo Concluido");
+        var capa = document.getElementById('noTermino');
+        capa.onclick=alert("Tiempo Terminado");
+        capa.click();
     }
     }
 
@@ -97,6 +99,13 @@ function validacion(formu, obj, n) {
 };
   </script>
   <!--termina Codigo javaScript del cronometro del examen -->
+  <script type="text/javascript">
+  	function nobackbutton(){
+   window.location.hash="no-back-button";
+   window.location.hash="Again-No-back-button" //chrome
+   window.onhashchange=function(){window.location.hash="no-back-button";}
+	}
+  </script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the

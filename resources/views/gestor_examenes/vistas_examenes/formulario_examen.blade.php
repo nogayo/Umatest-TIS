@@ -6,16 +6,31 @@
 
 
 @section('main-content')
+
 <div class="containerexamen">
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
-           
- 
 <div class="hoja">
-   
-   <h1 style="text-align: center; font-family:arial; color:darkred;font-weight: 700; ">{{$nombre_examen}}</h1>
+<!--Comienza cronometro -->
+<div id="cronometro" class="col-md-14 col-md-offset-0">
+<a style="font:arial;">Tiempo del Examen</a>
+  <div id="reloj">
+  @if($duracion_total<10)
+  <div id="txtcountdown">0{{$duracion_total}}:00</div>
+  @else
+  <div id="txtcountdown">{{$duracion_total}}:00</div>
+  @endif  
+  </div>
+  
+  <script type="text/javascript">var minutos=<?php echo $duracion_total ?>;var timeoutId = setTimeout("cronos(minutos)",2000);</script>
+</div>
+<!--Termina cronometro -->
+   <div class="col-md-14 col-md-offset-0" style="padding-right: 21%;">
+     <h1 style="text-align: center; font-family:arial; color:darkred;font-weight: 700; ">{{$nombre_examen}}</h1>
     <h2 style="text-align: center; font-family:arial;color:darkred;font-weight: 700; line-height:4px;">{{$fecha_examen}}</h2>
     <h2 style="text-align: center; font-family:arial;color:darkred;font-weight: 700; ">{{$nombre_categoria}}</h2>
+   
+   
     {{-- */  
              $puntaje_total_examen=0;
              for($i=0; $i < count($content_puntaje_preguntas); $i++){
@@ -23,6 +38,7 @@
              }
      /* --}}
     <h2 style="text-align: center; font-family:arial;color:darkred;font-weight: 700; line-height:4px; ">{{$puntaje_total_examen}} PUNTOS</h2>
+    </div>
     {!! Form::open(['url' => 'darexamen/formulario_examen/calcular_nota', 'class' => 'form-horizontal formexa', 'style' => 'margin-left: 15%;margin-top: 60px;font-size: 22px; width:100%;']) !!}
      {{-- */$formulario_nombres=array(); /* --}}
 
@@ -66,13 +82,12 @@
             <div class="form-group {{ $errors->has('numero_pregunta' . $i) ? 'has-error' : ''}}">
             <div style="line-height:40px;"><label for="'numero_pregunta' . $i" style="width:auto;">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}({{$content_puntaje_preguntas[$i]}}puntos)</label></div>
                 <div class="col-sm-6" style="margin-left:10%">
-                    <div class="checkbox">
-                    <br/> <br/>
-
+                    <div id="form">
+                    
+                        <br/><br/> 
           @for ($j = 0; $j < $numero_de_respuestas; $j++)
                         {!! Form::checkbox('numero_pregunta' . $i, $respuestas[$j], false, ['onchange' => 'validacion("form", this,1)']) !!} 
-                        {{$respuestas[$j]}}&nbsp &nbsp &nbsp &nbsp &nbsp
-
+                        {{$respuestas[$j]}}<br/><br/> 
              
           @endfor
                          
@@ -250,7 +265,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Terminar_examen', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Terminar_Examen',['id' => 'noTermino'], ['class' => 'btn btn-primary form-control']) !!}
             <br/> <br/>
             <br/> <br/>
         </div>

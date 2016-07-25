@@ -50,7 +50,7 @@ class gestorexamenesController extends Controller
         $content_nom_preguntas=array();//ESTE SE ENVIA(4)
         $content_puntaje_preguntas=array();//ESTE SE ENVIA(5)
         $ids_tipo_pregunta=array();//ESTE SE ENVIA(6)
-        //$content_duracion=array();
+   
          $index=0;
         foreach ($preguntas as $item) {
             
@@ -58,7 +58,7 @@ class gestorexamenesController extends Controller
             $content_nom_preguntas[$index]=$item->nombre_pregunta;
             $content_puntaje_preguntas[$index]=$item->puntaje_pregunta;
             $ids_tipo_pregunta[$index]=$item->tipo_pregunta_id;
-          //  $content_duracion[$index]=$item->duracion;
+           
             $index++;
 
         }
@@ -156,10 +156,9 @@ class gestorexamenesController extends Controller
            }
 
         }
-       // $duracion_total=0;
-        //for ($i=0; $i < count($content_duracion) ; $i++) {  
-         //$duracion_total+=$content_duracion[$i];
-        //}
+        $duracion_total= DB::table('notas')->where('id', $id_nota)->first();
+        $duracion_total=$duracion_total->duracion;
+       
 
         //una vez abierto el formulario examen el estudiante no puede volver a dar
         DB::table('notas')->where('id',$id_nota)->update(array('estado'=>0));
@@ -167,7 +166,7 @@ class gestorexamenesController extends Controller
 
       return view('gestor_examenes.vistas_examenes.formulario_examen', compact('nombre_examen', 
       'fecha_examen', 'nombre_categoria', 'content_nom_preguntas', 'content_puntaje_preguntas',
-        'ids_tipo_pregunta','content_respuestas','cadena_m', 'res_mul_correcta', 'id_nota','res_mul_var_correcta'));
+        'ids_tipo_pregunta','content_respuestas','cadena_m', 'res_mul_correcta', 'id_nota','res_mul_var_correcta','duracion_total'));
     }
     
 

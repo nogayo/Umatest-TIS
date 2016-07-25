@@ -6,6 +6,7 @@
 
 
 @section('main-content')
+<script type="text/javascript">nobackbutton();</script>
 <div class="containerexamen">
 	<div class="row">
 		<div class="col-md-14 col-md-offset-0">
