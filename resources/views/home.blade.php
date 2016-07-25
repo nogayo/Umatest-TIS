@@ -26,7 +26,6 @@
 					 <div class="container">
            
            		  <div class="content">
-                      
                     <div style="height:200px; width:200px; float: left;">
                     <img src="{{asset('/img/img_panelPrincipal/bienvenida.png')}}" style="height:200px; width:200px;  "/>  
                     </div>
