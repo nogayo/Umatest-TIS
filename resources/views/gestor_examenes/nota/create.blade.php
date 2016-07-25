@@ -72,6 +72,9 @@
                     {!! $errors->first('duracion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            @if($mensajeA!='a')
+             <ul class="alert alert-danger"><li>{{ $mensajeA }}</li></ul>
+            @endif
 
             <div class="form-group {{ $errors->has('fecha_inicio') ? 'has-error' : ''}}">
                 {!! Form::label('fecha_inicio', 'Fecha y hora Inicio', ['class' => 'col-sm-3 control-label']) !!}
@@ -80,6 +83,9 @@
                     {!! $errors->first('fecha_inicio', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            @if($mensajeB!='b')
+               <ul class="alert alert-danger"><li>{{ $mensajeB }}</li></ul>
+               @endif
             <div class="form-group {{ $errors->has('fecha_fin') ? 'has-error' : ''}}">
                 {!! Form::label('fecha_fin', 'Fecha y hora Fin', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -117,7 +123,9 @@
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
+
         </ul>
+
     @endif
 
 </div>

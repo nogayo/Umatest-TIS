@@ -40,7 +40,8 @@ class enviadoController extends Controller
      */
     public function create($id_curso,$id)
     {
-        return view('gestor_examenes.enviado.create',compact('id_curso','id'));
+         $mensajeError='';
+        return view('gestor_examenes.enviado.create',compact('id_curso','id', 'mensajeError'));
     }
 
     /**
@@ -52,9 +53,20 @@ class enviadoController extends Controller
     {
         $this->validate($request, ['fecha_limite' => 'required', ]);
         $id_curso=$request->input('id_curso');
-        $id_tarea=$request->input('id');
+        $id=$request->input('id');
 
-         $id_curso=$request->input('id_curso');
+        $fecha_actual= date("Y-m-d"); 
+        $fecha_fin=$request->input('fecha_limite');
+        // $fecha_fin=$this->parser($fecha_fin);
+
+        $mensajeError='';
+
+        if($fecha_fin < $fecha_actual){
+            $mensajeError.='La Fecha Limite no es Valida';
+            return view('gestor_examenes.enviado.create',compact('id_curso','id','mensajeError'));
+        }else{
+            $id_curso=$request->input('id_curso');
+             $id_tarea=$request->input('id');                 
          DB::table('enviados')->insert(['fecha_limite' => $request->input('fecha_limite'),'id_tarea'=> $request->input('id')]
          );
 
@@ -88,6 +100,19 @@ class enviadoController extends Controller
         Session::flash('flash_message', 'enviado added!');
    
         return redirect('gestor_examenes/'.$id_curso.'/envio');
+
+        }
+
+         
+    }
+    public function parser($cadena){
+
+        $res=  explode("T", $cadena);
+
+        $res=$res[0].' '.$res[1].':00';
+
+        return $res;
+
     }
 
     /**

@@ -34,7 +34,8 @@ class notaController extends Controller
     {
          $numero_preguntas = DB::table('preguntas')->where('examen_id', $id_examen)->get();
          
-
+         $mensajeA='';
+         $mensajeB='';
            $puntaje=0;
              foreach ($numero_preguntas as $item) {
 
@@ -44,7 +45,7 @@ class notaController extends Controller
          
          $numero_preguntas=count($numero_preguntas);
 
-        return view('gestor_examenes.nota.create', compact('id_curso', 'id_examen', 'numero_preguntas', 'puntaje'));
+        return view('gestor_examenes.nota.create', compact('id_curso', 'id_examen', 'numero_preguntas', 'puntaje', 'mensajeA', 'mensajeB'));
     }
 
     /**
@@ -56,74 +57,135 @@ class notaController extends Controller
     {
         $this->validate($request, ['puntaje_examen' => 'required','duracion' => 'required',  'fecha_inicio' => 'required', 'fecha_fin' => 'required', ]);
 
-        // variables que se utilizaran para la tabla notificaciones
-        $id_curso=$request->input('curso_id');
+        $fecha_inicio=$request->input('fecha_inicio');
+       $fecha_inicio=$this->parser($fecha_inicio);
+        $fecha_fin=$request->input('fecha_fin');
+         $fecha_fin=$this->parser($fecha_fin);
+        $fecha_actual= date("Y-m-d H:i:s"); 
         $id_examen=$request->input('examen_id');
-    
-    $contenedor_estudiantes=array();
+        $id_curso=$request->input('curso_id');
+        
 
-    $estudiantes = DB::table('curso_inscritos')->where('curso_id', $request->input('curso_id'))->get();
-     $index=0;
-    foreach ($estudiantes as $item) {
-        $contenedor_estudiantes[$index]=$item->user_id;
-        $index++;
-    }
-    
-    //ids de las preguntas q van hacer enviadas
-    $preguntas_seleccionadas= $this->preguntas_a_enviar($request->input('examen_id'));
+        $mensajeA='a';
+        $mensajeB='b';
+        if($fecha_inicio < $fecha_actual){
 
-   /* $puntaje_exa_preguntas=0;
+         $mensajeA.='los datos de la fecha inicio no son validos';
+          $numero_preguntas = DB::table('preguntas')->where('examen_id', $id_examen)->get();
+         
 
-    for ($m=0; $m < count($preguntas_seleccionadas); $m++) {  
+           $puntaje=0;
+             foreach ($numero_preguntas as $item) {
 
-          $puntaje= DB::table('preguntas')->where('id', $preguntas_seleccionadas[$m])->first();
-          $puntaje_exa_preguntas+=$puntaje->puntaje_pregunta;  
+                 $puntaje+=$item->puntaje_pregunta;
 
-    }
+             }
+         
+         $numero_preguntas=count($numero_preguntas);
 
-*/
-      
-        for ($k=0; $k < count($contenedor_estudiantes) ; $k++) { 
+        return view('gestor_examenes.nota.create', compact('id_curso', 'id_examen', 'numero_preguntas', 'puntaje','mensajeA', 'mensajeB'));
+         
 
-       DB::table('notas')->insert(['numero_preguntas' => $request->input('numero_preguntas'),
-       'puntaje_examen' => $request->input('puntaje_examen'), 'duracion' => $request->input('duracion'), 'fecha_inicio' => $request->input('fecha_inicio'),'estado'=>true,'fecha_fin'=> $request->input('fecha_fin'), 'user_id'=> $contenedor_estudiantes[$k], 
-        'examen_id'=> $request->input('examen_id')]
-         );
+        }else{
+
+           if ($fecha_fin < $fecha_inicio) {
+
+            $mensajeB.='los datos de la fecha fin no son validos';
+
+
+            $numero_preguntas = DB::table('preguntas')->where('examen_id', $id_examen)->get();
+         
+
+           $puntaje=0;
+             foreach ($numero_preguntas as $item) {
+
+                 $puntaje+=$item->puntaje_pregunta;
+
+             }
+         
+             $numero_preguntas=count($numero_preguntas);
+
+             return view('gestor_examenes.nota.create', compact('id_curso', 'id_examen', 'numero_preguntas', 'puntaje','mensajeA', 'mensajeB'));
+         
+
+
+           }else{
+           
+
+                       // variables que se utilizaran para la tabla notificaciones
+                    $id_curso=$request->input('curso_id');
+                    $id_examen=$request->input('examen_id');
+                
+                $contenedor_estudiantes=array();
+
+                $estudiantes = DB::table('curso_inscritos')->where('curso_id', $request->input('curso_id'))->get();
+                 $index=0;
+                foreach ($estudiantes as $item) {
+                    $contenedor_estudiantes[$index]=$item->user_id;
+                    $index++;
+                }
+                
+                //ids de las preguntas q van hacer enviadas
+                $preguntas_seleccionadas= $this->preguntas_a_enviar($request->input('examen_id'));
+
+               /* $puntaje_exa_preguntas=0;
+
+                for ($m=0; $m < count($preguntas_seleccionadas); $m++) {  
+
+                      $puntaje= DB::table('preguntas')->where('id', $preguntas_seleccionadas[$m])->first();
+                      $puntaje_exa_preguntas+=$puntaje->puntaje_pregunta;  
+
+                }
+
+            */
+                  
+                    for ($k=0; $k < count($contenedor_estudiantes) ; $k++) { 
+
+                   DB::table('notas')->insert(['numero_preguntas' => $request->input('numero_preguntas'),
+                   'puntaje_examen' => $request->input('puntaje_examen'), 'duracion' => $request->input('duracion'), 'fecha_inicio' => $request->input('fecha_inicio'),'estado'=>true,'fecha_fin'=> $request->input('fecha_fin'), 'user_id'=> $contenedor_estudiantes[$k], 
+                    'examen_id'=> $request->input('examen_id')]
+                     );
+                    }
+
+                $notas = DB::table('notas')->orderBy('id', 'desc')->take(count($contenedor_estudiantes))->get();
+
+
+                 // esta seccion de codigo es para las notificaciones
+
+                     $examen= DB::table('examens')
+                       ->where('id_cursos', $id_curso)
+                       ->where('id', $id_examen)
+                       ->select('examens.nombre_examen')
+                        ->get();
+
+                    $estudiantes= DB::table('curso_inscritos')->where('curso_id', $id_curso)->get();
+
+
+                    foreach ($estudiantes as $item) {
+                        
+                                DB::table('notificacions')->insert(['id_user' => $item->user_id,'id_curso' => $id_curso, 'descripcion' => $examen[0]->nombre_examen,'visto' => 'false']
+                                );
+
+                    }
+
+                $ids_notas=array();
+                $j=0;
+                foreach ($notas as $item) {
+                    
+                    $ids_notas[$j]=$item->id;
+
+                    $j++;        
+                }
+                    
+                    Session::flash('flash_message', 'TODO CORRECTO');
+
+                    return $this->llenar_historial($request->input('curso_id'), $request->input('examen_id'), $preguntas_seleccionadas, $ids_notas);
+
+           }
+
         }
 
-    $notas = DB::table('notas')->orderBy('id', 'desc')->take(count($contenedor_estudiantes))->get();
-
-
-     // esta seccion de codigo es para las notificaciones
-
-         $examen= DB::table('examens')
-           ->where('id_cursos', $id_curso)
-           ->where('id', $id_examen)
-           ->select('examens.nombre_examen')
-            ->get();
-
-        $estudiantes= DB::table('curso_inscritos')->where('curso_id', $id_curso)->get();
-
-
-        foreach ($estudiantes as $item) {
-            
-                    DB::table('notificacions')->insert(['id_user' => $item->user_id,'id_curso' => $id_curso, 'descripcion' => $examen[0]->nombre_examen,'visto' => 'false']
-                    );
-
-        }
-
-    $ids_notas=array();
-    $j=0;
-    foreach ($notas as $item) {
         
-        $ids_notas[$j]=$item->id;
-
-        $j++;        
-    }
-        
-        Session::flash('flash_message', 'TODO CORRECTO');
-
-        return $this->llenar_historial($request->input('curso_id'), $request->input('examen_id'), $preguntas_seleccionadas, $ids_notas);
    
 }
 
@@ -134,6 +196,19 @@ class notaController extends Controller
      *
      * @return void
      */
+
+
+    public function parser($cadena){
+
+        $res=  explode("T", $cadena);
+
+        $res=$res[0].' '.$res[1].':00';
+
+        return $res;
+
+    }
+
+
     public function show($id)
     {
         $notum = notum::findOrFail($id);
