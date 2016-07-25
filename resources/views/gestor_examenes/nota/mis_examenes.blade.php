@@ -6,6 +6,10 @@
 
 
 @section('main-content')
+
+
+<input id="reloadValue" type="hidden" name="reloadValue" value="" />
+
 <div class="container">
     <div class="row">
     {{-- */$id_user=Auth::id();   
