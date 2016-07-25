@@ -3,8 +3,6 @@
 @section('htmlheader_title')
    CURSOS
 @endsection
-
-
 @section('main-content')
 <div class="container">
     <div class="row">
@@ -17,11 +15,17 @@
 
     <h1>Editar Tarea {{ $tarea->id }}</h1>
 
+
+
+
+
+
     {!! Form::model($tarea, [
         'method' => 'PATCH',
         'url' => ['/gestor_examenes/tarea', $tarea->id],
         'class' => 'form-horizontal'
     ]) !!}
+
 
                 <div class="form-group {{ $errors->has('nombre_tarea') ? 'has-error' : ''}}">
                 {!! Form::label('nombre_tarea', trans('tarea.nombre_tarea'), ['class' => 'col-sm-3 control-label']) !!}
@@ -37,14 +41,8 @@
                     {!! $errors->first('descripcion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('archivo') ? 'has-error' : ''}}">
-                {!! Form::label('archivo', trans('tarea.archivo'), ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::textarea('archivo', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('archivo', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('estado_tarea') ? 'has-error' : ''}}">
+
+            <!--div class="form-group {{ $errors->has('estado_tarea') ? 'has-error' : ''}}">
                 {!! Form::label('estado_tarea', trans('tarea.estado_tarea'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                                 <div class="checkbox">
@@ -55,7 +53,7 @@
             </div>
                     {!! $errors->first('estado_tarea', '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
+            </div-->
             <!--div class="form-group {{ $errors->has('fecha_limite') ? 'has-error' : ''}}">
                 {!! Form::label('fecha_limite', trans('tarea.fecha_limite'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -68,6 +66,17 @@
                 <div class="col-sm-6">
                     {!! Form::number('puntaje_total', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('puntaje_total', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
+
+ <li style="text-align: center; color: red;"></i> Este el archivo actual. </a></li>
+
+                        <div class="form-group {{ $errors->has('archivo') ? 'has-error' : ''}}">
+                {!! Form::label('archivo', trans('tarea.archivo'), ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('archivo', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! $errors->first('archivo', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
 
@@ -89,16 +98,29 @@
                 </div>
                 </div>
 
+ <li style="text-align: center; color:green;"></i> Seleccionar nuevo archivo. </a></li>
+ <div class="form-group {{ $errors->has('subir_archivo') ? 'has-error' : ''}}">
+
+ 
+                {!! Form::label('Subir Archivo','(*) Subir archivo', ['class' => 'col-sm-3 control-label']) !!}
+          <div class="col-sm-6">
+          {!! Form::file('archivo') !!}
+
+             <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                  
+                </div>
+                </div>
+
+          {!! Form::submit('Terminar') !!}
+
+          {!! Form::close() !!}
+                </div>
+                </div>
 
 
-
-
-    <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
-        </div>
-    </div>
-    {!! Form::close() !!}
+    
 
     @if ($errors->any())
         <ul class="alert alert-danger">
@@ -110,6 +132,8 @@
 
 </div>
 </div>
+
+ <li style="text-align: center; color: orange;"></i>(*) Todos los campos que tiene asterisco es opcional</a></li>
             </div>
         </div>
     </div>

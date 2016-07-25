@@ -85,11 +85,11 @@
                     <td>{{ $item->archivo }}</td>
                     <td>{{ $item->fecha_limite }}</td>
                     <td> 
-                    <li><a href="#"><i class="fa fa-cloud-download" style="font-size:24px;color:orange"></i></a></li>
+                    <a href="{{url(''.$item->path_archivo.'')}}"><i class="fa fa-cloud-download" style="font-size:24px;color:orange"></i></a>
                     </td>
                      <td> 
-                    <li><a href="{{url('/gestor_examenes/'.$id_curso.'/'.$item->id.'/entregar_tarea')}}">
-                    <i class="fa fa-cloud-upload" style="font-size:24px;color:green"></i></a></li>
+                    <a href="{{url('/gestor_examenes/'.$id_curso.'/'.$item->id.'/entregar_tarea')}}">
+                    <i class="fa fa-cloud-upload" style="font-size:24px;color:green"></i></a>
                     </td>
                 
                    

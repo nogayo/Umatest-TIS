@@ -59,18 +59,8 @@
                     <td>
                         <a href="{{ url('/gestor_examenes/tarea/' . $item->id) }}" class="btn btn-success btn-xs" title="View Tarea"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/gestor_examenes/'.$id_curso.'/materia/'.$tipo.'/tarea/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Tarea"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['/gestor_examenes/tarea', $item->id],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Tarea" />', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Tarea',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            ));!!}
-                        {!! Form::close() !!}
+             
+                        <a href="{{ url('/gestor_examenes/'.$id_curso.'/materia/'.$tipo.'/tarea/' . $item->id . '/destroy') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirmas eliminar?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
                     </td>
                 </tr>
             @endforeach
