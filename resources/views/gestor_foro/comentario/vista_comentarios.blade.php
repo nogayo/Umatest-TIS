@@ -46,6 +46,7 @@
                      @if($item->id_user==$id_user_actual)    
                     <td bgcolor="#b0e0e6">
                        
+                       
                         <a href="" class="btn btn-primary btn-xs" title="Edit Foro"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                        <a href="{{ url('/gestor_foros/' . $item->id_foro . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
 

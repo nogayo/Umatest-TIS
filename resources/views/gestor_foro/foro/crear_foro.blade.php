@@ -31,7 +31,7 @@
             <div class="form-group {{ $errors->has('mensaje') ? 'has-error' : ''}}">
                 {!! Form::label('mensaje', trans('mensaje'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('mensaje', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::textarea('mensaje', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('mensaje', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

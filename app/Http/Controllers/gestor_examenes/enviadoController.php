@@ -165,7 +165,7 @@ class enviadoController extends Controller
       $tareas= DB::table('tareas')
             ->where('id_cursos', $id_curso)
             ->join('enviados', 'tareas.id', '=', 'enviados.id_tarea')
-            ->select('tareas.nombre_tarea','tareas.descripcion','tareas.archivo','enviados.id', 'enviados.fecha_limite')
+            ->select('tareas.nombre_tarea','tareas.descripcion','tareas.archivo','tareas.path_archivo','enviados.id', 'enviados.fecha_limite')
             ->get();
      return view('gestor_examenes.tareasrecibidos.recibido', compact('tareas','id_curso'));
     //return redirect('admin/enviado');

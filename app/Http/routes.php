@@ -353,6 +353,34 @@ Route::get('gestor_examenes/{id_curso}/envio', 'gestor_examenes\\enviadoControll
 
 
 /*
+* Esta ruta viene despues presinar eliminar tarea
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+*url('/gestor_examenes/'.$id_curso.'/materia/'.$tipo.'/tarea/' . $item->id . '/destroy')
+*/
+Route::get('gestor_examenes/{id_curso}/materia/{tipo}/tarea/{id_tarea}/destroy', 'gestor_examenes\\tareaController@destroy');
+
+ 
+/*
+* Esta ruta viene despues presinar editar tarea
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+* parametro1@ id de la tarea
+*url('/gestor_examenes/'.$id_curso.'/materia/'.$tipo.'/tarea/' . $item->id . '/edit')
+*/
+Route::get('gestor_examenes/{id_curso}/materia/{tipo}/tarea/{id_tarea}/edit', 'gestor_examenes\\tareaController@edit');
+
+/*
+* Esta ruta viene despues presinar update tarea(ojo aka se tiene dos metodos)
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+* parametro1@ id de la tarea
+*'url' => '/gestor_examenes/{id_curso}/tarea/{tipo}/{trans('tarea.id')}/update'
+*/
+Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/{id}/update', 'gestor_examenes\\tareaController@update2');
+
+
+/*
 NOTA.- Apartir de esta instruccion solo se debe aniadir tareas enviadas al estudiante
 */
 
@@ -362,7 +390,6 @@ NOTA.- Apartir de esta instruccion solo se debe aniadir tareas enviadas al estud
 * url('gestor_examenes/'.$id_curso.'/tareas/recibidos')
 */
 Route::get('/gestor_examenes/{id_curso}/tareas/recibidos', 'gestor_examenes\\enviadoController@tareas_recibidos');
-
 
 
 
