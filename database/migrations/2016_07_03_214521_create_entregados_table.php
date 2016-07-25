@@ -15,7 +15,7 @@ class CreateEntregadosTable extends Migration
 
           Schema::create('enviados', function(Blueprint $table) {
             $table->increments('id');
-            $table->date('fecha_limite');
+            $table->dateTime('fecha_limite');
              $table->integer('id_tarea')->unsigned();
             $table->foreign('id_tarea')->references('id')->on('tareas')
             ->onUpdate('cascade')->onDelete('cascade');
@@ -26,7 +26,7 @@ class CreateEntregadosTable extends Migration
             $table->increments('id');
             $table->string('descripcion_tarea')->nullable();
             $table->string('archivo')->nullable();
-            $table->date('fecha');
+            $table->dateTime('fecha');
             $table->integer('puntaje')->nullable();
             $table->timestamps();
 

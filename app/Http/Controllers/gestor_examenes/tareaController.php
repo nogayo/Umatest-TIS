@@ -76,8 +76,9 @@ public function store(CreateInvestigationRequest $request)
       if (!empty($_FILES)) {
         $temporalFile=$_FILES['archivo']['tmp_name'];
         //$path="/xampp/htdocs/git2/public/uploads/";
-        $path=public_path().'/uploads/';
-        $fileName=$path.'-'.Hash::make($_FILES['archivo']['name']);
+       // $path=public_path()."\\".'uploads'."\\";
+         $path='uploads/';
+        $fileName=$path.$_FILES['archivo']['name'];
         $fileType=$_FILES['archivo']['type'];
         $fileSize=($_FILES['archivo']['size']/1024);
         $nombreArchivo=$_FILES['archivo']['name'];
@@ -171,6 +172,8 @@ public function store(CreateInvestigationRequest $request)
 
         return view('gestor_examenes.tarea.edit', compact('tarea','id_curso','tipo'));
     }
+
+
        public function editEnviar($id_curso,$id)
     {
         $tarea = tarea::findOrFail($id);
@@ -200,7 +203,7 @@ public function store(CreateInvestigationRequest $request)
             $usuario= DB::table('users')->where('id', $id_user)->first();
             $nombre_usuario = $usuario->name.' '.$usuario->apellido;
             $fecha_a = date("Y-m-d H:i:s");
-            $accion_a='updatev';
+            $accion_a='update';
             $id_bi=0;
 
          DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
@@ -235,6 +238,92 @@ public function store(CreateInvestigationRequest $request)
         return redirect('gestor_examenes/'.$id_curso.'/examen/'.$tipo.'/tarea');
     }
 
+
+
+
+
+
+public function update2($id,Request $request)
+    {
+        $this->validate($request, ['nombre_tarea' => 'required', 'descripcion','fecha_creacion','puntaje_total',]);
+        $id_curso=$request->input('id_curso');
+        $tipo=$request->input('tipo');
+        $fecha_actual = date("Y-m-d H:i:s");
+
+      if (!empty($_FILES)) {
+        $temporalFile=$_FILES['archivo']['tmp_name'];
+        //$path="/xampp/htdocs/git2/public/uploads/";
+       // $path=public_path()."\\".'uploads'."\\";
+         $path='uploads/';
+        $fileName=$path.$_FILES['archivo']['name'];
+        $fileType=$_FILES['archivo']['type'];
+        $fileSize=($_FILES['archivo']['size']/1024);
+        $nombreArchivo=$_FILES['archivo']['name'];
+  
+         $dir_subida = $path;
+         $fichero_subido = $dir_subida . basename($_FILES['archivo']['name']);
+         if (move_uploaded_file($_FILES['archivo']['tmp_name'],$fichero_subido)) {
+
+           DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),
+          'archivo' => $nombreArchivo,'path_archivo' => $fileName,'fecha_creacion' =>$fecha_actual,
+          'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
+         );
+
+         //store procedure
+            $nombre_tarea = $request->input('nombre_tarea');
+            $descripcion = $request->input('descripcion');
+            $fecha_creacion= $fecha_actual;
+            $puntaje_total= $request->input('puntaje_total');
+            $id_curso= $request->input('id_curso');
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='create';
+            $id_bi=0;
+
+            DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
+
+         }else{
+
+             DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),'fecha_creacion' => $fecha_actual,
+          'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
+         );
+                      //store procedure
+            $nombre_tarea = $request->input('nombre_tarea');
+            $descripcion = $request->input('descripcion');
+            $fecha_creacion= $fecha_actual;
+            $puntaje_total= $request->input('puntaje_total');
+            $id_curso= $request->input('id_curso');
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+            $fecha_a = date("Y-m-d H:i:s");
+            $accion_a='create';
+            $id_bi=0;
+
+         DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
+
+         }
+        }
+
+        $tarea = DB::table('tareas')->where('id_cursos', $id_curso)->get();
+         /*
+        tarea::create($request->all());
+        //$id_curso=$request->input('id_curso');
+        $id_curso=$request->input('id_curso');
+       $tipo=$request->input('tipo');
+       */
+        Session::flash('flash_message', 'tarea added!');
+        return redirect('gestor_examenes/'.$id_curso.'/examen/'.$tipo.'/tarea');
+    }
+
+
+
+
+
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -242,9 +331,9 @@ public function store(CreateInvestigationRequest $request)
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id_curso,$tipo,$id_tarea)
     {
-        $tarea= DB::table('tareas')->where('id', $id)->first();
+        $tarea= DB::table('tareas')->where('id', $id_tarea)->first();
            //store procedure
             $nombre_tarea = $tarea->nombre_tarea;
             $descripcion = $tarea->descripcion;
@@ -259,11 +348,11 @@ public function store(CreateInvestigationRequest $request)
             $id_bi=0;
 
          DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
-        tarea::destroy($id);
+        tarea::destroy($id_tarea);
 
         Session::flash('flash_message', 'tarea deleted!');
 
-        return redirect('gestor_examenes/tarea/');
+        return redirect('gestor_examenes/'.$id_curso.'/examen/'.$tipo.'/tarea');
     }
     //mostrar_form
 
