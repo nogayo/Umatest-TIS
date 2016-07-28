@@ -58,7 +58,31 @@ Route::resource('admin/users', 'Admin\\UsersController');
 Route::resource('admin/docente', 'Admin\\docenteController');
 Route::resource('admin/administrador', 'Admin\\administradorController');
 Route::resource('admin/curso', 'Admin\\cursoController');
+
+
+/*
+ esto es para crear carreras
+*/
 Route::resource('admin/categoria', 'Admin\\categoriaController');
+
+/*
+* Esta ruta viene despues presinar crear carrera
+* parametro1@ id del curso
+* url('admin/carrera/create')
+*/
+Route::get('admin/carrera/create', 'Admin\\categoriaController@create');
+/*
+* Esta ruta viene despues presinar ver carreras
+* parametro1@ id del curso
+* url('admin/carrera/create')
+*/
+Route::get('admin/carreras', 'Admin\\categoriaController@index');
+
+
+
+
+
+
 Route::resource('admin/curso_dicta', 'Admin\\curso_dictaController');
 Route::resource('admin/curso_inscrito', 'Admin\\curso_inscritoController');
 
@@ -429,9 +453,35 @@ NOTA.- Apartir de esta instruccion solo se debe aniadir planillas
 /*
 * Esta ruta viene despues presinar ver planilla de estudiantes
 * parametro1@ id del curso
-* url('gestor_planillas/'.$id_curso.'/planilla/listar'
+* url('gestor_planillas/'.$id_curso.'/planilla/listar')
 */
 Route::get('gestor_planillas/{id_curso}/planilla/listar', 'gestor_planillas\\planillaController@listar');
+/*
+* Esta ruta viene despues presinar en gestor planilla, el boton editar
+* parametro1@ id del curso
+* parametro1@ id del ususario
+* url('/gestor_planilla/'.$id_curso.'/planilla/' . $item->id_user . '/edit') 
+*/
+Route::get('/gestor_planillas/{id_curso}/planilla/{id_user}/modificar','gestor_planillas\\planillaController@modificar');
+/*
+* Esta ruta viene despues presinar en gestor planilla, el boton editar varios
+* parametro1@ id del curso
+* parametro1@ id del ususario
+* url('/gestor_planilla/'.$id_curso.'/planilla/' . $item->id_user . '/edit') 
+*/
+Route::get('/gestor_planillas/{id_curso}/modificar/varios','gestor_planillas\\planillaController@modificar_varios');
+
+/*
+* Esta ruta viene despues presinar en gestor planilla, el boton editar
+* parametro1@ id del curso
+* parametro1@ id del ususario
+* url('/gestor_planilla/'.$id_curso.'/planilla/' . $item->id_user . '/edit') 
+*/
+Route::get('/gestor_planillas/{id_curso}/planilla/{id_user}/{id_examen}/edit', 'gestor_planillas\\planillaController@edit');
+
+///gestor_planillas/planilla
+Route::resource('gestor_planillas/planilla', 'gestor_planillas\\planillaController');
+
 
 /*
 * Esta ruta viene despues presinar ver kardex (de parte de estuciate)
