@@ -58,7 +58,31 @@ Route::resource('admin/users', 'Admin\\UsersController');
 Route::resource('admin/docente', 'Admin\\docenteController');
 Route::resource('admin/administrador', 'Admin\\administradorController');
 Route::resource('admin/curso', 'Admin\\cursoController');
+
+
+/*
+ esto es para crear carreras
+*/
 Route::resource('admin/categoria', 'Admin\\categoriaController');
+
+/*
+* Esta ruta viene despues presinar crear carrera
+* parametro1@ id del curso
+* url('admin/carrera/create')
+*/
+Route::get('admin/carrera/create', 'Admin\\categoriaController@create');
+/*
+* Esta ruta viene despues presinar ver carreras
+* parametro1@ id del curso
+* url('admin/carrera/create')
+*/
+Route::get('admin/carreras', 'Admin\\categoriaController@index');
+
+
+
+
+
+
 Route::resource('admin/curso_dicta', 'Admin\\curso_dictaController');
 Route::resource('admin/curso_inscrito', 'Admin\\curso_inscritoController');
 

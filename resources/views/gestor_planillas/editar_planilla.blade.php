@@ -107,9 +107,11 @@
             </tbody>
 
         </table>
+        <center>
          <div>
           <a href="{{  url('gestor_planillas/'.$id_curso.'/planilla/listar')}}" class="btn btn-primary btn-xs" title="Terminar" ><span class="" aria-hidden="true"/> <h5> Terminar </h5></a>
           </div>
+          </center>
         <div class="pagination">  </div>
     </div>
 
