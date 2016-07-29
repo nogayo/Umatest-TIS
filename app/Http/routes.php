@@ -119,7 +119,7 @@ Route::get('admin/curso_inscrito/{id_curso}/vista_contenido_curso', 'Admin\\curs
 */
 Route::resource('gestor_examenes/examen', 'gestor_examenes\\examenController');
 Route::resource('gestor_examenes/nota', 'gestor_examenes\\notaController');
-Route::resource('gestor_examenes/tarea', 'gestor_examenes\\tareaController');
+
 
 
 //INICIO RUTAS DE PREGUNTAS
@@ -359,7 +359,7 @@ Route::get('/gestor_examenes/{id_curso}/enviar/{id}/edit', 'gestor_examenes\\tar
 /*
 NOTA.- Apartir de esta instruccion solo se debe aniadir rutas para tareas
 */
-
+Route::resource('gestor_examenes/tarea', 'gestor_examenes\\tareaController');
 /*
 * Esta ruta viene despues presinar enviar tarea
 * parametro1@ id del curso
@@ -401,7 +401,7 @@ Route::get('gestor_examenes/{id_curso}/materia/{tipo}/tarea/{id_tarea}/edit', 'g
 * parametro1@ id de la tarea
 *'url' => '/gestor_examenes/{id_curso}/tarea/{tipo}/{trans('tarea.id')}/update'
 */
-Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/{id}/update', 'gestor_examenes\\tareaController@update2');
+Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/{id}/update', 'gestor_examenes\\tareaController@update');
 
 
 /*

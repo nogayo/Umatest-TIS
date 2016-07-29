@@ -61,7 +61,12 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td>{{ $item->respuesta }}</td><td>{{ $item->correcta }}</td>
+                    <td>{{ $item->respuesta }}</td>
+                    @if($item->correcta == 1)
+                    <td>Correcta</td>
+                    @else
+                    <td>Incorrecta</td>
+                    @endif
                     <td>
                          <a href="{{ url('/gestor_examenes/multiples_varios/' . $item->id . '/'.$id_pregunta.'/show') }}" class="btn btn-success btn-xs" title="View Multiple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/gestor_examenes/multiples_varios/' . $item->id . '/'.$id_pregunta.'/edit') }}" class="btn btn-primary btn-xs" title="Edit Multiple"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>

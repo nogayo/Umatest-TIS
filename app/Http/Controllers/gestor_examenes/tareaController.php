@@ -189,9 +189,9 @@ public function store(CreateInvestigationRequest $request)
      *
      * @return void
      */
-    public function update($id, Request $request)
+    public function updatenooo($id, Request $request)
     {
-        $this->validate($request, ['nombre_tarea' => 'required', 'descripcion' => 'required', 'archivo' => 'required', 'estado_tarea' => 'required','puntaje_total' => 'required', ]);
+        $this->validate($request, ['nombre_tarea' => 'required', 'descripcion', 'archivo' , 'puntaje_total', ]);
          $tareas= DB::table('tareas')->where('id', $id)->first();
            //store procedure
             $nombre_tarea = $tareas->nombre_tarea;
@@ -243,7 +243,7 @@ public function store(CreateInvestigationRequest $request)
 
 
 
-public function update2($id,Request $request)
+public function update($id,Request $request)
     {
         $this->validate($request, ['nombre_tarea' => 'required', 'descripcion','fecha_creacion','puntaje_total',]);
         $id_curso=$request->input('id_curso');
@@ -264,45 +264,60 @@ public function update2($id,Request $request)
          $fichero_subido = $dir_subida . basename($_FILES['archivo']['name']);
          if (move_uploaded_file($_FILES['archivo']['tmp_name'],$fichero_subido)) {
 
-           DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),
-          'archivo' => $nombreArchivo,'path_archivo' => $fileName,'fecha_creacion' =>$fecha_actual,
-          'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
-         );
+         DB::table('tareas')
+         ->where('tareas.id',$id)
+         ->update(['nombre_tarea' =>$request->input('nombre_tarea'),'descripcion' => $request->input('descripcion'),
+         'archivo' => $nombreArchivo,'path_archivo' => $fileName,'fecha_creacion' =>$fecha_actual,'puntaje_total' => $request->input('puntaje_total'),
+           'id_cursos'=> $request->input('id_curso')
+                ]);
+
+
+      
 
          //store procedure
-            $nombre_tarea = $request->input('nombre_tarea');
-            $descripcion = $request->input('descripcion');
-            $fecha_creacion= $fecha_actual;
-            $puntaje_total= $request->input('puntaje_total');
-            $id_curso= $request->input('id_curso');
-            $id_user=Auth::id();
-            $usuario= DB::table('users')->where('id', $id_user)->first();
-            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
-            $fecha_a = date("Y-m-d H:i:s");
-            $accion_a='create';
-            $id_bi=0;
+         //   $nombre_tarea = $request->input('nombre_tarea');
+         //   $descripcion = $request->input('descripcion');
+         //   $fecha_creacion= $fecha_actual;
+         //   $puntaje_total= $request->input('puntaje_total');
+         //   $id_curso= $request->input('id_curso');
+         //   $id_user=Auth::id();
+         //   $usuario= DB::table('users')->where('id', $id_user)->first();
+         //   $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+         //   $fecha_a = date("Y-m-d H:i:s");
+         //   $accion_a='create';
+         //   $id_bi=0;
 
-            DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
+         //   DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
 
          }else{
 
-             DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),'fecha_creacion' => $fecha_actual,
-          'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
-         );
-                      //store procedure
-            $nombre_tarea = $request->input('nombre_tarea');
-            $descripcion = $request->input('descripcion');
-            $fecha_creacion= $fecha_actual;
-            $puntaje_total= $request->input('puntaje_total');
-            $id_curso= $request->input('id_curso');
-            $id_user=Auth::id();
-            $usuario= DB::table('users')->where('id', $id_user)->first();
-            $nombre_usuario = $usuario->name.' '.$usuario->apellido;
-            $fecha_a = date("Y-m-d H:i:s");
-            $accion_a='create';
-            $id_bi=0;
+           //  DB::table('tareas')->insert(['nombre_tarea' => $request->input('nombre_tarea'), 'descripcion' => $request->input('descripcion'),'fecha_creacion' => $fecha_actual,
+          //'puntaje_total' => $request->input('puntaje_total'),'id_cursos'=> $request->input('id_curso')]
+         //);
 
-         DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
+          DB::table('tareas')
+         ->where('tareas.id',$id)
+         ->update(['nombre_tarea' =>$request->input('nombre_tarea'),'descripcion' => $request->input('descripcion'),
+         'fecha_creacion' =>$fecha_actual,'puntaje_total' => $request->input('puntaje_total'),
+           'id_cursos'=> $request->input('id_curso')
+                ]);
+
+
+
+                      //store procedure
+         //   $nombre_tarea = $request->input('nombre_tarea');
+         //   $descripcion = $request->input('descripcion');
+         //   $fecha_creacion= $fecha_actual;
+         //   $puntaje_total= $request->input('puntaje_total');
+         //   $id_curso= $request->input('id_curso');
+         //   $id_user=Auth::id();
+         //   $usuario= DB::table('users')->where('id', $id_user)->first();
+         //   $nombre_usuario = $usuario->name.' '.$usuario->apellido;
+         //   $fecha_a = date("Y-m-d H:i:s");
+         //   $accion_a='create';
+         //   $id_bi=0;
+
+        // DB::select('CALL PA_tarea(?,?,?,?,?,?,?,?,?)', array($nombre_tarea, $descripcion, $fecha_creacion, $puntaje_total,$id_curso,$nombre_usuario ,$fecha_a, $accion_a, $id_bi));
 
          }
         }
