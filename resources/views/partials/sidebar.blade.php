@@ -56,6 +56,17 @@
                 </ul>
                    </li>
 
+
+
+                <li class="treeview">
+                <a href="#"><i class='fa fa-user'></i> <span>Gestor Carreras</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('admin/carrera/create') }}">Crear Carreras</a></li>
+                    <li><a href="{{ url('admin/carreras') }}">Ver Carreras</a></li>
+                </ul>
+                </li>
+
+
                     <li class="treeview">
                 <a href="#"><i class='fa fa-user'></i> <span>Gestor Materias Docente</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">

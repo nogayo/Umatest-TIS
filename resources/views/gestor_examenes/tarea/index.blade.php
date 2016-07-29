@@ -46,7 +46,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('tarea.nombre_tarea') }} </th><th> {{ trans('tarea.descripcion') }} </th><th> {{ trans('tarea.archivo') }} </th><th>Actions</th>
+                    <th>S.No</th><th> {{ trans('tarea.nombre_tarea') }} </th><th> {{ trans('tarea.descripcion') }} </th><th> {{ trans('tarea.archivo') }} </th><th>Acciones</th>
                 </tr>
             </thead>
             <tbody>

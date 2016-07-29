@@ -60,10 +60,10 @@
                 {!! Form::label('correcta', 'Correcta', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                                 <div class="checkbox">
-                <label>{!! Form::radio('correcta', '1') !!} Yes</label>
+                <label>{!! Form::radio('correcta', '1') !!} Correcta</label>
             </div>
             <div class="checkbox">
-                <label>{!! Form::radio('correcta', '0', true) !!} No</label>
+                <label>{!! Form::radio('correcta', '0', true) !!} Incorrecta</label>
             </div>
                     {!! $errors->first('correcta', '<p class="help-block">:message</p>') !!}
                 </div>
