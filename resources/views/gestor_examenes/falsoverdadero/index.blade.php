@@ -15,7 +15,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Falsoverdadero <a href="{{ url('/gestor_examenes/falsoverdadero/create') }}" class="btn btn-primary btn-xs" title="Add New Falsoverdadero"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Falsoverdadero <a href="{{ url('/gestor_examenes/falsoverdadero/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Falsoverdadero"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -31,18 +31,18 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->respuesta }}</td>
                     <td>
-                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $item->id) }}" class="btn btn-success btn-xs" title="View Falsoverdadero"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Falsoverdadero"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Falsoverdadero"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Falsoverdadero"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/gestor_examenes/falsoverdadero', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Falsoverdadero" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Falsoverdadero" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Falsoverdadero',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Falsoverdadero',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

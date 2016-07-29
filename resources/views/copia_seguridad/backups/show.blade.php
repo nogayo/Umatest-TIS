@@ -16,7 +16,7 @@
 <div class="container">
 
     <h1>backup {{ $backup->id }}
-        <a href="{{ url('copia_seguridad/backups/' . $backup->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit backup"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+        <a href="{{ url('copia_seguridad/backups/' . $backup->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar backup"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
         {!! Form::open([
             'method'=>'DELETE',
             'url' => ['copia_seguridad/backups', $backup->id],
@@ -25,8 +25,8 @@
             {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true"/>', array(
                     'type' => 'submit',
                     'class' => 'btn btn-danger btn-xs',
-                    'title' => 'Delete backup',
-                    'onclick'=>'return confirm("Confirm delete?")'
+                    'title' => 'Eliminar backup',
+                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
             ));!!}
         {!! Form::close() !!}
     </h1>

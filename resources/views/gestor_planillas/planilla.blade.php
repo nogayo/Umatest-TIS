@@ -26,7 +26,7 @@
             <thead>
  <rigth>
  <div>
-            <a href="{{ url('/gestor_planillas/'.$id_curso.'/modificar/varios') }}" class="btn btn-primary btn-xs" title="Edit Notum" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"/> <h5> Modificar Notas </h5></a>
+            <a href="{{ url('/gestor_planillas/'.$id_curso.'/modificar/varios') }}" class="btn btn-primary btn-xs" title="Editar Notum" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"/> <h5> Modificar Notas </h5></a>
 </div>
 </rigth>
 

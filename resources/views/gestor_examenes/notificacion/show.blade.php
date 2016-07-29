@@ -15,7 +15,7 @@
             <tfoot>
                 <tr>
                     <td colspan="2">
-                        <a href="{{ url('admin/notificacion/' . $notificacion->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Notificacion"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('admin/notificacion/' . $notificacion->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Notificacion"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['admin/notificacion', $notificacion->id],
@@ -24,8 +24,8 @@
                             {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true"/>', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Notificacion',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Notificacion',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

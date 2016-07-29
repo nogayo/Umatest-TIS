@@ -15,7 +15,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Backups <a href="{{ url('/copia_seguridad/backups/create') }}" class="btn btn-primary btn-xs" title="Add New backup"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Backups <a href="{{ url('/copia_seguridad/backups/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo backup"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -40,11 +40,11 @@
                             'url' => ['/copia_seguridad/backups', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-remove-circle" aria-hidden="true" title="Delete backup" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-remove-circle" aria-hidden="true" title="Eliminar backup" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete backup',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar backup',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>
