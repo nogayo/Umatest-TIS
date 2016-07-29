@@ -15,7 +15,7 @@
             <tfoot>
                 <tr>
                     <td colspan="2">
-                        <a href="{{ url('gestor_examenes/entregado/' . $entregado->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Entregado"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('gestor_examenes/entregado/' . $entregado->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Entregado"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['gestor_examenes/entregado', $entregado->id],
@@ -24,8 +24,8 @@
                             {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true"/>', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Entregado',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Entregado',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

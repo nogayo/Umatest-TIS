@@ -13,7 +13,7 @@
 <div class="container">
 <div class="container">
 
-    <h1>Carrera <a href="{{ url('/admin/categoria/create') }}" class="btn btn-primary btn-xs" title="Add New Categorium"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Carrera <a href="{{ url('/admin/categoria/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Categorium"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

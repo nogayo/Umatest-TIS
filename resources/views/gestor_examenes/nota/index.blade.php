@@ -15,7 +15,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Nota <a href="{{ url('/gestor_examenes/nota/create') }}" class="btn btn-primary btn-xs" title="Add New Notum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Nota <a href="{{ url('/gestor_examenes/nota/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Notum"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -31,18 +31,18 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->numero_preguntas }}</td><td>{{ $item->duracion }}</td><td>{{ $item->calificacion }}</td>
                     <td>
-                        <a href="{{ url('/gestor_examenes/nota/' . $item->id) }}" class="btn btn-success btn-xs" title="View Notum"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/gestor_examenes/nota/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Notum"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/nota/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Notum"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/nota/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Notum"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/gestor_examenes/nota', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Notum" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Notum" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Notum',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Notum',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

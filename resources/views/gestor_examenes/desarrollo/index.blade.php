@@ -15,7 +15,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Desarrollo <a href="{{ url('/gestor_examenes/desarrollo/create') }}" class="btn btn-primary btn-xs" title="Add New Desarrollo"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Desarrollo <a href="{{ url('/gestor_examenes/desarrollo/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Desarrollo"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -31,18 +31,18 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->respuesta }}</td>
                     <td>
-                        <a href="{{ url('/gestor_examenes/desarrollo/' . $item->id) }}" class="btn btn-success btn-xs" title="View Desarrollo"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/gestor_examenes/desarrollo/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Desarrollo"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/desarrollo/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Desarrollo"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/desarrollo/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Desarrollo"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/gestor_examenes/desarrollo', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Desarrollo" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Desarrollo" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Desarrollo',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Desarrollo',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

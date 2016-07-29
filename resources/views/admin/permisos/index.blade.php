@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Permisos <a href="{{ url('/admin/permisos/create') }}" class="btn btn-primary btn-xs" title="Add New Permiso"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Permisos <a href="{{ url('/admin/permisos/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Permiso"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -19,18 +19,18 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->nombre_permiso }}</td>
                     <td>
-                        <a href="{{ url('/admin/permisos/' . $item->id) }}" class="btn btn-success btn-xs" title="View Permiso"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/admin/permisos/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Permiso"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/permisos/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Permiso"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/permisos/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Permiso"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/admin/permisos', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Permiso" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Permiso" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Permiso',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Permiso',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

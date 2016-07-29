@@ -21,7 +21,7 @@
 
 <div class="container">
 
-    <h1>Materia_inscrito <a href="{{ url('/admin/curso_inscrito/create') }}" class="btn btn-primary btn-xs" title="Add New Curso_inscrito"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Materia_inscrito <a href="{{ url('/admin/curso_inscrito/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Curso_inscrito"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -37,18 +37,18 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->fecha }}</td>
                     <td>
-                        <a href="{{ url('/admin/curso_inscrito/' . $item->id) }}" class="btn btn-success btn-xs" title="View Curso_inscrito"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/admin/curso_inscrito/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Curso_inscrito"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/curso_inscrito/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Curso_inscrito"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/curso_inscrito/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Curso_inscrito"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/admin/curso_inscrito', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Curso_inscrito" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Curso_inscrito" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Curso_inscrito',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Curso_inscrito',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>
