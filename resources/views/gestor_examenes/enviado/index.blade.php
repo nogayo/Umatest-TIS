@@ -15,7 +15,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Enviado <a href="{{ url('/admin/enviado/create') }}" class="btn btn-primary btn-xs" title="Add New Enviado"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Enviado <a href="{{ url('/admin/enviado/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Enviado"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -31,18 +31,18 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->fecha_limite }}</td>
                     <td>
-                        <a href="{{ url('/admin/enviado/' . $item->id) }}" class="btn btn-success btn-xs" title="View Enviado"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/admin/enviado/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Enviado"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/enviado/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Enviado"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/enviado/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Enviado"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/admin/enviado', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Enviado" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Enviado" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Enviado',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Enviado',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

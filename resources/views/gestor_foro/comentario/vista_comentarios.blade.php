@@ -47,8 +47,8 @@
                     <td bgcolor="#b0e0e6">
                        
                        
-                        <a href="" class="btn btn-primary btn-xs" title="Edit Foro"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                       <a href="{{ url('/gestor_foros/' . $item->id_foro . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+                        <a href="" class="btn btn-primary btn-xs" title="Editar Foro"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                       <a href="{{ url('/gestor_foros/' . $item->id_foro . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Eliminar Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Multiple" /></a>
 
                     </td>
                     @else <td bgcolor="#b0e0e6"> </td> 
@@ -97,9 +97,9 @@
 
 
                        <td bgcolor="#b6fcd5">
-                        <a href="" class="btn btn-primary btn-xs" title="Edit Comentario"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="" class="btn btn-primary btn-xs" title="Editar Comentario"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
              
-                         <a href="{{ url('/gestor_foros/' . $item->id_coment . '/delete/'.$id_curso.'/comentario/'.$id_foro_actual.'/destroy') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+                         <a href="{{ url('/gestor_foros/' . $item->id_coment . '/delete/'.$id_curso.'/comentario/'.$id_foro_actual.'/destroy') }}" class="btn btn-danger btn-xs" title="Eliminar Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Multiple" /></a>
 
                     </td>
                     @else

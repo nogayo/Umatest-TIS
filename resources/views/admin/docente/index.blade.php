@@ -32,7 +32,7 @@
 
 <div class="container">
 
-    <h1>Docente <a href="{{ url('/admin/docente/create') }}" class="btn btn-primary btn-xs" title="Add New Docente"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Docente <a href="{{ url('/admin/docente/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Docente"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table" style="width: 97%">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -48,18 +48,18 @@
                     <td>{{ $x }}</td>
                       <td>{{ $item->name }}</td><td>{{ $item->apellido }}</td><td>{{ $item->direccion }}</td><td>{{ $item->telefono }}</td><td>{{ $item->genero }}</td>
                     <td>
-                        <a href="{{ url('/admin/docente/' . $item->id) }}" class="btn btn-success btn-xs" title="View Docente"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/admin/docente/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Docente"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/docente/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Docente"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/docente/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Docente"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/admin/docente', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Docente" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Docente" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Docente',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Docente',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

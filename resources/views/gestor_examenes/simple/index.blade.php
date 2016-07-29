@@ -15,7 +15,7 @@
                 <div class="panel-body">
 <div class="container">
 
-    <h1>Simple <a href="{{ url('/gestor_examenes/simple/create') }}" class="btn btn-primary btn-xs" title="Add New Simple"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Simple <a href="{{ url('/gestor_examenes/simple/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Simple"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -31,18 +31,18 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->respuesta }}</td>
                     <td>
-                        <a href="{{ url('/gestor_examenes/simple/' . $item->id) }}" class="btn btn-success btn-xs" title="View Simple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/gestor_examenes/simple/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Simple"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/simple/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Simple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/simple/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Simple"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/gestor_examenes/simple', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Simple" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Simple" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Simple',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Simple',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

@@ -25,7 +25,7 @@
             <tfoot>
                 <tr>
                     <td colspan="2">
-                        <a href="{{ url('admin/categoria/' . $categorium->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Carrera"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('admin/categoria/' . $categorium->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editarar Carrera"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['admin/categoria', $categorium->id],
