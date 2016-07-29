@@ -23,7 +23,7 @@ class menuPrincipalController extends BaseController
      // Docentes
     public function reseniaHistorica()
     {
-        return view('MenuPrincipal.reseniaHistorica');
+       return view('MenuPrincipal.reseniaHistorica');       
     }
     // estudiantes
     public function vision()
