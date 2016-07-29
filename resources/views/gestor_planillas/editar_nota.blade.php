@@ -35,7 +35,7 @@ $id_nota=$atribuos_nota->id;
              <div class="form-group {{ $errors->has('calificacion') ? 'has-error' : ''}}">
                 {!! Form::label('calificacion', 'Nota nueva', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::number('calificacion', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::number('calificacion',$nota_actual, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('calificacion', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
