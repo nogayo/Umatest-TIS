@@ -58,10 +58,10 @@
             <li class="dropdown user user-menu">
                             <div class="pull-center">
                                  <li class="active">
-                                <a href="{{ route('auth.login') }}" > Iniciar sesión <span class="sr-only">(current)</span></a>
+                                <a id="iniciar_sesion" href="{{ route('auth.login') }}" > Iniciar sesión <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="active">
-                                <a href="{{ route('auth.register') }}" > Registrarse <span class="sr-only">(current)</span></a>
+                                <a id="login_registro" href="{{ route('auth.register') }}" > Registrarse <span class="sr-only">(current)</span></a>
                                 </li>
                           
                                 
