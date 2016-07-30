@@ -46,7 +46,7 @@
     <!--Termina path para VER de Respuesta a preguntas de seleccion multiples.  
     -->
 
-    <h1>Multiples<a href="{{ url('/gestor_examenes/multiples_varios/'.$id_pregunta.'/create') }}" class="btn btn-primary btn-xs" title="Add New Multiple"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Multiples<a href="{{ url('/gestor_examenes/multiples_varios/'.$id_pregunta.'/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Multiple"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <li style="text-align: center; color: red;">Por lo menos debe existir una respuesta correcta</li>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
@@ -61,11 +61,16 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td>{{ $item->respuesta }}</td><td>{{ $item->correcta }}</td>
+                    <td>{{ $item->respuesta }}</td>
+                    @if($item->correcta == 1)
+                    <td>Correcta</td>
+                    @else
+                    <td>Incorrecta</td>
+                    @endif
                     <td>
-                         <a href="{{ url('/gestor_examenes/multiples_varios/' . $item->id . '/'.$id_pregunta.'/show') }}" class="btn btn-success btn-xs" title="View Multiple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/gestor_examenes/multiples_varios/' . $item->id . '/'.$id_pregunta.'/edit') }}" class="btn btn-primary btn-xs" title="Edit Multiple"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                        <a href="{{ url('/gestor_examenes/multiples_varios/' . $item->id . '/'.$id_pregunta.'/delete') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+                         <a href="{{ url('/gestor_examenes/multiples_varios/' . $item->id . '/'.$id_pregunta.'/show') }}" class="btn btn-success btn-xs" title="Ver Multiple"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/multiples_varios/' . $item->id . '/'.$id_pregunta.'/edit') }}" class="btn btn-primary btn-xs" title="Editar Multiple"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/multiples_varios/' . $item->id . '/'.$id_pregunta.'/delete') }}" class="btn btn-danger btn-xs" title="Eliminar Multiple" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Multiple" /></a>
                     </td>
                 </tr>
             @endforeach

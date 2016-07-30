@@ -24,12 +24,6 @@
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
- <rigth>
- <div>
-            <a href="{{ url('/gestor_planillas/'.$id_curso.'/modificar/varios') }}" class="btn btn-primary btn-xs" title="Editar Notum" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"/> <h5> Modificar Notas </h5></a>
-</div>
-</rigth>
-
                 <tr>
                     <th>S.No</th>
                     <th>  Apellidos  </th>
@@ -42,7 +36,7 @@
 
                     <th bgcolor="#F3E2A9">NotaFinal</th>
                     
-                   <!--th>Editar</th-->
+                   
 
                    </tr>
               </thead>
@@ -54,56 +48,70 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->apellido }}</td>
                     <td>{{ $item->name }}</td>
+               
 
-
-               {{-- */
-                 $notas_est=array();
-                 $bandera=0;
-                for($i=0; $i < count($examenes); $i++){
-                      for($j=0; $j < count($notas_estudiantes); $j++){
-                       if($item->id_user==$notas_estudiantes[$j]->id_user){
-                          if($examenes[$i]->id==$notas_estudiantes[$j]->examen_id){
-                           $notas_est[$i]=$notas_estudiantes[$j]->calificacion;
-                           $bandera=1;
-                        } 
-                      }            
-                   }
-                   if($bandera==1) $bandera =0;     
-                   else $notas_est[$i]=0;
-                }
-                /* --}}
 
                {{-- */$calif=0;/* --}}
                {{-- */$cant=0;/* --}}
 
-                @foreach($notas_est as $nota)
-                <td> {{ $nota}}  </td>
+               {{-- */
+   
+                 $bandera=0;
+                 $i=0;
+
+                while(($i < count($examenes))&& ($bandera==0)){
+                       $j=0; 
+                      while(($j < count($notas_estudiantes))&& ($bandera==0)){
+                       if($item->id_user==$notas_estudiantes[$j]->id_user){
+                          if($examenes[$i]->id==$notas_estudiantes[$j]->examen_id){;
+                           $id_examen_es=$examenes[$i]->id;
+                           $nota_estudiante=$notas_estudiantes[$j]->calificacion;
+                           $bandera=1;
+                        } 
+                      } 
+                       $j++;           
+                   }
+                   /* --}}
+                 
+                 <td> {{ $nota_estudiante }} 
+                 <a href="{{ url('/gestor_planillas/'.$id_curso.'/planilla/' . $item->id_user . '/'.$id_examen_es.'/edit') }}">
+                  <i class="fa fa-edit"  style="font-size:22px;color:#E2A9F3"></i>
+                  </a>
+                  </td>
+
+   
+                  {{-- */
+                     $bandera=0;
+                    $i++;
+                     $calif=$calif+$nota_estudiante;
+                     $cant++;
+                }
+                /* --}}
+     
                 
-                           
+
+              
 
 
-                {{-- */$calif=$calif+$nota;/* --}}
-                {{-- */$cant++;/* --}}
-
-                @endforeach 
+                
                  {{-- */
                  $NFin = $calif/$cant;
                  $NFin=round($NFin, 0, PHP_ROUND_HALF_UP);
 
                  /* --}}
                   
-                    <td  bgcolor="#F3E2A9">{{ $NFin }}</td>
-                    <!--td>
-                       
-                        <a href="{{ url('/gestor_planillas/'.$id_curso.'/planilla/' . $item->id_user . '/modificar') }}">
-                        <i class="fa fa-edit"  style="font-size:22px;color:black"></i>
-                        </a>
-                     esto oes para editar individualmente
-                    </td-->
+                    <td bgcolor="#F3E2A9">{{ $NFin }}</td>
+       
                 </tr>
             @endforeach
             </tbody>
+
         </table>
+        <center>
+         <div>
+          <a href="{{  url('gestor_planillas/'.$id_curso.'/planilla/listar')}}" class="btn btn-primary btn-xs" title="Terminar" ><span class="" aria-hidden="true"/> <h5> Terminar </h5></a>
+          </div>
+          </center>
         <div class="pagination">  </div>
     </div>
 

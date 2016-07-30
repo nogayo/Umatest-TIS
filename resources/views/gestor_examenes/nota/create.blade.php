@@ -66,11 +66,14 @@
                
 
             <div class="form-group {{ $errors->has('duracion') ? 'has-error' : ''}}">
-                {!! Form::label('duracion', 'Duracion del examen', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::select('duracion', array(5=>'5 minutos', 10=>'10 minutos', 15=>'15 minutos', 20=>'20 minutos', 25=>'25 minutos', 30=>'30 minutos'), null, ['class' => 'form-control'])!!}
+                {!! Form::label('duracion', 'Duracion del examen(min)', ['class' => 'col-sm-3 control-label']) !!}
+            
+
+               <div class="col-sm-6">
+                    {!! Form::number('duracion', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('duracion', '<p class="help-block">:message</p>') !!}
                 </div>
+
             </div>
             @if($mensajeA!='a')
              <ul class="alert alert-danger"><li>{{ $mensajeA }}</li></ul>

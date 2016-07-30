@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Roles <a href="{{ url('/admin/roles/create') }}" class="btn btn-primary btn-xs" title="Add New Role"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Roles <a href="{{ url('/admin/roles/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Role"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -19,18 +19,18 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->nombre_rol }}</td>
                     <td>
-                        <a href="{{ url('/admin/roles/' . $item->id) }}" class="btn btn-success btn-xs" title="View Role"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/admin/roles/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Role"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/roles/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Role"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/roles/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Role"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/admin/roles', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Role" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Role" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Role',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Role',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

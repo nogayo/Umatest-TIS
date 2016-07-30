@@ -126,15 +126,15 @@ class UserTableSeeder extends Seeder
                 ['id'=> 2, 'tipo'=> 'desarrollo']
         );
         DB::table('tipo_preguntas')->insert(
-                ['id'=> 3, 'tipo'=> 'simple']
+                ['id'=> 3, 'tipo'=> 'seleccion simple']
         );
 
         DB::table('tipo_preguntas')->insert(
-                ['id'=> 4, 'tipo'=> 'F/V']
+                ['id'=> 4, 'tipo'=> 'falso/verdadero']
         );
 
          DB::table('tipo_preguntas')->insert(
-                ['id'=> 5, 'tipo'=> 'multiple']
+                ['id'=> 5, 'tipo'=> 'seleccion multiple']
         );
 
         // DATOS PARA LA TABLA DE CURSO

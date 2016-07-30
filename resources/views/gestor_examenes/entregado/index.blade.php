@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Entregado <a href="{{ url('/gestor_examenes/entregado/create') }}" class="btn btn-primary btn-xs" title="Add New Entregado"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Entregado <a href="{{ url('/gestor_examenes/entregado/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Entregado"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -19,18 +19,18 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->descripcion_tarea }}</td><td>{{ $item->archivo }}</td><td>{{ $item->fecha }}</td>
                     <td>
-                        <a href="{{ url('/gestor_examenes/entregado/' . $item->id) }}" class="btn btn-success btn-xs" title="View Entregado"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/gestor_examenes/entregado/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Entregado"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/entregado/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Entregado"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/entregado/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Entregado"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/gestor_examenes/entregado', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Entregado" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Entregado" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Entregado',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Entregado',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

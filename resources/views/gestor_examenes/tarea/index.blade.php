@@ -36,7 +36,7 @@
     <!--Termina path que solo muestra todas las tareas de un docente.
     -->
       @if($tipo=='crear')
-    <h1>Tarea <a href="{{ url('/gestor_examenes/'.$id_curso.'/tarea/'.$tipo.'/create') }}" class="btn btn-primary btn-xs" title="Add New Tarea"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Tarea <a href="{{ url('/gestor_examenes/'.$id_curso.'/tarea/'.$tipo.'/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Tarea"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     @else
 
      <h1>Tarea <a href="#"></a></h1>
@@ -46,7 +46,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('tarea.nombre_tarea') }} </th><th> {{ trans('tarea.descripcion') }} </th><th> {{ trans('tarea.archivo') }} </th><th>Actions</th>
+                    <th>S.No</th><th> {{ trans('tarea.nombre_tarea') }} </th><th> {{ trans('tarea.descripcion') }} </th><th> {{ trans('tarea.archivo') }} </th><th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,10 +57,10 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->nombre_tarea }}</td><td>{{ $item->descripcion }}</td><td>{{ $item->archivo }}</td>
                     <td>
-                        <a href="{{ url('/gestor_examenes/tarea/' . $item->id) }}" class="btn btn-success btn-xs" title="View Tarea"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/gestor_examenes/'.$id_curso.'/materia/'.$tipo.'/tarea/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Tarea"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/tarea/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Tarea"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/'.$id_curso.'/materia/'.$tipo.'/tarea/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Tarea"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
              
-                        <a href="{{ url('/gestor_examenes/'.$id_curso.'/materia/'.$tipo.'/tarea/' . $item->id . '/destroy') }}" class="btn btn-danger btn-xs" title="Delete Multiple" onclick='return confirm("Confirmas eliminar?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Multiple" /></a>
+                        <a href="{{ url('/gestor_examenes/'.$id_curso.'/materia/'.$tipo.'/tarea/' . $item->id . '/destroy') }}" class="btn btn-danger btn-xs" title="Eliminar Multiple" onclick='return confirm("Confirmas eliminar?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Multiple" /></a>
                     </td>
                 </tr>
             @endforeach

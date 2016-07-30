@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-    <h1>Notificacion <a href="{{ url('/admin/notificacion/create') }}" class="btn btn-primary btn-xs" title="Add New Notificacion"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1>Notificacion <a href="{{ url('/admin/notificacion/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Notificacion"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -19,18 +19,18 @@
                     <td>{{ $x }}</td>
                     <td>{{ $item->id_user }}</td><td>{{ $item->id_curso }}</td><td>{{ $item->descripcion }}</td>
                     <td>
-                        <a href="{{ url('/admin/notificacion/' . $item->id) }}" class="btn btn-success btn-xs" title="View Notificacion"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/admin/notificacion/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Notificacion"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/notificacion/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Notificacion"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ url('/admin/notificacion/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Notificacion"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/admin/notificacion', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Notificacion" />', array(
+                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Notificacion" />', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Notificacion',
-                                    'onclick'=>'return confirm("Confirm delete?")'
+                                    'title' => 'Eliminar Notificacion',
+                                    'onclick'=>'return confirm("Esta seguro de eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
                     </td>

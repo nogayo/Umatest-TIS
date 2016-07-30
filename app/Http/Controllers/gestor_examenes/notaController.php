@@ -34,8 +34,8 @@ class notaController extends Controller
     {
          $numero_preguntas = DB::table('preguntas')->where('examen_id', $id_examen)->get();
          
-         $mensajeA='';
-         $mensajeB='';
+         $mensajeA='a';
+         $mensajeB='b';
            $puntaje=0;
              foreach ($numero_preguntas as $item) {
 
