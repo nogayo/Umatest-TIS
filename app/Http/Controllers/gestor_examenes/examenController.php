@@ -41,19 +41,20 @@ class examenController extends Controller
              DB::table('examens')->where('id',$ids_exa_control[$i])->update(array('estado_examen'=>1));
             }
         }
-       
+          $mensaje_puntaje="";
         //$examen = DB::table('examens')->where('id_cursos', $id_curso)->where('estado_examen',1)->get();
         $examen = DB::table('examens')->where('id_cursos', $id_curso)->get();
 
-        return view('gestor_examenes.examen.index_envio',compact('examen','id_curso'));
+        return view('gestor_examenes.examen.index_envio',compact('examen','id_curso', 'mensaje_puntaje'));
     }
 
    public function listar($id_curso)
     {
-  
+         $mensaje_puntaje="";
+
          $examen = DB::table('examens')->where('id_cursos', $id_curso)->get();
 
-        return view('gestor_examenes.examen.index',compact('examen','id_curso'));
+        return view('gestor_examenes.examen.index',compact('examen','id_curso', 'mensaje_puntaje'));
     }
     /**
      * Show the form for creating a new resource.

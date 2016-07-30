@@ -32,6 +32,10 @@ class notaController extends Controller
      */
     public function create($id_curso, $id_examen)
     {
+
+       $bandera = $this->validation_formulario($id_examen);
+       if($bandera[1]){
+
          $numero_preguntas = DB::table('preguntas')->where('examen_id', $id_examen)->get();
          
          $mensajeA='a';
@@ -46,6 +50,35 @@ class notaController extends Controller
          $numero_preguntas=count($numero_preguntas);
 
         return view('gestor_examenes.nota.create', compact('id_curso', 'id_examen', 'numero_preguntas', 'puntaje', 'mensajeA', 'mensajeB'));
+
+        }else{
+
+
+       $fecha_actual = date("Y-m-d H:i:s");
+        $examen_control = DB::table('examens')->where('id_cursos', $id_curso)->get();
+        $ids_exa_control=array();
+        $puntero=0;
+        foreach ($examen_control as $item) {
+         $ids_exa_control[$puntero]=$item->id;
+         $puntero++;
+        }
+        for ($i=0; $i < count($ids_exa_control) ; $i++) { 
+            $exa = DB::table('notas')->where('examen_id', $ids_exa_control[$i])->get();
+            $exa_fil = DB::table('notas')->where('examen_id', $ids_exa_control[$i])->where('fecha_fin','<',$fecha_actual)->get();
+
+            if(count($exa) == count($exa_fil)){
+             DB::table('examens')->where('id',$ids_exa_control[$i])->update(array('estado_examen'=>1));
+            }
+        }
+
+          $mensaje_puntaje= $bandera[0];
+
+          $examen = DB::table('examens')->where('id_cursos', $id_curso)->get();
+
+          return view('gestor_examenes.examen.index_envio',compact('examen','id_curso', 'mensaje_puntaje'));
+
+        }
+       
     }
 
     /**
@@ -363,4 +396,148 @@ class notaController extends Controller
     }
 
  */
+
+     private function validation_formulario($id_examen){
+
+            $vector_desicion=array();
+            
+            $examen=DB::table('examens')->where('id',$id_examen)->first();
+            $puntaje_examen=$examen->puntaje_totalm;
+
+            $pregunta=DB::table('preguntas')->where('examen_id',$id_examen)->get();
+
+            $puntaje_todas_preguntas=0;
+            $ids_preguntas_simple=array();
+            $ids_preguntas_multiple=array();
+            $ids_preguntas_complemento=array();
+            $ids_preguntas_falsoverdadero=array();
+           
+            $i=0;    $j=0;    $k=0;  $l=0;  $n=0;
+            foreach ($pregunta as $item) {
+                 
+              $puntaje_todas_preguntas+=$item->puntaje_pregunta;
+
+              if($item->tipo_pregunta_id==1){
+                 $ids_preguntas_complemento[$l]=$item->id;
+                 $l++;
+              }
+
+               if($item->tipo_pregunta_id==4){
+                 $ids_preguntas_falsoverdadero[$n]=$item->id;
+                 $n++;
+              }
+
+              if($item->tipo_pregunta_id==3){
+                 $ids_preguntas_simple[$j]=$item->id;
+                 $j++;
+              }
+
+              if($item->tipo_pregunta_id==5){
+                 $ids_preguntas_multiple[$k]=$item->id;
+                 $k++;
+              }
+
+              $i++;
+            }
+            $bandera_complemento=false;
+            for ($m=0; $m < count($ids_preguntas_complemento); $m++) { 
+              $test=DB::table('simples')->where('pregunta_id', $ids_preguntas_complemento[$m])->first();
+              if(is_null($test)){
+                $bandera_complemento=true;//hay error
+                break;
+              }
+
+            }
+             $bandera_falsoverdadero=false;
+            for ($m=0; $m < count($ids_preguntas_falsoverdadero); $m++) { 
+              $test=DB::table('falsoverdaderos')->where('pregunta_id', $ids_preguntas_falsoverdadero[$m])->first();
+              if(is_null($test)){
+                $bandera_falsoverdadero=true;//hay error
+                break;
+              }
+
+            }
+
+            $bandera_simple=false;
+            $bandera_simple_pre=false;
+            for ($m=0; $m < count($ids_preguntas_simple); $m++) { 
+              $test=DB::table('multiples')->where('pregunta_id', $ids_preguntas_simple[$m])->first();
+
+               if(is_null($test)){
+                $bandera_simple_pre=true;//hay error
+                break;
+              }
+
+              $test2=DB::table('multiples')->where('pregunta_id', $ids_preguntas_simple[$m])->where('correcta', 1)->first();
+              if(is_null($test2)){
+                $bandera_simple=true;//hay error
+                break;
+              }
+
+            }
+             
+             $bandera_multiple=false;
+             $bandera_multiple_pre=false;
+            for ($m=0; $m < count($ids_preguntas_multiple); $m++) { 
+
+              $test=DB::table('multiples_varios')->where('pregunta_id', $ids_preguntas_multiple[$m])->first();
+              if(is_null($test)){
+                $bandera_multiple_pre=true;//hay error
+                break;
+              }
+
+              $test2=DB::table('multiples_varios')->where('pregunta_id', $ids_preguntas_multiple[$m])->where('correcta', 1)->first();
+              if(is_null($test2)){
+                $bandera_multiple=true;//hay error
+                break;
+              }
+              
+            }
+             
+            $bandera_puntaje=false;
+            if($puntaje_examen!=$puntaje_todas_preguntas){
+             $bandera_puntaje=true;// hay error
+            }
+
+          switch (true) {
+
+                  case $bandera_puntaje:
+                      $vector_desicion[0]="¡¡Advertencia!! no se alcanzo el puntaje total del examen";
+                      $vector_desicion[1]=false;
+                      break;
+                  case $bandera_simple:
+                  $vector_desicion[0]="¡¡Advertencia!! las respuestas de seleccion simple deben tener una respuesta correcta";
+                  $vector_desicion[1]=false;
+                      break;
+                   case $bandera_simple_pre:
+                  $vector_desicion[0]="¡¡Advertencia!! las respuestas de seleccion simple deben tener una respuesta";
+                  $vector_desicion[1]=false;
+                      break;
+                  case $bandera_multiple:
+                      $vector_desicion[0]="¡¡Advertencia!! las respuestas de seleccion multiple deben tener al menos una respuesta correcta";
+                      $vector_desicion[1]=false;
+                      break;
+                  case $bandera_multiple_pre:
+                      $vector_desicion[0]="¡¡Advertencia!! las respuestas de seleccion multiple deben tener una respuesta";
+                      $vector_desicion[1]=false;
+                      break;
+                  case $bandera_complemento:
+                       $vector_desicion[0]="¡¡Advertencia!! las preguntas de complemento deben tener una respuesta";
+                       $vector_desicion[1]=false;
+                      break;
+                  case $bandera_falsoverdadero:
+                      
+                       $vector_desicion[0]="¡¡Advertencia!! las preguntas de falso/Verdadero deben tener una respuesta";
+                       $vector_desicion[1]=false;
+                      break;
+
+                  default:
+                      $vector_desicion[0]="";
+                      $vector_desicion[1]=true;
+
+          }
+
+            
+            return $vector_desicion;
+        }
 }
