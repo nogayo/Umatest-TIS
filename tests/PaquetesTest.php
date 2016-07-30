@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class PaquetesTest extends TestCase
 {
+    use DatabaseTransactions;
     /**
      * A basic test example.
      *
@@ -32,6 +33,7 @@ class PaquetesTest extends TestCase
     }
     */
 
+/*
 
    public function testNewUserRegistration()
     {
@@ -42,6 +44,17 @@ class PaquetesTest extends TestCase
      
             ->press('Ingresar')
             ->seePageIs('http://localhost/umatest-tis/public/home');
+    }
+
+    */
+   
+    public function testBasicExample()
+    {
+        $this->visit('/')
+           ->see('Bienvenidos a Umatest');
+
+
+
     }
 
 }
