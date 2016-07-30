@@ -26,13 +26,14 @@
                  
                  <!--TABLA DE BOTONES-->
                  <div class="box-body pad table-responsive">
-      
+
+
          
               {{-- */
 
               $vector_categoria=array();
               $vector_ids=array();
-                 $name_categoria=DB::table('categorias')->get();
+                 $name_categoria=DB::table('categorias')->where('estado',0)->get();
                      for($i=0; $i < count($name_categoria); $i++){
                         $vector_categoria[$i]=$name_categoria[$i]->nombre;
                         $vector_ids[$i]=$name_categoria[$i]->id;

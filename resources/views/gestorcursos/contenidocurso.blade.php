@@ -135,10 +135,10 @@
                 @if($name_rol!='estudiante') 
 
 
-                 <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen/listar/tarea') }}">Mis Tareas </a></li>
-                <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen/crear/tarea') }}"></i> Crear Tarea </a></li>
+                 <li><a href="{{ url('gestor_examenes/'.$id_curso.'/tareas/listar') }}">Mis Tareas </a></li>
+                <!--li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen/crear/tarea') }}"></i> Crear Tarea </a></li-->
 
-                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/envio') }} ">Enviar Tarea</a></li>
+                    <!--li><a href="{{ url('gestor_examenes/'.$id_curso.'/envio') }} ">Enviar Tarea</a></li-->
                   </ul>
                  @elseif($name_rol=='estudiante')
 

@@ -41,5 +41,9 @@ class examan extends Model
     {
         return $this->belongsTo('App\curso');
     }
-    
+  public function res_desarrollo()
+    {
+        return $this->hasMany('App\respuesta_desarrollo');
+    }
+
 }

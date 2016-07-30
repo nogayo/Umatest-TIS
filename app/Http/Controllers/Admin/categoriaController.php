@@ -9,6 +9,7 @@ use App\categorium;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
 
 class categoriaController extends Controller
 {
@@ -112,4 +113,53 @@ class categoriaController extends Controller
 
         return redirect('admin/categoria');
     }
+    
+     /**
+     * Este metodo es para desabilitar una carrera, con el id especificado
+     *
+     * @param  int  $id
+     *
+     * @return void
+     */
+    public function desabilitar_carrera($id)
+    {
+           DB::table('categorias')
+            ->where('categorias.id',$id)
+            ->update(['estado' =>1 ]);
+
+        Session::flash('flash_message', 'categoria desabilitado!');
+
+       return $this->index();
+    }
+   
+        /**
+     * Este metodo es para mostrar carreras desabilitadas.
+     *
+     * @return void
+     */
+    public function show_deshabilitados()
+    {
+           $carreras_desabilitados=DB::table('categorias')->where('estado',1)->get();
+
+           return view('admin.categoria.deshabilitados', compact('carreras_desabilitados'));
+     }
+
+   
+            /**
+     * Este metodo es para habilitar carreras
+      * @param  int  $id es el id de la carrera a habilitar
+     * @return void
+     */     
+    public function habilitar_carrera($id)
+    {
+
+        DB::table('categorias')
+            ->where('categorias.id',$id)
+            ->update(['estado' =>0 ]);
+
+
+ Session::flash('flash_message', 'categoria habilitado!');
+
+       return $this->index();
+     }
 }

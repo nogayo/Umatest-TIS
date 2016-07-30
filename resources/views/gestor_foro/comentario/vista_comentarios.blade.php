@@ -1,5 +1,5 @@
 @extends('app')
-<meta http-equiv="refresh" content="60">
+<meta http-equiv="refresh" content="200">
 @section('htmlheader_title')
    CURSOS
 @endsection
@@ -29,12 +29,19 @@
 
 
  {{-- */$id_user_actual=Auth::id(); /* --}}
+ {{-- */$id_rol=DB::table('role_user')->where('user_id', $id_user_actual)->first();
+  $id_rol=$id_rol->role_id;    
+   /* --}}
+  {{-- */$name_rol=DB::table('roles')->where('id', $id_rol)->first();
+  $name_rol=$name_rol->nombre_rol;
+   /* --}}
+
  @foreach($foro as $item)
 {{-- */$id_foro_actual=$item->id_foro; /* --}}
 
 
                 <tr>
-                 <td bgcolor="#b0e0e6">
+                 <td bgcolor="#F5D0A9">
                 <h4 style="font-size: 24px; color: red;">{{ $item->titulo }} </h4>
 
 
@@ -43,12 +50,13 @@
 
                    </td>
                    
-                     @if($item->id_user==$id_user_actual)    
-                    <td bgcolor="#b0e0e6">
+                      @if($name_rol!='estudiante')  
+                    <td bgcolor="#F5D0A9">
                        
-                       
-                        <a href="" class="btn btn-primary btn-xs" title="Editar Foro"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                       <a href="{{ url('/gestor_foros/' . $item->id_foro . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Eliminar Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Multiple" /></a>
+                      
+                        <!--a href="" class="btn btn-primary btn-xs" title="Editar Foro"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a-->
+                       <a href="{{ url('/gestor_foros/' . $item->id_foro . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Eliminar Foro" onclick='return confirm("Esta Seguro de Eliminar?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Foro" /></a>
+
 
                     </td>
                     @else <td bgcolor="#b0e0e6"> </td> 
@@ -90,16 +98,16 @@
 
                    </td>
                    
-                  
+                  @if($name_rol!='estudiante') 
 
-                   @if($item->id_user==$id_user_actual)
+                  
 
 
 
                        <td bgcolor="#b6fcd5">
-                        <a href="" class="btn btn-primary btn-xs" title="Editar Comentario"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <!--a href="" class="btn btn-primary btn-xs" title="Editar Comentario"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a-->
              
-                         <a href="{{ url('/gestor_foros/' . $item->id_coment . '/delete/'.$id_curso.'/comentario/'.$id_foro_actual.'/destroy') }}" class="btn btn-danger btn-xs" title="Eliminar Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Multiple" /></a>
+                         <a href="{{ url('/gestor_foros/' . $item->id_coment . '/delete/'.$id_curso.'/comentario/'.$id_foro_actual.'/destroy') }}" class="btn btn-danger btn-xs" title="Eliminar Comentario" onclick='return confirm("Esta seguro de eliminar?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Multiple" /></a>
 
                     </td>
                     @else

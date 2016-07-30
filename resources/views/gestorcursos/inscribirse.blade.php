@@ -60,6 +60,7 @@
             {{-- */$x=0;/* --}}
             @foreach($curso as $item)
                 {{-- */$x++;/* --}}
+                  
                 <tr>
                     <td>{{ $x }}</td>
                     <td>{{ $item->nombre }}</td>
@@ -67,6 +68,8 @@
                              <a href="{{ url('admin/curso_inscrito/create')}}"><span class="logo-lg"><img src="{{asset('/img/img_panelPrincipal/inscribirse.png')}}"/> </span></a>
                     </td>
                 </tr>
+
+
             @endforeach
             </tbody>
         @else
