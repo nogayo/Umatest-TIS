@@ -302,6 +302,13 @@ $minuto=$duracion_total-$hora*(60); // es la parte decima
                     {!! $errors->first('id_pregunta', '<p class="help-block">:message</p>') !!}
                 </div>
            </div>
+            <div class="form-group {{ $errors->has('id_examen') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('id_examen',$id_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('id_examen', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
            
 
 

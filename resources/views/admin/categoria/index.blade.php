@@ -32,15 +32,49 @@
                 </tr>
             </thead>
             <tbody>
+
+
+
+ 
+             {{-- */$ids_categoria=DB::table('cursos') ->select('cursos.id_categoria AS id_cat')->get();
+                    
+             /* --}}
+
+
+  
+
             {{-- */$x=0;/* --}}
             @foreach($categoria as $item)
                 {{-- */$x++;/* --}}
+
+
+               {{-- */
+
+                $i=0;
+                $encontrado='false';
+                $id_desabilitado=0;
+                while($i< count($ids_categoria) && $encontrado=='false'){
+                if($ids_categoria[$i]->id_cat==$item->id){
+                $id_desabilitado=$item->id;
+                  $encontrado='true';
+                 }
+                 $i++;
+                }
+               /* --}}
+
+                
+                @if($item->estado==0)              
                 <tr>
                     <td>{{ $x }}</td>
                     <td>{{ $item->nombre }}</td>
                     <td>
                         <a href="{{ url('/admin/categoria/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Carrera"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/admin/categoria/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Carrera"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+
+                       @if($id_desabilitado==$item->id)
+
+                         <a href="{{ url('/admin/categoria/' . $item->id.'/desabilitar') }}" class="fa fa-close" title="Desabilitar carrera" style="font-size:24px;color:#FE2EC8" ><span  aria-hidden="true"/></a>
+                      @else
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/admin/categoria', $item->id],
@@ -53,8 +87,14 @@
                                     'onclick'=>'return confirm("Esta seguro que quiere eliminar?")'
                             ));!!}
                         {!! Form::close() !!}
+
+                        @endif
+
                     </td>
                 </tr>
+                  @endif
+
+
             @endforeach
             </tbody>
         </table>

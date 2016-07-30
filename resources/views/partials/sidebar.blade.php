@@ -63,6 +63,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/carrera/create') }}">Crear Carreras</a></li>
                     <li><a href="{{ url('admin/carreras') }}">Ver Carreras</a></li>
+                    <li><a href="{{ url('admin/carreras/deshabilitados') }}">Carreras Deshabilitados</a></li>
                 </ul>
                 </li>
 

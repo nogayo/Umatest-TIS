@@ -34,13 +34,13 @@ class tareaController extends Controller
      * @param  varchar $tipo, es la opcion de crear y listar o solo listar
      * @return void
      */
-    public function listar($id_curso,$tipo)
+    public function listar($id_curso)
     {
          $tarea = DB::table('tareas')->where('id_cursos', $id_curso)->get();
 
         //return view('gestor_examenes.examen.index',compact('examen','id_curso'));
 
-        return view('gestor_examenes.tarea.index', compact('tarea','id_curso','tipo'));
+        return view('gestor_examenes.tarea.lista_tarea', compact('tarea','id_curso'));
     }
 
     /**
@@ -48,9 +48,9 @@ class tareaController extends Controller
      *
      * @return void
      */
-    public function create($id_curso,$tipo)
+    public function create($id_curso)
     {
-        return view('gestor_examenes.tarea.create', compact('id_curso','tipo'));
+        return view('gestor_examenes.tarea.create', compact('id_curso'));
     }
 
     /**
@@ -70,7 +70,7 @@ public function store(CreateInvestigationRequest $request)
     {
         $this->validate($request, ['nombre_tarea' => 'required', 'descripcion','fecha_creacion','puntaje_total',]);
         $id_curso=$request->input('id_curso');
-        $tipo=$request->input('tipo');
+       // $tipo=$request->input('tipo');
         $fecha_actual = date("Y-m-d H:i:s");
 
       if (!empty($_FILES)) {
@@ -138,7 +138,7 @@ public function store(CreateInvestigationRequest $request)
        $tipo=$request->input('tipo');
        */
         Session::flash('flash_message', 'tarea added!');
-        return redirect('gestor_examenes/'.$id_curso.'/examen/'.$tipo.'/tarea');
+        return redirect('gestor_examenes/'.$id_curso.'/tareas/listar');
     }
 
 
@@ -230,12 +230,12 @@ public function store(CreateInvestigationRequest $request)
 
         
        $id_curso=$request->input('id_curso');
-       $tipo=$request->input('tipo');
+       
 
 
         Session::flash('flash_message', 'tarea updated!');
         //return redirect('gestor_examenes/tarea');
-        return redirect('gestor_examenes/'.$id_curso.'/examen/'.$tipo.'/tarea');
+       return redirect('gestor_examenes/'.$id_curso.'/tareas/listar');
     }
 
 
@@ -247,7 +247,7 @@ public function update($id,Request $request)
     {
         $this->validate($request, ['nombre_tarea' => 'required', 'descripcion','fecha_creacion','puntaje_total',]);
         $id_curso=$request->input('id_curso');
-        $tipo=$request->input('tipo');
+   
         $fecha_actual = date("Y-m-d H:i:s");
 
       if (!empty($_FILES)) {
@@ -330,7 +330,7 @@ public function update($id,Request $request)
        $tipo=$request->input('tipo');
        */
         Session::flash('flash_message', 'tarea added!');
-        return redirect('gestor_examenes/'.$id_curso.'/examen/'.$tipo.'/tarea');
+        return redirect('gestor_examenes/'.$id_curso.'/tareas/listar');
     }
 
 
@@ -346,7 +346,7 @@ public function update($id,Request $request)
      *
      * @return void
      */
-    public function destroy($id_curso,$tipo,$id_tarea)
+    public function destroy($id_curso,$id_tarea)
     {
         $tarea= DB::table('tareas')->where('id', $id_tarea)->first();
            //store procedure
@@ -367,14 +367,14 @@ public function update($id,Request $request)
 
         Session::flash('flash_message', 'tarea deleted!');
 
-        return redirect('gestor_examenes/'.$id_curso.'/examen/'.$tipo.'/tarea');
+        return redirect('gestor_examenes/'.$id_curso.'/tareas/listar');
     }
     //mostrar_form
 
-    public function createTask($id_curso,$tipo)
+    public function createTask($id_curso)
     {
 
-        return view('gestor_examenes/tarea/formtarea',compact('id_curso','tipo'));
+        return view('gestor_examenes/tarea/formtarea',compact('id_curso'));
     }
      public function postUpload($id_curso,$tipo)
     {
