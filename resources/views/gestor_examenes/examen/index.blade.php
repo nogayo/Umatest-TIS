@@ -36,6 +36,9 @@
     <!--Termina path de de listas de exámenes.
     -->
     <h1>Mis Exámenes<a href="{{ url('/gestor_examenes/examen/'.$id_curso.'/create') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Examan"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    @if($mensaje_puntaje!="")
+    <ul class="alert alert-danger"><li>{{ $mensaje_puntaje }}</li></ul>
+    @endif
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
