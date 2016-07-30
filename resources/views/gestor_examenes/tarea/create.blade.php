@@ -91,14 +91,7 @@
                 </div>
                 </div>
 
-
-             <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
-                    {!! Form::hidden('tipo',$tipo, ['class' => 'form-control' , 'required' => 'required']) !!}
-                    {!! $errors->first('tipo', '<p class="help-block">:message</p>') !!}
-                </div>
-                </div>
+>
 
 
 
