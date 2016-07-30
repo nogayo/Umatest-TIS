@@ -26,4 +26,8 @@ class respuesta_desarrollo extends Model
      * @var array
      */
     protected $fillable = ['respuesta'];
+     public function examen()
+    {
+        return $this->belongsTo('App\examan');
+    }
 }

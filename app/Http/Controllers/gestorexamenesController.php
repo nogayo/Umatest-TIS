@@ -167,7 +167,7 @@ class gestorexamenesController extends Controller
 
       return view('gestor_examenes.vistas_examenes.formulario_examen', compact('nombre_examen', 
       'fecha_examen', 'nombre_categoria', 'content_nom_preguntas', 'content_puntaje_preguntas',
-        'ids_tipo_pregunta','content_respuestas','cadena_m', 'res_mul_correcta', 'id_nota','res_mul_var_correcta','duracion_total', 'ids_preguntas'));
+        'ids_tipo_pregunta','content_respuestas','cadena_m', 'res_mul_correcta', 'id_nota','res_mul_var_correcta','duracion_total', 'ids_preguntas','id_examen'));
 
      
     }
@@ -268,7 +268,7 @@ class gestorexamenesController extends Controller
          //guardar para modificar planilla notas
          for ($k=0; $k < count($respuestas_estudiante); $k++) { 
            if($tipo_pre[$k]==2){
-             DB::table('respuesta_desarrollos')->insert(['respuesta' => $respuestas_estudiante[$k], 'pregunta_id'=> $id_pre[$k]] );
+             DB::table('respuesta_desarrollos')->insert(['respuesta' => $respuestas_estudiante[$k], 'examen_id' => $request->input('id_examen'),'pregunta_id'=> $id_pre[$k]] );
            }
          }
          //-.--.-..-.-
