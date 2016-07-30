@@ -36,6 +36,9 @@
     <!--Termina path de de Enviar exámenes.
     -->
     <h1>Enviar Examen</h1>
+     @if($mensaje_puntaje!="")
+    <ul class="alert alert-danger"><li>{{ $mensaje_puntaje }}</li></ul>
+    @endif
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

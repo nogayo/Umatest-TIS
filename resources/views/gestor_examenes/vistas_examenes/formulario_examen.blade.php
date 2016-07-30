@@ -135,7 +135,7 @@
 
             <div style="line-height:40px;"><label for="'numero_pregunta' . $i" style="width:auto;">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}({{$content_puntaje_preguntas[$i]}}puntos)</label></div>
                 <div class="col-sm-6" style="margin-left:10%">
-                    <div id="form">
+                    <div id="checkbox">
                     <br/> <br/>
 
           @for ($j = 0; $j < $numero_de_respuestas; $j++)
@@ -169,6 +169,8 @@
            $nombre_preguntas_examen=implode(",",$content_nom_preguntas);
 
            $tipo_pregunta=implode(",", $ids_tipo_pregunta);
+
+           $id_pregunta=implode(",", $ids_preguntas);
 
           /* --}}
 
@@ -261,6 +263,14 @@
                 <div class="col-sm-6">
                     {!! Form::hidden('tipo_pregunta',$tipo_pregunta, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('tipo_pregunta', '<p class="help-block">:message</p>') !!}
+                </div>
+           </div>
+
+           <div class="form-group {{ $errors->has('id_pregunta') ? 'has-error' : ''}}">
+                
+                <div class="col-sm-6">
+                    {!! Form::hidden('id_pregunta',$id_pregunta, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! $errors->first('id_pregunta', '<p class="help-block">:message</p>') !!}
                 </div>
            </div>
            

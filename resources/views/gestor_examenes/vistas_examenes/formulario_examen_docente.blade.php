@@ -116,7 +116,7 @@
 
             <div style="line-height:40px;"><label for="'numero_pregunta' . $i" style="width:auto;">{{($i+1)}}.- {{$content_nom_preguntas[$i]}}({{$content_puntaje_preguntas[$i]}}puntos)</label></div>
                 <div class="col-sm-6" style="margin-left:10%">
-                    <div id="form">
+                    <div id="checkbox">
                     <br/> <br/>
 
           @for ($j = 0; $j < $numero_de_respuestas; $j++)
