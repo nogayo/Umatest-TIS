@@ -266,21 +266,20 @@ class planillaController extends Controller
 
      /**
      * Muestra el formulario para editar la planilla
-     *
+     * ->join('notas', 'examens.id', '=', 'notas.examen_id') ->where('user_id', $id_user)
      * @param  int  $id
      *
      * @return void
      */
     public function calificar($id_curso,$id_user,$id_examen)
     {
-            $respuestas= DB::table('examens')
+            $respuesta_desarrollos= DB::table('examens')
             ->where('id_cursos', $id_curso)
             ->where('examens.id', $id_examen)
-            //->join('notas', 'examens.id', '=', 'notas.examen_id')
-            //->where('user_id', $id_user)
+           
             ->join('respuesta_desarrollos', 'examens.id', '=', 'respuesta_desarrollos.examen_id')
             ->join('preguntas', 'preguntas.id', '=', 'respuesta_desarrollos.pregunta_id')
-            ->select('examens.id AS id_examen','examens.nombre_examen',
+            ->select('examens.id AS id_examen','examens.nombre_examen','respuesta_desarrollos.id AS id_resp',
                 'preguntas.nombre_pregunta','preguntas.puntaje_pregunta','respuesta_desarrollos.respuesta',
            'respuesta_desarrollos.calificacion')
             ->get();
@@ -289,7 +288,7 @@ class planillaController extends Controller
       //  return view('gestor_planillas.editar_nota', compact('nota_estudiante','id_user','id_curso','id_examen'));
 
 
-    return view('gestor_examenes.respuesta_desarrollo.vista_calificar', compact('respuestas','id_user','id_curso','id_examen'));    
+    return view('gestor_examenes.respuesta_desarrollo.calificar', compact('respuesta_desarrollos','id_user','id_curso','id_examen'));    
     }
 
 }

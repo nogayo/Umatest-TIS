@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\gestor_examenes;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\respuesta_desarrollo;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
 
 class respuesta_desarrolloController extends Controller
 {
@@ -112,4 +111,36 @@ class respuesta_desarrolloController extends Controller
 
         return redirect('gestor_examenes/respuesta_desarrollo');
     }
+
+
+        /**
+     * para modificar la nota de desarrollo
+     *
+   
+     *
+     * @return void
+     */
+    public function actualizar_nota(Request $request)
+    {
+         $calificicaciones_resp=explode(",",$request->input('calificaciones_ins'));
+         $calificicaciones_ids=explode(",",$request->input('calificaciones_ids'));
+           //$respuesta=$request->input($cadena_res_formulario[$i]);
+  for ($i=0; $i < count($calificicaciones_resp); $i++) { 
+   $id_preg=$request->input($calificicaciones_ids[$i]);
+   $calif=$request->input($calificicaciones_resp[$i]);
+     DB::table('respuesta_desarrollos')
+      ->where('respuesta_desarrollos.id',$id_preg)
+      ->update(['calificacion' =>$calif ]);
+
+
+  }
+        $id_curso=$request->input('id_curso');
+        $id_user=$request->input('id_user');
+     
+        Session::flash('flash_message', 'respuesta_desarrollo updated!');
+        //'gestor_planillas/{id_curso}/planilla/listar'
+
+        return redirect('gestor_planillas/'.$id_curso.'/planilla/listar');
+    }
+
 }

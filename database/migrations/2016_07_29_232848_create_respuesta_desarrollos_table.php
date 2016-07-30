@@ -15,7 +15,7 @@ class CreateRespuestaDesarrollosTable extends Migration
         Schema::create('respuesta_desarrollos', function(Blueprint $table) {
             $table->increments('id');
             $table->string('respuesta');
-            $table->integer('calificacion');
+            $table->integer('calificacion')->nullable();
             $table->timestamps();
             $table->integer('examen_id')->unsigned();
             

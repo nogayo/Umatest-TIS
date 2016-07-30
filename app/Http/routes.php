@@ -507,7 +507,15 @@ Route::get('/gestor_planillas/{id_curso}/modificar/varios','gestor_planillas\\pl
 */
 Route::get('/gestor_planillas/{id_curso}/planilla/{id_user}/{id_examen}/calificar', 'gestor_planillas\\planillaController@calificar');
 
-
+/*
+* Esta ruta viene despues actulazar , de la vsita de modificar notas
+* donde se muestra las preguntas y las respuestas para lugo calificar
+* parametro1@ id del curso
+* parametro1@ id del ususario
+* '/gestor_examenes/respuesta_desarrollo/insertar/nota'
+*/
+Route::post('/gestor_examenes/respuesta_desarrollo/insertar/nota','gestor_examenes\\
+    respuesta_desarrolloController@actualizar_nota');
 /*
 * Esta ruta viene despues presinar en gestor planilla, el boton editar
 * parametro1@ id del curso
