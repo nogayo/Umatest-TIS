@@ -163,6 +163,23 @@ class gestorexamenesController extends Controller
 
         //una vez abierto el formulario examen el estudiante no puede volver a dar
         DB::table('notas')->where('id',$id_nota)->update(array('estado'=>0));
+
+        //store procedure
+            
+            $dato_nuevo=$nombre_examen.'#'.$fecha_examen.'#'.$nombre_categoria.'#'.$duracion_total;//1
+            $dato_viejo="";//2
+            $nombre_maq = gethostname(); $ip = gethostbyname($nombre_maq);//3
+            $nombre_tabla="notas";//4
+            $fecha_a = date("Y-m-d H:i:s");//5
+            $accion_a='create';//6
+            $id_user=Auth::id();
+            $usuario= DB::table('users')->where('id', $id_user)->first();
+            $nombre_usuario = $usuario->name.' '.$usuario->apellido;//7
+            $id_bi=0;//8
+
+            DB::select('CALL Bitacora(?,?,?,?,?,?,?,?)', array($dato_nuevo, $dato_viejo, $ip, 
+                $nombre_tabla, $fecha_a, $accion_a, $nombre_usuario, $id_bi));
+              //fin procedure
         
 
       return view('gestor_examenes.vistas_examenes.formulario_examen', compact('nombre_examen', 
