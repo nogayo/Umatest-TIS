@@ -65,6 +65,14 @@ Route::resource('admin/curso', 'Admin\\cursoController');
 */
 Route::resource('admin/categoria', 'Admin\\categoriaController');
 
+
+
+/*
+ Esto viene despues de presionar , desabilitar carrera
+ * url('/admin/categoria/' . $item->id.'/desabilitar')
+*/
+Route::resource('admin/categoria/{id}/desabilitar', 'Admin\\categoriaController@desabilitar_carrera');
+
 /*
 * Esta ruta viene despues presinar crear carrera
 * parametro1@ id del curso
@@ -79,13 +87,28 @@ Route::get('admin/carrera/create', 'Admin\\categoriaController@create');
 Route::get('admin/carreras', 'Admin\\categoriaController@index');
 
 
+/*
+* Esta ruta viene despues mostrar carreras desabilitados
+* parametro1@ id del curso
+* url('admin/carreras/desabilidatos')
+*/
+Route::get('admin/carreras/deshabilitados', 'Admin\\categoriaController@show_deshabilitados');
 
+/*
+* Esta ruta viene despues de presionar habilita carrera
+* parametro1@ id del curso
+* url('/admin/carreras/' . $item->id.'/habilitar')
+*/
+Route::get('admin/carreras/{id}/habilitar', 'Admin\\categoriaController@habilitar_carrera');
+ 
 
 
 
 Route::resource('admin/curso_dicta', 'Admin\\curso_dictaController');
 Route::resource('admin/curso_inscrito', 'Admin\\curso_inscritoController');
-
+/*
+ esta ruta viene despues de prsionar inscribirce en un curso, y luego lista todas las carreras
+*/
 
 Route::resource('/todosloscursos/{boton}/carrera', 'gestorusuarioController');
 //Route::get('/todosloscursos/{algo}','gestorusuarioController@ellasefue']);
@@ -291,14 +314,18 @@ Route::get('copia_seguridad/restaurar_backup/{id}/backups', 'copia_seguridad\\ba
 NOTA.- Apartir de esta instruccion solo se debe aniadir rutas para tareas
 */
 
+
+
+
 /*
-* Esta ruta viene de listar tareas con 2 parametros
+* Esta ruta viene de contenido de curso, despues de presionar mis tareas
 * parametro1@ id del curso
 * parametro1@ tipo de evento(crear tarea/ Mis tareas)
-*url('gestor_examenes/'.$id_curso.'/examen/crear/tarea') 
-*url('gestor_examenes/'.$id_curso.'/examen/listar/tarea') 
+*url('gestor_examenes/'.$id_curso.'/tareas/listar') 
+
 */
-Route::get('gestor_examenes/{id_curso}/examen/{tipo}/tarea', 'gestor_examenes\\tareaController@listar');
+Route::get('gestor_examenes/{id_curso}/tareas/listar', 'gestor_examenes\\tareaController@listar');
+
 
 /*
 * esta ruta llega despues de presionar crear tarea con el id de la materia
@@ -306,8 +333,8 @@ Route::get('gestor_examenes/{id_curso}/examen/{tipo}/tarea', 'gestor_examenes\\t
 *url('/gestor_examenes/tarea/'.$id_curso./create')
 */
 //Route::get('gestor_examenes/tarea/{id_curso}/create', 'gestor_examenes\\tareaController@create');	
-//url('/gestor_examenes/'.$id_curso.'/tarea/'.$tipo.'/create')
-Route::get('/gestor_examenes/{id_curso}/tarea/{tipo}/create', 'gestor_examenes\\tareaController@createTask');	
+//url('/gestor_examenes/'.$id_curso.'/tarea/create')
+Route::get('/gestor_examenes/{id_curso}/tarea/create', 'gestor_examenes\\tareaController@createTask');	
 
 
 /*
@@ -325,9 +352,18 @@ Route::get('gestor_examenes/{id_curso}/materia/{tipo}/tarea/{id}/edit', 'gestor_
 * Esta ruta viene despues presinar terminar tarea(al crear tarea)
 * parametro1@ id del curso
 * parametro1@ tipo de evento(crear tarea/ Mis tareas)
-*url('/gestor_examenes/{id_curso}/tarea/{tipo}/upload')
+*url('/gestor_examenes/{id_curso}/tarea/upload')
 */
-Route::post('/gestor_examenes/{id_curso}/tarea/{tipo}/upload', 'gestor_examenes\\tareaController@store');
+Route::post('/gestor_examenes/{id_curso}/tarea/upload', 'gestor_examenes\\tareaController@store');
+
+
+/*
+* Esta ruta viene despues presinar eliminar tarea
+* parametro1@ id del curso
+* parametro1@ tipo de evento(crear tarea/ Mis tareas)
+*url('/gestor_examenes/'.$id_curso.'/materia/tarea/' . $item->id . '/destroy')
+*/
+Route::get('gestor_examenes/{id_curso}/materia/tarea/{id_tarea}/destroy', 'gestor_examenes\\tareaController@destroy');
 
 //Route::post('/upload','gestor_examenes\\tareaController@postUpload');
 
@@ -368,21 +404,13 @@ Route::resource('gestor_examenes/tarea', 'gestor_examenes\\tareaController');
 */
 Route::get('/gestor_examenes/enviar/{id_curso}/{id}/create', 'gestor_examenes\\enviadoController@create');
 /*
-* Esta ruta viene despues presinar enviar tarea
+* Esta ruta viene despues presinar enviar tarea , cuando estamos en el contenido del curso
 * parametro1@ id del curso
 * parametro1@ tipo de evento(crear tarea/ Mis tareas)
 *url('gestor_examenes/'.$id_curso.'/envio')
 */
 Route::get('gestor_examenes/{id_curso}/envio', 'gestor_examenes\\enviadoController@listar');
 
-
-/*
-* Esta ruta viene despues presinar eliminar tarea
-* parametro1@ id del curso
-* parametro1@ tipo de evento(crear tarea/ Mis tareas)
-*url('/gestor_examenes/'.$id_curso.'/materia/'.$tipo.'/tarea/' . $item->id . '/destroy')
-*/
-Route::get('gestor_examenes/{id_curso}/materia/{tipo}/tarea/{id_tarea}/destroy', 'gestor_examenes\\tareaController@destroy');
 
  
 /*
