@@ -375,10 +375,6 @@ Route::resource('admin/enviado', 'gestor_examenes\\enviadoController');
 
 //INICIO DE RUTAS BITACORAS
 
-Route::get('/bitacora_curso', 'bitacoraController@bitacora_curso');
-
-Route::get('/bitacora_tarea', 'bitacoraController@bitacora_tarea');
-
 Route::get('/bitacora_examen', 'bitacoraController@bitacora_examen');
 //FIN DE RUTAS BITACORAS
 
