@@ -192,7 +192,7 @@ class gestorexamenesController extends Controller
 
       public function calcular_nota(Request $request){
         
-        
+        //con_res_formularios
          $cadena_puntaje=explode(",",$request->input('con_puntaje'));//envia 1
          $cadena_res_formulario=explode(",",$request->input('con_res_formularios'));//envia 2
          $separando= explode(",",$request->input('con_res_correctas'));

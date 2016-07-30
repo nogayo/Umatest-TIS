@@ -49,8 +49,6 @@
                     <td>{{ $item->apellido }}</td>
                     <td>{{ $item->name }}</td>
                
-
-
                {{-- */$calif=0;/* --}}
                {{-- */$cant=0;/* --}}
 
@@ -74,7 +72,7 @@
                    /* --}}
                  
                  <td> {{ $nota_estudiante }} 
-                 <a href="{{ url('/gestor_planillas/'.$id_curso.'/planilla/' . $item->id_user . '/'.$id_examen_es.'/edit') }}">
+                 <a href="{{ url('/gestor_planillas/'.$id_curso.'/planilla/' . $item->id_user . '/'.$id_examen_es.'/calificar') }}">
                   <i class="fa fa-edit"  style="font-size:22px;color:#E2A9F3"></i>
                   </a>
                   </td>
@@ -89,14 +87,16 @@
                 /* --}}
      
                 
-
-              
-
-
-                
                  {{-- */
+
+                 if($cant>0){
                  $NFin = $calif/$cant;
-                 $NFin=round($NFin, 0, PHP_ROUND_HALF_UP);
+                  $NFin=round($NFin, 0, PHP_ROUND_HALF_UP);
+                 }else{
+
+                 $NFin=0;
+                 }
+                
 
                  /* --}}
                   

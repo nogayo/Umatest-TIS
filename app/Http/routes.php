@@ -493,7 +493,7 @@ Route::get('/gestor_planillas/{id_curso}/planilla/{id_user}/modificar','gestor_p
 * parametro1@ id del ususario
 * url('/gestor_planilla/'.$id_curso.'/planilla/' . $item->id_user . '/edit') 
 */
-Route::get('/gestor_planillas/{id_curso}/modificar/varios','gestor_planillas\\planillaController@modificar_varios');
+Route::get('/gestor_planillas/{id_curso}/modificar/varios','gestor_planillas\\planillaController@modificar_notas');
 
 /*
 * Esta ruta viene despues presinar en gestor planilla, el boton editar
@@ -501,7 +501,24 @@ Route::get('/gestor_planillas/{id_curso}/modificar/varios','gestor_planillas\\pl
 * parametro1@ id del ususario
 * url('/gestor_planilla/'.$id_curso.'/planilla/' . $item->id_user . '/edit') 
 */
-Route::get('/gestor_planillas/{id_curso}/planilla/{id_user}/{id_examen}/edit', 'gestor_planillas\\planillaController@edit');
+Route::get('/gestor_planillas/{id_curso}/planilla/{id_user}/{id_examen}/calificar', 'gestor_planillas\\planillaController@calificar');
+
+/*
+* Esta ruta viene despues actulazar , de la vsita de modificar notas
+* donde se muestra las preguntas y las respuestas para lugo calificar
+* parametro1@ id del curso
+* parametro1@ id del ususario
+* '/gestor_examenes/respuesta_desarrollo/insertar/nota'
+*/
+Route::post('/gestor_examenes/respuesta_desarrollo/insertar/nota','gestor_examenes\\
+    respuesta_desarrolloController@actualizar_nota');
+/*
+* Esta ruta viene despues presinar en gestor planilla, el boton editar
+* parametro1@ id del curso
+* parametro1@ id del ususario
+* url('/gestor_planilla/'.$id_curso.'/planilla/' . $item->id_user . '/edit') 
+*/
+//Route::get('/gestor_planillas/{id_curso}/planilla/{id_user}/{id_examen}/edit', 'gestor_planillas\\planillaController@edit');
 
 ///gestor_planillas/planilla
 Route::resource('gestor_planillas/planilla', 'gestor_planillas\\planillaController');
