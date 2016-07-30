@@ -19,7 +19,7 @@
         </div>
     <!--Termina path de las Listas de contenido del curso.
     -->
-        <div class="col-md-14 col-md-offset-0">
+        <div class="col-md-14 col-md-offset-0" style="padding-top:50px;">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR MATERIA</div>
 
@@ -40,7 +40,7 @@
         </div>
     <!--Termina path de de listas de exámenes.
     -->
-    <h1>Pregunta <a href="{{ url('/gestor_examenes/pregunta/'.$id_examen.'/create') }}" class="btn btn-primary btn-xs" title="Añadir Nueva Pregunta"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+    <h1 style="padding-top: 20px;">Pregunta <a href="{{ url('/gestor_examenes/pregunta/'.$id_examen.'/create') }}" class="btn btn-primary btn-xs" title="Añadir Nueva Pregunta"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <li style="text-align: center; color: red;">El Puntaje Maximo del Examen es: {{$ptj_examen}}</li>
     <li style="text-align: center; color: orange;">El Puntaje acumulado del Examen es: {{$puntaje_total_examen}}</li>
 
@@ -145,7 +145,7 @@
 
                         <a href="{{ url('/gestor_examenes/falsoverdadero/'.$id_simple.'/'.$id_examen.'/show') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-success btn-xs" title="Ver Respuesta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 
-                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $id_simple . '/'.$id_examen.'/delete') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-danger btn-xs" title="Eliminar Respuesta" onclick="myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Respuesta" /></a>
+                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $id_simple . '/'.$id_examen.'/delete') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-danger btn-xs" title="Eliminar Respuesta" onclick=" return myfuncion()"><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Respuesta" /></a>
                     </td>
                         @else
 

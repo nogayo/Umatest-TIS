@@ -19,7 +19,7 @@
         </div>
     <!--Termina path de enviar tarea.
     -->
-        <div class="col-md-14 col-md-offset-0">
+        <div class="col-md-14 col-md-offset-0" style="padding-top:50px;">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE TAREAS</div>
 
@@ -36,7 +36,7 @@
     <!--Termina path que muestra todas las tareas de un docente y permite crear una nueva tarea.
     -->
 
-    <h2> Envio <a href="#"></a></h2>
+    <h2 style="padding-top: 20px;"> Envio <a href="#"></a></h2>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

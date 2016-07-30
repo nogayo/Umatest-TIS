@@ -19,7 +19,7 @@
         </div>
     <!--Termina path de Home
     -->
-        <div class="col-md-8 col-md-offset-0" style="padding:0%">
+        <div class="col-md-8 col-md-offset-0" style="padding-top:0%">
             <div class="panel panel-default">
                 <div class="panel-body" >
         <div class="container" style="    padding-right: 85%;">

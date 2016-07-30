@@ -20,7 +20,7 @@
         </div>
     <!--Termina path de Visión
     -->
-        <div class="col-md-14 col-md-offset-0 defectoPanel">
+        <div class="col-md-14 col-md-offset-0" style="padding-top:50px">
             <div class="panel panel-default">
                 <div class="panel-heading"><h4>Visión de la carrera de Sistemas </h4></div>
 
