@@ -65,6 +65,14 @@ Route::resource('admin/curso', 'Admin\\cursoController');
 */
 Route::resource('admin/categoria', 'Admin\\categoriaController');
 
+
+
+/*
+ Esto viene despues de presionar , desabilitar carrera
+ * url('/admin/categoria/' . $item->id.'/desabilitar')
+*/
+Route::resource('admin/categoria/{id}/desabilitar', 'Admin\\categoriaController@desabilitar_carrera');
+
 /*
 * Esta ruta viene despues presinar crear carrera
 * parametro1@ id del curso
@@ -79,13 +87,28 @@ Route::get('admin/carrera/create', 'Admin\\categoriaController@create');
 Route::get('admin/carreras', 'Admin\\categoriaController@index');
 
 
+/*
+* Esta ruta viene despues mostrar carreras desabilitados
+* parametro1@ id del curso
+* url('admin/carreras/desabilidatos')
+*/
+Route::get('admin/carreras/deshabilitados', 'Admin\\categoriaController@show_deshabilitados');
 
+/*
+* Esta ruta viene despues de presionar habilita carrera
+* parametro1@ id del curso
+* url('/admin/carreras/' . $item->id.'/habilitar')
+*/
+Route::get('admin/carreras/{id}/habilitar', 'Admin\\categoriaController@habilitar_carrera');
+ 
 
 
 
 Route::resource('admin/curso_dicta', 'Admin\\curso_dictaController');
 Route::resource('admin/curso_inscrito', 'Admin\\curso_inscritoController');
-
+/*
+ esta ruta viene despues de prsionar inscribirce en un curso, y luego lista todas las carreras
+*/
 
 Route::resource('/todosloscursos/{boton}/carrera', 'gestorusuarioController');
 //Route::get('/todosloscursos/{algo}','gestorusuarioController@ellasefue']);
