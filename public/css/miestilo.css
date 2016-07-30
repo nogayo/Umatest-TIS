@@ -101,4 +101,9 @@ line-height: 19px;
 #txtcountdown { padding: 5px 10px; width: 90% ;border: 1px solid black; 
          font: normal 3em digital_dream, europa, arial; text-align: center; 
          margin: 4px; background-color: #f0ffff; border-radius: 3px;  }
-#cronometro [type=button]  { margin: 4px; font: normal 9pt arial; width: 70px; } 
+
+
+#defectoPanel{
+  padding: 4%;
+
+}
