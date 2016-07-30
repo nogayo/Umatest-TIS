@@ -87,7 +87,7 @@
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen') }}" >Mis Examenes</li>
                     <li><a href="{{ url('gestor_examenes/examen/'.$id_curso.'/create') }}" >Crear Examen</a></li>
-                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen_envio') }} ">Enviar Examen</a></li>
+                  
                   </ul>
 
                   <li><a href="{{url('gestor_examenes/examen/'.$id_curso.'/listar_estudiantes')}}"><i class="fa fa-file-text-o"></i> Mis Estudiantes </a></li>
@@ -111,7 +111,7 @@
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen') }}" >Mis Examenes</li>
                     <li><a href="{{ url('gestor_examenes/examen/'.$id_curso.'/create') }}" >Crear Examen</a></li>
-                    <li><a href="{{ url('gestor_examenes/'.$id_curso.'/examen_envio') }} ">Enviar Examen</a></li>
+                
                   </ul>
 
                   

@@ -276,7 +276,7 @@ Route::get('gestor_examenes/examen/{id_curso}/create', 'gestor_examenes\\examenC
 esta ruta nos llega del contenido del curso para crear nuevo examen(ojo primero lista)
 gestor_examenes/'.$id_curso.'/examen
 */
-Route::get('gestor_examenes/{id_curso}/examen_envio', 'gestor_examenes\\examenController@index');
+//Route::get('gestor_examenes/{id_curso}/examen_envio', 'gestor_examenes\\examenController@index');
 
 Route::get('gestor_examenes/{id_curso}/examen', 'gestor_examenes\\examenController@listar');
 /*
@@ -374,10 +374,6 @@ Route::post('/probando2_test/lola', 'gestorusuarioController@envio');
 Route::resource('admin/enviado', 'gestor_examenes\\enviadoController');
 
 //INICIO DE RUTAS BITACORAS
-
-Route::get('/bitacora_curso', 'bitacoraController@bitacora_curso');
-
-Route::get('/bitacora_tarea', 'bitacoraController@bitacora_tarea');
 
 Route::get('/bitacora_examen', 'bitacoraController@bitacora_examen');
 //FIN DE RUTAS BITACORAS
