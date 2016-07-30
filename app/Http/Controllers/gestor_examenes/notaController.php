@@ -75,7 +75,7 @@ class notaController extends Controller
 
           $examen = DB::table('examens')->where('id_cursos', $id_curso)->get();
 
-          return view('gestor_examenes.examen.index_envio',compact('examen','id_curso', 'mensaje_puntaje'));
+            return view('gestor_examenes.examen.index',compact('examen','id_curso', 'mensaje_puntaje'));
 
         }
        
@@ -317,7 +317,8 @@ class notaController extends Controller
          
        DB::table('examens')->where('id',$id_examen)->update(array('estado_examen'=>0));
 
-      return redirect('gestor_examenes/'.$id_curso.'/examen_envio');
+      return redirect('gestor_examenes/'.$id_curso.'/examen');
+      
     }
 
 
