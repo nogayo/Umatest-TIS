@@ -45,7 +45,7 @@
               <!--Termina path de las Listas de contenido del curso desde docente.
            -->
         @endif
-        <div class="col-md-14 col-md-offset-0">
+        <div class="col-md-14 col-md-offset-0" style="padding-top:50px;">
         
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE MATERIAS</div>

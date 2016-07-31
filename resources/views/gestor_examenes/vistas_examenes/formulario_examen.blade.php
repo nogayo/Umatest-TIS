@@ -11,18 +11,47 @@
     <div class="row">
         <div class="col-md-14 col-md-offset-0">
 <div class="hoja">
+<!--Comienza Dividir duracion del examen en horas y minutos-->
+{{-- */
+$hora=0;
+$minuto=0;
+$divicion=0;
+$divicion=($duracion_total)/60;
+$partes=explode(".",$divicion);
+$hora=$partes[0]; // es la parte entera
+$minuto=$duracion_total-$hora*(60); // es la parte decima
+
+/* --}}
+<!--Termina Dividir duracion del examen en horas y minutos-->
+
+
+
 <!--Comienza cronometro -->
 <div id="cronometro" class="col-md-14 col-md-offset-0">
 <a style="font:arial;">Tiempo del Examen</a>
-  <div id="reloj">
-  @if($duracion_total<10)
-  <div id="txtcountdown">0{{$duracion_total}}:00</div>
+  <div >
+
+
+  @if($hora<10)
+    @if($minuto<10)
+
+         <div id="txtcountdown">0{{$hora}}:0{{$minuto}}:00</div>
+
+    @else
+
+    <div id="txtcountdown">0{{$hora}}:{{$minuto}}:00</div>
+   @endif 
   @else
-  <div id="txtcountdown">{{$duracion_total}}:00</div>
-  @endif  
+    @if($minuto<10)
+      <div id="txtcountdown">{{$hora}}:0{{$minuto}}:00</div>
+       @else
+      <div id="txtcountdown">{{$hora}}:{{$minuto}}:00</div>
+      @endif 
+  @endif 
+   
   </div>
   
-  <script type="text/javascript">var minutos=<?php echo $duracion_total ?>;var timeoutId = setTimeout("cronos(minutos)",2000);</script>
+  <script type="text/javascript">var horas=<?php echo $hora ?>;var minutos=<?php echo $minuto ?>;var timeoutId = setTimeout("cronos(horas, minutos)",2000);</script>
 </div>
 <!--Termina cronometro -->
    <div class="col-md-14 col-md-offset-0" style="padding-right: 21%;">

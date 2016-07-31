@@ -8,8 +8,8 @@
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
 
 <script>
-function myfuncion1(){
-	return confirm("Esta bien");
+function myfuncion(){
+	return confirm("Esta Seguro que desea Eliminar?");
 }
 function myfuncion2(){
 	return confirm("Esta mal");
@@ -40,14 +40,14 @@ function validacion(formu, obj, n) {
 }  
 </script>
 <!--Comienza codigo javaScript del Cronometro del examen-->
-<script>
-
-    function cronos(min) {
-    var countdownHours = 0;
+  <script>
+    function cronos(hora,min) {
+    var hrs=hora;
+    var countdownHours = 1;
     var countdownMinutes = min;
     var countdownSeconds = 0;
 
-    countdowntimer.set(countdownHours, countdownMinutes, countdownSeconds);
+    countdowntimer.set( hrs, countdownHours, countdownMinutes, countdownSeconds);
   };
   </script>
   <script type="text/javascript">
@@ -61,40 +61,63 @@ function validacion(formu, obj, n) {
     }
   },
   update: function() {
+
     if(countdowntimer.seconds != 0) {
       countdowntimer.seconds--;
       var date = new Date(countdowntimer.seconds * 1000);
-      if (date.getMinutes()<10) {
-        if (date.getSeconds()<10) {
-          document.getElementById("txtcountdown").innerHTML = "0"+date.getMinutes() + ":" +"0"+date.getSeconds();
+      if ((date.getHours() -(21-real))<10) {
+        if (date.getMinutes()<10) {
+          if (date.getSeconds()<10) {
+            document.getElementById("txtcountdown").innerHTML = "0"+(date.getHours() -(21-real))+ ":" +"0"+date.getMinutes() + ":" +"0"+date.getSeconds();
+          }else{
+            document.getElementById("txtcountdown").innerHTML = "0"+(date.getHours() -(21-real))+ ":" +"0"+date.getMinutes() + ":" + date.getSeconds();
+          }       
         }else{
-          document.getElementById("txtcountdown").innerHTML = "0"+date.getMinutes() + ":" + date.getSeconds();
-        }     
-      }else{
-        if (date.getSeconds()<10) {
-          document.getElementById("txtcountdown").innerHTML = date.getMinutes() + ":" + "0"+date.getSeconds();
-        }else{
-          document.getElementById("txtcountdown").innerHTML = date.getMinutes() + ":" + date.getSeconds();
+          if (date.getSeconds()<10) {
+            document.getElementById("txtcountdown").innerHTML = "0"+(date.getHours() -(21-real))+ ":" +date.getMinutes() + ":" + "0"+date.getSeconds();
+          }else{
+            document.getElementById("txtcountdown").innerHTML = "0"+(date.getHours() -(21-real))+ ":" +date.getMinutes() + ":" + date.getSeconds();
+        }
+        }
 
+      }else{
+        if (date.getMinutes()<10) {
+          if (date.getSeconds()<10) {
+            document.getElementById("txtcountdown").innerHTML = (date.getHours() -(21-real))+ ":" +"0"+date.getMinutes() + ":" +"0"+date.getSeconds();
+          }else{
+            document.getElementById("txtcountdown").innerHTML = (date.getHours() -(21-real))+ ":" +"0"+date.getMinutes() + ":" + date.getSeconds();
+          }       
+        }else{
+          if (date.getSeconds()<10) {
+            document.getElementById("txtcountdown").innerHTML = (date.getHours() -(21-real))+ ":" +date.getMinutes() + ":" + "0"+date.getSeconds();
+          }else{
+            document.getElementById("txtcountdown").innerHTML = (date.getHours() -(21-real))+ ":" +date.getMinutes() + ":" + date.getSeconds();
+        }
         }
       }
-      if (date.getMinutes()==0 && date.getSeconds()==0) {
-        var capa = document.getElementById('noTermino');
-        capa.onclick=alert("Tiempo Terminado");
-        capa.click();
-    }
+      //document.getElementById("txtcountdown").innerHTML = (date.getHours() -(21-real)) + ":" + date.getMinutes() + ":" + date.getSeconds();
+      if ((date.getHours() -(21-real))==0 && date.getMinutes()==0 && date.getSeconds()==0) {
+      var capa = document.getElementById('noTermino');
+          capa.onclick=alert("Tiempo Terminado");
+           capa.click();
+      }
     }
 
   },
-  set: function(hours, minutes, seconds) {
+  set: function(horar, hours,minutes, seconds) {
 
+    var horara=parseInt(horar);
     var hours = parseInt(hours);
     var minutes = parseInt(minutes);
     var seconds = parseInt(seconds);
+    if(isNaN(horara)) {
+      horara = 0;
+    }
 
     if(isNaN(hours)) {
       hours = 0;
     }
+
     if(isNaN(minutes)) {
       minutes = 0;
     }
@@ -102,6 +125,7 @@ function validacion(formu, obj, n) {
       seconds = 0;
     }
     countdowntimer.seconds = (hours * 3600) + (minutes * 60) + seconds;
+    real=horara;
 
     if(countdowntimer.seconds > 0) {
       this.start();

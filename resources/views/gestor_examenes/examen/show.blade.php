@@ -19,7 +19,7 @@
         </div>
     <!--Termina path de las Listas de contenido del curso.
     -->
-        <div class="col-md-14 col-md-offset-0">
+        <div class="col-md-14 col-md-offset-0" style="padding-top:50px;">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE EXAMENES</div>
                 <div class="panel-body">
@@ -35,7 +35,7 @@
         </div>
     <!--Termina path de de mostrar examen.
     -->
-    <h1>Examen </h1>
+    <h1 style="padding-top: 20px;">Examen </h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <tbody>

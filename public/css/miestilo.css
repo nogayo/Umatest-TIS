@@ -1,3 +1,9 @@
+#cronometro { padding:10px; border: 5px #629c44 double; width: 230px;
+              text-align: center; background-color: #c5e1a5; border-radius: 5px;
+              float: left; margin: 2em 3em 2em 3em; }
+#txtcountdown { padding: 5px 10px; width: 90% ;border: 1px solid black; 
+         font: normal 3em digital_dream, europa, arial; text-align: center; 
+         margin: 4px; background-color: #f0ffff; border-radius: 3px;  }
 .borde{
 	border-style: ridge; border-width: 4px;
 	border-color: #aed581;
@@ -95,10 +101,9 @@ line-height: 19px;
     font-weight: normal;
     font-style: normal;
 }   
-#cronometro { padding:10px; border: 5px #629c44 double; width: 200px;
-              text-align: center; background-color: #c5e1a5; border-radius: 5px;
-              float: left; margin: 2em 3em 2em 3em; }
-#txtcountdown { padding: 5px 10px; width: 90% ;border: 1px solid black; 
-         font: normal 3em digital_dream, europa, arial; text-align: center; 
-         margin: 4px; background-color: #f0ffff; border-radius: 3px;  }
-#cronometro [type=button]  { margin: 4px; font: normal 9pt arial; width: 70px; } 
+
+
+.defectoPanel{
+  padding-top: 50px;
+
+}
