@@ -107,7 +107,7 @@
             <div class="form-group {{ $errors->has('password') ? 'has-error' : ''}}">
                 {!! Form::label('password', trans('users.password'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('password', null,['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::password('password',['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

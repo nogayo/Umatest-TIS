@@ -43,7 +43,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th> Puntaje Examen</th><th>Ver examen</th><th> Fecha Creacion Examen <th>Llenar Preguntas</th></th><th>Actions</th>
+                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th> Puntaje Examen</th><th>Ver examen</th><th> Fecha Creacion Examen <th>Llenar Preguntas</th><th>Enviar examen</th></th><th>Actions</th>
                 </tr>
                 </tr>
             </thead>
@@ -64,6 +64,17 @@
                     <td> 
                     <li><a href="{{url('/gestor_examenes/pregunta/'.$item->id.'/index')}}"><i class="fa fa-file-text-o"></i> Llenar </a></li>
                     </td>
+                  
+                     @if($item->estado_examen==1)
+                    <td> 
+                    <li><a href="{{url('/gestor_examenes/nota/'.$id_curso.'/'.$item->id.'/create')}}"><i class="fa fa-envelope-o"></i> Enviar </a></li>
+                    </td>
+                    @else
+                     <td> 
+                    <li><a href="#" style="color: red;"><i class="fa fa-envelope-o"></i> Enviado </a></li>
+                    </td>
+                    @endif
+                    
                     <td>
                         <a href="{{ url('/gestor_examenes/examen/'. $item->id .'/ver/'.$id_curso.'/materia') }}" class="btn btn-success btn-xs" title="Ver Examan"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 

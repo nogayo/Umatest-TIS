@@ -102,11 +102,10 @@
                   <li class="treeview">
                 <a href="#"><i class='fa fa-user'></i> <span>Bitacoras</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('/bitacora_curso') }}">Bitacora Curso</a></li>
+                   
 
-                      <li><a href="{{ url('/bitacora_examen') }}">Bitacora Examen</a></li>
-
-                      <li><a href="{{ url('/bitacora_tarea') }}">Bitacora Tarea</a></li>
+                      <li><a href="{{ url('/bitacora_examen') }}">Mis Bitacoras</a></li>
+     
                     
                 </ul>
                  </li>
