@@ -6,6 +6,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UnitariasTest extends TestCase
 {
+    // con esta linea hago que no se guarde en la base de datos
+    // , luego de ejecutarse la prueba se borrara
+    use DatabaseTransactions;
     /**
      * A basic test example.
      *
@@ -20,7 +23,8 @@ class UnitariasTest extends TestCase
     public function testAcerca()
     {
          $this->visit('/')
-                ->click('Ayuda')
-                ->seePageIs('http://localhost/testing/public/ayuda_v');
+              ->click('ayuda')
+              ->seePageIs('/ayuda_v');
     }
+    
 }
