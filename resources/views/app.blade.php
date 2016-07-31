@@ -34,6 +34,7 @@ desired effect
     @include('partials.mainheader')
 
     @include('partials.sidebar')
+   
     <!--antigrasa -->
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

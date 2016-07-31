@@ -570,3 +570,5 @@ Route::get('gestor_foros/{id_coment}/delete/{id_curso}/comentario/{id_foro}/dest
 
 
 
+
+Route::resource('gestor_examenes/respuesta_desarrollo', 'gestor_examenes\\respuesta_desarrolloController');
