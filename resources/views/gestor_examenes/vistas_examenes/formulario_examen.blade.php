@@ -203,120 +203,56 @@ $minuto=$duracion_total-$hora*(60); // es la parte decima
 
           /* --}}
 
-           <div class="form-group {{ $errors->has('con_puntaje') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
                     {!! Form::hidden('con_puntaje',$puntaje, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('con_puntaje', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
 
-           <div class="form-group {{ $errors->has('con_res_formularios') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
                     {!! Form::hidden('con_res_formularios',$respuestas_formularios, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('con_res_formularios', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
 
-            <div class="form-group {{ $errors->has('con_res_correctas') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
                     {!! Form::hidden('con_res_correctas',$respuestas_correctas, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('con_res_correctas', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
 
-           <div class="form-group {{ $errors->has('con_res_multiple') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
                     {!! Form::hidden('con_res_multiple',$res_multiple_correcta, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('con_res_multiple', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
-            <div class="form-group {{ $errors->has('con_res_multiple_var') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+
                     {!! Form::hidden('con_res_multiple_var',$res_mul_var_correcta, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('con_res_multiple_var', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
-                 <div class="form-group {{ $errors->has('id_nota') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+
                     {!! Form::hidden('id_nota',$id_nota, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('id_nota', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
-           
-            <div class="form-group {{ $errors->has('puntaje_total_examen') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+ 
                     {!! Form::hidden('puntaje_total_examen',$puntaje_total_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('puntaje_total_examen', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
 
-           <div class="form-group {{ $errors->has('nombre_pregunta_examen') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
                     {!! Form::hidden('nombre_pregunta_examen',$nombre_preguntas_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('nombre_pregunta_examen', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
-           <div class="form-group {{ $errors->has('nombre_examen') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+
                     {!! Form::hidden('nombre_examen',$nombre_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('nombre_examen', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
-
-           <div class="form-group {{ $errors->has('fecha_examen') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+   
                     {!! Form::hidden('fecha_examen',$fecha_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('fecha_examen', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
-              <div class="form-group {{ $errors->has('nombre_categoria') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+    
                     {!! Form::hidden('nombre_categoria',$nombre_categoria, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('nombre_categoria', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
 
-            <div class="form-group {{ $errors->has('tipo_pregunta') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
                     {!! Form::hidden('tipo_pregunta',$tipo_pregunta, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('tipo_pregunta', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
-
-           <div class="form-group {{ $errors->has('id_pregunta') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+  
                     {!! Form::hidden('id_pregunta',$id_pregunta, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('id_pregunta', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
-            <div class="form-group {{ $errors->has('id_examen') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+             
                     {!! Form::hidden('id_examen',$id_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('id_examen', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
+          
            
 
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::submit('Terminar_Examen',['id' => 'noTermino'], ['class' => 'btn btn-primary form-control']) !!}
-            <br/> <br/>
-            <br/> <br/>
+            </br></br>
+            </br></br>
         </div>
     </div>
     {!! Form::close() !!}
