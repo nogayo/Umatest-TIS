@@ -8,7 +8,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('entregado.descripcion_tarea') }} </th><th> {{ trans('entregado.archivo') }} </th><th> {{ trans('entregado.fecha') }} </th><th>Actions</th>
+                    <th>S.No</th><th> {{ trans('entregado.descripcion_tarea') }} </th><th> {{ trans('entregado.archivo') }} </th><th> {{ trans('entregado.fecha') }} </th><th>Acciones</th>
                 </tr>
             </thead>
             <tbody>

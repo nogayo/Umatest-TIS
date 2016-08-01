@@ -43,7 +43,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th> Puntaje Examen</th><th>Ver examen</th><th> Fecha Creacion Examen <th>Llenar Preguntas</th><th>Enviar examen</th></th><th>Actions</th>
+                    <th>S.No</th><th> {{ trans('examen.nombre_examen') }} </th><th> Puntaje Examen</th><th>Ver examen</th><th> Fecha Creacion Examen <th>Llenar Preguntas</th><th>Enviar examen</th></th><th>Acciones</th>
                 </tr>
                 </tr>
             </thead>
@@ -80,7 +80,7 @@
 
                         <a href="{{ url('/gestor_examenes/examen/' . $item->id . '/update/'.$id_curso.'/edit') }}" class="btn btn-primary btn-xs" title="Editar Examan"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
 
-                         <a href="{{ url('/gestor_examenes/examen/' . $item->id . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Eliminar Multiple" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Multiple" /></a>
+                         <a href="{{ url('/gestor_examenes/examen/' . $item->id . '/delete/'.$id_curso.'/destroy') }}" class="btn btn-danger btn-xs" title="Eliminar Examen" onclick='return confirm("Esta seguro de eliminar?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Examen" /></a>
 
                     </td>
                 </tr>

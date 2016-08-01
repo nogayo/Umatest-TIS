@@ -50,7 +50,7 @@
             <thead>
                 <tr>
                     <th>S.No</th><th> {{ trans('pregunta.nombre_pregunta') }} </th> 
-                    <th> Respuesta </th><th> Tipo pregunta </th><th> {{ trans('pregunta.puntaje_pregunta') }} </th><th>Actions</th>
+                    <th> Respuesta </th><th> Tipo pregunta </th><th> {{ trans('pregunta.puntaje_pregunta') }} </th><th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,7 +78,7 @@
 
                         <a href="{{ url('/gestor_examenes/simple/'.$id_simple.'/'.$id_examen.'/show') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-success btn-xs" title="Ver Respuesta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 
-                        <a href="{{ url('/gestor_examenes/simple/' . $id_simple . '/'.$id_examen.'/delete') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-danger btn-xs" title="Eliminar Respuesta" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Respuesta" /></a>
+                        <a href="{{ url('/gestor_examenes/simple/' . $id_simple . '/'.$id_examen.'/delete') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-danger btn-xs" title="Eliminar Respuesta" onclick='return confirm("Esta seguro de eliminar?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Respuesta" /></a>
                     </td>
                         @else
 
@@ -141,7 +141,7 @@
                      
                      <!-- $id_simple ese es el id_ de la respuesta-->
 
-                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $id_simple . '/'.$id_examen.'/edit') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-primary btn-xs" title="Editarar Respuesta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/falsoverdadero/' . $id_simple . '/'.$id_examen.'/edit') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-primary btn-xs" title="Editar Respuesta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
 
                         <a href="{{ url('/gestor_examenes/falsoverdadero/'.$id_simple.'/'.$id_examen.'/show') }}" style="background-color: rgb(220, 88, 239); border-color:rgb(220, 88, 239);" class="btn btn-success btn-xs" title="Ver Respuesta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 
@@ -183,9 +183,9 @@
                     <td>
                         <a href="{{ url('/gestor_examenes/pregunta/'.$item->id.'/'.$id_examen.'/show') }}" class="btn btn-success btn-xs" title="ver Pregunta"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
 
-                        <a href="{{ url('/gestor_examenes/pregunta/'.$item->id.'/'.$id_examen.'/edit') }}" class="btn btn-primary btn-xs" title="Editarar Pregunta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ url('/gestor_examenes/pregunta/'.$item->id.'/'.$id_examen.'/edit') }}" class="btn btn-primary btn-xs" title="Editar Pregunta"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                      
-                        <a href="{{ url('/gestor_examenes/pregunta/' . $item->id . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Eliminar Pregunta" onclick='return confirm("Confirm delete?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Pregunta" /></a>
+                        <a href="{{ url('/gestor_examenes/pregunta/' . $item->id . '/'.$id_examen.'/delete') }}" class="btn btn-danger btn-xs" title="Eliminar Pregunta" onclick='return confirm("Esta seguro de eliminar?")'><span class="glyphicon glyphicon-trash" aria-hidden="true" title="Eliminar Pregunta" /></a>
                     </td>
                 </tr>
             @endforeach
