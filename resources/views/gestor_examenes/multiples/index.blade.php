@@ -51,7 +51,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('multiples.respuesta') }} </th><th> {{ trans('multiples.correcta') }} </th><th>Actions</th>
+                    <th>S.No</th><th> {{ trans('multiples.respuesta') }} </th><th> {{ trans('multiples.correcta') }} </th><th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
