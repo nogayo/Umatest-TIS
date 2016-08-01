@@ -47,14 +47,16 @@
         </div>
     <!--Termina path para EDITAR Respuestas a preguntas de seleccion multiples.  
     -->
-    <h1 style="padding-top: 20px;">Editar Simple {{ $multiple->id }}</h1>
-
+    <h1 style="padding-top: 20px;">Editar Respuestas Simples</h1>
+  
     {!! Form::model($multiple, [
         'method' => 'PATCH',
         'url' => ['/gestor_examenes/multiples', $multiple->id],
         'class' => 'form-horizontal'
     ]) !!}
-
+      @if($mensaje_create!="")
+    <ul class="alert alert-danger"><li>{{ $mensaje_create }}</li></ul>
+    @endif
                 <div class="form-group {{ $errors->has('respuesta') ? 'has-error' : ''}}">
                 {!! Form::label('respuesta', trans('multiples.respuesta'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">

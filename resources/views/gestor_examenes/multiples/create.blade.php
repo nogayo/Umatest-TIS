@@ -48,6 +48,10 @@
 
     {!! Form::open(['url' => '/gestor_examenes/multiples', 'class' => 'form-horizontal']) !!}
 
+      @if($mensaje_create!="")
+    <ul class="alert alert-danger"><li>{{ $mensaje_create }}</li></ul>
+    @endif
+
                 <div class="form-group {{ $errors->has('respuesta') ? 'has-error' : ''}}">
                 {!! Form::label('respuesta', trans('multiples.respuesta'), ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
