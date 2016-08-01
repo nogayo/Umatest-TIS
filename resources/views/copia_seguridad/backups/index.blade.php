@@ -30,7 +30,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> Nombre Backup </th><th> Archivo Backup </th><th> Fecha Backup </th><th>Actions</th>
+                    <th>S.No</th><th> Nombre Backup </th><th> Archivo Backup </th><th> Fecha Backup </th><th>Acciones</th>
                 </tr>
             </thead>
             <tbody>

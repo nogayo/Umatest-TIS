@@ -28,7 +28,7 @@
                 <li class="active"><a href="{{ url('/vision') }}">Visión<span class="sr-only">(current)</span></a></li>
 
 
-                <li class="active"><a href="{{ url('/contactos') }}">Contactos<span class="sr-only">(current)</span></a></li>
+                <!--li class="active"><a href="{{ url('/contactos') }}">Contactos<span class="sr-only">(current)</span></a></li-->
                 <li class="active"><a href="{{ url('/ayuda') }}">Ayuda<span class="sr-only">(current)</span></a></li>
             </ul>
 
