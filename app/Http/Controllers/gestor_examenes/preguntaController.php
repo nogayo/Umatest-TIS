@@ -43,10 +43,11 @@ class preguntaController extends Controller
      */
     public function create($id_examen)
     {
-       
+        
+         $mensaje_create="";
          $vector = DB::table('tipo_preguntas')->lists('tipo', 'id');
 
-        return view('gestor_examenes.pregunta.create', compact('vector', 'id_examen'));
+        return view('gestor_examenes.pregunta.create', compact('vector', 'id_examen', 'mensaje_create'));
     }
 
     /**
@@ -108,14 +109,15 @@ class preguntaController extends Controller
             DB::select('CALL Bitacora(?,?,?,?,?,?,?,?)', array($dato_nuevo, $dato_viejo, $ip, 
                 $nombre_tabla, $fecha_a, $accion_a, $nombre_usuario, $id_bi));
               //fin procedure
-
+            return redirect('gestor_examenes/pregunta/'.$request->input('examen_id').'/index');
         }
-
-        Session::flash('flash_message', 'preguntum added!');
-
         
+          $mensaje_create="¡¡Advertencia!! El puntaje de la pregunta ha excedido el puntaje total del examen";
+         $vector = DB::table('tipo_preguntas')->lists('tipo', 'id');
+         $id_examen=$request->input('examen_id');
+        return view('gestor_examenes.pregunta.create', compact('vector', 'id_examen', 'mensaje_create'));
 
-        return redirect('gestor_examenes/pregunta/'.$request->input('examen_id').'/index');
+       
     }
 
     /**
@@ -127,9 +129,11 @@ class preguntaController extends Controller
      */
     public function show($id, $id_examen)
     {
+        
+
         $preguntum = preguntum::findOrFail($id);
 
-        return view('gestor_examenes.pregunta.show', compact('preguntum', 'id_examen'));
+        return view('gestor_examenes.pregunta.show', compact('preguntum', 'id_examen', 'mensaje_create'));
     }
 
     /**
@@ -141,9 +145,11 @@ class preguntaController extends Controller
      */
     public function edit($id, $id_examen)
     {
+        $mensaje_create="";
+
         $preguntum = preguntum::findOrFail($id);
 
-        return view('gestor_examenes.pregunta.edit', compact('preguntum', 'id_examen'));
+        return view('gestor_examenes.pregunta.edit', compact('preguntum', 'id_examen', 'mensaje_create'));
     }
 
     /**
@@ -156,6 +162,28 @@ class preguntaController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, ['nombre_pregunta' => 'required', 'puntaje_pregunta' => 'required', ]);
+
+
+        $preguntaz = DB::table('preguntas')->where('examen_id', $request->input('examen_id'))->get();
+        $examen =DB::table('examens')->where('id',$request->input('examen_id'))->first();
+        $ptj_examen=$examen->puntaje_totalm;
+        
+         $pregunta_nota = DB::table('preguntas')->where('id', $id)->first();
+         $pregunta_nota=$pregunta_nota->puntaje_pregunta; 
+             
+             $puntaje_total_examen=0;
+             foreach ($preguntaz as $item) {
+
+                 $puntaje_total_examen+=$item->puntaje_pregunta;
+
+             }
+             $puntaje_total_examen+=$request->input('puntaje_pregunta');
+             $puntaje_total_examen-=$pregunta_nota;
+
+         $preguntum = preguntum::findOrFail($id);
+
+        if($ptj_examen >= $puntaje_total_examen){
+
        $pregunta= DB::table('preguntas')->where('id',$id)->first();
          //store procedure
             $nombre_pregunta = $pregunta->nombre_pregunta;
@@ -177,7 +205,6 @@ class preguntaController extends Controller
                 $nombre_tabla, $fecha_a, $accion_a, $nombre_usuario, $id_bi));
          //fin procedure
 
-        $preguntum = preguntum::findOrFail($id);
         $preguntum->update($request->all());
 
          $recurso= DB::table('bitacora_examenes')->where('usuario_bi', $nombre_usuario)->where('fecha_bi', $fecha_a)->first();
@@ -200,6 +227,12 @@ class preguntaController extends Controller
         Session::flash('flash_message', 'preguntum updated!');
 
         return redirect('gestor_examenes/pregunta/'.$request->input('examen_id').'/index');
+      }
+
+         $mensaje_create="¡¡Advertencia!! El puntaje de la pregunta ha excedido el puntaje total del examen";
+        $id_examen=$request->input('examen_id');
+        return view('gestor_examenes.pregunta.edit', compact('preguntum', 'id_examen',              'mensaje_create'));
+
     }
 
     /**
