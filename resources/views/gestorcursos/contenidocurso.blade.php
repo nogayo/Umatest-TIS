@@ -63,7 +63,7 @@
          </br>
          </br>
        <div style="width: 70%; float :right; text-align: center;padding-right: 8%;font-size: 100%; font-family: Arial; color: black;">{{$descripcion}}</div>
-        <div class="col-md-3">
+        <div class="col-md-3" style="width:25%;">
          <!-- <a href="compose.html" class="btn btn-primary btn-block margin-bottom">Compose</a>
           -->
           <div class="box box-solid">
