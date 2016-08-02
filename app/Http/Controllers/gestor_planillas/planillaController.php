@@ -271,24 +271,29 @@ class planillaController extends Controller
      *
      * @return void
      */
-    public function calificar($id_curso,$id_user,$id_examen)
+   
+     public function calificar($id_curso,$id_user,$id_examen)
     {
+            $numero_pre=DB::table('preguntas')->where('examen_id',$id_examen)->where('tipo_pregunta_id', 2)->get();
+            $numero_pre=count($numero_pre);
             $respuesta_desarrollos= DB::table('examens')
             ->where('id_cursos', $id_curso)
             ->where('examens.id', $id_examen)
-           
+               // ->join('notas', 'examens.id', '=', 'notas.examen_id')           
             ->join('respuesta_desarrollos', 'examens.id', '=', 'respuesta_desarrollos.examen_id')
             ->join('preguntas', 'preguntas.id', '=', 'respuesta_desarrollos.pregunta_id')
+            
             ->select('examens.id AS id_examen','examens.nombre_examen','respuesta_desarrollos.id AS id_resp',
                 'preguntas.nombre_pregunta','preguntas.puntaje_pregunta','respuesta_desarrollos.respuesta',
            'respuesta_desarrollos.calificacion')
+            ->orderBy('respuesta_desarrollos.id', 'desc')->take($numero_pre)
             ->get();
-
+    
         
       //  return view('gestor_planillas.editar_nota', compact('nota_estudiante','id_user','id_curso','id_examen'));
+            $mensaje_texto="";
 
-
-    return view('gestor_examenes.respuesta_desarrollo.calificar', compact('respuesta_desarrollos','id_user','id_curso','id_examen'));    
+    return view('gestor_examenes.respuesta_desarrollo.create', compact('respuesta_desarrollos','id_user','id_curso','id_examen', 'mensaje_texto'));    
     }
 
 }

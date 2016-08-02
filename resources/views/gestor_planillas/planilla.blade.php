@@ -98,21 +98,23 @@
 
                 @foreach($notas_est as $nota)
                 <td> {{ $nota}}  </td>
-                
-                           
-
-
+   
                 {{-- */$calif=$calif+$nota;/* --}}
                 {{-- */$cant++;/* --}}
 
                 @endforeach 
                  {{-- */
-                 $NFin = $calif/$cant;
+                 if($cant != 0){
+                    $NFin = $calif/$cant;
                  $NFin=round($NFin, 0, PHP_ROUND_HALF_UP);
+                 
 
                  /* --}}
-                  
+                
                     <td  bgcolor="#F3E2A9">{{ $NFin }}</td>
+                      {{-- */
+                    }
+                    /* --}}
                     <!--td>
                        
                         <a href="{{ url('/gestor_planillas/'.$id_curso.'/planilla/' . $item->id_user . '/modificar') }}">

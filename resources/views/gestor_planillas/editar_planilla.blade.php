@@ -72,7 +72,8 @@
                     <td>{{ $item->name }}</td>
                
                {{-- */$calif=0;/* --}}
-               {{-- */$cant=0;/* --}}
+               {{-- */$cant=0;
+                /* --}}
 
                {{-- */
    
@@ -91,20 +92,27 @@
                       } 
                        $j++;           
                    }
+                   if($bandera==1){
                    /* --}}
                  
                  <td> {{ $nota_estudiante }} 
                  <a href="{{ url('/gestor_planillas/'.$id_curso.'/planilla/' . $item->id_user . '/'.$id_examen_es.'/calificar') }}">
-                  <i class="fa fa-edit"  style="font-size:22px;color:#E2A9F3"></i>
+                <span class="logo-lg"><img src="{{asset('/img/img_panelPrincipal/inscribirse.png')}}"/> </span>
                   </a>
                   </td>
 
    
                   {{-- */
                      $bandera=0;
-                    $i++;
                      $calif=$calif+$nota_estudiante;
                      $cant++;
+                  }else{
+                   /* --}}
+                  <td>Sin Nota</td>        
+                  {{-- */
+                  }
+
+                   $i++;
                 }
                 /* --}}
      

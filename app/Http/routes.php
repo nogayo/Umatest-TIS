@@ -15,25 +15,7 @@
  // return view('welcome');
 //});
 
-/*Route::get('pdf', function(){
-    $fpdf = new Fpdf();
-        $fpdf->AddPage();
-        $fpdf->SetFont('Arial','B',16);
-        $fpdf->Cell(40,10,'Hello World!');
-        $fpdf->Output();
-        exit;
 
-});
-Route::get('pdf2', function(){
-
-        Fpdf::AddPage();
-        Fpdf::SetFont('Arial','B',16);
-        Fpdf::Cell(40,10,'Hello World!');
-        Fpdf::Output();
-        exit;
-
-);
-*/
 
 
 Route::resource('admin/posts', 'Admin\\PostsController');
@@ -510,8 +492,9 @@ Route::get('/gestor_planillas/{id_curso}/planilla/{id_user}/{id_examen}/califica
 * parametro1@ id del ususario
 * '/gestor_examenes/respuesta_desarrollo/insertar/nota'
 */
-Route::post('/gestor_examenes/respuesta_desarrollo/insertar/nota','gestor_examenes\\
-    respuesta_desarrolloController@actualizar_nota');
+//Route::get('/lala/respuesta_desarrollo/insertar/nota','gestor_examenes\\
+   // respuesta_desarrolloController@actualizar_nota');
+
 /*
 * Esta ruta viene despues presinar en gestor planilla, el boton editar
 * parametro1@ id del curso
