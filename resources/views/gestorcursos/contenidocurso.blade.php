@@ -50,13 +50,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR DE MATERIAS</div>
 
-                <div class="panel-body" style="background-color: #c5e1a5">
+                <div class="panel-body" style="background-color: #3c8dbc;">
       <!-- Main content -->
        {{-- */$curso= DB::table('cursos')->where('id', $id_curso)->first();
               $titulo=$curso->nombre;
               $descripcion=$curso->descripcion;   
              /* --}}
-      <div class="row" style="background-color: #c5e1a5;">
+      <div class="row" style="background-color: rgba(211, 225, 242, 0.65);">
          <div style=" width: 70%; float :right; text-align: center;padding-right: 8%; font-size: 200%; font-weight: bold; font-family: Arial; color: red;">{{$titulo}}</div>
          </br>
          </br>
