@@ -105,6 +105,7 @@ public function store(CreateInvestigationRequest $request)
             $nombre_tabla="tareas";//4
             $fecha_a = date("Y-m-d H:i:s");//5
             $accion_a='create';//6
+            $id_user=Auth::id();
             $usuario= DB::table('users')->where('id', $id_user)->first();
             $nombre_usuario = $usuario->name.' '.$usuario->apellido;//7
             $id_bi=0;//8

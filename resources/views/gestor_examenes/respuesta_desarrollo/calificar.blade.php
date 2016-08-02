@@ -24,23 +24,21 @@
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
-                
-            
 
                 <tr bgcolor="#81BEF7">
-                    <th>S.No</th><th> Preguntas/Respuestas </th><th>Calificacion</th>
+                    <th>S.No</th><th> Preguntas/Respuestas </th><th>Calificacionnn</th>
                 </tr>
             </thead>
             <tbody>
 
 
-               {!! Form::open(['url' => '/gestor_examenes/respuesta_desarrollo/insertar/nota', 'class' => 'form-horizontal']) !!}
+        {!! Form::open(['url' => '/lala/respuesta_desarrollo/insertar/nota', 'class' => 'form-horizontal']) !!}
 
-            {{-- */$x=0;$i=0;/* --}}
+            {{-- */
+                   $x=0;  $i=0; $formulario_ids=array(); $formulario_calificaciones=array();
+            /* --}}
             @foreach($respuesta_desarrollos as $item)
-                {{-- */$x++;
-                 
-                /* --}}
+                {{-- */$x++; /* --}}
 
 
 
@@ -54,29 +52,19 @@
                     <td> Resp. {{ $x }}</td>
                     <td>{{ $item->respuesta }}</td>
                     <td>                     
-                 
-   
+              
 
+               <div class="form-group {{ $errors->has('calificacion'. $item->id_resp) ? 'has-error' : ''}}">
 
-               <div class="form-group {{ $errors->has('ids') ? 'has-error' : ''}}">                
-                <div class="col-sm-6">
-                    {!! Form::hidden('' . $item->id_resp, $item->id_resp, ['class' => 'form-control']) !!}
-                    {!! $errors->first('' . $item->id_resp, '<p class="help-block">:message</p>') !!}
+               <div class="col-sm-6">
+                    {!! Form::number('calificacion' .$item->id_resp, null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! $errors->first('calificacion' .$item->id_resp, '<p class="help-block">:message</p>') !!}
                 </div>
-            </div>
-        {{-- */  $formulario_ids[$i]='' . $item->id_resp; /* --}}
 
-
-            <div class="form-group {{ $errors->has('calificaciones') ? 'has-error' : ''}}">                
-                <div class="col-sm-6">
-                    {!! Form::number('calificacion' . $item->id_resp , null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('calificacion . $item->id_resp', '<p class="help-block">:message</p>') !!}
-                </div>
             </div>
+
         {{-- */  $formulario_calificaciones[$i]='calificacion' . $item->id_resp; /* --}}
-
-
-
+        {{-- */  $formulario_ids[$i]=$item->id_resp; /* --}}
 
                   </td>
 
@@ -114,7 +102,7 @@
                 </div>
                 </div>
 
-                             <div class="form-group {{ $errors->has('id_user') ? 'has-error' : ''}}">
+               <div class="form-group {{ $errors->has('id_user') ? 'has-error' : ''}}">
                 
                 <div class="col-sm-6">
                     {!! Form::hidden('id_user',$id_user, ['class' => 'form-control' , 'required' => 'required']) !!}
@@ -122,7 +110,7 @@
                 </div>
                 </div>
 
-                             <div class="form-group {{ $errors->has('id_examen') ? 'has-error' : ''}}">
+                 <div class="form-group {{ $errors->has('id_examen') ? 'has-error' : ''}}">
                 
                 <div class="col-sm-6">
                     {!! Form::hidden('id_examen',$id_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
@@ -149,17 +137,10 @@
         </ul>
     @endif
 
-
-
-
             </tbody>
 
         </table>
-        <!--center>
-         <div>
-          <a href="" class="btn btn-primary btn-xs" title="Terminar" ><span class="" aria-hidden="true"/> <h5> Terminar </h5></a>
-          </div>
-          </center-->
+       
         <div class="pagination">  </div>
     </div>
 

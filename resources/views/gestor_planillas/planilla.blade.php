@@ -98,10 +98,7 @@
 
                 @foreach($notas_est as $nota)
                 <td> {{ $nota}}  </td>
-                
-                           
-
-
+   
                 {{-- */$calif=$calif+$nota;/* --}}
                 {{-- */$cant++;/* --}}
 

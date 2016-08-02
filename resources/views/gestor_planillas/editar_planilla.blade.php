@@ -72,7 +72,8 @@
                     <td>{{ $item->name }}</td>
                
                {{-- */$calif=0;/* --}}
-               {{-- */$cant=0;/* --}}
+               {{-- */$cant=0;
+                /* --}}
 
                {{-- */
    
@@ -91,6 +92,7 @@
                       } 
                        $j++;           
                    }
+                   if($bandera==1){
                    /* --}}
                  
                  <td> {{ $nota_estudiante }} 
@@ -102,9 +104,15 @@
    
                   {{-- */
                      $bandera=0;
-                    $i++;
                      $calif=$calif+$nota_estudiante;
                      $cant++;
+                  }else{
+                   /* --}}
+                  <td>Sin Nota</td>        
+                  {{-- */
+                  }
+
+                   $i++;
                 }
                 /* --}}
      
