@@ -6,17 +6,40 @@
 @section('main-content')
 <div class="container">
     <div class="row">
-    <!--Comienza path de contenido del curso.
-    -->
-    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
+      {{-- */$id_user=Auth::id();   
+             /* --}}
+             {{-- */$id_rol=DB::table('role_user')->where('user_id', $id_user)->first();
+                   $id_rol=$id_rol->role_id;    
+             /* --}}
+             {{-- */$name_rol=DB::table('roles')->where('id', $id_rol)->first();
+                    $name_rol=$name_rol->nombre_rol;
+             /* --}}
+
+             @if ($name_rol!="estudiante")
+                 <!--Comienza path de contenido del curso.
+                   -->
+                 <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
                     <li><a href="{{ url('/admin/curso_dicta') }}"><i class="fa fa-dashboard"></i>Materias</a></li>
                     <li><a href="#"></i>Contenido del Curso</a></li>
                     </ol>
-        </div>
-    <!--Termina path de las Listas de contenido del curso.
-    -->
+                </div>
+               <!--Termina path de las Listas de contenido del curso.
+                -->
+             @else
+               <!--Comienza path de contenido del curso desde estudiante.
+                -->
+                <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
+                    <li><a href="{{ url('admin/curso/index_todo/todo')}}"><i class="fa fa-dashboard"></i>Materias</a></li>
+                    <li><a href="#"></i>Contenido del Curso</a></li>
+                    </ol>
+               </div>
+            <!--Termina path de contenido del curso desde estudiante.
+            -->
+             @endif
         <div class="col-md-14 col-md-offset-0" style="padding-top:50px;">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR FORO</div>
@@ -35,14 +58,7 @@
         </div>
     <!--Termina path de vista de foros
     -->
-  {{-- */$id_user=Auth::id();   
-             /* --}}
-             {{-- */$id_rol=DB::table('role_user')->where('user_id', $id_user)->first();
-                   $id_rol=$id_rol->role_id;    
-             /* --}}
-             {{-- */$name_rol=DB::table('roles')->where('id', $id_rol)->first();
-                    $name_rol=$name_rol->nombre_rol;
-             /* --}}
+
     @if ($name_rol!="estudiante")
 
     <h1 style="padding-top:20px;">Foro <a href="{{ url('gestor_foros/'.$id_curso.'/crear/foro') }}" class="btn btn-primary btn-xs" title="Añadir Nuevo Foro"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
