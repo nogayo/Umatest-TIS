@@ -26,13 +26,13 @@
    
     {!! Form::open(['url' => '/gestor_examenes/respuesta_desarrollo', 'class' => 'form-horizontal']) !!}
 
-   @if($mensaje_texto!="")
-    <ul class="alert alert-danger"><li>{{ $mensaje_texto }}</li></ul>
-    @endif
+   
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
-  
+               @if($mensaje_texto!="")
+                <ul class="alert alert-danger"><li>{{ $mensaje_texto }}</li></ul>
+                @endif
                 <tr bgcolor="#81BEF7">
                     <th>S.No</th><th> Preguntas/Respuestas </th><th>Calificacion</th>
                 </tr>
@@ -143,7 +143,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Crear', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Actualizar Nota', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     </div>
     {!! Form::close() !!}

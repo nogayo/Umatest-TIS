@@ -50,19 +50,9 @@ class respuesta_desarrolloController extends Controller
                $id_preg=$calificicaciones_ids[$i];
                $calif=$request->input($calificicaciones_resp[$i]);
 
-               if($calificicaciones_puntaje[$i] >= $calif){
-
-                   DB::table('respuesta_desarrollos')
-                  ->where('id',$id_preg)
-                  ->update(['calificacion' =>$calif ]);
-                $persona= DB::table('notas')
-                  ->where('user_id', $request->input('id_user'))->where('examen_id', $request->input('id_examen'))->orderBy('id','desc')->first();
-
-                DB::table('notas')
-                  ->where('user_id', $request->input('id_user'))->where('examen_id', $request->input('id_examen'))->orderBy('id','desc')->update(['calificacion' =>($calif+$persona->calificacion) ]); 
-
-               }else{
-               $id_examen=$request->input('id_examen');
+            
+                if($calif > $calificicaciones_puntaje[$i]){
+              $id_examen=$request->input('id_examen');
                $id_curso=$request->input('id_curso');
                $id_user=$request->input('id_user');
 
@@ -83,9 +73,22 @@ class respuesta_desarrolloController extends Controller
             $mensaje_texto=" ¡¡Advertencia!! El puntaje ingresado ha sobrepasado el limite";
   
         return view('gestor_examenes.respuesta_desarrollo.create', compact('respuesta_desarrollos','id_user','id_curso','id_examen', 'mensaje_texto')); 
+
                }
-     
-            }
+         }
+
+         for ($i=0; $i < count($calificicaciones_resp); $i++) { 
+               $id_preg=$calificicaciones_ids[$i];
+               $calif=$request->input($calificicaciones_resp[$i]);
+                    DB::table('respuesta_desarrollos')
+                  ->where('id',$id_preg)
+                  ->update(['calificacion' =>$calif ]);
+                $persona= DB::table('notas')
+                  ->where('user_id', $request->input('id_user'))->where('examen_id', $request->input('id_examen'))->orderBy('id','desc')->first();
+
+                DB::table('notas')
+                  ->where('user_id', $request->input('id_user'))->where('examen_id', $request->input('id_examen'))->orderBy('id','desc')->update(['calificacion' =>($calif+$persona->calificacion) ]);
+         }
         $id_curso=$request->input('id_curso');
        
 

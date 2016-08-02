@@ -97,7 +97,7 @@
                  
                  <td> {{ $nota_estudiante }} 
                  <a href="{{ url('/gestor_planillas/'.$id_curso.'/planilla/' . $item->id_user . '/'.$id_examen_es.'/calificar') }}">
-                  <i class="fa fa-edit"  style="font-size:22px;color:#E2A9F3"></i>
+                <span class="logo-lg"><img src="{{asset('/img/img_panelPrincipal/inscribirse.png')}}"/> </span>
                   </a>
                   </td>
 
