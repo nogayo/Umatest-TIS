@@ -28,7 +28,7 @@
     <div class="col-md-14 col-md-offset-0 borderpath" style="width: 16%;margin-left: 0%;">
                     <ol class="breadcrumb">
                     <li><a href="{{ url('admin/curso_dicta/'.$id_curso.'/vista_contenido_curso') }}"><i class="fa fa-dashboard"></i>Principal</a></li>
-                    <li><a href="#"></i>Planillas</a></li>
+                    <li><a href="#"></i>Planilla</a></li>
                     </ol>
         </div>
     <!--Termina path que solo muestra todas las tareas de un docente.

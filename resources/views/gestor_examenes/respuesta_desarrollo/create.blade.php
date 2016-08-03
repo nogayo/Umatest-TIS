@@ -33,7 +33,7 @@
                     <ol class="breadcrumb">
                     <li><a href="{{ url('admin/curso_dicta/'.$id_curso.'/vista_contenido_curso') }}"><i class="fa fa-dashboard"></i>Principal</a></li>
                     <li><a href="{{url('gestor_planillas/'.$id_curso.'/planilla/listar')}}"><i class="fa fa-dashboard"></i>Planilla</a></li>
-                    <li><a href="{{url('/gestor_planillas/'.$id_curso.'/modificar/varios')}}"><i class="fa fa-dashboard"></i>Editar Planillas</a></li>
+                    <li><a href="{{url('/gestor_planillas/'.$id_curso.'/modificar/varios')}}"><i class="fa fa-dashboard"></i>Editar Planilla</a></li>
                     <li><a href="#"></i>Modificar Nota</a></li>
                     </ol>
         </div>
