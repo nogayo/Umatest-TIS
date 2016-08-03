@@ -8,19 +8,43 @@
 @section('main-content')
 <div class="container">
     <div class="row">
+    <div class="container">
+    <div class="row">
+    <!--Comienza path de contenido del curso.
+    -->
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 34%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i>Gestor Materias</a></li>
+                    <li><a href="{{ url('/admin/curso_dicta') }}"><i class="fa fa-dashboard"></i>Materias</a></li>
+                    <li><a href="#"></i>Contenido del Curso</a></li>
+                    </ol>
+        </div>
+    <!--Termina path de las Listas de contenido del curso.
+    -->
         <div class="col-md-14 col-md-offset-0" style="padding-top:50px;">
             <div class="panel panel-default">
                 <div class="panel-heading">GESTOR MATERIA</div>
 
                 <div class="panel-body">
 <div class="container">
-
+ <!--Comienza path que solo muestra todas las tareas de un docente.
+    -->
+    <div class="col-md-14 col-md-offset-0 borderpath" style="width: 16%;margin-left: 0%;">
+                    <ol class="breadcrumb">
+                    <li><a href="{{ url('admin/curso_dicta/'.$id_curso.'/vista_contenido_curso') }}"><i class="fa fa-dashboard"></i>Principal</a></li>
+                    <li><a href="{{url('gestor_planillas/'.$id_curso.'/planilla/listar')}}"><i class="fa fa-dashboard"></i>Planilla</a></li>
+                    <li><a href="{{url('/gestor_planillas/'.$id_curso.'/modificar/varios')}}"><i class="fa fa-dashboard"></i>Editar Planilla</a></li>
+                    <li><a href="#"></i>Modificar Nota</a></li>
+                    </ol>
+        </div>
+    <!--Termina path que solo muestra todas las tareas de un docente.
+    -->
       {{-- */$materia=DB::table('cursos')->where('id', $id_curso)->first();
                     $name_materia=$materia->nombre;
                    
              /* --}}
    
-    <h3> Planilla <a href="#"></a></h2>
+    <h3 style="margin-top:40px;"> Planilla <a href="#"></a></h2>
     <h4> Materia: {{ $name_materia }} <a href="#"></a></h4>
   
    
@@ -59,14 +83,10 @@
                     <td>                     
               
 
-               <div class="form-group {{ $errors->has('calificacion'. $item->id_resp) ? 'has-error' : ''}}">
-
-               <div class="col-sm-6">
+        
                     {!! Form::number('calificacion' .$item->id_resp, null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('calificacion' .$item->id_resp, '<p class="help-block">:message</p>') !!}
-                </div>
-
-            </div>
+              
 
           {{-- */  $formulario_calificaciones[$i]='calificacion' . $item->id_resp; /* --}}
            {{-- */  $formulario_ids[$i]=$item->id_resp; 
@@ -85,53 +105,28 @@
                   $puntaje_pre=implode(",",$formulario_puntaje);
                 /* --}}
 
-                 <div class="form-group {{ $errors->has('calificaciones_ins') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
                     {!! Form::hidden('calificaciones_ins',$calificaciones_resp, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('calificaciones_ins', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
+            
 
-            <div class="form-group {{ $errors->has('calificaciones_ids') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+         
                     {!! Form::hidden('calificaciones_ids',$calificaciones_ids, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('calificaciones_ids', '<p class="help-block">:message</p>') !!}
-                </div>
-           </div>
+            
 
-             <div class="form-group {{ $errors->has('id_curso') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
                     {!! Form::hidden('id_curso',$id_curso, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('id_curso', '<p class="help-block">:message</p>') !!}
-                </div>
-                </div>
-
-               <div class="form-group {{ $errors->has('id_user') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+              
+               
                     {!! Form::hidden('id_user',$id_user, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('id_user', '<p class="help-block">:message</p>') !!}
-                </div>
-                </div>
-
-                 <div class="form-group {{ $errors->has('id_examen') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+              
                     {!! Form::hidden('id_examen',$id_examen, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('id_examen', '<p class="help-block">:message</p>') !!}
-                </div>
-                </div>
-
-               <div class="form-group {{ $errors->has('ptj_pre') ? 'has-error' : ''}}">
-                
-                <div class="col-sm-6">
+             
                     {!! Form::hidden('ptj_pre',$puntaje_pre, ['class' => 'form-control' , 'required' => 'required']) !!}
                     {!! $errors->first('ptj_pre', '<p class="help-block">:message</p>') !!}
-                </div>
-                </div>
+               
 
         </tbody>
 
