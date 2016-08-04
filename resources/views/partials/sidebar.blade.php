@@ -52,7 +52,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/users') }}">Estudiantes</a></li>
                     <li><a href="{{ url('admin/docente') }}">Docentes</a></li>
-                    <li><a href="{{ url('admin/administrador') }}">Administrador</a></li>
+                    
                 </ul>
                    </li>
 
@@ -73,6 +73,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/curso/create') }}">Crear Materia</a></li>
                     <li><a href="{{ url('admin/curso_dicta') }}">Mis Materias</a></li>
+                    <li><a href="{{ url('admin/desabilitados') }}">Estado Materias</a></li>
                 </ul>
                     </li>
 

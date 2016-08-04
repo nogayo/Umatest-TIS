@@ -59,7 +59,7 @@
             @else
                        <thead>
                         <tr>
-                            <th>S.No</th><th> {{ trans('curso.nombre') }} </th>
+                            <th>S.No</th><th> {{ trans('curso.nombre') }} </th><th>Estado Curso</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,7 +68,13 @@
                         {{-- */$x++;/* --}}
                         <tr>
                             <td>{{ $x }}</td>
+                            @if($item->estado_curso==1)
                             <td><a href="{{ url('admin/curso_inscrito/'.$item->id.'/vista_contenido_curso')}}">{{$item->nombre}}</a></td>
+                            <td style="color: green; font:bold;">HABILITADO</td>
+                            @else
+                            <td><a href="#" style="color: red; font:bold;">{{$item->nombre}}</a></td>
+                            <td style="color: red; font:bold;">INHABILITADO</td>
+                            @endif
                           
                         </tr>
                     @endforeach

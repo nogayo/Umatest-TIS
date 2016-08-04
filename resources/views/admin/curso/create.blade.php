@@ -51,6 +51,14 @@
                 </div>
             </div>
 
+        <div class="form-group {{ $errors->has('fecha_vencimiento') ? 'has-error' : ''}}">
+                {!! Form::label('fecha_vencimiento', 'Fecha Vencimiento', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::date('fecha_vencimiento', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! $errors->first('fecha_vencimiento', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
             <div class="form-group {{ $errors->has('capacidad') ? 'has-error' : ''}}">
                 {!! Form::label('capacidad', 'Numero de Estudiantes', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">

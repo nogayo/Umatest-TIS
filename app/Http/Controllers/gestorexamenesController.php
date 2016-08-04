@@ -281,11 +281,12 @@ class gestorexamenesController extends Controller
          for ($i=0; $i < count($cadena_res_formulario); $i++) {  
            $respuestas_estudiante[$i]= $request->input($cadena_res_formulario[$i]);
          }
-
+         
+         $id_usuario=Auth::id();
          //guardar para modificar planilla notas
          for ($k=0; $k < count($respuestas_estudiante); $k++) { 
            if($tipo_pre[$k]==2){
-             DB::table('respuesta_desarrollos')->insert(['respuesta' => $respuestas_estudiante[$k], 'examen_id' => $request->input('id_examen'),'pregunta_id'=> $id_pre[$k]] );
+             DB::table('respuesta_desarrollos')->insert(['respuesta' => $respuestas_estudiante[$k], 'examen_id' => $request->input('id_examen'), 'id_user'=>$id_usuario,'pregunta_id'=> $id_pre[$k]] );
            }
          }
          //-.--.-..-.-

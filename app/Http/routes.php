@@ -87,6 +87,11 @@ Route::get('admin/carreras/{id}/habilitar', 'Admin\\categoriaController@habilita
 
 
 Route::resource('admin/curso_dicta', 'Admin\\curso_dictaController');
+
+Route::get('admin/desabilitados', 'Admin\\curso_dictaController@cursos_desabilitados');
+
+Route::get('admin/desabilitados/{id_curso}/habilitar', 'Admin\\curso_dictaController@create');
+
 Route::resource('admin/curso_inscrito', 'Admin\\curso_inscritoController');
 /*
  esta ruta viene despues de prsionar inscribirce en un curso, y luego lista todas las carreras

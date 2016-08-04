@@ -62,7 +62,11 @@ class cursoController extends Controller
            
             if(is_null($validador)){
           
-            curso::create($request->all());
+            $objeto = curso::create($request->all());
+
+            $objeto->estado_curso=1;
+        
+            $objeto->save();
             
             $id_curso = DB::table('cursos')->where('codigo', $request->input('codigo'))->first();
             $id_curso=$id_curso->id;
@@ -77,8 +81,9 @@ class cursoController extends Controller
             $nombre_cur = $request->input('nombre');
             $capacidad = $request->input('capacidad');
             $codigo = $request->input('codigo');
+            $fecha_vencimiento = $request->input('fecha_vencimiento');
             $nombre_categoria = DB::table('categorias')->where('id',$request->input('id_categoria'))->first();
-            $dato_nuevo=$nombre_cur.'#'.$capacidad.'#'.$codigo.'#'.$nombre_categoria->nombre;//1
+            $dato_nuevo=$nombre_cur.'#'.$capacidad.'#'.$codigo.'#'.$nombre_categoria->nombre.'#'.$fecha_vencimiento;//1
             $dato_viejo="";//2
             $nombre_maq = gethostname(); $ip = gethostbyname($nombre_maq);//3
             $nombre_tabla="cursos";//4
