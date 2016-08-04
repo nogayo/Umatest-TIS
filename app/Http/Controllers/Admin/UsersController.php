@@ -128,7 +128,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-      //  $this->validate($request, ['name' => 'required|max:255|alpha', 'apellido' => 'required|max:255|alpha', 'direccion' => 'required|max:255', 'telefono' => 'required|numeric|unique:users|between:60000000,79999999', 'genero' => 'required', 'email' => 'required|max:255|unique:users', 'password' => 'required', ]);
+      $this->validate($request, ['name' => 'required|max:255|alpha', 'apellido' => 'required|max:255|alpha', 'direccion' => 'required|max:255', 'telefono' => 'required|numeric|unique:users|between:1000000,79999999', 'genero' => 'required', 'email' => 'required|email|max:255|unique:users', 'password' => 'required|min:8', ]);
        
          $pass = User::create($request->all());
 
@@ -209,7 +209,7 @@ class UsersController extends Controller
      */
     public function update($id, Request $request)
     {
-        //$this->validate($request, ['name' => 'required|max:255|alpha', 'apellido' => 'required|max:255|alpha', 'direccion' => 'required|max:255', 'telefono' => 'required|numeric|between:60000000,79999999', 'genero' => 'required', 'email' => 'required|max:255', 'password' => 'required', ]);
+        $this->validate($request, ['name' => 'required|max:255|alpha', 'apellido' => 'required|max:255|alpha', 'direccion' => 'required|max:255', 'telefono' => 'required|numeric|between:1000000,79999999', 'genero' => 'required', 'email' => 'required|email|max:255', 'password' => 'required|min:8', ]);
 
         $persona=DB::table('users')->where('id', $id)->first();
       //store procedure
