@@ -33,7 +33,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> {{ trans('curso.nombre') }} </th><th>Numero de Alumnos</th><th> {{ trans('curso.codigo') }} </th><th>Acciones</th>
+                    <th>S.No</th><th> {{ trans('curso.nombre') }} </th><th>Numero de Alumnos</th><th> {{ trans('curso.codigo') }} </th><th>Fecha Caducidad</th><th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,7 +43,16 @@
  
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('admin/curso_dicta/'.$item->id.'/vista_contenido_curso')}}">{{$item->nombre}}</a></td><td>{{ $item->capacidad }}</td><td>{{ $item->codigo }}</td>
+                    @if($item->estado_curso==1)
+                    <td><a href="{{ url('admin/curso_dicta/'.$item->id.'/vista_contenido_curso')}}">{{$item->nombre}}</a></td>
+                    @else
+                    <td><a href="#" style="color:red; font:bold;">{{$item->nombre}}</a></td>
+                    @endif
+                    <td>{{ $item->capacidad }}</td>
+                    <td>{{ $item->codigo }}</td>
+                    <td>{{$item->fecha_vencimiento}}</td>
+
+                     @if($item->estado_curso==1)
                     <td>
                         <a href="{{ url('/admin/curso/' . $item->id) }}" class="btn btn-success btn-xs" title="Ver Curso"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/admin/curso/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Editar Curso"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
@@ -60,6 +69,9 @@
                             ));!!}
                         {!! Form::close() !!}
                     </td>
+                    @else
+                     <td><p style="color:red; font:bold;">INHABILITADO</p></td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>

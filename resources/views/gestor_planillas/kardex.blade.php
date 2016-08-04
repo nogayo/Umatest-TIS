@@ -81,10 +81,16 @@
                    else $notas_est[$i]=0;
                 }
                 $cant=count($examenes);
-                $NotaFinal=$calif/$cant;
 
+                if($cant > 0){
+
+                 $NotaFinal=$calif/$cant;
 
                  $NFin=round($NotaFinal, 0, PHP_ROUND_HALF_UP);
+                }else{
+                $NFin=0;
+                }
+             
 
                 /* --}}          
 

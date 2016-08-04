@@ -279,6 +279,7 @@ class planillaController extends Controller
             $respuesta_desarrollos= DB::table('examens')
             ->where('id_cursos', $id_curso)
             ->where('examens.id', $id_examen)
+            ->where('id_user', $id_user)
                // ->join('notas', 'examens.id', '=', 'notas.examen_id')           
             ->join('respuesta_desarrollos', 'examens.id', '=', 'respuesta_desarrollos.examen_id')
             ->join('preguntas', 'preguntas.id', '=', 'respuesta_desarrollos.pregunta_id')
