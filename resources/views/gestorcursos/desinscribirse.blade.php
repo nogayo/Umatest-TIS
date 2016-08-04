@@ -42,10 +42,14 @@
                 <tr>
                     <td>{{ $x }}</td>
                     <td>{{ $item->nombre }}</td>
+                    @if($item->estado_curso==1)
                      <td>
                              <a href="{{ url('admin/curso/'.$item->id.'/borrar')}}"><span class="logo-lg"><img src="{{asset('/img/img_panelPrincipal/desinscribirse.png')}}"/> </span></a>
                       
                     </td>
+                    @else
+                    <td style="color: red; font:bold;">INHABILITADO</td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>

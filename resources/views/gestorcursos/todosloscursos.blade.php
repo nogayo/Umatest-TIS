@@ -43,7 +43,7 @@
 
               for($j=0; $j < count($vector_ids); $j++){
               
-              $curso = DB::table('cursos')->where('id_categoria', $vector_ids[$j])->get();
+              $curso = DB::table('cursos')->where('id_categoria', $vector_ids[$j])->where('estado_curso', 1)->get();
               $cantidad_curso[$j]=count($curso);
 
               }
